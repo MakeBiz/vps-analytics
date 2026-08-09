@@ -14,10 +14,6 @@ export default async function Login({ searchParams }) {
             Добавьте в проект Vercel переменную окружения <code>ADMIN_PASSWORD</code> и сделайте Redeploy.
             Пока её нет, панель закрыта для всех.
           </p>
-          <pre style={{ fontSize: 11, whiteSpace: 'pre-wrap' }}>
-            {'ADMIN_PASSWORD виден: ' + (process.env.ADMIN_PASSWORD ? 'да, длина ' + String(process.env.ADMIN_PASSWORD).length : 'нет') + '\n'}
-            {'Похожие ключи в окружении: ' + Object.keys(process.env).filter((k) => /ADM|PASSW/i.test(k)).sort().join(', ')}
-          </pre>
         </div>
       </div>
     );

@@ -53,6 +53,7 @@ export default async function Sources({ searchParams }) {
             <table>
               <thead>
                 <tr>
+                  <th>Сайт</th>
                   <th>source</th>
                   <th>medium</th>
                   <th>campaign</th>
@@ -67,6 +68,7 @@ export default async function Sources({ searchParams }) {
               <tbody>
                 {utm.map((r, i) => (
                   <tr key={i}>
+                    <td className="muted">{r.site_name}</td>
                     <td>{dash(r.utm_source)}</td>
                     <td>{dash(r.utm_medium)}</td>
                     <td><span className="trunc">{dash(r.utm_campaign)}</span></td>

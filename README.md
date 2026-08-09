@@ -34,3 +34,5 @@ Next 15.5.23 и React 19.2.8 зафиксированы точно, без ка�
 без уязвимости CVE-2025-66478, на более ранних Vercel не даёт выкатить деплой.
 
 <!-- redeploy: подхватить ADMIN_PASSWORD и DATABASE_URL -->
+
+<!-- redeploy: ключ ADMIN_PASSWORD исправлен -->

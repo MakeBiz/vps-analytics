@@ -1,8 +1,8 @@
 import { parseFilters } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
 import { bySite, providerBySite, providerNames } from '@/lib/query';
-import { directCampaigns, sitesForCampaign, CAMPAIGN_TO_SITES } from '@/lib/direct';
-import { BarCell, Card, Empty, Kpi } from '@/components/ui';
+import { directCampaigns, campaignMap, isOurCampaign, CAMPAIGNS } from '@/lib/direct';
+import { Card, Empty, Kpi } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,7 +24,6 @@ export default async function Economics({ searchParams }) {
     bySite(f), providerBySite(f), providerNames(),
   ]);
 
-  // наши переходы по сайтам и по провайдерам
   const ourClicksBySite = Object.fromEntries(siteRows.map((r) => [r.key, r.clicks]));
   const ourVisitsBySite = Object.fromEntries(siteRows.map((r) => [r.key, r.visits]));
   const provBySite = {};
@@ -33,13 +32,13 @@ export default async function Economics({ searchParams }) {
     provBySite[r.site_key].set(r.provider, (provBySite[r.site_key].get(r.provider) || 0) + r.clicks);
   }
 
-  const camps = direct?.campaigns || [];
-  const ours = camps.filter((c) => sitesForCampaign(c.name).length > 0);
-  const others = camps.filter((c) => sitesForCampaign(c.name).length === 0);
+  // только наши две кампании, по номеру
+  const camps = (direct?.campaigns || []).filter(isOurCampaign);
 
-  // сводка нашей стороны на кампанию Директа
-  const rowsOurs = ours.map((c) => {
-    const sites = sitesForCampaign(c.name);
+  const rows = camps.map((c) => {
+    const m = campaignMap(c.campaign_id);
+    const sites = m ? m.sites : [];
+    const label = m ? m.name : c.name;
     const ourClicks = sites.reduce((s, k) => s + (ourClicksBySite[k] || 0), 0);
     const ourVisits = sites.reduce((s, k) => s + (ourVisitsBySite[k] || 0), 0);
     const provMap = new Map();
@@ -47,24 +46,22 @@ export default async function Economics({ searchParams }) {
       for (const [slug, n2] of provBySite[k] || []) provMap.set(slug, (provMap.get(slug) || 0) + n2);
     }
     const providers = [...provMap.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3);
-    return { c, sites, ourClicks, ourVisits, providers };
-  });
+    return { c, label, sites, ourClicks, ourVisits, providers };
+  }).sort((a, b) => b.c.cost - a.c.cost);
 
-  const gaps = rowsOurs.filter((r) => r.c.cost > 0 && r.c.conversions === 0 && r.ourClicks > 0);
+  const gaps = rows.filter((r) => r.c.cost > 0 && r.c.conversions === 0 && r.ourClicks > 0);
 
-  const sum = direct?.summary || {};
-  const totalCost = camps.reduce((s, c) => s + c.cost, 0);
-  const oursCost = ours.reduce((s, c) => s + c.cost, 0);
-  const othersCost = others.reduce((s, c) => s + c.cost, 0);
-  const maxCost = Math.max(1, ...camps.map((c) => c.cost));
+  const totalCost = rows.reduce((s, r) => s + r.c.cost, 0);
+  const totalConv = rows.reduce((s, r) => s + r.c.conversions, 0);
+  const totalOurClicks = rows.reduce((s, r) => s + r.ourClicks, 0);
 
   return (
     <div className="grid">
       <div className="grid kpis">
-        <Kpi label="Расход, всего" value={rub(sum.cost || totalCost)} sub={`клики Директа: ${num(sum.clicks || 0)}`} />
-        <Kpi label="Конверсии (provider_click)" value={num(sum.conversions || 0)} sub="цель Метрики в Директе" />
-        <Kpi label="Средний CPA" value={cpa(sum.cost || totalCost, sum.conversions) ? rub(cpa(sum.cost || totalCost, sum.conversions)) : '—'} sub="расход ÷ конверсии" />
-        <Kpi label="Расход на наши сайты" value={rub(oursCost)} sub={`мимо: ${rub(othersCost)}`} />
+        <Kpi label="Расход за период" value={rub(totalCost)} sub="две кампании: ПодборVPS и ServerCalc" />
+        <Kpi label="Конверсии Директа" value={num(totalConv)} sub="цель provider_click" />
+        <Kpi label="Средний CPA" value={cpa(totalCost, totalConv) ? rub(cpa(totalCost, totalConv)) : '—'} sub="расход ÷ конверсии" />
+        <Kpi label="Переходы по панели" value={num(totalOurClicks)} sub="считает панель, независимо" />
       </div>
 
       {derr ? (
@@ -81,25 +78,27 @@ export default async function Economics({ searchParams }) {
           </p>
           <ul className="note">
             {gaps.map((r) => (
-              <li key={r.c.name}>
-                <b>{r.c.name}</b>: расход {rub(r.c.cost)}, в Директе 0 конверсий, а панель видит <b>{num(r.ourClicks)}</b> переходов
+              <li key={r.c.campaign_id}>
+                <b>{r.label}</b>: расход {rub(r.c.cost)}, в Директе 0 конверсий, а панель видит <b>{num(r.ourClicks)}</b> переходов
               </li>
             ))}
           </ul>
         </Card>
       ) : null}
 
-      <Card title="Экономика наших сайтов" hint="расход из Директа против переходов, которые считает панель">
-        {rowsOurs.length === 0 ? (
-          <Empty text={derr ? 'Нет данных Директа за период' : 'За период нет кампаний Директа, ведущих на наши сайты'} />
+      <Card title="Экономика по кампаниям" hint="расход из Директа против переходов, которые считает панель">
+        {rows.length === 0 ? (
+          <Empty text={derr ? 'Нет данных Директа за период' : 'За период нет кликов по этим кампаниям'} />
         ) : (
           <div className="scroll">
             <table>
               <thead>
                 <tr>
-                  <th>Кампания → сайт</th>
+                  <th>Кампания</th>
                   <th className="n">Расход</th>
                   <th className="n">Клики Директа</th>
+                  <th className="n">CTR</th>
+                  <th className="n">CPC</th>
                   <th className="n">Конв. Директа</th>
                   <th className="n">Переходы (панель)</th>
                   <th className="n">CPA по Директу</th>
@@ -108,17 +107,19 @@ export default async function Economics({ searchParams }) {
                 </tr>
               </thead>
               <tbody>
-                {rowsOurs.map((r) => {
+                {rows.map((r) => {
                   const cD = cpa(r.c.cost, r.c.conversions);
                   const cP = cpa(r.c.cost, r.ourClicks);
                   return (
-                    <tr key={r.c.name}>
+                    <tr key={r.c.campaign_id}>
                       <td>
-                        {r.c.name}
-                        <div className="dim">{r.sites.join(', ')}</div>
+                        {r.label}
+                        <div className="dim mono" style={{ fontSize: 11 }}>№ {r.c.campaign_id}</div>
                       </td>
                       <td className="n">{rub(r.c.cost)}</td>
                       <td className="n muted">{num(r.c.clicks)}</td>
+                      <td className="n muted">{r.c.ctr.toFixed(1)}%</td>
+                      <td className="n muted">{rub(r.c.avg_cpc)}</td>
                       <td className="n">{num(r.c.conversions)}</td>
                       <td className="n">{num(r.ourClicks)}</td>
                       <td className="n">{cD ? rub(cD) : <span className="dim">—</span>}</td>
@@ -136,59 +137,9 @@ export default async function Economics({ searchParams }) {
           </div>
         )}
         <p className="note" style={{ marginTop: 10 }}>
-          «CPA по Директу» считается по цели Метрики, «CPA по панели» — по переходам, которые панель ловит сама. Пока панель копит данные, второй столбец будет расти день ото дня. Соответствие кампаний сайтам: {Object.keys(CAMPAIGN_TO_SITES).join(', ')} — правится в коде одной строкой.
+          Берём только две кампании, привязанные по номеру: {Object.entries(CAMPAIGNS).map(([id, m]) => `${m.name} (№ ${id})`).join(', ')}. Остальные кампании Директа в раздел не входят. «CPA по Директу» считается по цели Метрики, «CPA по панели» — по переходам, которые панель ловит сама; пока панель копит данные, второй столбец растёт день ото дня.
         </p>
       </Card>
-
-      <Card title="Все кампании Директа" hint="полный расход за период, включая кампании мимо наших сайтов">
-        {camps.length === 0 ? <Empty text={derr ? 'Сервис Директа недоступен' : 'Нет данных за период'} /> : (
-          <div className="scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Кампания</th>
-                  <th className="n">Расход</th>
-                  <th className="n">Клики</th>
-                  <th className="n">Показы</th>
-                  <th className="n">CTR</th>
-                  <th className="n">CPC</th>
-                  <th className="n">Конверсии</th>
-                  <th className="n">CPA</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[...camps].sort((a, b) => b.cost - a.cost).map((c) => {
-                  const our = sitesForCampaign(c.name).length > 0;
-                  const cA = cpa(c.cost, c.conversions);
-                  return (
-                    <tr key={c.name}>
-                      <td>
-                        {c.name}{' '}
-                        {our ? <span className="tag b">наш сайт</span> : <span className="tag">мимо</span>}
-                      </td>
-                      <BarCell value={c.cost} max={maxCost} suffix=" ₽" />
-                      <td className="n muted">{num(c.clicks)}</td>
-                      <td className="n dim">{num(c.impressions)}</td>
-                      <td className="n muted">{c.ctr.toFixed(1)}%</td>
-                      <td className="n muted">{rub(c.avg_cpc)}</td>
-                      <td className="n">{num(c.conversions)}</td>
-                      <td className="n">{cA ? rub(cA) : <span className="dim">—</span>}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </Card>
-
-      {others.length ? (
-        <Card title="Мимо наших сайтов" hint="эти кампании не проходят через панель, их KPI живёт в другом месте">
-          <p className="note">
-            Расход {rub(othersCost)}. Реф-кампании (Timeweb, AdminVPS) ведут прямо на провайдера — их результат это регистрации в кабинете партнёра, а не переход, поэтому конверсия provider_click тут структурно ноль (появится, когда добавим слой партнёров). Кампании другого продукта (Solara) к этой связке не относятся.
-          </p>
-        </Card>
-      ) : null}
     </div>
   );
 }

@@ -64,27 +64,38 @@ function Demo({ rows, order, head }) {
 export default async function Geo({ searchParams }) {
   const f = parseFilters(await searchParams);
 
-  let demoRows = null;
+  let demoAll = null;
   let demoErr = '';
   try {
-    demoRows = (await directDemographics(f.from, f.to)).filter(isOurCampaign);
+    demoAll = await directDemographics(f.from, f.to);
   } catch (e) {
     demoErr = e.message || String(e);
   }
+  const demoRows = (demoAll || []).filter(isOurCampaign);
 
   const [{ countries, cities }, tech] = await Promise.all([geoReport(f), techReport(f)]);
   const maxC = Math.max(1, ...countries.map((r) => r.visits));
   const maxCity = Math.max(1, ...cities.map((r) => r.visits));
 
-  const genderRows = (demoRows || []).map((r) => ({ key: r.gender, clicks: r.clicks, conv: r.conversions }));
-  const ageRows = (demoRows || []).map((r) => ({ key: r.age, clicks: r.clicks, conv: r.conversions }));
-  const hasDemo = (demoRows || []).length > 0;
+  const genderRows = demoRows.map((r) => ({ key: r.gender, clicks: r.clicks, conv: r.conversions }));
+  const ageRows = demoRows.map((r) => ({ key: r.age, clicks: r.clicks, conv: r.conversions }));
+  const hasDemo = demoRows.length > 0;
+  // эндпоинт ответил данными, но ни одна строка не про наши кампании:
+  // почти всегда это отсутствие campaign_id в строках (данные по всему аккаунту)
+  const gotDataNoMatch = (demoAll || []).length > 0 && demoRows.length === 0;
 
   return (
     <div className="grid">
       <div className="grid cols2">
         <Card title="Пол" hint="по рекламным кликам Директа, две кампании (ПодборVPS и ServerCalc)">
-          {hasDemo ? <Demo rows={genderRows} order={GENDER_ORDER} head="Пол" /> : (
+          {hasDemo ? <Demo rows={genderRows} order={GENDER_ORDER} head="Пол" /> : gotDataNoMatch ? (
+            <p className="note">
+              Демография из Директа приходит, но в строках нет <code>campaign_id</code>, поэтому нельзя выделить
+              только наши две кампании. Без этого сюда попала бы вся реклама аккаунта, включая Solara и реф-кампании,
+              с совсем другой аудиторией. Нужно, чтобы эндпоинт <code>/direct/demographics</code> отдавал
+              <code> campaign_id</code> в каждой строке (сгруппировать отчёт ещё и по кампании).
+            </p>
+          ) : (
             <p className="note">
               Пол и возраст сайт сам не собирает, эти данные есть только в рекламном кабинете. Демография Директа
               появится здесь, как только сервис данных начнёт отдавать эндпоинт <code>/direct/demographics</code>

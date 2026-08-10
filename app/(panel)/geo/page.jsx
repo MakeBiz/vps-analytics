@@ -2,6 +2,7 @@ import { parseFilters } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
 import { geoReport, techReport } from '@/lib/query';
 import { countryName } from '@/lib/ua';
+import { directDemographics, isOurCampaign, GENDER_ORDER, AGE_ORDER } from '@/lib/direct';
 import { BarCell, Card, Empty } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
@@ -28,14 +29,76 @@ function Simple({ rows, head }) {
   );
 }
 
+// Пол/возраст: считаем по кликам рекламы Директа (две наши кампании).
+// Порядок строк фиксированный, чтобы не прыгал; проценты от суммы кликов.
+function Demo({ rows, order, head }) {
+  if (!rows || rows.length === 0) return null;
+  const map = new Map();
+  let total = 0;
+  for (const r of rows) {
+    const cur = map.get(r.key) || { clicks: 0, conv: 0 };
+    cur.clicks += r.clicks;
+    cur.conv += r.conv;
+    map.set(r.key, cur);
+    total += r.clicks;
+  }
+  const list = order.filter((k) => map.has(k)).map((k) => ({ k, ...map.get(k) }));
+  const max = Math.max(1, ...list.map((r) => r.clicks));
+  return (
+    <table>
+      <thead><tr><th>{head}</th><th className="n">Клики</th><th className="n">Доля</th><th className="n">Конверсии</th></tr></thead>
+      <tbody>
+        {list.map((r) => (
+          <tr key={r.k}>
+            <td>{r.k}</td>
+            <BarCell value={r.clicks} max={max} />
+            <td className="n muted">{pct(r.clicks, total)}</td>
+            <td className="n">{num(r.conv)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 export default async function Geo({ searchParams }) {
   const f = parseFilters(await searchParams);
+
+  let demoRows = null;
+  let demoErr = '';
+  try {
+    demoRows = (await directDemographics(f.from, f.to)).filter(isOurCampaign);
+  } catch (e) {
+    demoErr = e.message || String(e);
+  }
+
   const [{ countries, cities }, tech] = await Promise.all([geoReport(f), techReport(f)]);
   const maxC = Math.max(1, ...countries.map((r) => r.visits));
   const maxCity = Math.max(1, ...cities.map((r) => r.visits));
 
+  const genderRows = (demoRows || []).map((r) => ({ key: r.gender, clicks: r.clicks, conv: r.conversions }));
+  const ageRows = (demoRows || []).map((r) => ({ key: r.age, clicks: r.clicks, conv: r.conversions }));
+  const hasDemo = (demoRows || []).length > 0;
+
   return (
     <div className="grid">
+      <div className="grid cols2">
+        <Card title="Пол" hint="по рекламным кликам Директа, две кампании (ПодборVPS и ServerCalc)">
+          {hasDemo ? <Demo rows={genderRows} order={GENDER_ORDER} head="Пол" /> : (
+            <p className="note">
+              Пол и возраст сайт сам не собирает, эти данные есть только в рекламном кабинете. Демография Директа
+              появится здесь, как только сервис данных начнёт отдавать эндпоинт <code>/direct/demographics</code>
+              (спека передана). {demoErr ? <span className="dim">Сейчас: {demoErr}</span> : null}
+            </p>
+          )}
+        </Card>
+        <Card title="Возраст" hint="по рекламным кликам Директа, две кампании">
+          {hasDemo ? <Demo rows={ageRows} order={AGE_ORDER} head="Возраст" /> : (
+            <p className="note">Появится вместе с полом, из того же источника (демография Яндекс.Директа).</p>
+          )}
+        </Card>
+      </div>
+
       <div className="grid cols2">
         <Card title="Страны" hint="определяются на стороне Vercel по адресу запроса">
           {countries.length === 0 ? <Empty /> : (

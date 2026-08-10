@@ -4,6 +4,7 @@ import { RANGES, TZ_LIST } from '@/lib/filters';
 
 const TITLES = {
   '/': 'Обзор',
+  '/economics': 'Экономика',
   '/sources': 'Источники и метки',
   '/providers': 'Провайдеры',
   '/buttons': 'Кнопки и места',

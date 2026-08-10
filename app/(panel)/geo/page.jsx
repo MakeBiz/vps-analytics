@@ -100,7 +100,7 @@ export default async function Geo({ searchParams }) {
       </div>
 
       <div className="grid cols2">
-        <Card title="Страны" hint="определяются на стороне Vercel по адресу запроса">
+        <Card title="Страны" hint="топ 10, определяются на стороне Vercel по адресу запроса">
           {countries.length === 0 ? <Empty /> : (
             <div className="tall">
               <table>
@@ -120,7 +120,7 @@ export default async function Geo({ searchParams }) {
           )}
         </Card>
 
-        <Card title="Города">
+        <Card title="Города" hint="топ 10">
           {cities.length === 0 ? <Empty /> : (
             <div className="tall">
               <table>

@@ -1,0 +1,59 @@
+{
+  "generated": "16.08.2026",
+  "note": "Кабинетные выгрузки партнёров (регистрации и выплаты) — снимок, обновляется раз в неделю. Директ (расход, клики, CPC) — живой из API. Метки со звёздочкой это неполный месяц (данные до 14.08).",
+  "timeweb": {
+    "regsByMonth": [
+      { "d": "2026-02-01", "total": 85, "moscow": 49, "regions": 36 },
+      { "d": "2026-03-01", "total": 183, "moscow": 131, "regions": 52 },
+      { "d": "2026-04-01", "total": 118, "moscow": 88, "regions": 30 },
+      { "d": "2026-05-01", "total": 90, "moscow": 68, "regions": 22 },
+      { "d": "2026-06-01", "total": 103, "moscow": 93, "regions": 10 },
+      { "d": "2026-07-01", "total": 53, "moscow": 46, "regions": 7 },
+      { "d": "2026-08-01", "total": 21, "moscow": 9, "regions": 12 }
+    ],
+    "revenueByMonth": [
+      { "d": "2026-06-01", "sum": 1533 },
+      { "d": "2026-07-01", "sum": 64079 },
+      { "d": "2026-08-01", "sum": 34633 }
+    ],
+    "costPerReg": [
+      { "campaign": "МСК", "value": 970 },
+      { "campaign": "VIP", "value": 920 },
+      { "campaign": "Регионы", "value": 700 }
+    ],
+    "revenueWindow": 100245,
+    "regsTotalPeriod": 74,
+    "spendWindow": 60604
+  },
+  "adminvps": {
+    "regsByMonth": [
+      { "d": "2026-04-01", "total": 58, "foreign": 50, "ru": 7 },
+      { "d": "2026-05-01", "total": 51, "foreign": 31, "ru": 19 },
+      { "d": "2026-06-01", "total": 96, "foreign": 74, "ru": 20 },
+      { "d": "2026-07-01", "total": 64, "foreign": 45, "ru": 19 },
+      { "d": "2026-08-01", "total": 43, "foreign": 23, "ru": 20 }
+    ],
+    "geo": { "foreign": 223, "ru": 85, "other": 4, "foreignPct": 72 },
+    "countries": [
+      { "name": "Россия", "n": 85 },
+      { "name": "Финляндия", "n": 81 },
+      { "name": "Нидерланды", "n": 69 },
+      { "name": "Польша", "n": 33 },
+      { "name": "Германия", "n": 26 },
+      { "name": "Великобритания", "n": 6 },
+      { "name": "Франция", "n": 4 },
+      { "name": "Испания", "n": 2 },
+      { "name": "Казахстан", "n": 2 }
+    ],
+    "status": { "active": 190, "churned": 122, "total": 312, "activePct": 61 },
+    "revenueByMonth": [
+      { "d": "2026-05-01", "sum": 16163 },
+      { "d": "2026-06-01", "sum": 18272 },
+      { "d": "2026-07-01", "sum": 25452 },
+      { "d": "2026-08-01", "sum": 10746 }
+    ],
+    "revenueWindow": 70633,
+    "regsTotal": 312,
+    "spendWindow": 26048
+  }
+}

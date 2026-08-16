@@ -75,45 +75,38 @@ export default async function Royalties({ searchParams }) {
 
       {tw && av ? (() => {
         const rows = [
-          { p: 'Timeweb', spend: tw.spendWindow, rev: tw.revenueWindow },
-          { p: 'AdminVPS', spend: av.spendWindow, rev: av.revenueWindow },
+          { p: 'Timeweb', rev: tw.revenueTotal, spend: tw.spendWindow },
+          { p: 'AdminVPS', rev: av.revenueTotal, spend: av.spendWindow },
         ];
-        const tot = { spend: rows.reduce((s, r) => s + r.spend, 0), rev: rows.reduce((s, r) => s + r.rev, 0) };
-        const line = (name, spend, rev, strong) => {
-          const dohod = rev - spend;
-          const roi = spend ? Math.round(rev / spend * 100) : 0;
-          return (
-            <tr key={name} style={strong ? { fontWeight: 600 } : undefined}>
-              <td>{name}</td>
-              <td className="n">{num(spend)} ₽</td>
-              <td className="n">{num(rev)} ₽</td>
-              <td className={'n ' + (dohod >= 0 ? 'up' : 'down')}>{(dohod >= 0 ? '+' : '−') + num(Math.abs(dohod))} ₽</td>
-              <td className="n muted">{roi}%</td>
-            </tr>
-          );
-        };
+        const tot = { rev: rows.reduce((s, r) => s + r.rev, 0), spend: rows.reduce((s, r) => s + r.spend, 0) };
+        const line = (name, rev, spend, strong) => (
+          <tr key={name} style={strong ? { fontWeight: 600 } : undefined}>
+            <td>{name}</td>
+            <td className="n">{num(rev)} ₽</td>
+            <td className="n muted">{num(spend)} ₽</td>
+          </tr>
+        );
         return (
-          <Card title="Экономика партнёрок" hint="доход = выручка − расход">
+          <Card title="Экономика партнёрок" hint="всего получено из кабинетов против расхода Директа">
             <div className="scroll">
               <table>
                 <thead>
                   <tr>
                     <th>Партнёр</th>
-                    <th className="n">Расход Директ</th>
-                    <th className="n">Выручка</th>
-                    <th className="n">Доход</th>
-                    <th className="n">Окупаемость</th>
+                    <th className="n">Всего получено</th>
+                    <th className="n">Расход Директ (окно)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((r) => line(r.p, r.spend, r.rev))}
-                  {line('Итого', tot.spend, tot.rev, true)}
+                  {rows.map((r) => line(r.p, r.rev, r.spend))}
+                  {line('Итого', tot.rev, tot.spend, true)}
                 </tbody>
               </table>
             </div>
             <div className="note" style={{ marginTop: 8 }}>
-              Выручка это recurring от прежних когорт, окна расхода (08.07-15.08) и выручки (Timeweb 22.06-14.08,
-              AdminVPS 20.05-14.08) не совпадают, поэтому это кассовая картина за окно, а не ROI текущего расхода
+              Всего получено это все выплаты из кабинетов за историю (Timeweb январь-август, склейка с OLD-выгрузкой;
+              AdminVPS май-август). Расход пока только живой Директ за окно 08.07-15.08, полного расхода в API нет.
+              Чистый доход по полному расходу считается в Royalties-дашборде, подключу сюда отдельно
             </div>
           </Card>
         );
@@ -122,11 +115,11 @@ export default async function Royalties({ searchParams }) {
       <div className="grid kpis">
         <Kpi label="Timeweb, расход Директ" value={num(Math.round(spend.Timeweb.cost)) + ' ₽'} sub={num(spend.Timeweb.clicks) + ' кликов'} />
         <Kpi label="Timeweb, регистрации" value={tw ? num(tw.regsTotalPeriod) : '—'} sub="июль-август, по меткам" />
-        <Kpi label="Timeweb, выручка" value={tw ? num(tw.revenueWindow) + ' ₽' : '—'} sub="окно 22.06-14.08" />
+        <Kpi label="Timeweb, всего получено" value={tw ? num(tw.revenueTotal) + ' ₽' : '—'} sub="январь-август, из кабинета" />
         <Kpi label="AdminVPS, расход Директ" value={num(Math.round(spend.AdminVPS.cost)) + ' ₽'} sub={num(spend.AdminVPS.clicks) + ' кликов'} />
         <Kpi label="AdminVPS, регистрации" value={av ? num(av.regsTotal) : '—'} sub="апрель-август, все каналы" />
         <Kpi label="AdminVPS, зарубеж" value={av ? av.geo.foreignPct + '%' : '—'} sub={av ? num(av.geo.foreign) + ' из ' + num(av.status.total) : ''} />
-        <Kpi label="AdminVPS, выручка" value={av ? num(av.revenueWindow) + ' ₽' : '—'} sub="май-август" />
+        <Kpi label="AdminVPS, всего получено" value={av ? num(av.revenueTotal) + ' ₽' : '—'} sub="май-август" />
         <Kpi label="AdminVPS, отвал" value={av ? (100 - av.status.activePct) + '%' : '—'} sub={av ? 'активных ' + num(av.status.active) + ' из ' + num(av.status.total) : ''} />
       </div>
 
@@ -174,7 +167,7 @@ export default async function Royalties({ searchParams }) {
       </div>
 
       <div className="grid cols2">
-        <Card title="Timeweb, выручка по месяцам" hint="₽, скользящее окно выплат">
+        <Card title="Timeweb, выручка по месяцам" hint="₽, вся история со склейкой OLD">
           {tw ? <Chart rows={tw.revenueByMonth} tz="UTC" keys={[['sum', 'Выручка', BRASS]]} /> : <Empty />}
         </Card>
         <Card title="AdminVPS, выручка по месяцам" hint="₽, комиссии">

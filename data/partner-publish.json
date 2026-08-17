@@ -1,0 +1,1082 @@
+{
+  "generated": "16.08.2026",
+  "sites": [
+    {
+      "id": "podborvps",
+      "name": "ПодборVPS",
+      "lang": "RU",
+      "dom": "podborvps.ru"
+    },
+    {
+      "id": "servercalc-ru",
+      "name": "ServerCalc.ru",
+      "lang": "RU",
+      "dom": "servercalc.ru"
+    },
+    {
+      "id": "serverselection",
+      "name": "ServerSelection",
+      "lang": "EN",
+      "dom": "serverselection.online · Дубай"
+    }
+  ],
+  "partners": [
+    {
+      "slug": "ishosting",
+      "name": "is*hosting",
+      "score": "94",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://ishosting.io/affiliate/NzI2MSM4",
+      "site": "https://ishosting.com/",
+      "prog": "https://ishosting.com/affiliate-program",
+      "rate": "50% с первой покупки VPS/VPN/Storage; затем 3-20% lifetime; dedicated ",
+      "term": "Пожизненно",
+      "country": "Эстония",
+      "servers": "40 стран / 42 ЦОД на 5 континентах",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": true,
+      "clicks": 0,
+      "weight": 100,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "fornex",
+      "name": "Fornex",
+      "score": "91",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://fornex.com/code/g6j9tn/",
+      "site": "https://fornex.com/",
+      "prog": "https://fornex.com/help/partner-program/",
+      "rate": "VPS 15/20/25% по числу активных заказов; dedicated 10-15%; хостинг 20-",
+      "term": "Пожизненно",
+      "country": "Испания",
+      "servers": "Германия; Нидерланды; Швеция; Швейцария; Россия; Испания; СШ",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: торги по бренду запрещены"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": true,
+      "clicks": 1,
+      "weight": 97,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "adminvps",
+      "name": "AdminVPS",
+      "score": "89",
+      "status": "Зарегистрированы",
+      "lang": "RU",
+      "ref": "https://my.adminvps.ru/aff.php?aff=29622",
+      "site": "https://adminvps.ru/",
+      "prog": "https://adminvps.ru/about/partners.php",
+      "rate": "30% VPS/хостинг; до 40%; dedicated-бонус 500 ₽",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "Россия; Германия; Нидерланды; Беларусь; Казахстан",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: нужно письменное согласование"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 1,
+      "weight": 89,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "vdsina",
+      "name": "VDSina",
+      "score": "89",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://vdsina.ru/?partner=5xwp7v2732dp",
+      "site": "https://vdsina.ru/",
+      "prog": "https://vdsina.ru/partner",
+      "rate": "20% базово; уровни 25/30/35/40/45/50% по среднему доходу за 3 мес",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "Россия; Нидерланды; Финляндия",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: запрещён бренд-контекст"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 1,
+      "weight": 89,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "vpsorg",
+      "name": "VPS.org",
+      "score": "88",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://vps.org/?ref=G2EMGEI2",
+      "site": "https://www.vps.org/",
+      "prog": "https://www.vps.org/affiliates/",
+      "rate": "20% lifetime + до $50 бонусами за квалифицированного клиента",
+      "term": "Пожизненно",
+      "country": "США",
+      "servers": "Международные локации, live-inventory сверять при заказе",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": true,
+      "clicks": 0,
+      "weight": 94,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "timeweb",
+      "name": "Timeweb Cloud",
+      "score": "85",
+      "status": "Зарегистрированы",
+      "lang": "RU",
+      "ref": "https://timeweb.cloud/?i=143675",
+      "site": "https://timeweb.cloud/",
+      "prog": "https://timeweb.com/ru/partners/webmasters/",
+      "rate": "20% с каждого платежа VPS/Cloud; до 40% по хостингу",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "Россия (Москва, СПб); Германия (Франкфурт); Нидерланды (Амст",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: регламент 3.7: бренд-контекст запрещён"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 2,
+      "weight": 85,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "truehost",
+      "name": "Truehost Cloud",
+      "score": "85",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://truehost.cloud/cloud/aff.php?aff=225",
+      "site": "https://truehost.cloud/",
+      "prog": "https://truehost.cloud/affiliate-program/",
+      "rate": "25% recurring VPS/хостинг/email/SSL; до 40% builder; 5% домены",
+      "term": "Пока услуга активна",
+      "country": "Кения",
+      "servers": "Кения; Нигерия; ЮАР; США; Великобритания; Индия; Австралия",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 85,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "aeza",
+      "name": "Aéza",
+      "score": "84",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://aeza.net/?ref=907642",
+      "site": "https://aeza.net/",
+      "prog": "https://aeza.net/ru/affiliate",
+      "rate": "15% старт; 20-40% по обороту; промо упоминает до 50%",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "Россия; Германия; Нидерланды; Австрия; Швеция; Финляндия; Фр",
+      "verified": true,
+      "flags": [
+        {
+          "t": "sanction",
+          "txt": "Санкции OFAC — только РФ-сайты, не Дубай"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 1,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "datapacket",
+      "name": "DataPacket",
+      "score": "83",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://portal.datapacket.net/aff.php?aff=189",
+      "site": "https://datapacket.net/",
+      "prog": "https://portal.datapacket.net/",
+      "rate": "30% recurring с каждого платежа",
+      "term": "Пока клиент активен",
+      "country": "Чехия",
+      "servers": "Австралия; Австрия; Бразилия; Великобритания; Германия; Гонк",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": true,
+      "clicks": 0,
+      "weight": 89,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "beget",
+      "name": "Beget",
+      "score": "80",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "beget.com/p2667489",
+      "site": "https://beget.com/",
+      "prog": "https://beget.com/ru/partnership",
+      "rate": "VPS 20%; shared до 40%; dedicated до 100%",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "Россия; Казахстан",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: запрещён любой поисковый контекст"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": false,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 1,
+      "weight": 80,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "cherryservers",
+      "name": "Cherry Servers",
+      "score": "80",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://www.cherryservers.com/?affiliate=9U0AA107",
+      "site": "https://www.cherryservers.com/",
+      "prog": "https://www.cherryservers.com/affiliate",
+      "rate": "10% от суммы счетов реферала",
+      "term": "Пока клиент активен",
+      "country": "Литва",
+      "servers": "Литва; Нидерланды (Амстердам); Швеция (Стокгольм); Германия ",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 80,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "cloudways",
+      "name": "Cloudways",
+      "score": "78",
+      "status": "На согласовании",
+      "lang": "EN",
+      "ref": "—",
+      "site": "https://www.cloudways.com/",
+      "prog": "https://www.cloudways.com/en/web-hosting-affiliate-program.php",
+      "rate": "До $350 CPA либо $30 за продажу + 7-12% lifetime",
+      "term": "Пожизненно на hybrid-плане",
+      "country": "Мальта",
+      "servers": "65+ ЦОД через DigitalOcean, AWS и Google Cloud",
+      "verified": false,
+      "flags": [],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": false,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 78,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "massivegrid",
+      "name": "MassiveGRID",
+      "score": "78",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://portal.massivegrid.com/aff.php?aff=770",
+      "site": "MassiveGRID",
+      "prog": "https://massivegrid.com/affiliate-program/",
+      "rate": "20% recurring с каждого оплаченного счёта",
+      "term": "Пока клиент активен",
+      "country": "Великобритания",
+      "servers": "Нью-Йорк (США); Лондон (Великобритания); Франкфурт (Германия",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 78,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "ethernetservers",
+      "name": "Ethernet Servers",
+      "score": "76",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://www.ethernetservers.com/aff.php?aff=3108",
+      "site": "https://www.ethernetservers.com/",
+      "prog": "https://www.ethernetservers.com/affiliates",
+      "rate": "20% recurring со всех услуг кроме доменов; плюс $10 бонус за активацию",
+      "term": "Пока клиент активен",
+      "country": "Великобритания",
+      "servers": "США (Нью-Джерси, Лос-Анджелес, Майами); Германия (Франкфурт)",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 76,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "racknerd",
+      "name": "RackNerd",
+      "score": "76",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://my.racknerd.com/aff.php?aff=20937",
+      "site": "https://www.racknerd.com/",
+      "prog": "https://www.racknerd.com/affiliates",
+      "rate": "15% recurring на Shared/Reseller/KVM VPS/Hybrid Dedicated; 10% на Dedi",
+      "term": "Пока клиент активен",
+      "country": "США",
+      "servers": "США (Лос-Анджелес, Сан-Хосе, Сиэтл, Даллас, Юта, Чикаго, Нью",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: запрещён бренд-биддинг"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": false,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 76,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "aeserver",
+      "name": "AEserver",
+      "score": "73",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://my.aeserver.com/aff.php?aff=1245",
+      "site": "https://www.aeserver.com/",
+      "prog": "https://www.aeserver.com/partner-affiliate/",
+      "rate": "10-70% от инвойса; публичный FAQ относит программу прежде всего к Shar",
+      "term": "Пожизненно (life of account), для VPS не подтверждено",
+      "country": "ОАЭ",
+      "servers": "ОАЭ (Дубай)",
+      "verified": false,
+      "flags": [
+        {
+          "t": "broken",
+          "txt": "комиссия по FAQ покрывает Shared, а не VPS — нужно допсоглашение"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 73,
+      "reminder": "Допсоглашение на VPS не получено — комиссия по FAQ только Shared",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "firstvds",
+      "name": "FirstVDS",
+      "score": "73",
+      "status": "Зарегистрированы",
+      "lang": "RU",
+      "ref": "https://firstvds.ru/?from=1218803",
+      "site": "https://firstvds.ru/",
+      "prog": "https://firstvds.ru/partner/referral",
+      "rate": "10% со всех расходов клиента; клиенту скидка 25% на первый месяц",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "Россия; Нидерланды; Казахстан",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: запрещено имя в объявлениях"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 73,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "liquidweb",
+      "name": "Liquid Web",
+      "score": "73",
+      "status": "На согласовании",
+      "lang": "EN",
+      "ref": "—",
+      "site": "https://www.liquidweb.com/",
+      "prog": "https://www.liquidweb.com/partner-programs/hosting-affiliate-program/",
+      "rate": "Affiliate до $1 500 за продажу; Partner+ 5% Bronze, 10% Silver, до 20%",
+      "term": "Пожизненно только через Partner+; affiliate разовый",
+      "country": "США",
+      "servers": "США; Нидерланды (Амстердам)",
+      "verified": false,
+      "flags": [],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": false,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 73,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "vpsdime",
+      "name": "VPSDime",
+      "score": "73",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://vpsdime.com/a/4794",
+      "site": "https://vpsdime.com/",
+      "prog": "https://vpsdime.com/affiliate-program",
+      "rate": "10% recurring с каждого платежа и продления",
+      "term": "Пока клиент активен",
+      "country": "США",
+      "servers": "США (Даллас, Сиэтл, Лос-Анджелес, Нью-Джерси); Великобритани",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 73,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "rosehosting",
+      "name": "RoseHosting",
+      "score": "72",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://secure.rosehosting.com/clientarea/?affid=2795",
+      "site": "https://www.rosehosting.com/",
+      "prog": "https://www.rosehosting.com/affiliate-program/",
+      "rate": "$50-500 за продажу (VIP $75-500) плюс 10% recurring с каждого счёта",
+      "term": "Разово + 10% пожизненно",
+      "country": "США",
+      "servers": "США (Сент-Луис, Миссури) — единственный ЦОД",
+      "verified": true,
+      "flags": [
+        {
+          "t": "ppc",
+          "txt": "реклама: запрещён бренд-биддинг"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": false,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 72,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": true
+    },
+    {
+      "slug": "profitserver",
+      "name": "ProfitServer",
+      "score": "71",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://profitserver.ru/?partner_id=3415425",
+      "site": "https://profitserver.ru/",
+      "prog": "https://profitserver.ru/partnership/",
+      "rate": "10%",
+      "term": "Пожизненно",
+      "country": "Россия",
+      "servers": "20+ стран, точный список зависит от тарифа",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 71,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": true
+    },
+    {
+      "slug": "selectel",
+      "name": "Selectel",
+      "score": "71",
+      "status": "Не партнёр",
+      "lang": "EN",
+      "ref": "https://selectel.ru/?ref_code=70588a178e",
+      "site": "https://selectel.ru/",
+      "prog": "https://selectel.ru/partners/",
+      "rate": "10%; 15% при расходах реферала >1 млн ₽/мес",
+      "term": "Пожизненно, пока клиент оплачивает",
+      "country": "Россия",
+      "servers": "Россия",
+      "verified": true,
+      "flags": [
+        {
+          "t": "orphan",
+          "txt": "решено не добавлять — снять с сайтов"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "hostzealot",
+      "name": "HostZealot",
+      "score": "70",
+      "status": "На согласовании",
+      "lang": "EN",
+      "ref": "—",
+      "site": "https://www.hostzealot.com/",
+      "prog": "https://www.hostzealot.com/affiliate",
+      "rate": "5% recurring с каждого счёта",
+      "term": "Пока клиент активен",
+      "country": "Эстония",
+      "servers": "Амстердам; Брюссель; Франкфурт; Лимассол; Лондон; Марсель; С",
+      "verified": false,
+      "flags": [],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": false,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 70,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "firevps",
+      "name": "FireVPS",
+      "score": "66",
+      "status": "На согласовании",
+      "lang": "EN",
+      "ref": "—",
+      "site": "https://firevps.net/",
+      "prog": "https://firevps.net/affiliates-program/",
+      "rate": "20% recurring",
+      "term": "Пока клиент активен",
+      "country": "Международная",
+      "servers": "Уточнить",
+      "verified": false,
+      "flags": [
+        {
+          "t": "unverified",
+          "txt": "условия/срок не подтверждены"
+        }
+      ],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": false,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 66,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "solidvps",
+      "name": "SolidVPS",
+      "score": "66",
+      "status": "На согласовании",
+      "lang": "EN",
+      "ref": "—",
+      "site": "https://www.solidvps.com/",
+      "prog": "https://www.solidvps.com/affiliate-program.php",
+      "rate": "10-20% recurring",
+      "term": "Пока клиент активен",
+      "country": "Международная",
+      "servers": "Уточнить",
+      "verified": false,
+      "flags": [
+        {
+          "t": "unverified",
+          "txt": "условия/срок не подтверждены"
+        }
+      ],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": false,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 66,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "vpshouse",
+      "name": "VPS.house",
+      "score": "66",
+      "status": "Зарегистрированы",
+      "lang": "RU",
+      "ref": "https://vps.house/p357",
+      "site": "https://vps.house/",
+      "prog": "https://vps.house/",
+      "rate": "≈10-20%",
+      "term": "По оплачиваемым периодам",
+      "country": "Россия",
+      "servers": "Россия; Нидерланды",
+      "verified": true,
+      "flags": [],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 66,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": true
+    },
+    {
+      "slug": "ultahost",
+      "name": "UltaHost",
+      "score": "65",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://ultahost.com/#MakeBiz",
+      "site": "https://ultahost.com/",
+      "prog": "https://ultahost.com/agency-partner-program",
+      "rate": "До 60% с продажи (стандарт); Agency по индивидуальным условиям",
+      "term": "Пожизненно только через Agency; стандарт разовый",
+      "country": "США",
+      "servers": "США; Канада; Великобритания; Германия; Нидерланды; Франция; ",
+      "verified": false,
+      "flags": [
+        {
+          "t": "broken",
+          "txt": "стандартная ссылка не платит за продления, нужен Agency"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 65,
+      "reminder": "Не переведён в Agency — стандартная ссылка не платит за продления",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "ruvds",
+      "name": "RUVDS",
+      "score": "",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://ruvds.com/pr105060",
+      "site": "https://ruvds.com/",
+      "prog": "https://ruvds.com/ru/affiliate-program/",
+      "rate": "",
+      "term": "12 месяцев (в аудите расхождение с recurring)",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "unverified",
+          "txt": "условия/срок не подтверждены"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "regru",
+      "name": "REG.RU",
+      "score": "",
+      "status": "Зарегистрированы",
+      "lang": "RU",
+      "ref": "https://www.reg.ru/?rlink=reflink-31242589",
+      "site": "https://www.reg.ru/",
+      "prog": "https://help.reg.ru/support/partneram/partnerskaya-programma/kak-stat-partnerom-reg-ru",
+      "rate": "",
+      "term": "По правилам продукта",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "unverified",
+          "txt": "условия/срок не подтверждены"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "hostman",
+      "name": "Hostman",
+      "score": "",
+      "status": "Зарегистрированы",
+      "lang": "EN",
+      "ref": "https://hostman.com/r/pb752795",
+      "site": "https://hostman.com/",
+      "prog": "https://hostman.com/",
+      "rate": "",
+      "term": "По договору",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "unverified",
+          "txt": "условия/срок не подтверждены"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "cloud4box",
+      "name": "Cloud4box",
+      "score": "",
+      "status": "Зарегистрированы",
+      "lang": "RU",
+      "ref": "https://cloud4box.com/?from=99102",
+      "site": "https://cloud4box.com/",
+      "prog": "https://cloud4box.com/",
+      "rate": "",
+      "term": "Не подтверждён",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "unverified",
+          "txt": "условия/срок не подтверждены"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": true,
+        "serverselection": true
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "16.08.2026",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "serverspace",
+      "name": "Serverspace",
+      "score": "",
+      "status": "Не партнёр",
+      "lang": "EN",
+      "ref": "",
+      "site": "",
+      "prog": "",
+      "rate": "",
+      "term": "",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "orphan",
+          "txt": "стоит на сайте, но не в списке партнёров — решить: убрать или подключить"
+        }
+      ],
+      "pub": {
+        "podborvps": true,
+        "servercalc-ru": false,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "hostwinds",
+      "name": "Hostwinds",
+      "score": "",
+      "status": "Не партнёр",
+      "lang": "EN",
+      "ref": "",
+      "site": "",
+      "prog": "",
+      "rate": "",
+      "term": "",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "orphan",
+          "txt": "стоит на сайте, но не в списке партнёров — решить: убрать или подключить"
+        }
+      ],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": true,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    },
+    {
+      "slug": "alphavps",
+      "name": "AlphaVPS",
+      "score": "",
+      "status": "Не партнёр",
+      "lang": "EN",
+      "ref": "",
+      "site": "",
+      "prog": "",
+      "rate": "",
+      "term": "",
+      "country": "",
+      "servers": "",
+      "verified": false,
+      "flags": [
+        {
+          "t": "orphan",
+          "txt": "стоит на сайте, но не в списке партнёров — решить: убрать или подключить"
+        }
+      ],
+      "pub": {
+        "podborvps": false,
+        "servercalc-ru": true,
+        "serverselection": false
+      },
+      "top": false,
+      "clicks": 0,
+      "weight": 0,
+      "reminder": "",
+      "refChecked": "",
+      "priceChecked": "15.08.2026",
+      "priceStale": false
+    }
+  ]
+}

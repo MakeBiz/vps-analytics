@@ -363,27 +363,27 @@
       "slug": "cloudways",
       "name": "Cloudways",
       "score": "78",
-      "status": "На согласовании",
+      "status": "Зарегистрированы",
       "lang": "EN",
-      "ref": "—",
+      "ref": "https://www.cloudways.com/en/?id=2184024",
       "site": "https://www.cloudways.com/",
       "prog": "https://www.cloudways.com/en/web-hosting-affiliate-program.php",
       "rate": "До $350 CPA либо $30 за продажу + 7-12% lifetime",
       "term": "Пожизненно на hybrid-плане",
       "country": "Мальта",
       "servers": "65+ ЦОД через DigitalOcean, AWS и Google Cloud",
-      "verified": false,
+      "verified": true,
       "flags": [],
       "pub": {
         "podborvps": false,
-        "servercalc-ru": false,
-        "serverselection": false
+        "servercalc-ru": true,
+        "serverselection": true
       },
       "top": false,
       "clicks": 0,
       "weight": 78,
       "reminder": "",
-      "refChecked": "16.08.2026",
+      "refChecked": "18.08.2026",
       "priceChecked": "15.08.2026",
       "priceStale": false
     },
@@ -724,32 +724,27 @@
       "slug": "firevps",
       "name": "FireVPS",
       "score": "66",
-      "status": "На согласовании",
+      "status": "Зарегистрированы",
       "lang": "EN",
-      "ref": "—",
+      "ref": "https://clients.firevps.net/aff.php?aff=104",
       "site": "https://firevps.net/",
       "prog": "https://firevps.net/affiliates-program/",
       "rate": "20% recurring",
       "term": "Пока клиент активен",
       "country": "Международная",
       "servers": "Уточнить",
-      "verified": false,
-      "flags": [
-        {
-          "t": "unverified",
-          "txt": "условия/срок не подтверждены"
-        }
-      ],
+      "verified": true,
+      "flags": [],
       "pub": {
         "podborvps": false,
-        "servercalc-ru": false,
-        "serverselection": false
+        "servercalc-ru": true,
+        "serverselection": true
       },
       "top": false,
       "clicks": 0,
       "weight": 66,
       "reminder": "",
-      "refChecked": "16.08.2026",
+      "refChecked": "18.08.2026",
       "priceChecked": "15.08.2026",
       "priceStale": false
     },

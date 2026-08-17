@@ -11,7 +11,7 @@ const FLAG_ICON = { sanction: '🚫', broken: '⚠️', unverified: '❓', ppc: 
 const FLAG_HELP = {
   sanction: { title: '🚫 Санкции', body: 'Партнёр под санкциями (OFAC). Его нельзя размещать на английском/дубайском сайте, только на российских. Действие: держать выключенным на ServerSelection, оставить на РФ-сайтах.' },
   broken: { title: '⚠️ Оффер сломан', body: 'Текущая реф-ссылка или программа платит не так, как нужно (например только за Shared, а не VPS, либо не платит за продления). Действие: получить допсоглашение или перейти на правильную программу (например Agency), после этого снять значок.' },
-  unverified: { title: '❓ Не подтверждён', body: 'Условия партнёрки — ставка и срок выплат (cookie/lifetime) — мы ещё не проверили. Партнёр может быть подключён, но пока непонятно, сколько и как долго он платит. Действие: зайти в кабинет партнёра, подтвердить ставку и срок, затем поставить галочку «Проверено».' },
+  unverified: { title: '❓ Не подтверждён', body: '«Не подтверждён» значит, что мы не зафиксировали главное — сколько партнёр платит (ставку комиссии) и на какой срок (разово или пожизненно/recurring). Пока это неизвестно, нельзя понять, выгодно ли его продвигать.\n\nЧто сделать:\n1) открыть страницу его партнёрской программы (кнопка ниже),\n2) войти в кабинет партнёра,\n3) найти ставку по VPS и срок выплат,\n4) вписать их и поставить галочку «Проверено».' },
   ppc: { title: '📣 Ограничения рекламы', body: 'У партнёра есть правила по контекстной рекламе (обычно запрет ставок по бренду или требование письменного согласования). Действие: учитывать это в кампаниях Директа и Google, чтобы не нарушить и не потерять выплаты.' },
   orphan: { title: '🧩 Сирота', body: 'Партнёр стоит на сайте, но его нет в списке официальных партнёров, либо решено его не добавлять. Действие: определиться — убрать с сайта или оформить партнёрство.' },
 };
@@ -158,6 +158,11 @@ export default function PartnerPublishTable({ initial, sites, generated }) {
               <button onClick={() => setHelp(null)} style={{ background: 'none', border: 'none', color: '#93a0ae', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>✕</button>
             </div>
             <div style={{ fontSize: 13, marginTop: 6, color: '#d3dae1', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{help.body}</div>
+            {help.link ? (
+              <a href={help.link.url} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: 10, background: BRASS, color: '#141a20', fontWeight: 600, fontSize: 12.5, textDecoration: 'none', borderRadius: 6, padding: '6px 12px' }}>
+                {help.link.label} ↗
+              </a>
+            ) : null}
           </div>
         ) : null}
         <div className="scroll">
@@ -190,8 +195,7 @@ export default function PartnerPublishTable({ initial, sites, generated }) {
                         <span style={{ color: p.lang === 'RU' ? STEEL : BRASS, fontSize: 10.5, border: `1px solid ${p.lang === 'RU' ? STEEL : BRASS}`, borderRadius: 4, padding: '0 4px', flexShrink: 0 }}>{p.lang}</span>
                         {p.score ? <span className="dim" style={{ fontSize: 11, flexShrink: 0 }}>{p.score}</span> : null}
                         {(p.flags || []).map((f, i) => (
-                          <button key={i} onClick={() => setHelp({ title: FLAG_HELP[f.t]?.title || 'Замечание', body: (FLAG_HELP[f.t]?.body || '') + (f.txt ? `\n\nВ этой строке: ${f.txt}` : '') })}
-                            title="нажми за пояснением" style={iconBtn}>{FLAG_ICON[f.t] || '•'}</button>
+                          <button key={i} onClick={() => setHelp(rowFlagHelp(p, f))} title="нажми за пояснением" style={iconBtn}>{FLAG_ICON[f.t] || '•'}</button>
                         ))}
                         {p.reminder ? <button onClick={() => setHelp({ title: '⏰ Напоминание', body: p.reminder })} title="нажми за пояснением" style={iconBtn}>⏰</button> : null}
                       </div>
@@ -236,6 +240,19 @@ export default function PartnerPublishTable({ initial, sites, generated }) {
       </div>
     </div>
   );
+}
+
+// Пояснение к значку в конкретной строке: общий смысл + текущие данные партнёра + ссылка
+function rowFlagHelp(p, f) {
+  const base = FLAG_HELP[f.t] || { title: 'Замечание', body: '' };
+  const rate = (p.rate || '').trim() || 'не заполнена';
+  const term = (p.term || '').trim() || 'не указан';
+  let body = base.body;
+  body += `\n\nСейчас у «${p.name}»: ставка — ${rate}; срок выплат — ${term}.`;
+  if (f.txt) body += `\nЗамечание по партнёру: ${f.txt}`;
+  const url = (p.prog && p.prog !== '') ? p.prog : ((p.ref && p.ref !== '—' && p.ref !== '') ? p.ref : '');
+  const link = url ? { url, label: `Открыть партнёрскую программу «${p.name}»` } : null;
+  return { title: base.title, body, link };
 }
 
 function HelpDot({ onClick }) {

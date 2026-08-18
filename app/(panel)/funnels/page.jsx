@@ -137,11 +137,13 @@ export default async function Funnels({ searchParams }) {
       {shown.map((d) => {
         const t = tBy.get(d.key) || { visits: 0, pv: 0, clicks: 0 };
         const e = eBy.get(d.key) || {};
+        // Трафик-воронка сужается корректно: визиты -> переходы (просмотры это сумма,
+        // она всегда больше визитов и как ступень воронки не годится, показываем контекстом).
         const traf = [
           { label: 'Визиты', value: t.visits },
-          { label: 'Просмотры страниц', value: t.pv },
           { label: 'Переходы к провайдеру', value: t.clicks },
         ];
+        const depth = t.visits ? (t.pv / t.visits).toFixed(1).replace('.', ',') : '0';
         const calc = [
           { label: 'Начал подбор (calc_start)', value: e.calc_start || 0 },
           { label: 'Получил результат (calc_result)', value: e.calc_result || 0 },
@@ -159,6 +161,7 @@ export default async function Funnels({ searchParams }) {
               <div>
                 <div style={{ fontSize: 12.5, color: STEEL, fontWeight: 600, marginBottom: 8 }}>Трафик</div>
                 <Steps steps={traf} color={STEEL} />
+                <div className="dim" style={{ fontSize: 11.5, marginTop: 6 }}>просмотров {num(t.pv)} · глубина {depth} стр/визит</div>
               </div>
               <div>
                 <div style={{ fontSize: 12.5, color: BRASS, fontWeight: 600, marginBottom: 8 }}>Калькулятор</div>

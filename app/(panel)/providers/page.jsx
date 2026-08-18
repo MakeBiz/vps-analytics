@@ -1,20 +1,28 @@
 import Link from 'next/link';
 import { parseFilters, qs } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
-import { providerBySite, providerDetail, providerNames, sites } from '@/lib/query';
+import { providerBySite, providerDetail, providerNames } from '@/lib/query';
 import { BarCell, Card, Empty } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
 
 const dash = (v) => (v ? v : <span className="dim">—</span>);
 
+// Направления вместо сайтов: serverselection разбит на EN (корень) и RU (/ru).
+const DIRECTIONS = [
+  { key: 'servercalc-ru', name: 'ServerCalc.ru', site: 'servercalc-ru' },
+  { key: 'serverselection-en', name: 'ServerSelection · EN', site: 'serverselection' },
+  { key: 'serverselection-ru', name: 'ServerSelection · RU', site: 'serverselection' },
+  { key: 'podborvps', name: 'ПодборVPS', site: 'podborvps' },
+];
+
 export default async function Providers({ searchParams }) {
   const sp = await searchParams;
   const f = parseFilters(sp);
   const selected = Array.isArray(sp?.provider) ? sp.provider[0] : sp?.provider || '';
 
-  const [rows, names, siteList] = await Promise.all([providerBySite(f), providerNames(), sites()]);
-  const cols = siteList.filter((s) => !s.archived && (!f.site || s.key === f.site));
+  const [rows, names] = await Promise.all([providerBySite(f), providerNames()]);
+  const cols = f.site ? DIRECTIONS.filter((d) => d.site === f.site) : DIRECTIONS;
 
   const totals = new Map();
   for (const r of rows) {

@@ -111,11 +111,19 @@ export default async function Marketing() {
             const dd = m.direct.dailyVps;
             const mxi = Math.max(1, ...dd.map((x) => x.impressions || 0));
             const mxc = Math.max(1, ...dd.map((x) => x.clicks || 0));
+            const sumI = dd.reduce((s, x) => s + (x.impressions || 0), 0);
+            const sumC = dd.reduce((s, x) => s + (x.clicks || 0), 0);
+            const sumCost = dd.reduce((s, x) => s + (x.cost || 0), 0);
             return (
               <>
-                <div style={{ display: 'flex', gap: 14, fontSize: 12, marginBottom: 8 }}>
+                <div style={{ display: 'flex', gap: 14, fontSize: 12, marginBottom: 8, alignItems: 'baseline', flexWrap: 'wrap' }}>
                   <span style={{ color: STEEL }}>▪ показы</span>
                   <span style={{ color: BRASS }}>▪ переходы</span>
+                  <span className="dim" style={{ marginLeft: 'auto' }}>
+                    за период: Σ показы <b style={{ color: STEEL }}>{num(sumI)}</b>{' · '}
+                    Σ переходы <b style={{ color: BRASS }}>{num(sumC)}</b>{' · '}
+                    Σ расход <b>{rub(sumCost)}</b>
+                  </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 130 }}>
                   {dd.map((x, i) => (

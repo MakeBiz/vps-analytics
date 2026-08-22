@@ -52,11 +52,19 @@ export default async function Marketing() {
         </div>
       </Card>
 
-      <div className="grid cols4">
-        <Kpi label="Расход Директа (VPS)" value={rub(vpsCost)} sub={`${num(vpsClicks)} кликов`} />
-        <Kpi label="Средний CPC" value={cpc(Number(avgCpc.toFixed(1)))} sub="по VPS-кампаниям" />
-        <Kpi label="Переходы к провайдеру" value={num(provClicks)} sub="по Метрике, все сайты" />
-        <Kpi label="Цена перехода" value={provClicks ? rub(vpsCost / provClicks) : '—'} sub="расход VPS / переходы" />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0,1fr))', gap: 10 }}>
+        {[
+          { v: rub(vpsCost), l: 'Расход Директа (VPS)', s: `${num(vpsClicks)} кликов` },
+          { v: cpc(Number(avgCpc.toFixed(1))), l: 'Средний CPC', s: 'по VPS-кампаниям' },
+          { v: num(provClicks), l: 'Переходы к провайдеру', s: 'Метрика, все сайты' },
+          { v: provClicks ? rub(vpsCost / provClicks) : '—', l: 'Цена перехода', s: 'расход / переходы' },
+        ].map((k, i) => (
+          <div key={i} className="card" style={{ padding: '10px 12px' }}>
+            <div style={{ fontSize: 19, fontWeight: 700, lineHeight: 1.15 }}>{k.v}</div>
+            <div style={{ fontSize: 12, marginTop: 3 }}>{k.l}</div>
+            <div className="dim" style={{ fontSize: 11 }}>{k.s}</div>
+          </div>
+        ))}
       </div>
 
       <Card title="Директ: расход по кампаниям" hint="за 30 дней, красным CPC выше потолка">
@@ -88,25 +96,39 @@ export default async function Marketing() {
         </div>
       </Card>
 
-      {m.direct?.daily?.length ? (
-        <Card title="Директ по дням" hint="расход по датам за 30 дней">
+      {m.direct?.dailyVps?.length ? (
+        <Card title="Директ по дням" hint="показы и переходы по VPS-кампаниям (без Solara)">
           {(() => {
-            const dd = m.direct.daily;
-            const mx = Math.max(1, ...dd.map((x) => x.cost));
+            const dd = m.direct.dailyVps;
+            const mxi = Math.max(1, ...dd.map((x) => x.impressions || 0));
+            const mxc = Math.max(1, ...dd.map((x) => x.clicks || 0));
             return (
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 120 }}>
-                {dd.map((x, i) => (
-                  <div key={i} title={`${x.date}: ${rub(x.cost)}, ${num(x.clicks)} кл.`}
-                       style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%' }}>
-                    <div style={{ height: Math.round((x.cost / mx) * 100) + '%', background: STEEL, borderRadius: '3px 3px 0 0', minHeight: 2 }} />
-                  </div>
-                ))}
-              </div>
+              <>
+                <div style={{ display: 'flex', gap: 14, fontSize: 12, marginBottom: 8 }}>
+                  <span style={{ color: STEEL }}>▪ показы</span>
+                  <span style={{ color: BRASS }}>▪ переходы</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 130 }}>
+                  {dd.map((x, i) => (
+                    <div key={i} title={`${x.date}: ${num(x.impressions)} показов, ${num(x.clicks)} переходов, ${rub(x.cost)}`}
+                         style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: 1, height: '100%' }}>
+                      <div style={{ flex: 1, height: Math.round(((x.impressions || 0) / mxi) * 100) + '%', background: STEEL, borderRadius: '2px 2px 0 0', minHeight: 1 }} />
+                      <div style={{ flex: 1, height: Math.round(((x.clicks || 0) / mxc) * 100) + '%', background: BRASS, borderRadius: '2px 2px 0 0', minHeight: 1 }} />
+                    </div>
+                  ))}
+                </div>
+                <div className="dim" style={{ fontSize: 11, marginTop: 6 }}>{dd[0].date} … {dd[dd.length - 1].date}</div>
+              </>
             );
           })()}
-          <div className="dim" style={{ fontSize: 11, marginTop: 6 }}>{m.direct.daily[0].date} … {m.direct.daily[m.direct.daily.length - 1].date}</div>
         </Card>
-      ) : null}
+      ) : (
+        <Card title="Директ по дням" hint="показы и переходы по датам">
+          <div className="note" style={{ margin: 0 }}>
+            График появится после переустановки обновлённого коннектора и команды «обнови маркетинг»: тогда дни придут по VPS-кампаниям (без Solara) с показами и переходами.
+          </div>
+        </Card>
+      )}
 
       {m.direct?.ads?.length ? (
         <Card title="Топ объявлений Директа" hint="за 30 дней, по расходу">

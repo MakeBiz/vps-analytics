@@ -27,6 +27,7 @@ export default async function Marketing() {
   }
 
   const camps = m.direct?.campaigns || [];
+  const tr = m.direct?.trends || {};
   const vps = camps.filter((c) => c.kind !== 'other');
   const vpsCost = vps.reduce((s, c) => s + c.cost, 0);
   const vpsClicks = vps.reduce((s, c) => s + c.clicks, 0);
@@ -54,17 +55,25 @@ export default async function Marketing() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0,1fr))', gap: 10 }}>
         {[
-          { v: rub(vpsCost), l: 'Расход Директа (VPS)', s: `${num(vpsClicks)} кликов` },
-          { v: cpc(Number(avgCpc.toFixed(1))), l: 'Средний CPC', s: 'по VPS-кампаниям' },
+          { v: rub(vpsCost), l: 'Расход Директа (VPS)', s: `${num(vpsClicks)} кликов`, t: tr.spend, down: true },
+          { v: cpc(Number(avgCpc.toFixed(1))), l: 'Средний CPC', s: 'по VPS-кампаниям', t: tr.cpc, down: true },
           { v: num(provClicks), l: 'Переходы к провайдеру', s: 'Метрика, все сайты' },
           { v: provClicks ? rub(vpsCost / provClicks) : '—', l: 'Цена перехода', s: 'расход / переходы' },
-        ].map((k, i) => (
-          <div key={i} className="card" style={{ padding: '10px 12px' }}>
-            <div style={{ fontSize: 19, fontWeight: 700, lineHeight: 1.15 }}>{k.v}</div>
-            <div style={{ fontSize: 12, marginTop: 3 }}>{k.l}</div>
-            <div className="dim" style={{ fontSize: 11 }}>{k.s}</div>
-          </div>
-        ))}
+        ].map((k, i) => {
+          const good = k.t == null ? null : (k.down ? k.t <= 0 : k.t >= 0);
+          return (
+            <div key={i} className="card" style={{ padding: '10px 12px' }}>
+              <div style={{ fontSize: 19, fontWeight: 700, lineHeight: 1.15 }}>{k.v}</div>
+              <div style={{ fontSize: 12, marginTop: 3 }}>{k.l}</div>
+              <div className="dim" style={{ fontSize: 11 }}>{k.s}</div>
+              {k.t != null ? (
+                <div style={{ fontSize: 11, marginTop: 3, color: good ? '#3fae7a' : '#e0736d' }}>
+                  {k.t > 0 ? '▲ +' : '▼ '}{k.t}% к пред. 30 дн
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </div>
 
       <Card title="Директ: расход по кампаниям" hint="за 30 дней, красным CPC выше потолка">

@@ -872,7 +872,286 @@
     "impressions": 0,
     "conversions": 0
    }
-  ]
+  ],
+  "dailyVps": [
+   {
+    "date": "2026-07-03",
+    "impressions": 111,
+    "clicks": 17,
+    "cost": 808
+   },
+   {
+    "date": "2026-07-04",
+    "impressions": 55,
+    "clicks": 10,
+    "cost": 1108
+   },
+   {
+    "date": "2026-07-05",
+    "impressions": 51,
+    "clicks": 7,
+    "cost": 357
+   },
+   {
+    "date": "2026-07-06",
+    "impressions": 251,
+    "clicks": 69,
+    "cost": 4280
+   },
+   {
+    "date": "2026-07-07",
+    "impressions": 216,
+    "clicks": 59,
+    "cost": 4100
+   },
+   {
+    "date": "2026-07-08",
+    "impressions": 241,
+    "clicks": 49,
+    "cost": 3698
+   },
+   {
+    "date": "2026-07-09",
+    "impressions": 200,
+    "clicks": 57,
+    "cost": 4163
+   },
+   {
+    "date": "2026-07-10",
+    "impressions": 178,
+    "clicks": 39,
+    "cost": 2363
+   },
+   {
+    "date": "2026-07-11",
+    "impressions": 112,
+    "clicks": 20,
+    "cost": 1959
+   },
+   {
+    "date": "2026-07-12",
+    "impressions": 6,
+    "clicks": 1,
+    "cost": 12
+   },
+   {
+    "date": "2026-07-13",
+    "impressions": 306,
+    "clicks": 61,
+    "cost": 3971
+   },
+   {
+    "date": "2026-07-14",
+    "impressions": 285,
+    "clicks": 59,
+    "cost": 4094
+   },
+   {
+    "date": "2026-07-15",
+    "impressions": 214,
+    "clicks": 65,
+    "cost": 3990
+   },
+   {
+    "date": "2026-07-16",
+    "impressions": 226,
+    "clicks": 48,
+    "cost": 3188
+   },
+   {
+    "date": "2026-07-17",
+    "impressions": 197,
+    "clicks": 55,
+    "cost": 2441
+   },
+   {
+    "date": "2026-07-20",
+    "impressions": 312,
+    "clicks": 75,
+    "cost": 2901
+   },
+   {
+    "date": "2026-07-21",
+    "impressions": 320,
+    "clicks": 67,
+    "cost": 3042
+   },
+   {
+    "date": "2026-07-22",
+    "impressions": 296,
+    "clicks": 62,
+    "cost": 3360
+   },
+   {
+    "date": "2026-07-23",
+    "impressions": 403,
+    "clicks": 79,
+    "cost": 2864
+   },
+   {
+    "date": "2026-07-24",
+    "impressions": 220,
+    "clicks": 60,
+    "cost": 2241
+   },
+   {
+    "date": "2026-07-27",
+    "impressions": 237,
+    "clicks": 48,
+    "cost": 2068
+   },
+   {
+    "date": "2026-07-28",
+    "impressions": 329,
+    "clicks": 83,
+    "cost": 3809
+   },
+   {
+    "date": "2026-07-29",
+    "impressions": 278,
+    "clicks": 60,
+    "cost": 3354
+   },
+   {
+    "date": "2026-07-30",
+    "impressions": 262,
+    "clicks": 57,
+    "cost": 2660
+   },
+   {
+    "date": "2026-07-31",
+    "impressions": 333,
+    "clicks": 60,
+    "cost": 2225
+   },
+   {
+    "date": "2026-08-03",
+    "impressions": 409,
+    "clicks": 61,
+    "cost": 2193
+   },
+   {
+    "date": "2026-08-04",
+    "impressions": 575,
+    "clicks": 102,
+    "cost": 3813
+   },
+   {
+    "date": "2026-08-05",
+    "impressions": 1384,
+    "clicks": 153,
+    "cost": 4943
+   },
+   {
+    "date": "2026-08-06",
+    "impressions": 1712,
+    "clicks": 168,
+    "cost": 4345
+   },
+   {
+    "date": "2026-08-07",
+    "impressions": 2174,
+    "clicks": 212,
+    "cost": 5324
+   },
+   {
+    "date": "2026-08-08",
+    "impressions": 878,
+    "clicks": 63,
+    "cost": 872
+   },
+   {
+    "date": "2026-08-09",
+    "impressions": 1036,
+    "clicks": 51,
+    "cost": 796
+   },
+   {
+    "date": "2026-08-10",
+    "impressions": 214,
+    "clicks": 46,
+    "cost": 1487
+   },
+   {
+    "date": "2026-08-11",
+    "impressions": 549,
+    "clicks": 51,
+    "cost": 2131
+   },
+   {
+    "date": "2026-08-12",
+    "impressions": 597,
+    "clicks": 68,
+    "cost": 2693
+   },
+   {
+    "date": "2026-08-13",
+    "impressions": 389,
+    "clicks": 39,
+    "cost": 1426
+   },
+   {
+    "date": "2026-08-14",
+    "impressions": 377,
+    "clicks": 43,
+    "cost": 2029
+   },
+   {
+    "date": "2026-08-15",
+    "impressions": 440,
+    "clicks": 32,
+    "cost": 1112
+   },
+   {
+    "date": "2026-08-16",
+    "impressions": 219,
+    "clicks": 25,
+    "cost": 1025
+   },
+   {
+    "date": "2026-08-17",
+    "impressions": 835,
+    "clicks": 59,
+    "cost": 2429
+   },
+   {
+    "date": "2026-08-18",
+    "impressions": 280,
+    "clicks": 64,
+    "cost": 2702
+   },
+   {
+    "date": "2026-08-19",
+    "impressions": 1590,
+    "clicks": 105,
+    "cost": 4099
+   },
+   {
+    "date": "2026-08-20",
+    "impressions": 1408,
+    "clicks": 99,
+    "cost": 3970
+   },
+   {
+    "date": "2026-08-21",
+    "impressions": 1514,
+    "clicks": 85,
+    "cost": 3359
+   },
+   {
+    "date": "2026-08-22",
+    "impressions": 102,
+    "clicks": 21,
+    "cost": 1165
+   }
+  ],
+  "trends": {
+   "spend": -12,
+   "clicks": 36,
+   "impressions": 240,
+   "cpc": -35,
+   "window": "30 дней к предыдущим 30"
+  }
  },
  "metrika": {
   "sites": [

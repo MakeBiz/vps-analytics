@@ -6,6 +6,10 @@ export const dynamic = 'force-dynamic';
 
 const rub = (n) => num(Math.round(n)) + ' ₽';
 const cpc = (n) => (n != null ? String(n).replace('.', ',') + ' ₽' : '—');
+const STEEL = '#5b7a99';
+const BRASS = '#c6a15b';
+const GENDER_RU = { GENDER_MALE: 'Мужчины', GENDER_FEMALE: 'Женщины', UNKNOWN: 'Не определён' };
+const AGE_RU = { AGE_0_17: '0-17', AGE_18_24: '18-24', AGE_25_34: '25-34', AGE_35_44: '35-44', AGE_45_54: '45-54', AGE_55: '55+', UNKNOWN: 'Не определён' };
 
 function ceilingFor(c) {
   if (!/TW Cloud/i.test(c.name) || c.kind === 'rsya') return null;
@@ -84,6 +88,46 @@ export default async function Marketing() {
         </div>
       </Card>
 
+      {m.direct?.daily?.length ? (
+        <Card title="Директ по дням" hint="расход по датам за 30 дней">
+          {(() => {
+            const dd = m.direct.daily;
+            const mx = Math.max(1, ...dd.map((x) => x.cost));
+            return (
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 120 }}>
+                {dd.map((x, i) => (
+                  <div key={i} title={`${x.date}: ${rub(x.cost)}, ${num(x.clicks)} кл.`}
+                       style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%' }}>
+                    <div style={{ height: Math.round((x.cost / mx) * 100) + '%', background: STEEL, borderRadius: '3px 3px 0 0', minHeight: 2 }} />
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+          <div className="dim" style={{ fontSize: 11, marginTop: 6 }}>{m.direct.daily[0].date} … {m.direct.daily[m.direct.daily.length - 1].date}</div>
+        </Card>
+      ) : null}
+
+      {m.direct?.ads?.length ? (
+        <Card title="Топ объявлений Директа" hint="за 30 дней, по расходу">
+          <div className="scroll">
+            <table>
+              <thead><tr><th>Объявление</th><th className="n">Клики</th><th className="n">Расход</th><th className="n">CPC</th></tr></thead>
+              <tbody>
+                {[...m.direct.ads].sort((a, b) => b.cost - a.cost).map((a, i) => (
+                  <tr key={i}>
+                    <td>{a.campaign_name}<span className="dim" style={{ fontSize: 12 }}> / {a.group_name}</span></td>
+                    <td className="n">{num(a.clicks)}</td>
+                    <td className="n">{rub(a.cost)}</td>
+                    <td className="n muted">{cpc(a.avg_cpc)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      ) : null}
+
       <Card title="Метрика: конверсии и цена перехода по сайтам" hint="переход к провайдеру — главная цель денег">
         <div className="scroll">
           <table>
@@ -117,6 +161,41 @@ export default async function Marketing() {
           фильтр каталога {sites.find((s) => s.key === 'servercalc-ru')?.calc?.filter ?? 0}.
         </div>
       </Card>
+
+      {m.direct?.demographics?.length ? (() => {
+        const rows = m.direct.demographics.filter((r) => r.campaign_name !== 'Solara');
+        const agg = (key) => {
+          const mp = {};
+          for (const r of rows) mp[r[key]] = (mp[r[key]] || 0) + r.clicks;
+          return Object.entries(mp).sort((a, b) => b[1] - a[1]);
+        };
+        const genders = agg('gender');
+        const ages = agg('age');
+        const gt = genders.reduce((s, [, n]) => s + n, 0) || 1;
+        const at = ages.reduce((s, [, n]) => s + n, 0) || 1;
+        const bar = (label, n, total, color) => (
+          <div key={label} style={{ marginBottom: 6 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}><span>{label}</span><span className="mono">{pct(n, total)}</span></div>
+            <div style={{ background: '#141a20', borderRadius: 6, height: 12, overflow: 'hidden', border: '1px solid var(--line)' }}>
+              <div style={{ width: Math.round((n / total) * 100) + '%', height: '100%', background: color }} />
+            </div>
+          </div>
+        );
+        return (
+          <Card title="Демография Директа (VPS)" hint="по кликам, без Solara">
+            <div className="grid cols2" style={{ gap: 16 }}>
+              <div>
+                <div style={{ fontSize: 12.5, color: STEEL, fontWeight: 600, marginBottom: 8 }}>Пол</div>
+                {genders.map(([k, n]) => bar(GENDER_RU[k] || k, n, gt, STEEL))}
+              </div>
+              <div>
+                <div style={{ fontSize: 12.5, color: BRASS, fontWeight: 600, marginBottom: 8 }}>Возраст</div>
+                {ages.map(([k, n]) => bar(AGE_RU[k] || k, n, at, BRASS))}
+              </div>
+            </div>
+          </Card>
+        );
+      })() : null}
 
       <div className="grid cols2" style={{ gap: 14 }}>
         <Card title="Реальные запросы Директа" hint="что искали, топ по расходу">

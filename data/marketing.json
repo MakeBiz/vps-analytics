@@ -91,7 +91,538 @@
   "cpcCeiling": {
    "timeweb": 33,
    "regions": 28.5
-  }
+  },
+  "daily": [
+   {
+    "date": "2026-07-24",
+    "clicks": 77,
+    "cost": 2714
+   },
+   {
+    "date": "2026-07-27",
+    "clicks": 48,
+    "cost": 2068
+   },
+   {
+    "date": "2026-07-28",
+    "clicks": 83,
+    "cost": 3809
+   },
+   {
+    "date": "2026-07-29",
+    "clicks": 60,
+    "cost": 3354
+   },
+   {
+    "date": "2026-07-30",
+    "clicks": 57,
+    "cost": 2660
+   },
+   {
+    "date": "2026-07-31",
+    "clicks": 60,
+    "cost": 2225
+   },
+   {
+    "date": "2026-08-02",
+    "clicks": 55,
+    "cost": 504
+   },
+   {
+    "date": "2026-08-03",
+    "clicks": 561,
+    "cost": 3621
+   },
+   {
+    "date": "2026-08-04",
+    "clicks": 417,
+    "cost": 4548
+   },
+   {
+    "date": "2026-08-05",
+    "clicks": 302,
+    "cost": 5470
+   },
+   {
+    "date": "2026-08-06",
+    "clicks": 347,
+    "cost": 5072
+   },
+   {
+    "date": "2026-08-07",
+    "clicks": 407,
+    "cost": 6023
+   },
+   {
+    "date": "2026-08-08",
+    "clicks": 302,
+    "cost": 1726
+   },
+   {
+    "date": "2026-08-09",
+    "clicks": 285,
+    "cost": 1721
+   },
+   {
+    "date": "2026-08-10",
+    "clicks": 51,
+    "cost": 1519
+   },
+   {
+    "date": "2026-08-11",
+    "clicks": 99,
+    "cost": 2591
+   },
+   {
+    "date": "2026-08-12",
+    "clicks": 145,
+    "cost": 3552
+   },
+   {
+    "date": "2026-08-13",
+    "clicks": 123,
+    "cost": 2331
+   },
+   {
+    "date": "2026-08-14",
+    "clicks": 143,
+    "cost": 3312
+   },
+   {
+    "date": "2026-08-15",
+    "clicks": 110,
+    "cost": 2084
+   },
+   {
+    "date": "2026-08-16",
+    "clicks": 61,
+    "cost": 1618
+   },
+   {
+    "date": "2026-08-17",
+    "clicks": 59,
+    "cost": 2429
+   },
+   {
+    "date": "2026-08-18",
+    "clicks": 151,
+    "cost": 3175
+   },
+   {
+    "date": "2026-08-19",
+    "clicks": 218,
+    "cost": 4757
+   },
+   {
+    "date": "2026-08-20",
+    "clicks": 155,
+    "cost": 4469
+   },
+   {
+    "date": "2026-08-21",
+    "clicks": 85,
+    "cost": 3359
+   },
+   {
+    "date": "2026-08-22",
+    "clicks": 21,
+    "cost": 1165
+   }
+  ],
+  "ads": [
+   {
+    "ad_id": "1900043361167434282",
+    "campaign_name": "TW Cloud МСК",
+    "group_name": "TW Cloud VPS МСК",
+    "title": "",
+    "ad_status": "",
+    "clicks": 363,
+    "cost": 17712,
+    "avg_cpc": 48.79,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1906755796976386082",
+    "campaign_name": "AdminVPS МСК",
+    "group_name": "AdminVPS",
+    "title": "",
+    "ad_status": "",
+    "clicks": 421,
+    "cost": 15468,
+    "avg_cpc": 36.74,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1915814563753631032",
+    "campaign_name": "TW Cloud Регионы",
+    "group_name": "TW Cloud Регионы",
+    "title": "",
+    "ad_status": "",
+    "clicks": 320,
+    "cost": 12560,
+    "avg_cpc": 39.25,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917390454900424387",
+    "campaign_name": "Podborvps.ru",
+    "group_name": "dev",
+    "title": "",
+    "ad_status": "",
+    "clicks": 182,
+    "cost": 5534,
+    "avg_cpc": 30.41,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917390172506615298",
+    "campaign_name": "Podborvps.ru",
+    "group_name": "sravnenie",
+    "title": "",
+    "ad_status": "",
+    "clicks": 164,
+    "cost": 3085,
+    "avg_cpc": 18.81,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1904304470162627261",
+    "campaign_name": "TW Cloud МСК VIP",
+    "group_name": "TW Cloud VPS МСК VIP",
+    "title": "",
+    "ad_status": "",
+    "clicks": 53,
+    "cost": 2979,
+    "avg_cpc": 56.2,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917671842903337040",
+    "campaign_name": "Servercalc",
+    "group_name": "Сравнение и каталог тарифов",
+    "title": "",
+    "ad_status": "",
+    "clicks": 97,
+    "cost": 2347,
+    "avg_cpc": 24.2,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917673301049205336",
+    "campaign_name": "Servercalc",
+    "group_name": "Зарубежные VPS",
+    "title": "",
+    "ad_status": "",
+    "clicks": 67,
+    "cost": 2054,
+    "avg_cpc": 30.65,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917665295227615921",
+    "campaign_name": "TW Cloud Регионы",
+    "group_name": "TW Cloud Регионы",
+    "title": "",
+    "ad_status": "",
+    "clicks": 46,
+    "cost": 1883,
+    "avg_cpc": 40.93,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917672677204681327",
+    "campaign_name": "Servercalc",
+    "group_name": "VPS, горячий спрос",
+    "title": "",
+    "ad_status": "",
+    "clicks": 79,
+    "cost": 1770,
+    "avg_cpc": 22.4,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917670719771800838",
+    "campaign_name": "Servercalc",
+    "group_name": "Подбор и выбор конфигурации",
+    "title": "",
+    "ad_status": "",
+    "clicks": 61,
+    "cost": 1480,
+    "avg_cpc": 24.26,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917672370110479487",
+    "campaign_name": "Servercalc",
+    "group_name": "Акции и промокоды",
+    "title": "",
+    "ad_status": "",
+    "clicks": 49,
+    "cost": 1199,
+    "avg_cpc": 24.46,
+    "conversions": 0,
+    "cost_per_conv": 0
+   },
+   {
+    "ad_id": "1917673066971042330",
+    "campaign_name": "Servercalc",
+    "group_name": "VPS в России, юрлица",
+    "title": "",
+    "ad_status": "",
+    "clicks": 13,
+    "cost": 198,
+    "avg_cpc": 15.24,
+    "conversions": 0,
+    "cost_per_conv": 0
+   }
+  ],
+  "demographics": [
+   {
+    "campaign_name": "TW Cloud МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_25_34",
+    "clicks": 138,
+    "cost": 6395,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud Регионы",
+    "gender": "GENDER_MALE",
+    "age": "AGE_25_34",
+    "clicks": 129,
+    "cost": 5222,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_35_44",
+    "clicks": 95,
+    "cost": 4839,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "AdminVPS МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_25_34",
+    "clicks": 121,
+    "cost": 4707,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "AdminVPS МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_35_44",
+    "clicks": 108,
+    "cost": 4165,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud Регионы",
+    "gender": "GENDER_MALE",
+    "age": "AGE_35_44",
+    "clicks": 101,
+    "cost": 3825,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_18_24",
+    "clicks": 62,
+    "cost": 3536,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Solara",
+    "gender": "GENDER_FEMALE",
+    "age": "AGE_18_24",
+    "clicks": 619,
+    "cost": 3157,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Solara",
+    "gender": "GENDER_FEMALE",
+    "age": "AGE_25_34",
+    "clicks": 522,
+    "cost": 2804,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Podborvps.ru",
+    "gender": "GENDER_MALE",
+    "age": "AGE_25_34",
+    "clicks": 109,
+    "cost": 2791,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud Регионы",
+    "gender": "GENDER_MALE",
+    "age": "AGE_18_24",
+    "clicks": 60,
+    "cost": 2466,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Podborvps.ru",
+    "gender": "GENDER_MALE",
+    "age": "AGE_35_44",
+    "clicks": 88,
+    "cost": 2417,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Servercalc",
+    "gender": "GENDER_MALE",
+    "age": "AGE_35_44",
+    "clicks": 81,
+    "cost": 2091,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Servercalc",
+    "gender": "GENDER_MALE",
+    "age": "AGE_25_34",
+    "clicks": 90,
+    "cost": 1961,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "AdminVPS МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_45_54",
+    "clicks": 48,
+    "cost": 1945,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "AdminVPS МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_18_24",
+    "clicks": 55,
+    "cost": 1792,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Solara",
+    "gender": "GENDER_FEMALE",
+    "age": "AGE_35_44",
+    "clicks": 368,
+    "cost": 1750,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Servercalc",
+    "gender": "GENDER_MALE",
+    "age": "AGE_18_24",
+    "clicks": 59,
+    "cost": 1655,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud МСК",
+    "gender": "GENDER_MALE",
+    "age": "AGE_45_54",
+    "clicks": 32,
+    "cost": 1585,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Podborvps.ru",
+    "gender": "GENDER_MALE",
+    "age": "AGE_18_24",
+    "clicks": 68,
+    "cost": 1552,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Servercalc",
+    "gender": "GENDER_MALE",
+    "age": "AGE_45_54",
+    "clicks": 58,
+    "cost": 1486,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud Регионы",
+    "gender": "GENDER_MALE",
+    "age": "AGE_45_54",
+    "clicks": 37,
+    "cost": 1269,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "TW Cloud МСК VIP",
+    "gender": "GENDER_MALE",
+    "age": "AGE_25_34",
+    "clicks": 19,
+    "cost": 1219,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Solara",
+    "gender": "GENDER_FEMALE",
+    "age": "AGE_45_54",
+    "clicks": 222,
+    "cost": 1193,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Podborvps.ru",
+    "gender": "GENDER_MALE",
+    "age": "AGE_45_54",
+    "clicks": 52,
+    "cost": 1176,
+    "impressions": 0,
+    "conversions": 0
+   },
+   {
+    "campaign_name": "Servercalc",
+    "gender": "GENDER_MALE",
+    "age": "AGE_55",
+    "clicks": 33,
+    "cost": 613,
+    "impressions": 0,
+    "conversions": 0
+   }
+  ]
  },
  "metrika": {
   "sites": [
@@ -99,7 +630,7 @@
     "key": "podborvps",
     "name": "ПодборVPS",
     "counter": "111248718",
-    "visits": 408,
+    "visits": 409,
     "providerClicks": 151,
     "promo": 0,
     "goals": [
@@ -173,7 +704,7 @@
     "key": "servercalc-ru",
     "name": "ServerCalc.ru",
     "counter": "111249191",
-    "visits": 269,
+    "visits": 270,
     "providerClicks": 47,
     "promo": 5,
     "calc": {

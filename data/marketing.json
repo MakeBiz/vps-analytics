@@ -1,0 +1,475 @@
+{
+ "generated": "22.08.2026",
+ "window": "последние 30 дней",
+ "note": "Снимок маркетинга из коннектора Яндекса (Директ, Метрика, Вебмастер, Wordstat). Обновляется по запросу.",
+ "direct": {
+  "campaigns": [
+   {
+    "id": "706715098",
+    "name": "TW Cloud МСК ←VPS",
+    "cost": 17712,
+    "clicks": 363,
+    "ctr": 25.76,
+    "cpc": 48.79,
+    "kind": "brand"
+   },
+   {
+    "id": "708902123",
+    "name": "AdminVPS МСК ←VPS",
+    "cost": 15468,
+    "clicks": 421,
+    "ctr": 23.73,
+    "cpc": 36.74,
+    "kind": "brand"
+   },
+   {
+    "id": "712849076",
+    "name": "TW Cloud Регионы ←VPS",
+    "cost": 14443,
+    "clicks": 366,
+    "ctr": 17.6,
+    "cpc": 39.46,
+    "kind": "brand"
+   },
+   {
+    "id": "713332123",
+    "name": "Servercalc ←VPS",
+    "cost": 9047,
+    "clicks": 366,
+    "ctr": 6.13,
+    "cpc": 24.72,
+    "kind": "site",
+    "site": "servercalc-ru"
+   },
+   {
+    "id": "713245534",
+    "name": "Podborvps.ru ←VPS",
+    "cost": 8619,
+    "clicks": 346,
+    "ctr": 5.0,
+    "cpc": 24.91,
+    "kind": "site",
+    "site": "podborvps"
+   },
+   {
+    "id": "708098448",
+    "name": "TW Cloud МСК VIP ←VPS",
+    "cost": 2979,
+    "clicks": 53,
+    "ctr": 29.12,
+    "cpc": 56.2,
+    "kind": "brand"
+   },
+   {
+    "id": "713636116",
+    "name": "TW Cloud МСК (РСЯ)",
+    "cost": 1629,
+    "clicks": 256,
+    "ctr": 1.08,
+    "cpc": 6.36,
+    "kind": "rsya"
+   },
+   {
+    "id": "712849242",
+    "name": "AdminVPS Регионы",
+    "cost": 474,
+    "clicks": 17,
+    "ctr": 10.43,
+    "cpc": 27.86,
+    "kind": "brand"
+   },
+   {
+    "id": "713238736",
+    "name": "Solara (другой продукт)",
+    "cost": 11506,
+    "clicks": 2294,
+    "ctr": 6.97,
+    "cpc": 5.02,
+    "kind": "other"
+   }
+  ],
+  "cpcCeiling": {
+   "timeweb": 33,
+   "regions": 28.5
+  }
+ },
+ "metrika": {
+  "sites": [
+   {
+    "key": "podborvps",
+    "name": "ПодборVPS",
+    "counter": "111248718",
+    "visits": 408,
+    "providerClicks": 151,
+    "promo": 0,
+    "goals": [
+     [
+      "adminvps",
+      39
+     ],
+     [
+      "timeweb",
+      22
+     ],
+     [
+      "ruvds",
+      14
+     ],
+     [
+      "truehost",
+      8
+     ],
+     [
+      "serverspace",
+      7
+     ],
+     [
+      "vpsorg",
+      6
+     ],
+     [
+      "firstvds",
+      6
+     ],
+     [
+      "hostman",
+      5
+     ],
+     [
+      "ishosting",
+      5
+     ],
+     [
+      "fornex",
+      5
+     ],
+     [
+      "cloud4box",
+      5
+     ],
+     [
+      "vdsina",
+      4
+     ],
+     [
+      "datapacket",
+      2
+     ],
+     [
+      "regru",
+      1
+     ],
+     [
+      "aeserver",
+      1
+     ],
+     [
+      "ultahost",
+      1
+     ]
+    ]
+   },
+   {
+    "key": "servercalc-ru",
+    "name": "ServerCalc.ru",
+    "counter": "111249191",
+    "visits": 269,
+    "providerClicks": 47,
+    "promo": 5,
+    "calc": {
+     "start": 29,
+     "result": 101,
+     "filter": 86
+    },
+    "goals": [
+     [
+      "hostman",
+      8
+     ],
+     [
+      "adminvps",
+      5
+     ],
+     [
+      "timeweb",
+      4
+     ],
+     [
+      "ishosting",
+      3
+     ],
+     [
+      "aeserver",
+      2
+     ],
+     [
+      "datapacket",
+      2
+     ],
+     [
+      "vpsorg",
+      2
+     ],
+     [
+      "ruvds",
+      2
+     ],
+     [
+      "fornex",
+      1
+     ]
+    ]
+   },
+   {
+    "key": "serverselection",
+    "name": "ServerSelection",
+    "counter": "111700664",
+    "visits": 18,
+    "providerClicks": 0,
+    "promo": 0,
+    "goals": []
+   }
+  ]
+ },
+ "directQueries": {
+  "top": [
+   {
+    "q": "timeweb",
+    "clicks": 238,
+    "cost": 10728,
+    "camp": "TW Cloud МСК"
+   },
+   {
+    "q": "timeweb",
+    "clicks": 157,
+    "cost": 5296,
+    "camp": "TW Cloud Регионы"
+   },
+   {
+    "q": "adminvps",
+    "clicks": 217,
+    "cost": 4714,
+    "camp": "AdminVPS МСК"
+   },
+   {
+    "q": "таймвеб",
+    "clicks": 51,
+    "cost": 2812,
+    "camp": "TW Cloud МСК"
+   },
+   {
+    "q": "таймвеб",
+    "clicks": 61,
+    "cost": 2229,
+    "camp": "TW Cloud Регионы"
+   },
+   {
+    "q": "timeweb cloud",
+    "clicks": 28,
+    "cost": 1713,
+    "camp": "TW Cloud МСК"
+   },
+   {
+    "q": "админ впс",
+    "clicks": 56,
+    "cost": 1667,
+    "camp": "AdminVPS МСК"
+   },
+   {
+    "q": "admin vps",
+    "clicks": 34,
+    "cost": 1650,
+    "camp": "AdminVPS МСК"
+   },
+   {
+    "q": "timeweb",
+    "clicks": 27,
+    "cost": 1346,
+    "camp": "TW Cloud МСК VIP"
+   },
+   {
+    "q": "timeweb cloud",
+    "clicks": 36,
+    "cost": 1044,
+    "camp": "TW Cloud Регионы"
+   },
+   {
+    "q": "vps",
+    "clicks": 7,
+    "cost": 254,
+    "camp": "Podborvps.ru"
+   },
+   {
+    "q": "vps сервер",
+    "clicks": 6,
+    "cost": 179,
+    "camp": "Podborvps.ru"
+   },
+   {
+    "q": "аренда vps",
+    "clicks": 3,
+    "cost": 117,
+    "camp": "Podborvps.ru"
+   },
+   {
+    "q": "vps купить",
+    "clicks": 2,
+    "cost": 104,
+    "camp": "Podborvps.ru"
+   },
+   {
+    "q": "аренда vps москва",
+    "clicks": 3,
+    "cost": 106,
+    "camp": "Podborvps.ru"
+   },
+   {
+    "q": "vps казахстан",
+    "clicks": 1,
+    "cost": 139,
+    "camp": "Servercalc"
+   },
+   {
+    "q": "аренда vps казахстан",
+    "clicks": 1,
+    "cost": 100,
+    "camp": "Servercalc"
+   },
+   {
+    "q": "vps со статическим ip",
+    "clicks": 2,
+    "cost": 110,
+    "camp": "Servercalc"
+   },
+   {
+    "q": "рейтинг хостов vps",
+    "clicks": 1,
+    "cost": 115,
+    "camp": "Servercalc"
+   }
+  ],
+  "minusCandidates": [
+   "для игр",
+   "counter strike",
+   "боты в телеграм",
+   "docker",
+   "купить домен и хостинг",
+   "digital ocean",
+   "mchost",
+   "майнкрафт"
+  ]
+ },
+ "wordstat": [
+  {
+   "phrase": "аренда сервера",
+   "count": 22141,
+   "tails": [
+    [
+     "аренда виртуального сервера",
+     844
+    ],
+    [
+     "аренда сервера майнкрафт",
+     1590
+    ]
+   ]
+  },
+  {
+   "phrase": "vps сервер",
+   "count": 20653,
+   "tails": [
+    [
+     "vps сервер купить",
+     1838
+    ],
+    [
+     "vps сервер для vpn",
+     994
+    ],
+    [
+     "vps сервер аренда",
+     2946
+    ]
+   ]
+  },
+  {
+   "phrase": "виртуальный сервер",
+   "count": 9255,
+   "tails": [
+    [
+     "купить виртуальный сервер",
+     564
+    ],
+    [
+     "виртуальный сервер vps",
+     435
+    ]
+   ]
+  },
+  {
+   "phrase": "аренда vps",
+   "count": 6015,
+   "tails": [
+    [
+     "vps сервер аренда",
+     2946
+    ],
+    [
+     "аренда vps в россии",
+     262
+    ]
+   ]
+  },
+  {
+   "phrase": "vds хостинг",
+   "count": 889,
+   "tails": [
+    [
+     "vds vps хостинг",
+     176
+    ],
+    [
+     "рейтинг vds хостингов",
+     0
+    ]
+   ]
+  }
+ ],
+ "webmaster": {
+  "sites": [
+   {
+    "host": "podborvps.ru",
+    "queries": []
+   },
+   {
+    "host": "servercalc.ru",
+    "queries": [
+     [
+      "таймвеб сдн цена",
+      2,
+      0
+     ],
+     [
+      "таймвэб клауд",
+      1,
+      0
+     ],
+     [
+      "timeweb cloud тариф почтовый",
+      1,
+      0
+     ],
+     [
+      "таймвеб калькулятор сервера",
+      1,
+      0
+     ]
+    ]
+   },
+   {
+    "host": "serverselection.online",
+    "queries": []
+   }
+  ]
+ }
+}

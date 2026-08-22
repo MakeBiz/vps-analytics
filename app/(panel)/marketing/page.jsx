@@ -16,6 +16,20 @@ function ceilingFor(c) {
   return /Регионы/i.test(c.name) ? 28.5 : 33;
 }
 
+// Фиксированный список кампаний Директа для вкладки «Маркетинг»: считаем и
+// выводим ТОЛЬКО их, пока Антон не даст новый список. Правится одной строкой.
+// Timeweb (4), AdminVPS (1), Aeza (1), ishosting (1), Podborvps (1), Servercalc (1).
+const ALLOW = new Set([
+  '708098448', '706715098', '706716163', '712849076', // Timeweb
+  '708902123',                                          // AdminVPS
+  '713771451',                                          // Aeza
+  '713775967',                                          // ishosting
+  '713245534',                                          // Podborvps
+  '713332123',                                          // Servercalc
+]);
+// имя кампании без хвоста « ←VPS» — так их зовут строки демографии/объявлений/запросов
+const baseName = (s) => String(s || '').replace(/\s*←\s*VPS\s*$/i, '').trim();
+
 export default async function Marketing() {
   const m = loadMarketing();
   if (!m) {
@@ -26,7 +40,8 @@ export default async function Marketing() {
     );
   }
 
-  const camps = m.direct?.campaigns || [];
+  const camps = (m.direct?.campaigns || []).filter((c) => ALLOW.has(String(c.id)));
+  const allowNames = new Set(camps.map((c) => baseName(c.name)));
   const tr = m.direct?.trends || {};
   const vps = camps.filter((c) => c.kind !== 'other');
   const vpsCost = vps.reduce((s, c) => s + c.cost, 0);
@@ -50,6 +65,9 @@ export default async function Marketing() {
         <div className="note" style={{ margin: 0 }}>
           Маркетинг из коннектора Яндекса: Директ, Метрика, Вебмастер, Wordstat. Снимок от {m.generated},{' '}
           {m.window}. Обновляется по запросу (коннектор на Маке, панель к нему вживую не ходит).
+          <br />
+          В расчёт и вывод берутся только согласованные кампании Директа: Timeweb, AdminVPS, Aeza,
+          ishosting, Podborvps, Servercalc (всего {ALLOW.size}). Кампании без расхода за период не показываются.
         </div>
       </Card>
 
@@ -153,7 +171,7 @@ export default async function Marketing() {
             <table>
               <thead><tr><th>Объявление</th><th className="n">Клики</th><th className="n">Расход</th><th className="n">CPC</th></tr></thead>
               <tbody>
-                {[...m.direct.ads].sort((a, b) => b.cost - a.cost).map((a, i) => (
+                {[...m.direct.ads].filter((a) => allowNames.has(baseName(a.campaign_name))).sort((a, b) => b.cost - a.cost).map((a, i) => (
                   <tr key={i}>
                     <td>{a.campaign_name}<span className="dim" style={{ fontSize: 12 }}> / {a.group_name}</span></td>
                     <td className="n">{num(a.clicks)}</td>
@@ -202,7 +220,7 @@ export default async function Marketing() {
       </Card>
 
       {m.direct?.demographics?.length ? (() => {
-        const rows = m.direct.demographics.filter((r) => r.campaign_name !== 'Solara');
+        const rows = m.direct.demographics.filter((r) => allowNames.has(baseName(r.campaign_name)));
         const agg = (key) => {
           const mp = {};
           for (const r of rows) mp[r[key]] = (mp[r[key]] || 0) + r.clicks;
@@ -242,7 +260,7 @@ export default async function Marketing() {
             <table>
               <thead><tr><th>Запрос</th><th className="n">Клики</th><th className="n">Расход</th><th>Кампания</th></tr></thead>
               <tbody>
-                {(q.top || []).map((r, i) => (
+                {(q.top || []).filter((r) => allowNames.has(baseName(r.camp))).map((r, i) => (
                   <tr key={i}>
                     <td>{r.q}</td>
                     <td className="n">{num(r.clicks)}</td>

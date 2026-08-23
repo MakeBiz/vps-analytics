@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { parseFilters, qs } from '@/lib/filters';
 import { num, pct, dur, fmtDate } from '@/lib/format';
-import { byDay, byHour, bySite, overview, overviewPrev, providerBySite, providerNames, sourcesTop } from '@/lib/query';
+import { byDay, byHour, bySite, overview, overviewPrev, providerBySite, providerNames, channelsTop } from '@/lib/query';
 import Chart, { Bars } from '@/components/Chart';
 import { BarCell, Card, Empty, Kpi } from '@/components/ui';
 
@@ -15,7 +15,7 @@ function delta(now, prev) {
 export default async function Overview({ searchParams }) {
   const f = parseFilters(await searchParams);
   const [ov, prev, days, hours, siteRows, srcRows, provRows, names] = await Promise.all([
-    overview(f), overviewPrev(f), byDay(f), byHour(f), bySite(f), sourcesTop(f), providerBySite(f), providerNames(),
+    overview(f), overviewPrev(f), byDay(f), byHour(f), bySite(f), channelsTop(f), providerBySite(f), providerNames(),
   ]);
 
   const provTotals = new Map();
@@ -23,8 +23,9 @@ export default async function Overview({ searchParams }) {
   const topProv = [...provTotals.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
   const maxProv = topProv[0]?.[1] || 1;
 
-  const topSrc = srcRows.slice(0, 8);
+  const topSrc = srcRows.slice(0, 12);
   const maxSrcVisits = Math.max(1, ...topSrc.map((r) => r.visits));
+  const chColor = (c) => (c.startsWith('Реклама') ? '#c6a15b' : c.startsWith('Органика') ? '#6cbf8b' : c.startsWith('Наши') ? '#5b7a99' : c === 'Прямые заходы' ? '#93a0ae' : '#8a93a0');
   const maxSiteClicks = Math.max(1, ...siteRows.map((r) => r.clicks));
 
   const hourRows = Array.from({ length: 24 }, (_, h) => {
@@ -99,13 +100,16 @@ export default async function Overview({ searchParams }) {
           )}
         </Card>
 
-        <Card title="Откуда приходят" hint="топ источников">
+        <Card title="Откуда приходят" hint="каналы: реклама, органика, наши сайты, прямые">
           {topSrc.length === 0 ? <Empty /> : (
             <table>
               <tbody>
                 {topSrc.map((r) => (
-                  <tr key={r.src}>
-                    <td><span className="trunc">{r.src}</span></td>
+                  <tr key={r.channel}>
+                    <td>
+                      <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: chColor(r.channel), marginRight: 7, verticalAlign: 'middle' }} />
+                      <span className="trunc" style={{ verticalAlign: 'middle' }}>{r.channel}</span>
+                    </td>
                     <BarCell value={r.visits} max={maxSrcVisits} />
                     <td className="n muted">{num(r.clicks)} пер.</td>
                   </tr>
@@ -115,6 +119,16 @@ export default async function Overview({ searchParams }) {
           )}
         </Card>
       </div>
+
+      <Card title="Как читать каналы" hint="реклама против органики">
+        <div className="note" style={{ margin: 0 }}>
+          <b style={{ color: '#c6a15b' }}>Реклама</b> это платный заход из Директа или Google Ads: у него есть рекламный
+          click-id (yclid, gclid) или платная метка. <b style={{ color: '#6cbf8b' }}>Органика · Яндекс / Google</b> это
+          переход из поисковой выдачи <b>без</b> рекламных меток, то есть нас нашли в поисковике бесплатно.{' '}
+          <b style={{ color: '#5b7a99' }}>Наши сайты</b> это переходы между нашими же площадками (подбор, ServerCalc и т.д.).
+          «Метки» это заходы с utm без платного признака (письма, партнёрские ссылки). «Прямые заходы» это без реферера.
+        </div>
+      </Card>
 
       <Card title="Время суток" hint={`визиты по часам, ${f.tz}`}>
         <Bars rows={hourRows} labelKey="h" valueKey="visits" formatLabel={(h) => String(h).padStart(2, '0') + ':00'} />

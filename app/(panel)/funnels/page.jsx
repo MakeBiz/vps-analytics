@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { parseFilters } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
-import { funnelTraffic, funnelEvents } from '@/lib/query';
+import { funnelTraffic, funnelEvents, providerBySite, providerNames } from '@/lib/query';
+import { loadRoyalties } from '@/lib/royalties';
 import { Card, Empty } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
@@ -10,13 +11,32 @@ const BRASS = '#c6a15b';
 const STEEL = '#5b7a99';
 const GREEN = '#3fae7a';
 
-// Четыре направления: serverselection разбит на EN (корень) и RU (/ru).
 const DIRECTIONS = [
   { key: 'podborvps', name: 'ПодборVPS', dom: 'podborvps.ru' },
   { key: 'servercalc-ru', name: 'ServerCalc.ru', dom: 'servercalc.ru' },
   { key: 'serverselection-en', name: 'ServerSelection · EN', dom: 'serverselection.online (Дубай)' },
   { key: 'serverselection-ru', name: 'ServerSelection · RU', dom: 'serverselection.online/ru' },
 ];
+
+// Партнёры с кабинетами: сопоставляем провайдера (по слагу/названию) и данные роялти.
+const PARTNERS = [
+  { key: 'timeweb', name: 'Timeweb', rx: /timeweb/i },
+  { key: 'adminvps', name: 'AdminVPS', rx: /admin.?vps/i },
+  { key: 'ishosting', name: 'is*hosting', rx: /is.?hosting/i },
+];
+
+function monthsInRange(from, to) {
+  const out = [];
+  if (!from || !to) return out;
+  let [y, m] = from.slice(0, 7).split('-').map(Number);
+  const [ty, tm] = to.slice(0, 7).split('-').map(Number);
+  let guard = 0;
+  while ((y < ty || (y === ty && m <= tm)) && guard++ < 60) {
+    out.push(String(y) + '-' + String(m).padStart(2, '0'));
+    m++; if (m > 12) { m = 1; y++; }
+  }
+  return out;
+}
 
 function Steps({ steps, color }) {
   const top = steps[0]?.value || 0;
@@ -55,14 +75,61 @@ export default async function Funnels({ searchParams }) {
   const f = parseFilters(sp);
   const dir = typeof sp.dir === 'string' ? sp.dir : 'all';
 
-  const [traffic, fe] = await Promise.all([funnelTraffic(f), funnelEvents(f)]);
+  const [traffic, fe, prov, names] = await Promise.all([
+    funnelTraffic(f), funnelEvents(f), providerBySite(f), providerNames(),
+  ]);
+  const R = loadRoyalties();
 
+  // ——— сводная воронка за период
+  const visits = traffic.reduce((s, r) => s + r.visits, 0);
+  const outAll = traffic.reduce((s, r) => s + r.clicks, 0);
+  const provClicks = {};
+  for (const r of prov) provClicks[r.provider] = (provClicks[r.provider] || 0) + r.clicks;
+  const clicksFor = (rx) => Object.entries(provClicks)
+    .filter(([slug]) => rx.test(slug) || rx.test(names.get(slug) || ''))
+    .reduce((s, [, c]) => s + c, 0);
+
+  const mk = monthsInRange(f.from, f.to);
+  const sumM = (obj, field) => (obj ? mk.reduce((s, m) => s + ((obj.months && obj.months[m] && obj.months[m][field]) || 0), 0) : 0);
+
+  const P = PARTNERS.map((p) => ({ ...p, clicks: clicksFor(p.rx) }));
+  const twClick = P[0].clicks, avClick = P[1].clicks, ishClick = P[2].clicks;
+  const partnersClick = twClick + avClick + ishClick;
+
+  const twReg = sumM(R && R.tw, 'regs'), twPay = sumM(R && R.tw, 'cnt');
+  const avReg = sumM(R && R.avps, 'regs'), avPay = sumM(R && R.avps, 'icnt');
+  const ishAff = sumM(R && R.ish, 'clicks'), ishConv = sumM(R && R.ish, 'conv');
+
+  const overall = [
+    { label: 'Заходы на сайты', value: visits },
+    { label: 'Переходы к провайдерам (все)', value: outAll },
+    { label: 'Переходы к нашим партнёрам', value: partnersClick },
+    { label: 'Регистрации в кабинетах', value: twReg + avReg },
+    { label: 'Оплаты в кабинетах', value: twPay + avPay + ishConv },
+  ];
+  const partnerFunnels = [
+    { name: 'Timeweb', color: BRASS, steps: [
+      { label: 'Переход к Timeweb', value: twClick },
+      { label: 'Регистрации (кабинет)', value: twReg },
+      { label: 'Оплаты (кабинет)', value: twPay },
+    ] },
+    { name: 'AdminVPS', color: STEEL, steps: [
+      { label: 'Переход к AdminVPS', value: avClick },
+      { label: 'Регистрации (кабинет)', value: avReg },
+      { label: 'Оплаты (кабинет)', value: avPay },
+    ] },
+    { name: 'is*hosting', color: GREEN, steps: [
+      { label: 'Переход к is*hosting (счётчик)', value: ishClick },
+      { label: 'Визиты в Affise', value: ishAff },
+      { label: 'Конверсии / оплаты', value: ishConv },
+    ] },
+  ];
+  const cabMonths = mk.filter((m) => R && ((R.tw && R.tw.months[m]) || (R.avps && R.avps.months[m])));
+
+  // ——— существующие воронки по направлениям (события сайта)
   const tBy = new Map(traffic.map((r) => [r.direction, r]));
   const eBy = new Map();
-  for (const r of fe) {
-    if (!eBy.has(r.direction)) eBy.set(r.direction, {});
-    eBy.get(r.direction)[r.ev] = r.sessions;
-  }
+  for (const r of fe) { if (!eBy.has(r.direction)) eBy.set(r.direction, {}); eBy.get(r.direction)[r.ev] = r.sessions; }
   const anyEv = fe.length > 0;
 
   function href(d) {
@@ -72,9 +139,7 @@ export default async function Funnels({ searchParams }) {
     const s = q.toString();
     return '/funnels' + (s ? '?' + s : '');
   }
-
   const shown = dir === 'all' ? DIRECTIONS : DIRECTIONS.filter((d) => d.key === dir);
-
   const chip = (active) => ({
     padding: '5px 11px', borderRadius: 8, fontSize: 12.5, textDecoration: 'none',
     border: '1px solid ' + (active ? BRASS : 'var(--line)'),
@@ -86,9 +151,42 @@ export default async function Funnels({ searchParams }) {
     <div className="grid" style={{ gap: 14 }}>
       <Card>
         <div className="note" style={{ margin: 0 }}>
-          Путь пользователя по каждому направлению и где теряются люди. ServerSelection разделён на английскую (Дубай)
-          и русскую версии — это четыре разных направления. Трафик-воронка считается из наших данных сразу; воронки
-          «Калькулятор» и «Акции» собираются из событий сайта и копятся с момента подключения этих шагов к пикселю.
+          Путь клиента и где теряются люди. <b>Сводная воронка</b> ниже собрана за период: шаги «заходы» и «переходы»
+          из нашего счётчика, а «регистрации» и «оплаты» из кабинетов партнёров (помесячно, за месяцы, попавшие в
+          период{cabMonths.length ? ': ' + cabMonths.join(', ') : ''}). Это <b>не</b> сквозной путь одного человека:
+          зашедший сегодня может оплатить позже, и в кабинете не всегда видно, с какого нашего сайта он пришёл. Поэтому
+          последние два шага читаем как «столько же за период всего», а не «эти же люди».
+        </div>
+      </Card>
+
+      <Card title="Сводная воронка за период" hint="заходы и переходы из счётчика, регистрации и оплаты из кабинетов">
+        <Steps steps={overall} color={BRASS} />
+        <div className="note" style={{ marginTop: 12 }}>
+          Регистрации это Timeweb + AdminVPS (у is*hosting отдельного шага регистрации нет, там сразу конверсия).
+          Оплаты это Timeweb + AdminVPS + конверсии is*hosting. «Переходы к партнёрам» это клики именно к тем трём,
+          по кому есть кабинет; остальные переходы уходят к провайдерам без нашей монетизации.
+        </div>
+      </Card>
+
+      <Card title="Воронки по партнёрам" hint="переход к провайдеру → регистрации → оплаты, сводно за период">
+        <div className="grid cols3" style={{ gap: 16 }}>
+          {partnerFunnels.map((pf) => (
+            <div key={pf.name}>
+              <div style={{ fontSize: 12.5, color: pf.color, fontWeight: 600, marginBottom: 8 }}>{pf.name}</div>
+              <Steps steps={pf.steps} color={pf.color} />
+            </div>
+          ))}
+        </div>
+        <div className="note" style={{ marginTop: 12 }}>
+          «Переход» это наши клики к провайдеру из счётчика, дальше цифры кабинета за период. Конверсию переход→оплата
+          тут стоит читать как ориентир: часть оплат приходит от клиентов прошлых периодов.
+        </div>
+      </Card>
+
+      <Card>
+        <div className="note" style={{ margin: 0 }}>
+          Ниже воронки по каждому сайту из событий счётчика (трафик, калькулятор, акции). ServerSelection разделён на
+          английскую (Дубай) и русскую версии.
           {!anyEv ? <><br /><b style={{ color: BRASS }}>Шаги калькулятора и акций пока не накопились</b> — появятся после первых заходов.</> : null}
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 12 }}>
@@ -104,12 +202,8 @@ export default async function Funnels({ searchParams }) {
           <table>
             <thead>
               <tr>
-                <th>Направление</th>
-                <th className="n">Визиты</th>
-                <th className="n">Переходы</th>
-                <th className="n">Визит → переход</th>
-                <th className="n">Калькулятор: старт → клик</th>
-                <th className="n">Акции: копия → переход</th>
+                <th>Направление</th><th className="n">Визиты</th><th className="n">Переходы</th>
+                <th className="n">Визит → переход</th><th className="n">Калькулятор: старт → клик</th><th className="n">Акции: копия → переход</th>
               </tr>
             </thead>
             <tbody>
@@ -137,8 +231,6 @@ export default async function Funnels({ searchParams }) {
       {shown.map((d) => {
         const t = tBy.get(d.key) || { visits: 0, pv: 0, clicks: 0 };
         const e = eBy.get(d.key) || {};
-        // Трафик-воронка сужается корректно: визиты -> переходы (просмотры это сумма,
-        // она всегда больше визитов и как ступень воронки не годится, показываем контекстом).
         const traf = [
           { label: 'Визиты', value: t.visits },
           { label: 'Переходы к провайдеру', value: t.clicks },

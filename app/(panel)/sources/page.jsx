@@ -1,7 +1,8 @@
 import { parseFilters } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
-import { referrers, sourcesTop, utmBreakdown } from '@/lib/query';
+import { channelsTop, referrers, sourcesTop, utmBreakdown } from '@/lib/query';
 import { BarCell, Card, Empty } from '@/components/ui';
+import ChannelTable from '@/components/ChannelTable';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,13 +10,18 @@ const dash = (v) => (v ? v : <span className="dim">—</span>);
 
 export default async function Sources({ searchParams }) {
   const f = parseFilters(await searchParams);
-  const [top, utm, refs] = await Promise.all([sourcesTop(f), utmBreakdown(f), referrers(f)]);
+  const [channels, top, utm, refs] = await Promise.all([channelsTop(f), sourcesTop(f), utmBreakdown(f), referrers(f)]);
+  const totalChVisits = channels.reduce((s, r) => s + (r.visits || 0), 0);
   const maxTop = Math.max(1, ...top.map((r) => r.visits));
   const maxUtm = Math.max(1, ...utm.map((r) => r.visits));
   const maxRef = Math.max(1, ...refs.map((r) => r.visits));
 
   return (
     <div className="grid">
+      <Card title="Каналы захода" hint="реклама, органика, наши сайты, соцсети, прямые; сортировка по клику. Переходы и конверсия это клик к провайдеру">
+        {channels.length === 0 ? <Empty /> : <ChannelTable rows={channels} totalVisits={totalChVisits} />}
+      </Card>
+
       <Card title="Источники" hint="метка utm_source, либо сайт-реферер, либо прямой заход">
         {top.length === 0 ? <Empty /> : (
           <div className="scroll tall">

@@ -4,8 +4,12 @@ const nextConfig = {
   poweredByHeader: false,
   eslint: { ignoreDuringBuilds: true },
   async redirects() {
-    // Вкладка «Оплаты» объединена с «Партнёрки Директ»
-    return [{ source: '/payments', destination: '/royalties', permanent: false }];
+    return [
+      // Вкладка «Оплаты» объединена с «Партнёрки Директ»
+      { source: '/payments', destination: '/royalties', permanent: false },
+      // Вкладка «Экономика» убрана
+      { source: '/economics', destination: '/', permanent: false },
+    ];
   },
 };
 export default nextConfig;

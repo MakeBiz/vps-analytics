@@ -5,7 +5,6 @@ import { usePathname, useSearchParams } from 'next/navigation';
 const ITEMS = [
   ['/', 'Обзор'],
   ['/funnels', 'Воронки'],
-  ['/economics', 'Экономика'],
   ['/marketing', 'Маркетинг'],
   ['/royalties', 'Партнёрки Директ'],
   ['/sources', 'Источники и метки'],

@@ -2,7 +2,7 @@ import { parseFilters } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
 import { geoReport, techReport } from '@/lib/query';
 import { countryName } from '@/lib/ua';
-import { directDemographics, isOurCampaign, GENDER_ORDER, AGE_ORDER } from '@/lib/direct';
+import { directDemographics, approvedCampaignNames, GENDER_ORDER, AGE_ORDER } from '@/lib/direct';
 import { BarCell, Card, Empty } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
@@ -71,7 +71,10 @@ export default async function Geo({ searchParams }) {
   } catch (e) {
     demoErr = e.message || String(e);
   }
-  const demoRows = (demoAll || []).filter(isOurCampaign);
+  // В снимке коннектора у строк демографии нет campaign_id, есть только имя кампании,
+  // поэтому фильтруем по имени согласованной кампании (тот же список, что в «Маркетинге»).
+  const approved = approvedCampaignNames();
+  const demoRows = (demoAll || []).filter((r) => approved.has(r.campaign_name));
 
   const [{ countries, cities }, tech] = await Promise.all([geoReport(f), techReport(f)]);
   const maxC = Math.max(1, ...countries.map((r) => r.visits));
@@ -87,23 +90,22 @@ export default async function Geo({ searchParams }) {
   return (
     <div className="grid">
       <div className="grid cols2">
-        <Card title="Пол" hint="по рекламным кликам Директа, две кампании (ПодборVPS и ServerCalc)">
+        <Card title="Пол" hint="по рекламным кликам Директа, согласованные кампании (РСЯ и AdminVPS Регионы исключены)">
           {hasDemo ? <Demo rows={genderRows} order={GENDER_ORDER} head="Пол" /> : gotDataNoMatch ? (
             <p className="note">
-              Демография из Директа приходит, но в строках нет <code>campaign_id</code>, поэтому нельзя выделить
-              только наши две кампании. Без этого сюда попала бы вся реклама аккаунта, включая Solara и реф-кампании,
-              с совсем другой аудиторией. Нужно, чтобы эндпоинт <code>/direct/demographics</code> отдавал
-              <code> campaign_id</code> в каждой строке (сгруппировать отчёт ещё и по кампании).
+              Демография из Директа приходит, но ни одна строка не совпала с согласованным списком кампаний.
+              Скорее всего, изменились названия кампаний в снимке. Проверьте список в <code>lib/direct.js</code>
+              (<code>VPS_CAMPAIGN_ALLOW</code>) и обновите снимок маркетинга.
             </p>
           ) : (
             <p className="note">
-              Пол и возраст сайт сам не собирает, эти данные есть только в рекламном кабинете. Демография Директа
-              появится здесь, как только сервис данных начнёт отдавать эндпоинт <code>/direct/demographics</code>
-              (спека передана). {demoErr ? <span className="dim">Сейчас: {demoErr}</span> : null}
+              Пол и возраст сайт сам не собирает, эти данные есть только в рекламном кабинете. Возьмутся из снимка
+              маркетинга (тот же источник, что на вкладке «Маркетинг»). Обновите снимок командой «обнови маркетинг».
+              {demoErr ? <span className="dim"> Сейчас: {demoErr}</span> : null}
             </p>
           )}
         </Card>
-        <Card title="Возраст" hint="по рекламным кликам Директа, две кампании">
+        <Card title="Возраст" hint="по рекламным кликам Директа, согласованные кампании">
           {hasDemo ? <Demo rows={ageRows} order={AGE_ORDER} head="Возраст" /> : (
             <p className="note">Появится вместе с полом, из того же источника (демография Яндекс.Директа).</p>
           )}

@@ -1,89 +1,49 @@
-import Link from 'next/link';
-import { parseFilters, qs } from '@/lib/filters';
-import { num, pct } from '@/lib/format';
-import { providerBySite, providerDetail, providerNames } from '@/lib/query';
-import { BarCell, Card, Empty } from '@/components/ui';
+import { parseFilters } from '@/lib/filters';
+import { num } from '@/lib/format';
+import { providerBySite, providerDetail, providerNames, visitsByDirection } from '@/lib/query';
+import { Card } from '@/components/ui';
+import ProvidersView from '@/components/ProvidersView';
 
 export const dynamic = 'force-dynamic';
 
 const dash = (v) => (v ? v : <span className="dim">—</span>);
 
-// Направления вместо сайтов: serverselection разбит на EN (корень) и RU (/ru).
-const DIRECTIONS = [
-  { key: 'servercalc-ru', name: 'ServerCalc.ru', site: 'servercalc-ru' },
-  { key: 'serverselection-en', name: 'ServerSelection · EN', site: 'serverselection' },
-  { key: 'serverselection-ru', name: 'ServerSelection · RU', site: 'serverselection' },
-  { key: 'podborvps', name: 'ПодборVPS', site: 'podborvps' },
-];
+// ServerSelection (EN и RU) с этой вкладки пока убран целиком по просьбе.
+// Остальные направления показываем; понятные названия — ниже, иначе ключ как есть.
+const HIDE = new Set(['serverselection-en', 'serverselection-ru']);
+const DIR_NAME = {
+  'servercalc-ru': 'ServerCalc.ru',
+  'servercalc-online': 'ServerCalc.online',
+  'podborvps': 'ПодборVPS',
+};
 
 export default async function Providers({ searchParams }) {
   const sp = await searchParams;
   const f = parseFilters(sp);
   const selected = Array.isArray(sp?.provider) ? sp.provider[0] : sp?.provider || '';
 
-  const [rows, names] = await Promise.all([providerBySite(f), providerNames()]);
-  const cols = f.site ? DIRECTIONS.filter((d) => d.site === f.site) : DIRECTIONS;
+  const [rowsRaw, names, visitsRows] = await Promise.all([providerBySite(f), providerNames(), visitsByDirection(f)]);
 
-  const totals = new Map();
-  for (const r of rows) {
-    if (!totals.has(r.provider)) totals.set(r.provider, { total: 0, sessions: 0, by: {} });
-    const t = totals.get(r.provider);
-    t.total += r.clicks;
-    t.sessions += r.sessions;
-    t.by[r.site_key] = (t.by[r.site_key] || 0) + r.clicks;
-  }
-  const list = [...totals.entries()].sort((a, b) => b[1].total - a[1].total);
-  const grand = list.reduce((s, [, v]) => s + v.total, 0);
-  const max = list[0]?.[1].total || 1;
+  // выкидываем ServerSelection из строк и итогов
+  const rows = rowsRaw
+    .filter((r) => !HIDE.has(r.site_key))
+    .map((r) => ({ provider: r.provider, name: names.get(r.provider) || r.provider, site_key: r.site_key, clicks: r.clicks, sessions: r.sessions }));
+
+  // доступные направления берём из данных (минус скрытые), в стабильном порядке
+  const present = [...new Set(rows.map((r) => r.site_key))];
+  const ORDER = ['podborvps', 'servercalc-ru', 'servercalc-online'];
+  present.sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99));
+  const directions = present.map((k) => ({ key: k, name: DIR_NAME[k] || k }));
+
+  const visits = {};
+  for (const v of visitsRows) if (!HIDE.has(v.direction)) visits[v.direction] = v.visits;
 
   const detail = selected ? await providerDetail(f, selected) : null;
 
   return (
     <div className="grid">
       <Card title="Провайдеры по сайтам" hint="сколько переходов ушло с какого сайта к какому провайдеру">
-        {list.length === 0 ? <Empty text="За период переходов к провайдерам не было" /> : (
-          <div className="scroll tall">
-            <table>
-              <thead>
-                <tr>
-                  <th>Провайдер</th>
-                  {cols.map((s) => <th key={s.key} className="n">{s.name}</th>)}
-                  <th className="n">Всего</th>
-                  <th className="n">Доля</th>
-                  <th className="n">Визитов с переходом</th>
-                </tr>
-              </thead>
-              <tbody>
-                {list.map(([slug, v]) => (
-                  <tr key={slug} style={slug === selected ? { background: 'rgba(198,161,91,.10)' } : undefined}>
-                    <td>
-                      <Link href={'/providers' + qs(f, { provider: slug === selected ? '' : slug })}>
-                        {names.get(slug) || slug}
-                      </Link>
-                      <span className="dim mono" style={{ marginLeft: 6 }}>{slug}</span>
-                    </td>
-                    {cols.map((s) => (
-                      <td key={s.key} className="n muted">{v.by[s.key] ? num(v.by[s.key]) : '·'}</td>
-                    ))}
-                    <BarCell value={v.total} max={max} />
-                    <td className="n muted">{pct(v.total, grand)}</td>
-                    <td className="n dim">{num(v.sessions)}</td>
-                  </tr>
-                ))}
-                <tr>
-                  <td className="muted"><b>Итого</b></td>
-                  {cols.map((s) => (
-                    <td key={s.key} className="n muted">
-                      {num(list.reduce((acc, [, v]) => acc + (v.by[s.key] || 0), 0))}
-                    </td>
-                  ))}
-                  <td className="n"><b>{num(grand)}</b></td>
-                  <td className="n" /><td className="n" />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        )}
+        <ProvidersView rows={rows} directions={directions} visits={visits} selectedProvider={selected} />
       </Card>
 
       {detail ? (

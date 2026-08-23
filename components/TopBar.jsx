@@ -4,15 +4,21 @@ import { RANGES, TZ_LIST } from '@/lib/filters';
 
 const TITLES = {
   '/': 'Обзор',
-  '/economics': 'Экономика',
   '/sources': 'Источники и метки',
   '/providers': 'Провайдеры',
   '/buttons': 'Кнопки и места',
   '/pages': 'Страницы',
   '/geo': 'Гео и устройства',
+  '/marketing': 'Маркетинг',
+  '/partners': 'Партнёрки',
+  '/royalties': 'Партнёрки Директ',
+  '/funnels': 'Воронки',
   '/log': 'Журнал событий',
   '/sites': 'Сайты и подключение',
 };
+
+// Вкладки на снимке коннектора (30 дней): фильтры периода/сайта к ним не применяются.
+const SNAPSHOT_TABS = new Set(['/marketing']);
 
 export default function TopBar({ sites }) {
   const path = usePathname();
@@ -30,6 +36,17 @@ export default function TopBar({ sites }) {
   };
 
   const range = sp.get('from') && sp.get('to') ? 'custom' : sp.get('d') || '7d';
+
+  if (SNAPSHOT_TABS.has(path)) {
+    return (
+      <div className="top">
+        <h1>{TITLES[path] || 'Аналитика'}</h1>
+        <span className="dim" style={{ fontSize: 12.5 }}>
+          снимок коннектора за последние 30 дней · фильтры периода и сайта тут не действуют
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className="top">

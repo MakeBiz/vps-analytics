@@ -1,5 +1,6 @@
 import { num, pct } from '@/lib/format';
 import { loadMarketing } from '@/lib/marketing';
+import { VPS_CAMPAIGN_ALLOW as ALLOW, baseCampaignName as baseName } from '@/lib/direct';
 import { Card, Kpi, Empty, BarCell } from '@/components/ui';
 import CampaignFilter from '@/components/CampaignFilter';
 
@@ -17,19 +18,8 @@ function ceilingFor(c) {
   return /Регионы/i.test(c.name) ? 28.5 : 33;
 }
 
-// Список кампаний Директа для вкладки «Маркетинг»: считаем и выводим только их.
-// Переход на новые кампании плавный — держим и старые, и новые Podborvps/Servercalc,
-// пока новые не раскрутятся (потом старые уберём). Правится одной строкой.
-const ALLOW = new Set([
-  '708098448', '706715098', '706716163', '712849076', '713792287', // Timeweb (+ TW МСК new)
-  '708902123',                                          // AdminVPS
-  '713771451',                                          // Aeza
-  '713775967',                                          // ishosting
-  '713245534', '713793556',                            // Podborvps (старый + новый)
-  '713332123', '713793989',                            // Servercalc (старый + новый)
-]);
-// имя кампании без хвоста « ←VPS» — так их зовут строки демографии/объявлений/запросов
-const baseName = (s) => String(s || '').replace(/\s*←\s*VPS\s*$/i, '').trim();
+// Список согласованных кампаний и baseName теперь общие — в lib/direct.js
+// (VPS_CAMPAIGN_ALLOW), их же использует демография на вкладке «Гео».
 
 export default async function Marketing() {
   const m = loadMarketing();

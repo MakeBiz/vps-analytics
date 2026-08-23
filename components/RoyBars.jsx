@@ -34,10 +34,12 @@ export default function RoyBars({ series = [], height = 180, mode = 'stack', kil
                 {mode === 'stack' ? (
                   <>
                     <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text)', height: 15 }}>{total ? fmt(total) : ''}</div>
-                    <div style={{ height: barH, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-                      {s.parts.map((p, j) => (Number(p.value) > 0 ? (
-                        <div key={j} style={{ height: Math.max(1, Math.round((p.value / max) * barH)) + 'px', background: p.color, opacity: active ? 1 : 0.4, transition: 'opacity .12s' }} />
-                      ) : null))}
+                    <div style={{ height: barH, display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
+                      <div style={{ width: '58%', maxWidth: 44, minWidth: 8, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', borderRadius: '4px 4px 0 0', overflow: 'hidden' }}>
+                        {s.parts.map((p, j) => (Number(p.value) > 0 ? (
+                          <div key={j} style={{ height: Math.max(1, Math.round((p.value / max) * barH)) + 'px', background: p.color, opacity: active ? 1 : 0.4, transition: 'opacity .12s' }} />
+                        ) : null))}
+                      </div>
                     </div>
                   </>
                 ) : (

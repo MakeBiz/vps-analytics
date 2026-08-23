@@ -160,7 +160,7 @@ export default async function Royalties() {
       </div>
 
       <Card title="Доход по месяцам и прогноз, ₽" hint="факт по источникам + подтверждённые продления, наведите на столбец">
-        <RoyBars series={incSeries} height={230} mode="stack" kilo unit="₽" />
+        <RoyBars series={incSeries} height={264} mode="stack" kilo unit="₽" />
         <div className="chips" style={{ marginTop: 10 }}>
           {[['TW первичные', BRASS], ['TW повторные', BRASS_D], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['достройка месяца', BRASS], ['прогноз', FORE]].map(([l, c]) => (
             <span key={l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
@@ -171,29 +171,29 @@ export default async function Royalties() {
 
       <div className="grid cols2">
         <Card title="Средняя сумма оплат в день, ₽" hint="по месяцам, вся выручка ÷ дни месяца">
-          <RoyBars series={perDaySeries} height={170} unit="₽" />
+          <RoyBars series={perDaySeries} height={230} unit="₽" />
           {note('Сколько в среднем приносит один день месяца. Пик пришёлся на лето, к августу темп чуть просел, но держится выше весны.')}
         </Card>
         <Card title="Средний чек по месяцам, ₽" hint="Timeweb, выручка ÷ число оплат">
-          <RoyBars series={checkSeries} height={170} unit="₽" />
+          <RoyBars series={checkSeries} height={230} unit="₽" />
           {note('Средний размер одной оплаты. Летние месяцы дали более крупные чеки, что говорит о более дорогих тарифах и продлениях.')}
         </Card>
       </div>
 
       <div className="grid cols2">
         <Card title="Регистрации по дням недели" hint="Timeweb + AdminVPS, за период">
-          <RoyBars series={regDowSeries} height={170} />
+          <RoyBars series={regDowSeries} height={230} />
           {note(`Больше всего регистраций в ${bestReg}. К выходным поток регистраций заметно падает: суббота и воскресенье слабее буднего дня примерно вдвое.`)}
         </Card>
         <Card title="Оплаты по дням недели" hint="Штуки или ₽, Timeweb + AdminVPS">
-          <RoyToggle toggles={[{ key: 'unit', options: [{ label: 'Штуки', val: 'cnt' }, { label: '₽', val: 'rub' }] }]} datasets={payDowDatasets} height={170} />
+          <RoyToggle toggles={[{ key: 'unit', options: [{ label: 'Штуки', val: 'cnt' }, { label: '₽', val: 'rub' }] }]} datasets={payDowDatasets} height={230} />
           {note(`По числу оплат лидирует ${bestPayCnt}, по деньгам ${bestPaySum}. Оплаты распределены ровнее регистраций и заметно живее в выходные, значит платят и в субботу-воскресенье.`)}
         </Card>
       </div>
 
       <div className="grid cols2">
         <Card title="Средний чек: первичные и повторные, ₽" hint="Timeweb, помесячно, наведите на столбец">
-          <RoyBars series={firstRepSeries} height={170} mode="group" unit="₽" />
+          <RoyBars series={firstRepSeries} height={230} mode="group" unit="₽" />
           {note('Сравнение первой оплаты клиента и последующих. Повторные обычно не ниже первичных, то есть клиенты не мельчают со временем, а часто берут больше.')}
         </Card>
         <Card title="Retention оплат" hint="сколько клиентов дошли до N-й оплаты (Timeweb)">

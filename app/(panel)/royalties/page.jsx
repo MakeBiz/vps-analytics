@@ -59,6 +59,18 @@ export default async function Royalties() {
   const conv = tw.regs ? payers / tw.regs : 0;
   const lifeMonthsPayer = conv ? (lifeMonths / conv) : 0;
 
+  // ——— тренды к прошлому периоду: текущий месяц (с проекцией до конца) к прошлому полному
+  const cm = current.month;
+  const pmIdx = months.indexOf(cm) - 1;
+  const pm = pmIdx >= 0 ? months[pmIdx] : null;
+  const mtot = (m) => (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0);
+  const pctChg = (a, b) => (b ? ((a - b) / b) * 100 : null);
+  const dRev = pm ? pctChg(current.total?.proj || mtot(cm), mtot(pm)) : null;
+  const dNet = pm ? pctChg((current.total?.proj || 0) - (current.ads?.proj || 0), (net_months.find((r) => r.m === pm) || {}).net || 0) : null;
+  const chk = (m) => (tw.months[m]?.cnt ? tw.months[m].sum / tw.months[m].cnt : 0);
+  const dCheck = pm ? pctChg(chk(cm), chk(pm)) : null;
+  const dLtv = pm ? pctChg(tw.months[cm]?.ltv_cum || 0, tw.months[pm]?.ltv_cum || 0) : null;
+
   // ——— доход по месяцам + прогноз (стек)
   const incSeries = months.map((m) => {
     const parts = [
@@ -88,24 +100,6 @@ export default async function Royalties() {
       { name: 'повторная', value: mo.rc ? Math.round(mo.rs / mo.rc) : 0, color: STEEL },
     ] };
   });
-
-  // ——— оплаты по периодам: месяц/неделя × ₽/штуки
-  const wkMap = {};
-  for (const w of (tw.weekly || [])) wkMap[w.iso] = { label: w.w, sum: w.sum || 0, cnt: w.cnt || 0 };
-  for (const w of (avps.weekly || [])) { const e = wkMap[w.iso] || (wkMap[w.iso] = { label: w.w, sum: 0, cnt: 0 }); e.sum += w.sum || 0; e.cnt += w.cnt || 0; }
-  const weeks = Object.keys(wkMap).sort().map((k) => wkMap[k]);
-  const monthSum = (m) => (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0);
-  const monthCnt = (m) => (tw.months[m]?.cnt || 0) + (avps.months[m]?.icnt || 0);
-  const moneyDatasets = {
-    'month|rub': { kilo: true, series: months.map((m) => one(monthLabel(m), monthSum(m), BRASS)) },
-    'month|cnt': { kilo: false, series: months.map((m) => one(monthLabel(m), monthCnt(m), STEEL)) },
-    'week|rub': { kilo: true, series: weeks.map((w) => one(w.label, w.sum, BRASS)) },
-    'week|cnt': { kilo: false, series: weeks.map((w) => one(w.label, w.cnt, STEEL)) },
-  };
-  const moneyToggles = [
-    { key: 'period', options: [{ label: 'Месяц', val: 'month' }, { label: 'Неделя', val: 'week' }] },
-    { key: 'unit', options: [{ label: '₽', val: 'rub' }, { label: 'Штуки', val: 'cnt' }] },
-  ];
 
   // ——— по дням недели (Timeweb + AdminVPS, сумма по месяцам)
   const sum7 = (obj) => { const a = [0, 0, 0, 0, 0, 0, 0]; for (const k of Object.keys(obj || {})) (obj[k] || []).forEach((v, i) => { a[i] += v || 0; }); return a; };
@@ -156,14 +150,13 @@ export default async function Royalties() {
       ) : null}
 
       <div className="grid kpis">
-        <Kpi label="Всего получено, ₽" value={num(grandTotal)} sub="Timeweb + AdminVPS + is*hosting" />
-        <Kpi label="Чистый доход, ₽" value={(netCum >= 0 ? '+' : '') + num(netCum)} sub="выручка минус расход Директа" />
-        <Kpi label="LTV клиента, ₽" value={num(derived.ltv)} sub="доход с одного платящего" />
-        <Kpi label="Средний чек, ₽" value={num(tw.avg_check)} sub={`первичн. ${num(tw.avg_first)} / повт. ${num(tw.avg_rep)}`} />
-        <Kpi label="Оплат в день, ₽" value={num(perDay)} sub={`в среднем за ${days} дн.`} />
-        <Kpi label="Оплат в неделю, ₽" value={num(perWeek)} sub={`в среднем за ${weeksElapsed} нед.`} />
-        <Kpi label="Конверсия рег→оплата" value={dec(derived.conv_reg_pay) + '%'} sub={`клик→рег ${dec(derived.conv_click_reg)}%`} />
-        <Kpi label="Окупаемость" value={derived.payback + ' мес'} sub={`LTV ${num(derived.ltv)} / CAC ${num(derived.cac)}`} />
+        <Kpi label="Всего получено, ₽" value={num(grandTotal)} delta={dRev} />
+        <Kpi label="Чистый доход, ₽" value={(netCum >= 0 ? '+' : '') + num(netCum)} delta={dNet} />
+        <Kpi label="LTV клиента, ₽" value={num(derived.ltv)} delta={dLtv} />
+        <Kpi label="Средний чек, ₽" value={num(tw.avg_check)} delta={dCheck} />
+        <Kpi label="Оплат в день, ₽" value={num(perDay)} delta={dRev} />
+        <Kpi label="Оплат в неделю, ₽" value={num(perWeek)} delta={dRev} />
+        <Kpi label="Конверсия рег→оплата" value={dec(derived.conv_reg_pay) + '%'} />
       </div>
 
       <Card title="Доход по месяцам и прогноз, ₽" hint="факт по источникам + подтверждённые продления, наведите на столбец">
@@ -186,11 +179,6 @@ export default async function Royalties() {
           {note('Средний размер одной оплаты. Летние месяцы дали более крупные чеки, что говорит о более дорогих тарифах и продлениях.')}
         </Card>
       </div>
-
-      <Card title="Оплаты по периодам" hint="переключите Месяц/Неделя и ₽/Штуки, наведите на столбец">
-        <RoyToggle toggles={moneyToggles} datasets={moneyDatasets} height={200} />
-        {note('Один и тот же поток оплат в двух разрезах: по месяцам или по неделям, в рублях или в штуках. Штуки показывают активность (сколько платежей), рубли это деньги. Полезно ловить проседания недель.')}
-      </Card>
 
       <div className="grid cols2">
         <Card title="Регистрации по дням недели" hint="Timeweb + AdminVPS, за период">
@@ -370,11 +358,12 @@ export default async function Royalties() {
         <Card title="Топ-клиенты и риск оттока" hint="Timeweb, по сумме оплат за историю">
           <div className="scroll tall">
             <table>
-              <thead><tr><th>Клиент</th><th className="n">Оплат</th><th className="n">Сумма, ₽</th><th>Статус</th></tr></thead>
+              <thead><tr><th>Клиент</th><th className="n">Оплат</th><th className="n">Сумма, ₽</th><th className="n">Ср. чек, ₽</th><th>Статус</th></tr></thead>
               <tbody>
                 {(tw.top_clients || []).slice(0, 12).map((c) => (
                   <tr key={c.login}>
                     <td className="mono">{c.login}</td><td className="n muted">{c.cnt}</td><td className="n">{num(c.sum)}</td>
+                    <td className="n muted">{c.cnt ? num(Math.round(c.sum / c.cnt)) : '—'}</td>
                     <td>{c.risk ? <span className="tag" style={{ borderColor: RED, color: RED }}>риск</span> : <span className="dim">{c.status}</span>}</td>
                   </tr>
                 ))}

@@ -1,6 +1,7 @@
 import { num, pct } from '@/lib/format';
 import { loadMarketing } from '@/lib/marketing';
 import { Card, Kpi, Empty, BarCell } from '@/components/ui';
+import CampaignFilter from '@/components/CampaignFilter';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,16 +17,16 @@ function ceilingFor(c) {
   return /Регионы/i.test(c.name) ? 28.5 : 33;
 }
 
-// Фиксированный список кампаний Директа для вкладки «Маркетинг»: считаем и
-// выводим ТОЛЬКО их, пока Антон не даст новый список. Правится одной строкой.
-// Timeweb (4), AdminVPS (1), Aeza (1), ishosting (1), Podborvps (1), Servercalc (1).
+// Список кампаний Директа для вкладки «Маркетинг»: считаем и выводим только их.
+// Переход на новые кампании плавный — держим и старые, и новые Podborvps/Servercalc,
+// пока новые не раскрутятся (потом старые уберём). Правится одной строкой.
 const ALLOW = new Set([
-  '708098448', '706715098', '706716163', '712849076', // Timeweb
+  '708098448', '706715098', '706716163', '712849076', '713792287', // Timeweb (+ TW МСК new)
   '708902123',                                          // AdminVPS
   '713771451',                                          // Aeza
   '713775967',                                          // ishosting
-  '713245534',                                          // Podborvps
-  '713332123',                                          // Servercalc
+  '713245534', '713793556',                            // Podborvps (старый + новый)
+  '713332123', '713793989',                            // Servercalc (старый + новый)
 ]);
 // имя кампании без хвоста « ←VPS» — так их зовут строки демографии/объявлений/запросов
 const baseName = (s) => String(s || '').replace(/\s*←\s*VPS\s*$/i, '').trim();
@@ -66,62 +67,13 @@ export default async function Marketing() {
           Маркетинг из коннектора Яндекса: Директ, Метрика, Вебмастер, Wordstat. Снимок от {m.generated},{' '}
           {m.window}. Обновляется по запросу (коннектор на Маке, панель к нему вживую не ходит).
           <br />
-          В расчёт и вывод берутся только согласованные кампании Директа: Timeweb, AdminVPS, Aeza,
-          ishosting, Podborvps, Servercalc (всего {ALLOW.size}). Кампании без расхода за период не показываются.
+          В расчёт и вывод берутся только согласованные кампании Директа. Сверху фильтр по кампаниям: можно выбрать
+          «Все» или отдельные, KPI и таблица расходов пересчитаются. Идёт плавный переход на новые кампании
+          Podborvps/Servercalc, пока держим и старые тоже. Кампании без расхода за период не показываются.
         </div>
       </Card>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0,1fr))', gap: 10 }}>
-        {[
-          { v: rub(vpsCost), l: 'Расход Директа (VPS)', s: `${num(vpsClicks)} кликов`, t: tr.spend, down: true },
-          { v: cpc(Number(avgCpc.toFixed(1))), l: 'Средний CPC', s: 'по VPS-кампаниям', t: tr.cpc, down: true },
-          { v: num(provClicks), l: 'Переходы к провайдеру', s: 'Метрика, все сайты' },
-          { v: provClicks ? rub(vpsCost / provClicks) : '—', l: 'Цена перехода', s: 'расход / переходы' },
-        ].map((k, i) => {
-          const good = k.t == null ? null : (k.down ? k.t <= 0 : k.t >= 0);
-          return (
-            <div key={i} className="card" style={{ padding: '10px 12px' }}>
-              <div style={{ fontSize: 19, fontWeight: 700, lineHeight: 1.15 }}>{k.v}</div>
-              <div style={{ fontSize: 12, marginTop: 3 }}>{k.l}</div>
-              <div className="dim" style={{ fontSize: 11 }}>{k.s}</div>
-              {k.t != null ? (
-                <div style={{ fontSize: 11, marginTop: 3, color: good ? '#3fae7a' : '#e0736d' }}>
-                  {k.t > 0 ? '▲ +' : '▼ '}{k.t}% к пред. 30 дн
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
-
-      <Card title="Директ: расход по кампаниям" hint="за 30 дней, красным CPC выше потолка">
-        <div className="scroll">
-          <table>
-            <thead>
-              <tr>
-                <th>Кампания</th><th className="n">Расход</th><th className="n">Клики</th>
-                <th className="n">CTR</th><th className="n">CPC</th><th className="n">Доля расхода</th>
-              </tr>
-            </thead>
-            <tbody>
-              {camps.map((c) => {
-                const cap = ceilingFor(c);
-                const over = cap != null && c.cpc > cap;
-                return (
-                  <tr key={c.id}>
-                    <td>{c.name}</td>
-                    <td className="n">{rub(c.cost)}</td>
-                    <td className="n">{num(c.clicks)}</td>
-                    <td className="n muted">{String(c.ctr).replace('.', ',')}%</td>
-                    <td className="n" style={over ? { color: '#e0736d', fontWeight: 600 } : undefined}>{cpc(c.cpc)}</td>
-                    <BarCell value={c.cost} max={maxCost} />
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+      <CampaignFilter campaigns={camps} provClicks={provClicks} trends={tr} />
 
       {m.direct?.dailyVps?.length ? (
         <Card title="Директ по дням" hint="показы и переходы по VPS-кампаниям (без Solara)">

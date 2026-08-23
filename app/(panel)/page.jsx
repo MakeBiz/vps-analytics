@@ -4,6 +4,7 @@ import { num, pct, dur, fmtDate } from '@/lib/format';
 import { byDay, byHour, bySite, overview, overviewPrev, providerBySite, providerNames, channelsTop } from '@/lib/query';
 import Chart, { Bars } from '@/components/Chart';
 import { BarCell, Card, Empty, Kpi } from '@/components/ui';
+import ChannelTable from '@/components/ChannelTable';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,9 +24,7 @@ export default async function Overview({ searchParams }) {
   const topProv = [...provTotals.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
   const maxProv = topProv[0]?.[1] || 1;
 
-  const topSrc = srcRows.slice(0, 12);
-  const maxSrcVisits = Math.max(1, ...topSrc.map((r) => r.visits));
-  const chColor = (c) => (c.startsWith('Реклама') ? '#c6a15b' : c.startsWith('Органика') ? '#6cbf8b' : c.startsWith('Наши') ? '#5b7a99' : c === 'Прямые заходы' ? '#93a0ae' : '#8a93a0');
+  const totalSrcVisits = srcRows.reduce((s, r) => s + (r.visits || 0), 0);
   const maxSiteClicks = Math.max(1, ...siteRows.map((r) => r.clicks));
 
   const hourRows = Array.from({ length: 24 }, (_, h) => {
@@ -101,22 +100,7 @@ export default async function Overview({ searchParams }) {
         </Card>
 
         <Card title="Откуда приходят" hint="каналы: реклама, органика, наши сайты, прямые">
-          {topSrc.length === 0 ? <Empty /> : (
-            <table>
-              <tbody>
-                {topSrc.map((r) => (
-                  <tr key={r.channel}>
-                    <td>
-                      <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: chColor(r.channel), marginRight: 7, verticalAlign: 'middle' }} />
-                      <span className="trunc" style={{ verticalAlign: 'middle' }}>{r.channel}</span>
-                    </td>
-                    <BarCell value={r.visits} max={maxSrcVisits} />
-                    <td className="n muted">{num(r.clicks)} пер.</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+          {srcRows.length === 0 ? <Empty /> : <ChannelTable rows={srcRows} totalVisits={totalSrcVisits} />}
         </Card>
       </div>
 

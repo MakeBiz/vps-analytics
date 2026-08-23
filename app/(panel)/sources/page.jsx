@@ -18,7 +18,7 @@ export default async function Sources({ searchParams }) {
 
   return (
     <div className="grid">
-      <Card title="Каналы захода" hint="реклама, органика, наши сайты, соцсети, прямые; сортировка по клику. Переходы и конверсия это клик к провайдеру">
+      <Card title="Каналы захода" hint="реклама, органика, соцсети, прямые; сортировка по клику. Переходы и конверсия это клик к провайдеру">
         {channels.length === 0 ? <Empty /> : <ChannelTable rows={channels} totalVisits={totalChVisits} />}
       </Card>
 

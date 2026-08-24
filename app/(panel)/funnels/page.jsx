@@ -10,12 +10,11 @@ const BRASS = '#c6a15b';
 const STEEL = '#5b7a99';
 const GREEN = '#3fae7a';
 
-// Четыре направления: serverselection разбит на EN (корень) и RU (/ru).
+// Направления = наши сайты (ServerSelection выведен из аналитики 24.08).
 const DIRECTIONS = [
   { key: 'podborvps', name: 'ПодборVPS', dom: 'podborvps.ru' },
   { key: 'servercalc-ru', name: 'ServerCalc.ru', dom: 'servercalc.ru' },
-  { key: 'serverselection-en', name: 'ServerSelection · EN', dom: 'serverselection.online (Дубай)' },
-  { key: 'serverselection-ru', name: 'ServerSelection · RU', dom: 'serverselection.online/ru' },
+  { key: 'servercalc-com', name: 'ServerCalc.com', dom: 'servercalc.com' },
 ];
 
 function Steps({ steps, color }) {

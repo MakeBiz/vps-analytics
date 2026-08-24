@@ -13,6 +13,7 @@ const dash = (v) => (v ? v : <span className="dim">—</span>);
 const HIDE = new Set(['serverselection-en', 'serverselection-ru']);
 const DIR_NAME = {
   'servercalc-ru': 'ServerCalc.ru',
+  'servercalc-com': 'ServerCalc.com',
   'servercalc-online': 'ServerCalc.online',
   'podborvps': 'ПодборVPS',
 };
@@ -31,7 +32,7 @@ export default async function Providers({ searchParams }) {
 
   // доступные направления берём из данных (минус скрытые), в стабильном порядке
   const present = [...new Set(rows.map((r) => r.site_key))];
-  const ORDER = ['podborvps', 'servercalc-ru', 'servercalc-online'];
+  const ORDER = ['podborvps', 'servercalc-ru', 'servercalc-com', 'servercalc-online'];
   present.sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99));
   const directions = present.map((k) => ({ key: k, name: DIR_NAME[k] || k }));
 

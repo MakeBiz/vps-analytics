@@ -107,8 +107,10 @@ export default async function Log({ searchParams }) {
                         <span className="mono trunc" title={`${r.utm_source} / ${r.utm_medium} / ${r.utm_campaign} / ${r.utm_content}`}>
                           {[r.utm_source, r.utm_medium, r.utm_campaign, r.utm_content].filter(Boolean).join(' / ')}
                         </span>
-                      ) : <span className="dim">прямой</span>}
-                      {r.click_id ? <div><span className="tag s">реклама</span></div> : null}
+                      ) : r.referrer_host ? (
+                        <span className="mono trunc dim" title={r.referrer_host}>реферер: {r.referrer_host}</span>
+                      ) : <span className="dim">прямой (без реферера)</span>}
+                      {r.click_id ? <div><span className="tag s">реклама{r.click_id_type ? ' · ' + r.click_id_type : ''}</span></div> : null}
                     </td>
                     <td className="muted">
                       {countryName(r.country)}{r.city ? <div className="dim">{r.city}</div> : null}

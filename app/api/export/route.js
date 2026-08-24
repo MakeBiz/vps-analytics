@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 const HEAD = [
   'Дата и время (UTC)', 'Сайт', 'Событие', 'Имя события', 'Страница', 'Провайдер', 'Хост назначения',
   'Ссылка назначения', 'Место', 'Кнопка', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content',
-  'Метка рекламы', 'Страна', 'Город', 'Устройство', 'Браузер', 'Сессия',
+  'Метка рекламы', 'Реферер (хост)', 'Страна', 'Город', 'Устройство', 'Браузер', 'Сессия',
 ];
 
 function cell(v) {
@@ -28,7 +28,7 @@ export async function GET(req) {
       new Date(r.ts).toISOString().replace('T', ' ').slice(0, 19),
       r.site, r.type, r.name, r.path, r.provider, r.target_host, r.target_url,
       r.placement, r.label, r.utm_source, r.utm_medium, r.utm_campaign, r.utm_content,
-      r.click_id, r.country, r.city, r.device, r.browser, r.session_id,
+      r.click_id, r.referrer_host, r.country, r.city, r.device, r.browser, r.session_id,
     ].map(cell).join(';'));
   }
   // BOM, чтобы Excel открыл кириллицу без плясок с кодировкой

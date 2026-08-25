@@ -10,6 +10,7 @@ const TITLES = {
   '/pages': 'Страницы',
   '/geo': 'Гео и устройства',
   '/marketing': 'Маркетинг',
+  '/organic': 'Органика и SEO',
   '/partners': 'Партнёрки',
   '/royalties': 'Партнёрки Директ',
   '/funnels': 'Воронки',

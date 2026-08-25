@@ -1,0 +1,306 @@
+'use client';
+import { useMemo, useState } from 'react';
+import { num } from '@/lib/format';
+import { Card, Kpi, Empty } from '@/components/ui';
+
+const YA = '#c6a15b';   // Яндекс — латунь
+const GO = '#5b7a99';   // Google — сталь
+const SEV = { bad: '#d1697a', warn: '#d9a441', good: '#6cbf8b', steel: '#5b7a99' };
+const pctF = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
+const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)');
+
+function Line({ rows }) {
+  const max = Math.max(1, ...rows.map((r) => Math.max(r.yandex, r.google)));
+  const n = rows.length;
+  const W = 320, H = 92;
+  const pts = (key) =>
+    rows.map((r, i) => {
+      const x = n > 1 ? (i / (n - 1)) * W : 0;
+      const y = H - (r[key] / max) * (H - 8) - 4;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+  const empty = rows.every((r) => r.yandex === 0 && r.google === 0);
+  if (empty) return <div className="empty">Органических визитов за период пока нет</div>;
+  return (
+    <>
+      <svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: 'block' }}>
+        <polyline points={pts('yandex')} fill="none" stroke={YA} strokeWidth="2" />
+        <polyline points={pts('google')} fill="none" stroke={GO} strokeWidth="2" strokeDasharray="3 3" />
+      </svg>
+      <div className="dim" style={{ fontSize: 11.5, marginTop: 6, display: 'flex', gap: 16 }}>
+        <span><b style={{ color: YA }}>—</b> Яндекс</span>
+        <span><b style={{ color: GO }}>- -</b> Google</span>
+        <span style={{ marginLeft: 'auto' }}>{rows[0]?.d} … {rows[rows.length - 1]?.d}</span>
+      </div>
+    </>
+  );
+}
+
+function Bars({ rows, label, color = YA, max }) {
+  const mx = max || Math.max(1, ...rows.map((r) => r.visits));
+  return (
+    <div style={{ display: 'grid', gap: 8 }}>
+      {rows.map((r, i) => (
+        <div key={i}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, marginBottom: 3 }}>
+            <span>{label(r)}</span><span className="mono">{num(r.visits)}</span>
+          </div>
+          <div style={{ background: 'var(--panel-2)', borderRadius: 5, height: 12, overflow: 'hidden', border: '1px solid var(--line)' }}>
+            <div style={{ width: Math.max(2, Math.round((r.visits / mx) * 100)) + '%', height: '100%', background: color, opacity: 0.9 }} />
+          </div>
+        </div>
+      ))}
+      {rows.length === 0 ? <div className="empty">нет данных</div> : null}
+    </div>
+  );
+}
+
+export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerated, sites = [], tz }) {
+  const nameOf = useMemo(() => Object.fromEntries(sites.map((s) => [s.key, s.name])), [sites]);
+  const [qfilter, setQfilter] = useState('all'); // all | lowctr
+  const [qsort, setQsort] = useState({ k: 'impressions', d: -1 });
+
+  const { perSite, tot } = useMemo(() => {
+    const bs = {};
+    const t = { org: 0, ya: 0, go: 0, ot: 0, clicks: 0, yaC: 0, goC: 0 };
+    for (const r of rep.byEngineSite || []) {
+      const m = bs[r.site_key] || (bs[r.site_key] = { site_key: r.site_key, yandex: 0, google: 0, other: 0, visits: 0, clicks: 0 });
+      const bucket = r.engine === 'yandex' ? 'yandex' : r.engine === 'google' ? 'google' : 'other';
+      m[bucket] += r.visits; m.visits += r.visits; m.clicks += r.clicks;
+      t.org += r.visits; t.clicks += r.clicks;
+      if (r.engine === 'yandex') { t.ya += r.visits; t.yaC += r.clicks; }
+      else if (r.engine === 'google') { t.go += r.visits; t.goC += r.clicks; }
+      else t.ot += r.visits;
+    }
+    return { perSite: Object.values(bs).sort((a, b) => b.visits - a.visits), tot: t };
+  }, [rep.byEngineSite]);
+
+  const share = pctF(tot.org, total);
+  const conv = pctF(tot.clicks, tot.org);
+
+  // запросы Вебмастера (пока могут быть пустыми — сайты новые)
+  const wmFlat = useMemo(() => {
+    const out = [];
+    for (const s of webmaster) for (const qq of s.queries || []) {
+      out.push({ q: qq.q, host: s.host, impressions: qq.impressions, clicks: qq.clicks, ctr: qq.impressions ? (qq.clicks / qq.impressions) * 100 : 0 });
+    }
+    return out;
+  }, [webmaster]);
+  const wmRows = useMemo(() => {
+    let r = wmFlat;
+    if (qfilter === 'lowctr') r = r.filter((x) => x.impressions >= 50 && x.ctr < 3);
+    const cmp = { impressions: (a, b) => a.impressions - b.impressions, clicks: (a, b) => a.clicks - b.clicks, ctr: (a, b) => a.ctr - b.ctr };
+    return [...r].sort((a, b) => (cmp[qsort.k] ? cmp[qsort.k](a, b) * qsort.d : 0)).slice(0, 100);
+  }, [wmFlat, qfilter, qsort]);
+  const sortBy = (k) => setQsort((s) => (s.k === k ? { k, d: -s.d } : { k, d: -1 }));
+
+  const pagesTop = (rep.pages || []).slice(0, 12);
+
+  // рекомендации из данных
+  const recs = useMemo(() => {
+    const out = [];
+    for (const pg of rep.pages || []) {
+      const c = pctF(pg.clicks, pg.visits);
+      if (pg.visits >= 8 && c < 8) out.push({ sev: 'bad', t: `Низкая конверсия: ${pg.path}`, x: `${nameOf[pg.site_key] || pg.site_key} · органика ${pg.visits}, переходов ${pg.clicks} (${c}%) — усилить блоки провайдеров и CTA на странице` });
+      if (out.length >= 3) break;
+    }
+    for (const s of perSite) {
+      if (s.visits >= 10 && s.google === 0 && s.yandex > 0) out.push({ sev: 'steel', t: `${nameOf[s.site_key] || s.site_key}: нет органики Google`, x: `${s.yandex} визитов из Яндекса, из Google 0 — проверить индексацию в Google и подключить Search Console` });
+    }
+    for (const w of wmFlat) {
+      if (w.impressions >= 50 && w.ctr < 3) { out.push({ sev: 'warn', t: `Низкий CTR: «${w.q}»`, x: `${num(w.impressions)} показов, CTR ${w.ctr.toFixed(1)}% — переписать title и description посадочной под запрос` }); if (out.length >= 6) break; }
+    }
+    return out.slice(0, 6);
+  }, [rep.pages, perSite, wmFlat, nameOf]);
+
+  const cityMax = Math.max(1, ...(rep.cities || []).map((c) => c.visits));
+
+  return (
+    <div className="grid" style={{ gap: 14 }}>
+      <Card>
+        <div className="note" style={{ margin: 0 }}>
+          Бесплатный поиск по нашим сайтам: сколько визитов и переходов даёт органика, из Яндекса и Google, по каким
+          страницам и городам, и что подкрутить. Трафик, гео и конверсия — живьём из нашего пикселя за выбранный период.
+          Поисковые запросы — из снимка Яндекс.Вебмастера{wmGenerated ? ` (от ${wmGenerated})` : ''}; запросы Google появятся
+          после подключения Google Search Console.
+        </div>
+      </Card>
+
+      {/* KPI */}
+      <div className="grid kpis">
+        <Kpi label="Органика всего" value={num(tot.org)} sub={`${share}% от всех заходов`} />
+        <Kpi label="Яндекс" value={num(tot.ya)} sub={`${pctF(tot.ya, tot.org)}% органики`} />
+        <Kpi label="Google" value={num(tot.go)} sub={`${pctF(tot.go, tot.org)}% органики`} />
+        <Kpi label="Конверсия в переход" value={conv + '%'} sub={`${num(tot.clicks)} переходов`} />
+      </div>
+
+      {/* Динамика */}
+      <Card title="Динамика органики" hint="визиты по дням: Яндекс и Google">
+        <Line rows={rep.byDay || []} />
+      </Card>
+
+      {/* Сравнение движков */}
+      <div className="grid cols2" style={{ gap: 14 }}>
+        <Card title="Яндекс" hint={`${num(tot.ya)} визитов · ${num(tot.yaC)} переходов · конверсия ${pctF(tot.yaC, tot.ya)}%`}>
+          <div style={{ height: 3, background: YA, borderRadius: 2, margin: '-4px 0 12px' }} />
+          {wmFlat.length === 0 ? (
+            <div className="note" style={{ margin: 0 }}>
+              Запросы Вебмастера пока пусты — сайты новые и почти не ранжируются. Появятся здесь по мере роста позиций;
+              визиты, гео и конверсия по Яндексу уже считаются выше и в таблицах ниже.
+            </div>
+          ) : (
+            <div className="scroll" style={{ maxHeight: 240 }}>
+              <table>
+                <thead><tr><th>Запрос</th><th className="n">Показы</th><th className="n">Клики</th><th className="n">CTR</th></tr></thead>
+                <tbody>
+                  {wmFlat.slice(0, 12).map((w, i) => (
+                    <tr key={i}><td>{w.q}</td><td className="n muted">{num(w.impressions)}</td><td className="n">{num(w.clicks)}</td><td className="n">{w.ctr.toFixed(1)}%</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </Card>
+
+        <Card title="Google" hint={`${num(tot.go)} визитов · ${num(tot.goC)} переходов · конверсия ${pctF(tot.goC, tot.go)}%`}>
+          <div style={{ height: 3, background: GO, borderRadius: 2, margin: '-4px 0 12px' }} />
+          <Bars
+            rows={perSite.filter((s) => s.google > 0).map((s) => ({ visits: s.google, name: nameOf[s.site_key] || s.site_key }))}
+            label={(r) => r.name} color={GO}
+          />
+          <div className="note" style={{ marginTop: 10 }}>
+            Пиксель видит визиты и гео из Google, но запросы Google прячет — они появятся здесь после подключения Google Search Console.
+          </div>
+        </Card>
+      </div>
+
+      {/* По сайтам */}
+      <Card title="Органика по сайтам" hint="визиты → переходы → конверсия, с разбивкой по движку">
+        <div className="scroll">
+          <table>
+            <thead>
+              <tr><th>Сайт</th><th className="n">Визиты</th><th className="n">Яндекс</th><th className="n">Google</th><th className="n">Переходы</th><th className="n">Конверсия</th></tr>
+            </thead>
+            <tbody>
+              {perSite.map((s) => {
+                const c = pctF(s.clicks, s.visits);
+                return (
+                  <tr key={s.site_key}>
+                    <td>{nameOf[s.site_key] || s.site_key}</td>
+                    <td className="n">{num(s.visits)}</td>
+                    <td className="n muted" style={{ color: s.yandex ? YA : undefined }}>{num(s.yandex)}</td>
+                    <td className="n muted" style={{ color: s.google ? GO : undefined }}>{num(s.google)}</td>
+                    <td className="n">{num(s.clicks)}</td>
+                    <td className="n" style={{ color: convColor(c), fontWeight: 600 }}>{c}%</td>
+                  </tr>
+                );
+              })}
+              {perSite.length === 0 ? <tr><td colSpan={6}><Empty text="Органических визитов за период нет" /></td></tr> : null}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      {/* Страницы входа + География */}
+      <div className="grid cols2" style={{ gap: 14 }}>
+        <Card title="Страницы входа" hint="топ посадочных по органике и их конверсия">
+          <div className="scroll tall">
+            <table>
+              <thead><tr><th>Страница</th><th>Сайт</th><th className="n">Визиты</th><th className="n">Пер.</th><th className="n">Конв.</th></tr></thead>
+              <tbody>
+                {pagesTop.map((pg, i) => {
+                  const c = pctF(pg.clicks, pg.visits);
+                  return (
+                    <tr key={i}>
+                      <td><span className="trunc" title={pg.path}>{pg.path}</span></td>
+                      <td className="dim" style={{ fontSize: 12 }}>{nameOf[pg.site_key] || pg.site_key}</td>
+                      <td className="n">{num(pg.visits)}</td>
+                      <td className="n muted">{num(pg.clicks)}</td>
+                      <td className="n" style={{ color: convColor(c) }}>{c}%</td>
+                    </tr>
+                  );
+                })}
+                {pagesTop.length === 0 ? <tr><td colSpan={5}><Empty text="нет данных" /></td></tr> : null}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+
+        <Card title="География органики" hint="топ городов по визитам">
+          <Bars rows={(rep.cities || []).map((c) => ({ visits: c.visits, city: c.city, country: c.country }))} label={(r) => `${r.city}${r.country ? ', ' + r.country : ''}`} color={YA} max={cityMax} />
+        </Card>
+      </div>
+
+      {/* Запросы */}
+      <Card title="Поисковые запросы" hint="Яндекс.Вебмастер · показы, клики, CTR">
+        <div className="chips" style={{ margin: '0 0 12px' }}>
+          {[['all', 'Все'], ['lowctr', 'Низкий CTR']].map(([k, l]) => (
+            <button key={k} className={'chip' + (qfilter === k ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setQfilter(k)}>{l}</button>
+          ))}
+        </div>
+        {wmFlat.length === 0 ? (
+          <Empty text="Запросов пока нет — сайты новые и ещё не ранжируются. Наполнится по мере роста позиций; Google-запросы — после подключения Search Console" />
+        ) : (
+          <div className="scroll tall">
+            <table>
+              <thead>
+                <tr>
+                  <th>Запрос</th><th>Сайт</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'impressions' ? 'var(--brass)' : undefined }} onClick={() => sortBy('impressions')}>Показы</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'clicks' ? 'var(--brass)' : undefined }} onClick={() => sortBy('clicks')}>Клики</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'ctr' ? 'var(--brass)' : undefined }} onClick={() => sortBy('ctr')}>CTR</th>
+                  <th className="n">Позиция</th>
+                </tr>
+              </thead>
+              <tbody>
+                {wmRows.map((w, i) => (
+                  <tr key={i}>
+                    <td>{w.q}</td>
+                    <td className="dim" style={{ fontSize: 12 }}>{w.host}</td>
+                    <td className="n muted">{num(w.impressions)}</td>
+                    <td className="n">{num(w.clicks)}</td>
+                    <td className="n" style={{ color: w.impressions >= 50 && w.ctr < 3 ? SEV.warn : undefined }}>{w.ctr.toFixed(1)}%</td>
+                    <td className="n dim">—</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+          Позиция и запросы Google появятся после подключения Google Search Console; позиции Яндекса добавим в коннектор Вебмастера.
+        </div>
+      </Card>
+
+      {/* Устройства */}
+      <Card title="Устройства органики" hint="по визитам">
+        <div className="grid cols2" style={{ gap: 16 }}>
+          <div>
+            <div style={{ fontSize: 12.5, color: YA, fontWeight: 600, marginBottom: 8 }}>Устройства</div>
+            <Bars rows={rep.devices || []} label={(r) => r.k || '—'} color={YA} />
+          </div>
+          <div>
+            <div style={{ fontSize: 12.5, color: GO, fontWeight: 600, marginBottom: 8 }}>ОС</div>
+            <Bars rows={rep.oss || []} label={(r) => r.k || '—'} color={GO} />
+          </div>
+        </div>
+      </Card>
+
+      {/* Рекомендации */}
+      <Card title="Рекомендации" hint="что подкрутить по органике">
+        {recs.length === 0 ? (
+          <div className="note" style={{ margin: 0 }}>Пока мало органики для рекомендаций — копим данные. Появятся, как только наберётся трафик и позиции.</div>
+        ) : (
+          <div>
+            {recs.map((r, i) => (
+              <div key={i} style={{ display: 'flex', gap: 10, padding: '9px 0', borderBottom: i < recs.length - 1 ? '1px solid var(--line-soft)' : 'none' }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: SEV[r.sev], marginTop: 5, flex: 'none' }} />
+                <div><div style={{ fontWeight: 600, fontSize: 13.5 }}>{r.t}</div><div className="dim" style={{ fontSize: 12.5, marginTop: 2 }}>{r.x}</div></div>
+              </div>
+            ))}
+          </div>
+        )}
+      </Card>
+    </div>
+  );
+}

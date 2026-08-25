@@ -8,6 +8,7 @@ const GO = '#5b7a99';   // Google — сталь
 const SEV = { bad: '#d1697a', warn: '#d9a441', good: '#6cbf8b', steel: '#5b7a99' };
 const pctF = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)');
+const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 
 function Line({ rows }) {
   const max = Math.max(1, ...rows.map((r) => Math.max(r.yandex, r.google)));
@@ -55,9 +56,9 @@ function Bars({ rows, label, color = YA, max }) {
   );
 }
 
-export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerated, sites = [], tz }) {
+export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], wmGenerated, gscGenerated, sites = [], tz }) {
   const nameOf = useMemo(() => Object.fromEntries(sites.map((s) => [s.key, s.name])), [sites]);
-  const [qfilter, setQfilter] = useState('all'); // all | lowctr
+  const [qfilter, setQfilter] = useState('all'); // all | yandex | google | opp | lowctr
   const [qsort, setQsort] = useState({ k: 'impressions', d: -1 });
 
   const { perSite, tot } = useMemo(() => {
@@ -78,40 +79,54 @@ export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerate
   const share = pctF(tot.org, total);
   const conv = pctF(tot.clicks, tot.org);
 
-  // запросы Вебмастера (пока могут быть пустыми — сайты новые)
-  const wmFlat = useMemo(() => {
+  // объединяем запросы: Яндекс (Вебмастер) + Google (Search Console)
+  const allQ = useMemo(() => {
     const out = [];
-    for (const s of webmaster) for (const qq of s.queries || []) {
-      out.push({ q: qq.q, host: s.host, impressions: qq.impressions, clicks: qq.clicks, ctr: qq.impressions ? (qq.clicks / qq.impressions) * 100 : 0 });
+    for (const s of webmaster) for (const w of s.queries || []) {
+      out.push({ q: w.q, host: s.host, engine: 'yandex', impressions: w.impressions, clicks: w.clicks, ctr: w.impressions ? (w.clicks / w.impressions) * 100 : 0, position: null });
+    }
+    for (const s of gsc) for (const w of s.queries || []) {
+      out.push({ q: w.q, host: s.host, engine: 'google', impressions: w.impressions, clicks: w.clicks, ctr: w.ctr != null && w.ctr > 0 ? w.ctr : (w.impressions ? (w.clicks / w.impressions) * 100 : 0), position: w.position });
     }
     return out;
-  }, [webmaster]);
-  const wmRows = useMemo(() => {
-    let r = wmFlat;
-    if (qfilter === 'lowctr') r = r.filter((x) => x.impressions >= 50 && x.ctr < 3);
-    const cmp = { impressions: (a, b) => a.impressions - b.impressions, clicks: (a, b) => a.clicks - b.clicks, ctr: (a, b) => a.ctr - b.ctr };
-    return [...r].sort((a, b) => (cmp[qsort.k] ? cmp[qsort.k](a, b) * qsort.d : 0)).slice(0, 100);
-  }, [wmFlat, qfilter, qsort]);
-  const sortBy = (k) => setQsort((s) => (s.k === k ? { k, d: -s.d } : { k, d: -1 }));
+  }, [webmaster, gsc]);
+  const yaQ = useMemo(() => allQ.filter((x) => x.engine === 'yandex'), [allQ]);
+  const goQ = useMemo(() => allQ.filter((x) => x.engine === 'google'), [allQ]);
+
+  const qRows = useMemo(() => {
+    let r = allQ;
+    if (qfilter === 'yandex') r = r.filter((x) => x.engine === 'yandex');
+    else if (qfilter === 'google') r = r.filter((x) => x.engine === 'google');
+    else if (qfilter === 'opp') r = r.filter((x) => x.position != null && x.position >= 4 && x.position <= 15);
+    else if (qfilter === 'lowctr') r = r.filter((x) => x.impressions >= 50 && x.ctr < 3);
+    const cmp = { impressions: (a, b) => a.impressions - b.impressions, clicks: (a, b) => a.clicks - b.clicks, ctr: (a, b) => a.ctr - b.ctr, position: (a, b) => (a.position ?? 999) - (b.position ?? 999) };
+    return [...r].sort((a, b) => (cmp[qsort.k] ? cmp[qsort.k](a, b) * qsort.d : 0)).slice(0, 120);
+  }, [allQ, qfilter, qsort]);
+  const sortBy = (k) => setQsort((s) => (s.k === k ? { k, d: -s.d } : { k, d: k === 'position' ? 1 : -1 }));
 
   const pagesTop = (rep.pages || []).slice(0, 12);
 
-  // рекомендации из данных
   const recs = useMemo(() => {
     const out = [];
+    // Google-запросы у порога топа (позиция 4–15) — подтолкнуть
+    goQ.filter((w) => w.position != null && w.position >= 4 && w.position <= 15 && w.impressions >= 20)
+      .sort((a, b) => b.impressions - a.impressions).slice(0, 2)
+      .forEach((w) => out.push({ sev: 'warn', t: `Google, у порога топа: «${w.q}»`, x: `позиция ${w.position.toFixed(1)}, ${num(w.impressions)} показов — дописать раздел под запрос, чтобы выйти в топ-3` }));
+    // страницы с органикой, но низкой конверсией
     for (const pg of rep.pages || []) {
       const c = pctF(pg.clicks, pg.visits);
-      if (pg.visits >= 8 && c < 8) out.push({ sev: 'bad', t: `Низкая конверсия: ${pg.path}`, x: `${nameOf[pg.site_key] || pg.site_key} · органика ${pg.visits}, переходов ${pg.clicks} (${c}%) — усилить блоки провайдеров и CTA на странице` });
-      if (out.length >= 3) break;
+      if (pg.visits >= 8 && c < 8) { out.push({ sev: 'bad', t: `Низкая конверсия: ${pg.path}`, x: `${nameOf[pg.site_key] || pg.site_key} · органика ${pg.visits}, переходов ${pg.clicks} (${c}%) — усилить блоки провайдеров и CTA` }); }
+      if (out.length >= 4) break;
     }
+    // низкий CTR при высоких показах (любой движок)
+    allQ.filter((w) => w.impressions >= 50 && w.ctr < 3).slice(0, 2)
+      .forEach((w) => out.push({ sev: 'warn', t: `Низкий CTR (${ENG_RU[w.engine]}): «${w.q}»`, x: `${num(w.impressions)} показов, CTR ${w.ctr.toFixed(1)}% — переписать title и description посадочной` }));
+    // разрыв движков по сайту
     for (const s of perSite) {
-      if (s.visits >= 10 && s.google === 0 && s.yandex > 0) out.push({ sev: 'steel', t: `${nameOf[s.site_key] || s.site_key}: нет органики Google`, x: `${s.yandex} визитов из Яндекса, из Google 0 — проверить индексацию в Google и подключить Search Console` });
+      if (s.visits >= 10 && s.google === 0 && s.yandex > 0) out.push({ sev: 'steel', t: `${nameOf[s.site_key] || s.site_key}: нет органики Google`, x: `${s.yandex} визитов из Яндекса, из Google 0 — проверить индексацию в Google Search Console` });
     }
-    for (const w of wmFlat) {
-      if (w.impressions >= 50 && w.ctr < 3) { out.push({ sev: 'warn', t: `Низкий CTR: «${w.q}»`, x: `${num(w.impressions)} показов, CTR ${w.ctr.toFixed(1)}% — переписать title и description посадочной под запрос` }); if (out.length >= 6) break; }
-    }
-    return out.slice(0, 6);
-  }, [rep.pages, perSite, wmFlat, nameOf]);
+    return out.slice(0, 7);
+  }, [goQ, allQ, rep.pages, perSite, nameOf]);
 
   const cityMax = Math.max(1, ...(rep.cities || []).map((c) => c.visits));
 
@@ -121,8 +136,8 @@ export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerate
         <div className="note" style={{ margin: 0 }}>
           Бесплатный поиск по нашим сайтам: сколько визитов и переходов даёт органика, из Яндекса и Google, по каким
           страницам и городам, и что подкрутить. Трафик, гео и конверсия — живьём из нашего пикселя за выбранный период.
-          Поисковые запросы — из снимка Яндекс.Вебмастера{wmGenerated ? ` (от ${wmGenerated})` : ''}; запросы Google появятся
-          после подключения Google Search Console.
+          Поисковые запросы: Яндекс — из Вебмастера{wmGenerated ? ` (снимок ${wmGenerated})` : ''}, Google — из Search Console
+          {gscGenerated ? ` (снимок ${gscGenerated})` : (gsc.length ? '' : ' (подключается)')}.
         </div>
       </Card>
 
@@ -143,17 +158,17 @@ export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerate
       <div className="grid cols2" style={{ gap: 14 }}>
         <Card title="Яндекс" hint={`${num(tot.ya)} визитов · ${num(tot.yaC)} переходов · конверсия ${pctF(tot.yaC, tot.ya)}%`}>
           <div style={{ height: 3, background: YA, borderRadius: 2, margin: '-4px 0 12px' }} />
-          {wmFlat.length === 0 ? (
+          {yaQ.length === 0 ? (
             <div className="note" style={{ margin: 0 }}>
-              Запросы Вебмастера пока пусты — сайты новые и почти не ранжируются. Появятся здесь по мере роста позиций;
-              визиты, гео и конверсия по Яндексу уже считаются выше и в таблицах ниже.
+              Запросы Вебмастера пока пусты или только набираются — сайты молодые. Появятся здесь по мере роста позиций;
+              визиты, гео и конверсия по Яндексу уже считаются выше.
             </div>
           ) : (
             <div className="scroll" style={{ maxHeight: 240 }}>
               <table>
                 <thead><tr><th>Запрос</th><th className="n">Показы</th><th className="n">Клики</th><th className="n">CTR</th></tr></thead>
                 <tbody>
-                  {wmFlat.slice(0, 12).map((w, i) => (
+                  {[...yaQ].sort((a, b) => b.impressions - a.impressions).slice(0, 12).map((w, i) => (
                     <tr key={i}><td>{w.q}</td><td className="n muted">{num(w.impressions)}</td><td className="n">{num(w.clicks)}</td><td className="n">{w.ctr.toFixed(1)}%</td></tr>
                   ))}
                 </tbody>
@@ -164,13 +179,28 @@ export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerate
 
         <Card title="Google" hint={`${num(tot.go)} визитов · ${num(tot.goC)} переходов · конверсия ${pctF(tot.goC, tot.go)}%`}>
           <div style={{ height: 3, background: GO, borderRadius: 2, margin: '-4px 0 12px' }} />
-          <Bars
-            rows={perSite.filter((s) => s.google > 0).map((s) => ({ visits: s.google, name: nameOf[s.site_key] || s.site_key }))}
-            label={(r) => r.name} color={GO}
-          />
-          <div className="note" style={{ marginTop: 10 }}>
-            Пиксель видит визиты и гео из Google, но запросы Google прячет — они появятся здесь после подключения Google Search Console.
-          </div>
+          {goQ.length === 0 ? (
+            <>
+              <Bars
+                rows={perSite.filter((s) => s.google > 0).map((s) => ({ visits: s.google, name: nameOf[s.site_key] || s.site_key }))}
+                label={(r) => r.name} color={GO}
+              />
+              <div className="note" style={{ marginTop: 10 }}>
+                Пиксель видит визиты и гео из Google, а запросы, позиции и CTR по Google придут из Google Search Console — секция подключается.
+              </div>
+            </>
+          ) : (
+            <div className="scroll" style={{ maxHeight: 240 }}>
+              <table>
+                <thead><tr><th>Запрос</th><th className="n">Показы</th><th className="n">Клики</th><th className="n">CTR</th><th className="n">Поз.</th></tr></thead>
+                <tbody>
+                  {[...goQ].sort((a, b) => b.impressions - a.impressions).slice(0, 12).map((w, i) => (
+                    <tr key={i}><td>{w.q}</td><td className="n muted">{num(w.impressions)}</td><td className="n">{num(w.clicks)}</td><td className="n">{w.ctr.toFixed(1)}%</td><td className="n">{w.position != null ? w.position.toFixed(1) : '—'}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </Card>
       </div>
 
@@ -231,36 +261,37 @@ export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerate
         </Card>
       </div>
 
-      {/* Запросы */}
-      <Card title="Поисковые запросы" hint="Яндекс.Вебмастер · показы, клики, CTR">
+      {/* Запросы: Яндекс + Google вместе */}
+      <Card title="Поисковые запросы" hint="Яндекс (Вебмастер) и Google (Search Console) вместе">
         <div className="chips" style={{ margin: '0 0 12px' }}>
-          {[['all', 'Все'], ['lowctr', 'Низкий CTR']].map(([k, l]) => (
+          {[['all', 'Все'], ['yandex', 'Яндекс'], ['google', 'Google'], ['opp', 'Позиция 4–15'], ['lowctr', 'Низкий CTR']].map(([k, l]) => (
             <button key={k} className={'chip' + (qfilter === k ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setQfilter(k)}>{l}</button>
           ))}
         </div>
-        {wmFlat.length === 0 ? (
-          <Empty text="Запросов пока нет — сайты новые и ещё не ранжируются. Наполнится по мере роста позиций; Google-запросы — после подключения Search Console" />
+        {allQ.length === 0 ? (
+          <Empty text="Запросов пока нет — сайты молодые и ещё почти не ранжируются. Наполнится по мере роста; Google-запросы — когда коннектор начнёт писать данные Search Console" />
         ) : (
           <div className="scroll tall">
             <table>
               <thead>
                 <tr>
-                  <th>Запрос</th><th>Сайт</th>
+                  <th>Запрос</th><th>Движок</th><th>Сайт</th>
                   <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'impressions' ? 'var(--brass)' : undefined }} onClick={() => sortBy('impressions')}>Показы</th>
                   <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'clicks' ? 'var(--brass)' : undefined }} onClick={() => sortBy('clicks')}>Клики</th>
                   <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'ctr' ? 'var(--brass)' : undefined }} onClick={() => sortBy('ctr')}>CTR</th>
-                  <th className="n">Позиция</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'position' ? 'var(--brass)' : undefined }} onClick={() => sortBy('position')}>Позиция</th>
                 </tr>
               </thead>
               <tbody>
-                {wmRows.map((w, i) => (
+                {qRows.map((w, i) => (
                   <tr key={i}>
                     <td>{w.q}</td>
+                    <td style={{ color: w.engine === 'yandex' ? YA : GO, fontSize: 12 }}>{ENG_RU[w.engine]}</td>
                     <td className="dim" style={{ fontSize: 12 }}>{w.host}</td>
                     <td className="n muted">{num(w.impressions)}</td>
                     <td className="n">{num(w.clicks)}</td>
                     <td className="n" style={{ color: w.impressions >= 50 && w.ctr < 3 ? SEV.warn : undefined }}>{w.ctr.toFixed(1)}%</td>
-                    <td className="n dim">—</td>
+                    <td className="n" style={{ color: w.position != null && w.position >= 4 && w.position <= 15 ? SEV.warn : undefined }}>{w.position != null ? w.position.toFixed(1) : '—'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -268,7 +299,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], wmGenerate
           </div>
         )}
         <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
-          Позиция и запросы Google появятся после подключения Google Search Console; позиции Яндекса добавим в коннектор Вебмастера.
+          Позиция по Яндексу появится, когда добавим её в коннектор Вебмастера. По Google позиция и CTR приходят из Search Console.
         </div>
       </Card>
 

@@ -49,11 +49,11 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
   const siteFiltered = siteRows.filter((r) => on(r.key));
   const maxSiteClicks = Math.max(1, ...siteFiltered.map((r) => r.clicks));
 
-  // провайдеры: агрегируем по выбранным сайтам. У providerBySite ключ сайта
-  // может быть с суффиксом направления (serverselection-ru/-en) — приводим к базовому.
-  const baseKey = (k) => String(k || '').replace(/-(ru|en)$/, '');
+  // провайдеры: агрегируем по выбранным сайтам напрямую по ключу сайта.
+  // (ключ у providerBySite совпадает с ключом сайта: podborvps / servercalc-ru / servercalc-com;
+  // serverselection выведен в архив и в данные не попадает)
   const provMap = {};
-  for (const r of provRows) { if (on(baseKey(r.site_key))) provMap[r.provider] = (provMap[r.provider] || 0) + r.clicks; }
+  for (const r of provRows) { if (on(r.site_key)) provMap[r.provider] = (provMap[r.provider] || 0) + r.clicks; }
   const topProv = Object.entries(provMap).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const maxProv = topProv[0]?.[1] || 1;
 

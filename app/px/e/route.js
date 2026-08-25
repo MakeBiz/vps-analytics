@@ -84,20 +84,24 @@ async function resolveProvider(targetHost, hint) {
         if (host === hh || host.endsWith('.' + hh)) return p.slug;
       }
     }
+    // Нет в справочнике: имя провайдера ВСЕГДА выводим из домена назначения —
+    // это стабильно. Раньше тут срабатывал hint (utm_content/data-provider), а он
+    // разный на разных местах, и один провайдер дробился на дубли (alphavps, alphavps-1…).
+    // Берём второй уровень домена (foo.bar.com → bar), новый хост заводим в справочник.
+    const parts = host.split('.');
+    const slug = parts.length >= 2 ? parts[parts.length - 2] : host;
+    try {
+      await qRaw(
+        'insert into providers (slug, name, hosts) values ($1,$2,$3) on conflict (slug) do nothing',
+        [slug, slug, [host]]
+      );
+      provAt = 0;
+    } catch {}
+    return slug;
   }
+  // Хоста назначения нет (редкий случай) — как запас берём подсказку из ссылки.
   if (hint) return clean(hint, 60).toLowerCase();
-  if (!host) return '';
-  const slug = host.split('.').slice(0, -1).join('.') || host;
-  // Новый хост назначения заводим в справочник, чтобы его можно было
-  // переименовать в панели, а не искать глазами в сыром журнале
-  try {
-    await qRaw(
-      'insert into providers (slug, name, hosts) values ($1,$2,$3) on conflict (slug) do nothing',
-      [slug, host, [host]]
-    );
-    provAt = 0;
-  } catch {}
-  return slug;
+  return '';
 }
 
 export async function POST(req) {

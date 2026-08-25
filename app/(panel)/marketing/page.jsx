@@ -2,7 +2,11 @@ import { num, pct } from '@/lib/format';
 import { loadMarketing } from '@/lib/marketing';
 import { VPS_CAMPAIGN_ALLOW as ALLOW, baseCampaignName as baseName } from '@/lib/direct';
 import { Card, Kpi, Empty, BarCell } from '@/components/ui';
-import CampaignFilter from '@/components/CampaignFilter';
+import MarketingBoard from '@/components/MarketingBoard';
+
+// какому нашему сайту соответствует кампания-агрегатор (для воронки)
+const SITE_OF = { 'Podborvps.ru': 'podborvps', 'Servercalc': 'servercalc-ru' };
+const typeOf = (kind) => (kind === 'site' ? 'agg' : kind === 'rsya' ? 'rsya' : 'prov');
 
 export const dynamic = 'force-dynamic';
 
@@ -50,6 +54,41 @@ export default async function Marketing() {
   const ws = m.wordstat || [];
   const maxWs = Math.max(1, ...ws.map((w) => w.count));
 
+  // ---- данные трёхслойной доски (рейтинг + воронка) ----
+  const boardCamps = camps.map((c) => ({
+    id: String(c.id), name: c.name, base: baseName(c.name),
+    cost: c.cost, clicks: c.clicks, ctr: c.ctr, cpc: c.cpc, kind: c.kind,
+    type: typeOf(c.kind),
+    impr: c.ctr > 0 ? Math.round((c.clicks * 100) / c.ctr) : 0,
+    ceiling: ceilingFor(c),
+  }));
+  const groups = {};
+  for (const a of m.direct?.ads || []) {
+    const b = baseName(a.campaign_name);
+    if (!allowNames.has(b)) continue;
+    (groups[b] = groups[b] || []).push({ group: a.group_name, clicks: a.clicks, cost: a.cost, cpc: a.avg_cpc });
+  }
+  const aggFunnel = [];
+  for (const c of boardCamps.filter((x) => x.type === 'agg')) {
+    const site = sites.find((s) => s.key === SITE_OF[c.base]);
+    if (site) aggFunnel.push({ site: site.key, name: site.name, clicks: c.clicks, cost: c.cost, visits: site.visits, providerClicks: site.providerClicks });
+  }
+  const provFunnel = boardCamps.filter((x) => x.type === 'prov').sort((a, b) => b.cost - a.cost)
+    .map((c) => ({ name: c.base, impr: c.impr, clicks: c.clicks, cpc: c.cpc, cost: c.cost }));
+  const funnel = { aggregators: aggFunnel, providers: provFunnel };
+
+  // каннибализация: один запрос в нескольких кампаниях
+  const byQ = {};
+  for (const r of q.top || []) {
+    if (!allowNames.has(baseName(r.camp))) continue;
+    (byQ[r.q] = byQ[r.q] || []).push({ camp: r.camp, clicks: r.clicks, cost: r.cost });
+  }
+  const cannibal = Object.entries(byQ).filter(([, a]) => a.length > 1)
+    .map(([qq, a]) => ({ q: qq, camps: a, clicks: a.reduce((s, x) => s + x.clicks, 0), cost: a.reduce((s, x) => s + x.cost, 0) }))
+    .sort((a, b) => b.cost - a.cost);
+
+  const shownSites = sites.filter((s) => s.key !== 'serverselection');
+
   return (
     <div className="grid" style={{ gap: 14 }}>
       <Card>
@@ -57,13 +96,13 @@ export default async function Marketing() {
           Маркетинг из коннектора Яндекса: Директ, Метрика, Вебмастер, Wordstat. Снимок от {m.generated},{' '}
           {m.window}. Обновляется по запросу (коннектор на Маке, панель к нему вживую не ходит).
           <br />
-          В расчёт и вывод берутся только согласованные кампании Директа. Сверху фильтр по кампаниям: можно выбрать
-          «Все» или отдельные, KPI и таблица расходов пересчитаются. Идёт плавный переход на новые кампании
-          Podborvps/Servercalc, пока держим и старые тоже. Кампании без расхода за период не показываются.
+          В расчёт и вывод берутся только согласованные кампании Директа. Три слоя ниже: рейтинг кампаний с оценкой,
+          экономика воронки по типам (агрегаторы против провайдеров) и тренды с рекомендациями. Кампании без расхода
+          за период не показываются.
         </div>
       </Card>
 
-      <CampaignFilter campaigns={camps} provClicks={provClicks} trends={tr} />
+      <MarketingBoard camps={boardCamps} groups={groups} funnel={funnel} />
 
       {m.direct?.dailyVps?.length ? (
         <Card title="Директ по дням" hint="показы и переходы по VPS-кампаниям (без Solara)">
@@ -137,7 +176,7 @@ export default async function Marketing() {
               </tr>
             </thead>
             <tbody>
-              {sites.map((x) => {
+              {shownSites.map((x) => {
                 const cpa = cpaFor(x);
                 const top = (x.goals || []).slice(0, 5).map(([s, n]) => `${s} ${n}`).join(', ');
                 return (
@@ -227,6 +266,35 @@ export default async function Marketing() {
           </div>
         </Card>
       </div>
+
+      <Card title="Каннибализация запросов" hint="один запрос тянут несколько кампаний — конкурируем сами с собой и поднимаем цену">
+        {cannibal.length === 0 ? (
+          <div className="note" style={{ margin: 0 }}>Пересечений по запросам между кампаниями не найдено.</div>
+        ) : (
+          <div className="scroll">
+            <table>
+              <thead><tr><th>Запрос</th><th className="n">Клики</th><th className="n">Расход</th><th>Кампании, которые за него бьются</th></tr></thead>
+              <tbody>
+                {cannibal.map((r, i) => (
+                  <tr key={i}>
+                    <td><b>{r.q}</b></td>
+                    <td className="n">{num(r.clicks)}</td>
+                    <td className="n">{rub(r.cost)}</td>
+                    <td className="dim" style={{ fontSize: 12 }}>
+                      {r.camps.map((c, j) => (
+                        <span key={j}>{j ? ' · ' : ''}{c.camp} <span className="mono">({num(c.clicks)})</span></span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <div className="dim" style={{ fontSize: 12, marginTop: 8 }}>
+          Что делать: развести кампании минус-словами или объединить в одну группу, чтобы не торговаться с собой за клик.
+        </div>
+      </Card>
 
       <Card title="Спрос по ключам (Wordstat)" hint="показов в месяц, регион Россия">
         <div className="grid" style={{ gap: 10 }}>

@@ -17,13 +17,17 @@ function verdict(c) {
   }
   return { t: '—', c: 'muted' };
 }
-const VC = { good: '#3fae7a', ok: '#6f97bf', warn: '#d9a441', bad: '#e0736d', muted: 'var(--dim)' };
+// палитра «Контрол-рум» (через переменные .mkt с запасными значениями)
+const VC = {
+  good: 'var(--cr-good,#4fd39a)', ok: 'var(--cr-steel,#6f8fd6)',
+  warn: 'var(--cr-warn,#e8b04a)', bad: 'var(--cr-bad,#ff7a8a)', muted: 'var(--cr-dim,#6d7793)',
+};
+const ACC = 'var(--cr-acc,#35d0d6)';
 
 /**
- * Три слоя оценки рекламы:
+ * Два слоя оценки рекламы (стиль «Контрол-рум»):
  *  A — рейтинг кампаний (сортировка, фильтр по типу, раскрытие групп);
- *  B — экономика воронки по типам (агрегаторы / провайдеры);
- * Слой C (тренды + рекомендации) рендерится на странице отдельно.
+ *  B — экономика воронки по типам (агрегаторы / провайдеры).
  */
 export default function MarketingBoard({ camps = [], groups = {}, funnel = { aggregators: [], providers: [] } }) {
   const [type, setType] = useState('all'); // all | agg | prov
@@ -42,7 +46,7 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
   const toggle = (k) => setSort((s) => (s.k === k ? { k, d: -s.d } : { k, d: -1 }));
   const arr = (k) => (sort.k === k ? (sort.d < 0 ? ' ▾' : ' ▴') : '');
   const SortTh = ({ k, children }) => (
-    <th className="n" style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap', color: sort.k === k ? 'var(--brass)' : undefined }} onClick={() => toggle(k)}>{children}{arr(k)}</th>
+    <th className="n" style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap', color: sort.k === k ? ACC : undefined }} onClick={() => toggle(k)}>{children}{arr(k)}</th>
   );
 
   const TYPE_RU = { agg: 'агрегатор', prov: 'провайдер', rsya: 'РСЯ' };
@@ -85,11 +89,11 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
                       <td className="n">{num(c.clicks)}</td>
                       <td className="n muted">{String(c.ctr).replace('.', ',')}%</td>
                       <td className="n">{cpcF(c.cpc)}</td>
-                      <td className="n" style={{ color: c.ceiling ? VC[v.c] : 'var(--dim)' }}>{c.ceiling ? '×' + (c.cpc / c.ceiling).toFixed(2).replace('.', ',') : '—'}</td>
+                      <td className="n" style={{ color: c.ceiling ? VC[v.c] : 'var(--cr-dim,#6d7793)', fontWeight: c.ceiling ? 600 : 400 }}>{c.ceiling ? '×' + (c.cpc / c.ceiling).toFixed(2).replace('.', ',') : '—'}</td>
                       <td className="n" style={{ color: VC[v.c], fontWeight: 600, fontSize: 12.5 }}>{v.t}</td>
                     </tr>
                     {isOpen && grp.map((g, i) => (
-                      <tr key={c.id + '-' + i} style={{ background: 'var(--panel2, rgba(0,0,0,.12))' }}>
+                      <tr key={c.id + '-' + i} style={{ background: 'var(--cr-line2,#1a2138)' }}>
                         <td style={{ paddingLeft: 26 }} className="muted">↳ {g.group || 'без группы'}</td>
                         <td className="dim" style={{ fontSize: 11 }}>группа</td>
                         <td className="n muted">{rub(g.cost)}</td><td className="n" />
@@ -110,20 +114,22 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
       <div className="card">
         <h2>Экономика воронки<span className="hint">по типам кампаний</span></h2>
 
-        <div style={{ fontSize: 12.5, color: '#6cbf8b', fontWeight: 600, margin: '4px 0 6px' }}>Агрегаторы — вся воронка клик → визит сайта → переход к провайдеру</div>
+        <div style={{ fontSize: 12.5, color: ACC, fontWeight: 600, margin: '4px 0 6px' }}>Агрегаторы — вся воронка клик → визит сайта → переход к провайдеру</div>
         {funnel.aggregators.length === 0 ? <div className="empty">Нет данных</div> : (
           <div className="grid cols2" style={{ gap: 14 }}>
             {funnel.aggregators.map((a) => {
               const steps = [
-                { l: 'Клики Директа', v: a.clicks, c: '#5b7a99' },
-                { l: 'Визиты сайта', v: a.visits, c: '#6f97bf' },
-                { l: 'Переходы к провайдеру', v: a.providerClicks, c: '#c6a15b' },
+                { l: 'Клики Директа', v: a.clicks, g: 'linear-gradient(90deg,#2a3556,#4a6aa8)' },
+                { l: 'Визиты сайта', v: a.visits, g: 'linear-gradient(90deg,#2a3556,#5b8fc9)' },
+                { l: 'Переходы к провайдеру', v: a.providerClicks, g: 'linear-gradient(90deg,#1c6b60,#35d0d6)' },
               ];
               const top = steps[0].v || 1;
+              const cpa = a.providerClicks ? a.cost / a.providerClicks : null;
+              const dear = cpa && cpa > 60;
               return (
-                <div key={a.site} style={{ border: '1px solid var(--line)', borderRadius: 10, padding: '12px 14px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-                    <b>{a.name}</b>
+                <div key={a.site} style={{ border: '1px solid var(--cr-line,#222a44)', borderRadius: 12, padding: '13px 15px', background: 'var(--cr-box2,#111731)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+                    <b style={{ fontFamily: "'Sora',sans-serif", fontSize: 15 }}>{a.name}</b>
                     <span className="dim" style={{ fontSize: 12 }}>расход {rub(a.cost)}</span>
                   </div>
                   {steps.map((s, i) => {
@@ -131,21 +137,21 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
                     const prev = i > 0 ? steps[i - 1].v : null;
                     const drop = prev != null && prev > 0 ? Math.round((1 - s.v / prev) * 100) : null;
                     return (
-                      <div key={i} style={{ marginBottom: 7 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, marginBottom: 2 }}>
-                          <span>{s.l}</span><b>{num(s.v)}</b>
+                      <div key={i} style={{ marginBottom: 8 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, marginBottom: 3 }}>
+                          <span>{s.l}</span><b className="mono">{num(s.v)}</b>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                          <div style={{ flex: 1, height: 16, background: 'var(--line)', borderRadius: 5, overflow: 'hidden' }}>
-                            <div style={{ width: w + '%', height: '100%', background: s.c, opacity: .85 }} />
+                          <div style={{ flex: 1, height: 18, background: 'var(--cr-track,#0f1426)', borderRadius: 6, overflow: 'hidden' }}>
+                            <div style={{ width: w + '%', height: '100%', background: s.g }} />
                           </div>
-                          <span className="dim" style={{ width: 78, textAlign: 'right', fontSize: 11 }}>{drop != null ? (drop > 0 ? `−${drop}%` : 'без потерь') : ''}</span>
+                          <span className="dim" style={{ width: 80, textAlign: 'right', fontSize: 11 }}>{drop != null ? (drop > 0 ? `−${drop}%` : 'без потерь') : ''}</span>
                         </div>
                       </div>
                     );
                   })}
-                  <div style={{ display: 'flex', gap: 14, marginTop: 8, flexWrap: 'wrap', fontSize: 12.5 }}>
-                    <span>Стоимость перехода <b style={{ color: '#c6a15b' }}>{a.providerClicks ? rub(a.cost / a.providerClicks) : '—'}</b></span>
+                  <div style={{ display: 'flex', gap: 14, marginTop: 9, paddingTop: 9, borderTop: '1px solid var(--cr-line,#222a44)', flexWrap: 'wrap', fontSize: 12.5 }}>
+                    <span>Стоимость перехода <b className="mono" style={{ color: dear ? VC.bad : ACC }}>{cpa ? rub(cpa) : '—'}</b></span>
                     <span className="dim">конверсия визит→переход {pctF(a.providerClicks, a.visits)}%</span>
                   </div>
                 </div>
@@ -157,7 +163,7 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
           Визиты и переходы — из Метрики по всему сайту (не только Директ), поэтому воронка оценочная сверху. Точная привязка к кампании появится с разметкой yclid.
         </div>
 
-        <div style={{ fontSize: 12.5, color: '#6f97bf', fontWeight: 600, margin: '14px 0 6px' }}>Провайдеры — верх воронки, дальше кабинет партнёра</div>
+        <div style={{ fontSize: 12.5, color: 'var(--cr-steel,#6f8fd6)', fontWeight: 600, margin: '14px 0 6px' }}>Провайдеры — верх воронки, дальше кабинет партнёра</div>
         {funnel.providers.length === 0 ? <div className="empty">Нет данных</div> : (
           <div className="scroll">
             <table>

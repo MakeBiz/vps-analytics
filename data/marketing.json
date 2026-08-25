@@ -1496,16 +1496,31 @@
     }
   ],
   "webmaster": {
+    "generated": "26.08.2026",
     "sites": [
       {
         "host": "podborvps.ru",
         "queries": []
       },
       {
+        "host": "servercalc.com",
+        "queries": []
+      },
+      {
         "host": "servercalc.ru",
         "queries": [
           [
+            "тарифы таймвеб клауд",
+            6,
+            0
+          ],
+          [
             "таймвеб сдн цена",
+            2,
+            0
+          ],
+          [
+            "timeweb cloud цены",
             2,
             0
           ],
@@ -1525,10 +1540,6 @@
             0
           ]
         ]
-      },
-      {
-        "host": "serverselection.online",
-        "queries": []
       }
     ]
   },

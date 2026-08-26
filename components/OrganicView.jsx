@@ -10,33 +10,58 @@ const pctF = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)');
 const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 
-// Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}]
+// Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}].
+// При наведении показываем вертикальную линию и всплывающие цифры по каждому сайту за день.
 function Line({ rows, series }) {
+  const [hi, setHi] = useState(null);
   const n = rows.length;
   const W = 320, H = 92;
   const max = Math.max(1, ...rows.flatMap((r) => series.map((s) => r[s.key] || 0)));
-  const pts = (key) =>
-    rows.map((r, i) => {
-      const x = n > 1 ? (i / (n - 1)) * W : 0;
-      const y = H - ((r[key] || 0) / max) * (H - 8) - 4;
-      return `${x.toFixed(1)},${y.toFixed(1)}`;
-    }).join(' ');
+  const X = (i) => (n > 1 ? (i / (n - 1)) * W : 0);
+  const Y = (v) => H - ((v || 0) / max) * (H - 8) - 4;
+  const pts = (key) => rows.map((r, i) => `${X(i).toFixed(1)},${Y(r[key]).toFixed(1)}`).join(' ');
   const empty = series.length === 0 || rows.every((r) => series.every((s) => !r[s.key]));
   if (empty) return <div className="empty">Органических визитов за период пока нет</div>;
+  const onMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    if (!rect.width) return;
+    let i = Math.round(((e.clientX - rect.left) / rect.width) * (n - 1));
+    setHi(Math.max(0, Math.min(n - 1, i)));
+  };
+  const leftPct = hi != null ? (X(hi) / W) * 100 : 0;
   return (
-    <>
-      <svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: 'block' }}>
+    <div style={{ position: 'relative' }} onMouseLeave={() => setHi(null)}>
+      <svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none"
+           style={{ display: 'block', cursor: 'crosshair' }} onMouseMove={onMove}>
+        {hi != null && <line x1={X(hi)} x2={X(hi)} y1="0" y2={H} stroke="var(--line)" strokeWidth="1" />}
         {series.map((s) => (
           <polyline key={s.key} points={pts(s.key)} fill="none" stroke={s.color} strokeWidth="2" />
         ))}
       </svg>
+      {hi != null && (
+        <div style={{
+          position: 'absolute', top: -6, left: `${leftPct}%`,
+          transform: `translateX(${leftPct > 70 ? '-100%' : leftPct < 30 ? '0' : '-50%'})`,
+          background: 'var(--panel-2)', border: '1px solid var(--line)', borderRadius: 8,
+          padding: '7px 10px', fontSize: 12, pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 3,
+          boxShadow: '0 6px 20px rgba(0,0,0,.35)',
+        }}>
+          <div className="dim" style={{ fontSize: 11, marginBottom: 4 }}>{rows[hi].d}</div>
+          {series.map((s) => (
+            <div key={s.key} style={{ display: 'flex', gap: 10, justifyContent: 'space-between' }}>
+              <span><b style={{ color: s.color }}>—</b> {s.name}</span>
+              <span className="mono" style={{ fontWeight: 600 }}>{num(rows[hi][s.key] || 0)}</span>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="dim" style={{ fontSize: 11.5, marginTop: 6, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         {series.map((s) => (
           <span key={s.key}><b style={{ color: s.color }}>—</b> {s.name}</span>
         ))}
         <span style={{ marginLeft: 'auto' }}>{rows[0]?.d} … {rows[rows.length - 1]?.d}</span>
       </div>
-    </>
+    </div>
   );
 }
 

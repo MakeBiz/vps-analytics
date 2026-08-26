@@ -1566,5 +1566,66 @@
         "queries": []
       }
     ]
+  },
+  "metrikaEngines": {
+    "generated": "26.08.2026",
+    "window": {
+      "from": "2026-07-27",
+      "to": "2026-08-26"
+    },
+    "sites": [
+      {
+        "site": "podborvps",
+        "host": "podborvps.ru",
+        "yandex": 0,
+        "google": 0,
+        "other": 1,
+        "engines": [
+          {
+            "name": "Bing, search results",
+            "engine": "other",
+            "visits": 1
+          }
+        ]
+      },
+      {
+        "site": "servercalc-ru",
+        "host": "servercalc.ru",
+        "yandex": 0,
+        "google": 1,
+        "other": 2,
+        "engines": [
+          {
+            "name": "Bing, search results",
+            "engine": "other",
+            "visits": 2
+          },
+          {
+            "name": "Google, search results",
+            "engine": "google",
+            "visits": 1
+          }
+        ]
+      },
+      {
+        "site": "servercalc-com",
+        "host": "servercalc.com",
+        "yandex": 1,
+        "google": 1,
+        "other": 0,
+        "engines": [
+          {
+            "name": "Yandex, search results",
+            "engine": "yandex",
+            "visits": 1
+          },
+          {
+            "name": "Google, search results",
+            "engine": "google",
+            "visits": 1
+          }
+        ]
+      }
+    ]
   }
 }

@@ -132,11 +132,20 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
     if (qfilter === 'yandex') r = r.filter((x) => x.engine === 'yandex');
     else if (qfilter === 'google') r = r.filter((x) => x.engine === 'google');
     else if (qfilter === 'opp') r = r.filter((x) => x.position != null && x.position >= 4 && x.position <= 15);
-    else if (qfilter === 'lowctr') r = r.filter((x) => x.impressions >= 50 && x.ctr < 3);
+    else if (qfilter === 'lowctr') r = r.filter((x) => x.impressions >= 20 && x.ctr < 3);
     const cmp = { impressions: (a, b) => a.impressions - b.impressions, clicks: (a, b) => a.clicks - b.clicks, ctr: (a, b) => a.ctr - b.ctr, position: (a, b) => (a.position ?? 999) - (b.position ?? 999) };
     return [...r].sort((a, b) => (cmp[qsort.k] ? cmp[qsort.k](a, b) * qsort.d : 0)).slice(0, 120);
   }, [allQ, qfilter, qsort]);
   const sortBy = (k) => setQsort((s) => (s.k === k ? { k, d: -s.d } : { k, d: k === 'position' ? 1 : -1 }));
+  // Пояснение к пустому фильтру: часто причина — мало данных (Google Search Console
+  // ещё копит, позиции по Яндексу не приходят, показов пока немного).
+  const qEmpty = {
+    google: 'По Google запросов пока нет — Search Console по этим сайтам ещё накапливает данные (свойство подключено 26.08, Google индексирует). Появятся здесь автоматически.',
+    opp: 'Нет запросов на позициях 4–15 — позиции приходят из Google Search Console (по Яндексу позиции пока не подключены). Появятся, когда накопятся данные.',
+    lowctr: 'Нет запросов с низким CTR при заметных показах — пока мало показов на запрос (нужно от 20). Наберётся по мере роста трафика.',
+    yandex: 'Запросов из Яндекс.Вебмастера в текущем снимке нет.',
+    all: 'Запросов пока нет.',
+  }[qfilter] || 'Под этот фильтр запросов пока нет.';
 
   const pagesTop = (rep.pages || []).slice(0, 12);
 
@@ -205,7 +214,9 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
           ))}
         </div>
         {allQ.length === 0 ? (
-          <Empty text="Запросов пока нет — сайты молодые и ещё почти не ранжируются. Наполнится по мере роста; Google-запросы — когда коннектор начнёт писать данные Search Console" />
+          <Empty text="Запросов пока нет — сайты молодые и ещё почти не ранжируются. Наполнится по мере роста; Google-запросы — когда Search Console начнёт отдавать данные" />
+        ) : qRows.length === 0 ? (
+          <Empty text={qEmpty} />
         ) : (
           <div className="scroll tall">
             <table>

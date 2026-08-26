@@ -154,55 +154,47 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
         <Line rows={rep.byDay || []} />
       </Card>
 
-      {/* Сравнение движков */}
-      <div className="grid cols2" style={{ gap: 14 }}>
-        <Card title="Яндекс" hint={`${num(tot.ya)} визитов · ${num(tot.yaC)} переходов · конверсия ${pctF(tot.yaC, tot.ya)}%`}>
-          <div style={{ height: 3, background: YA, borderRadius: 2, margin: '-4px 0 12px' }} />
-          {yaQ.length === 0 ? (
-            <div className="note" style={{ margin: 0 }}>
-              Запросы Вебмастера пока пусты или только набираются — сайты молодые. Появятся здесь по мере роста позиций;
-              визиты, гео и конверсия по Яндексу уже считаются выше.
-            </div>
-          ) : (
-            <div className="scroll" style={{ maxHeight: 240 }}>
-              <table>
-                <thead><tr><th>Запрос</th><th className="n">Показы</th><th className="n">Клики</th><th className="n">CTR</th></tr></thead>
-                <tbody>
-                  {[...yaQ].sort((a, b) => b.impressions - a.impressions).slice(0, 12).map((w, i) => (
-                    <tr key={i}><td>{w.q}</td><td className="n muted">{num(w.impressions)}</td><td className="n">{num(w.clicks)}</td><td className="n">{w.ctr.toFixed(1)}%</td></tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </Card>
-
-        <Card title="Google" hint={`${num(tot.go)} визитов · ${num(tot.goC)} переходов · конверсия ${pctF(tot.goC, tot.go)}%`}>
-          <div style={{ height: 3, background: GO, borderRadius: 2, margin: '-4px 0 12px' }} />
-          {goQ.length === 0 ? (
-            <>
-              <Bars
-                rows={perSite.filter((s) => s.google > 0).map((s) => ({ visits: s.google, name: nameOf[s.site_key] || s.site_key }))}
-                label={(r) => r.name} color={GO}
-              />
-              <div className="note" style={{ marginTop: 10 }}>
-                Пиксель видит визиты и гео из Google, а запросы, позиции и CTR по Google придут из Google Search Console — секция подключается.
-              </div>
-            </>
-          ) : (
-            <div className="scroll" style={{ maxHeight: 240 }}>
-              <table>
-                <thead><tr><th>Запрос</th><th className="n">Показы</th><th className="n">Клики</th><th className="n">CTR</th><th className="n">Поз.</th></tr></thead>
-                <tbody>
-                  {[...goQ].sort((a, b) => b.impressions - a.impressions).slice(0, 12).map((w, i) => (
-                    <tr key={i}><td>{w.q}</td><td className="n muted">{num(w.impressions)}</td><td className="n">{num(w.clicks)}</td><td className="n">{w.ctr.toFixed(1)}%</td><td className="n">{w.position != null ? w.position.toFixed(1) : '—'}</td></tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </Card>
-      </div>
+      {/* Поисковые запросы: Яндекс + Google вместе — вынесены наверх */}
+      <Card title="Поисковые запросы" hint="Яндекс (Вебмастер) и Google (Search Console) вместе">
+        <div className="chips" style={{ margin: '0 0 12px' }}>
+          {[['all', 'Все'], ['yandex', 'Яндекс'], ['google', 'Google'], ['opp', 'Позиция 4–15'], ['lowctr', 'Низкий CTR']].map(([k, l]) => (
+            <button key={k} className={'chip' + (qfilter === k ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setQfilter(k)}>{l}</button>
+          ))}
+        </div>
+        {allQ.length === 0 ? (
+          <Empty text="Запросов пока нет — сайты молодые и ещё почти не ранжируются. Наполнится по мере роста; Google-запросы — когда коннектор начнёт писать данные Search Console" />
+        ) : (
+          <div className="scroll tall">
+            <table>
+              <thead>
+                <tr>
+                  <th>Запрос</th><th>Движок</th><th>Сайт</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'impressions' ? 'var(--brass)' : undefined }} onClick={() => sortBy('impressions')}>Показы</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'clicks' ? 'var(--brass)' : undefined }} onClick={() => sortBy('clicks')}>Клики</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'ctr' ? 'var(--brass)' : undefined }} onClick={() => sortBy('ctr')}>CTR</th>
+                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'position' ? 'var(--brass)' : undefined }} onClick={() => sortBy('position')}>Позиция</th>
+                </tr>
+              </thead>
+              <tbody>
+                {qRows.map((w, i) => (
+                  <tr key={i}>
+                    <td>{w.q}</td>
+                    <td style={{ color: w.engine === 'yandex' ? YA : GO, fontSize: 12 }}>{ENG_RU[w.engine]}</td>
+                    <td className="dim" style={{ fontSize: 12 }}>{w.host}</td>
+                    <td className="n muted">{num(w.impressions)}</td>
+                    <td className="n">{num(w.clicks)}</td>
+                    <td className="n" style={{ color: w.impressions >= 50 && w.ctr < 3 ? SEV.warn : undefined }}>{w.ctr.toFixed(1)}%</td>
+                    <td className="n" style={{ color: w.position != null && w.position >= 4 && w.position <= 15 ? SEV.warn : undefined }}>{w.position != null ? w.position.toFixed(1) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+          Позиция по Яндексу появится, когда добавим её в коннектор Вебмастера. По Google позиция и CTR приходят из Search Console.
+        </div>
+      </Card>
 
       {/* По сайтам */}
       <Card title="Органика по сайтам" hint="визиты → переходы → конверсия, с разбивкой по движку">
@@ -260,48 +252,6 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
           <Bars rows={(rep.cities || []).map((c) => ({ visits: c.visits, city: c.city, country: c.country }))} label={(r) => `${r.city}${r.country ? ', ' + r.country : ''}`} color={YA} max={cityMax} />
         </Card>
       </div>
-
-      {/* Запросы: Яндекс + Google вместе */}
-      <Card title="Поисковые запросы" hint="Яндекс (Вебмастер) и Google (Search Console) вместе">
-        <div className="chips" style={{ margin: '0 0 12px' }}>
-          {[['all', 'Все'], ['yandex', 'Яндекс'], ['google', 'Google'], ['opp', 'Позиция 4–15'], ['lowctr', 'Низкий CTR']].map(([k, l]) => (
-            <button key={k} className={'chip' + (qfilter === k ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setQfilter(k)}>{l}</button>
-          ))}
-        </div>
-        {allQ.length === 0 ? (
-          <Empty text="Запросов пока нет — сайты молодые и ещё почти не ранжируются. Наполнится по мере роста; Google-запросы — когда коннектор начнёт писать данные Search Console" />
-        ) : (
-          <div className="scroll tall">
-            <table>
-              <thead>
-                <tr>
-                  <th>Запрос</th><th>Движок</th><th>Сайт</th>
-                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'impressions' ? 'var(--brass)' : undefined }} onClick={() => sortBy('impressions')}>Показы</th>
-                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'clicks' ? 'var(--brass)' : undefined }} onClick={() => sortBy('clicks')}>Клики</th>
-                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'ctr' ? 'var(--brass)' : undefined }} onClick={() => sortBy('ctr')}>CTR</th>
-                  <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'position' ? 'var(--brass)' : undefined }} onClick={() => sortBy('position')}>Позиция</th>
-                </tr>
-              </thead>
-              <tbody>
-                {qRows.map((w, i) => (
-                  <tr key={i}>
-                    <td>{w.q}</td>
-                    <td style={{ color: w.engine === 'yandex' ? YA : GO, fontSize: 12 }}>{ENG_RU[w.engine]}</td>
-                    <td className="dim" style={{ fontSize: 12 }}>{w.host}</td>
-                    <td className="n muted">{num(w.impressions)}</td>
-                    <td className="n">{num(w.clicks)}</td>
-                    <td className="n" style={{ color: w.impressions >= 50 && w.ctr < 3 ? SEV.warn : undefined }}>{w.ctr.toFixed(1)}%</td>
-                    <td className="n" style={{ color: w.position != null && w.position >= 4 && w.position <= 15 ? SEV.warn : undefined }}>{w.position != null ? w.position.toFixed(1) : '—'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-        <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
-          Позиция по Яндексу появится, когда добавим её в коннектор Вебмастера. По Google позиция и CTR приходят из Search Console.
-        </div>
-      </Card>
 
       {/* Устройства */}
       <Card title="Устройства органики" hint="по визитам">

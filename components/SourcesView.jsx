@@ -8,27 +8,16 @@ const fp = (x) => (Number(x) || 0).toFixed(1).replace('.', ',') + '%';
 const dash = (v) => (v ? v : <span className="dim">—</span>);
 
 /**
- * Вкладка «Источники»: сверху мультивыбор сайтов, ниже каналы захода и разбор
- * по utm-меткам. Фильтр по сайтам и сортировка работают на клиенте, без
- * перезагрузки: данные приходят с сервера уже с разбивкой по сайту.
+ * Вкладка «Источники»: каналы захода и разбор по utm-меткам. Сайт выбирается в
+ * единой шапке (общий фильтр) — данные приходят уже с учётом выбранного сайта,
+ * поэтому здесь просто агрегируем всё, что пришло. Сортировка работает на клиенте.
  */
 export default function SourcesView({ channelRows = [], utmRows = [], sites = [] }) {
-  const allKeys = sites.map((s) => s.key);
-  const [sel, setSel] = useState(() => new Set(allKeys));
   const [sortUtm, setSortUtm] = useState('visits');
-  const allOn = sel.size === allKeys.length;
 
-  const clickSite = (k) => setSel((prev) => {
-    if (prev.size === allKeys.length) return new Set([k]); // из «Все» → только этот
-    const n = new Set(prev);
-    n.has(k) ? n.delete(k) : n.add(k);
-    return n.size === 0 ? new Set(allKeys) : n;
-  });
-
-  // каналы: агрегируем по выбранным сайтам
+  // каналы: агрегируем все пришедшие строки (сайт уже отфильтрован в шапке)
   const chMap = {};
   for (const r of channelRows) {
-    if (!sel.has(r.site_key)) continue;
     const e = chMap[r.channel] || (chMap[r.channel] = { channel: r.channel, visits: 0, visitors: 0, pv: 0, clicks: 0 });
     e.visits += r.visits; e.visitors += r.visitors; e.pv += r.pv; e.clicks += r.clicks;
   }
@@ -37,7 +26,7 @@ export default function SourcesView({ channelRows = [], utmRows = [], sites = []
 
   // разбор по меткам
   const metric = { visits: (r) => r.visits, clicks: (r) => r.clicks, conv: (r) => r.conv };
-  const utm = utmRows.filter((r) => sel.has(r.site_key)).map((r) => ({ ...r, conv: r.visits ? (r.clicks / r.visits) * 100 : 0 }));
+  const utm = utmRows.map((r) => ({ ...r, conv: r.visits ? (r.clicks / r.visits) * 100 : 0 }));
   const utmSorted = [...utm].sort((a, b) => metric[sortUtm](b) - metric[sortUtm](a));
   const maxUtm = Math.max(1, ...utmSorted.map(metric[sortUtm]));
   const hl = { color: 'var(--brass)' };
@@ -47,17 +36,6 @@ export default function SourcesView({ channelRows = [], utmRows = [], sites = []
 
   return (
     <div className="grid">
-      <Card>
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
-          <span className="dim" style={{ fontSize: 12, marginRight: 2 }}>сайт:</span>
-          <button className={'chip' + (allOn ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setSel(new Set(allKeys))}>Все</button>
-          {sites.map((s) => (
-            <button key={s.key} className={'chip' + (!allOn && sel.has(s.key) ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => clickSite(s.key)}>{s.name}</button>
-          ))}
-          <span className="dim" style={{ fontSize: 12, marginLeft: 'auto' }}>фильтр применяется ко всем таблицам ниже</span>
-        </div>
-      </Card>
-
       <Card title="Каналы захода" hint="реклама, органика, соцсети, прямые; сортировка по клику. Переходы и конверсия это клик к провайдеру">
         {chRows.length === 0 ? <Empty /> : <ChannelTable rows={chRows} totalVisits={totalCh} />}
       </Card>

@@ -6,11 +6,10 @@ export const dynamic = 'force-dynamic';
 
 export default async function Sources({ searchParams }) {
   const f = parseFilters(await searchParams);
-  // Сайт выбирается кнопками на самой вкладке (мультивыбор), поэтому данные
-  // тянем сразу по всем сайтам, а глобальный фильтр сайта тут не применяем.
-  const f2 = { ...f, site: null };
+  // Сайт выбирается в единой шапке (общий фильтр). Данные приходят уже с учётом
+  // выбранного сайта; разбивка по сайту в строках сохраняется для таблиц.
   const [channelRows, utmRows, siteList] = await Promise.all([
-    channelsBySite(f2), utmBreakdown(f2), allSites(),
+    channelsBySite(f), utmBreakdown(f), allSites(),
   ]);
   const sites = siteList.filter((s) => !s.archived).map((s) => ({ key: s.key, name: s.name }));
 

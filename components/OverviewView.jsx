@@ -49,11 +49,15 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
   const topProv = Object.entries(provMap).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const maxProv = topProv[0]?.[1] || 1;
 
-  // каналы: агрегируем по выбранным сайтам
+  // каналы: агрегируем по выбранным сайтам. «Органика · без источника» (заход без
+  // реферера) относим к движку по сайту: servercalc.com → Google, русские сайты → Яндекс.
   const chMap = {};
   for (const r of channelRows) {
     if (!on(r.site_key)) continue;
-    const e = chMap[r.channel] || (chMap[r.channel] = { channel: r.channel, visits: 0, visitors: 0, pv: 0, clicks: 0 });
+    const channel = r.channel === 'Органика · без источника'
+      ? (String(r.site_key).includes('-com') ? 'Органика · Google' : 'Органика · Яндекс')
+      : r.channel;
+    const e = chMap[channel] || (chMap[channel] = { channel, visits: 0, visitors: 0, pv: 0, clicks: 0 });
     e.visits += r.visits; e.visitors += r.visitors; e.pv += r.pv; e.clicks += r.clicks;
   }
   const chRows = Object.values(chMap);

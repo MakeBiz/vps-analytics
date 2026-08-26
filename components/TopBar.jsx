@@ -51,6 +51,7 @@ export default function TopBar({ sites }) {
 
   const range = sp.get('d') || '7d';
   const src = sp.get('src') || '';
+  const site = sp.get('site') || '';
   const showSource = !NO_SOURCE_TABS.has(path);
 
   return (
@@ -70,14 +71,25 @@ export default function TopBar({ sites }) {
         ))}
       </div>
 
-      <select value={sp.get('site') || ''} onChange={(e) => set({ site: e.target.value })}>
-        <option value="">Все сайты</option>
+      <div className="chips" title="Выбор сайта">
+        <a
+          className={'chip' + (!site ? ' on' : '')}
+          onClick={() => set({ site: '' })}
+          style={{ cursor: 'pointer' }}
+        >
+          Все сайты
+        </a>
         {sites.map((s) => (
-          <option key={s.key} value={s.key}>
+          <a
+            key={s.key}
+            className={'chip' + (site === s.key ? ' on' : '')}
+            onClick={() => set({ site: s.key })}
+            style={{ cursor: 'pointer' }}
+          >
             {s.name}
-          </option>
+          </a>
         ))}
-      </select>
+      </div>
 
       {showSource && (
         <div className="chips" title="Органика включает прямые заходы; Реклама — платные клики">

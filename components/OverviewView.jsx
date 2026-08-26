@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import { num, pct, dur } from '@/lib/format';
 import Chart, { Bars } from '@/components/Chart';
 import { BarCell, Card, Empty, Kpi } from '@/components/ui';
@@ -8,20 +7,13 @@ import ChannelTable from '@/components/ChannelTable';
 const delta = (now, prev) => (prev ? ((now - prev) / prev) * 100 : undefined);
 
 /**
- * «Обзор» с мультивыбором сайтов вверху: выбор сайтов фильтрует всё на клиенте
- * (KPI с динамикой к прошлому периоду, график по дням, таблицы сайтов,
- * провайдеров, каналов и график по часам). Данные приходят с разбивкой по сайту.
+ * «Обзор». Сайт выбирается в единой шапке (общий фильтр), данные приходят уже
+ * с учётом выбранного сайта — тут просто агрегируем всё, что пришло: KPI с
+ * динамикой к прошлому периоду, график по дням, таблицы сайтов/провайдеров/каналов
+ * и график по часам. Разбивка по сайту в данных сохраняется (для таблицы «Сайты»).
  */
 export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, siteRows, channelRows, provRows, provNames, sites, tz }) {
-  const allKeys = sites.map((s) => s.key);
-  const [sel, setSel] = useState(() => new Set(allKeys));
-  const allOn = sel.size === allKeys.length;
-  const on = (k) => sel.has(k);
-  const clickSite = (k) => setSel((prev) => {
-    if (prev.size === allKeys.length) return new Set([k]);
-    const n = new Set(prev); n.has(k) ? n.delete(k) : n.add(k);
-    return n.size === 0 ? new Set(allKeys) : n;
-  });
+  const on = () => true; // фильтр сайта теперь в шапке; здесь берём все пришедшие строки
 
   const sumOv = (rows) => rows.filter((r) => on(r.site_key)).reduce((a, r) => ({
     visits: a.visits + r.visits, visitors: a.visitors + r.visitors, pv: a.pv + r.pv,
@@ -69,17 +61,6 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
 
   return (
     <div className="grid" style={{ gap: 14 }}>
-      <Card>
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
-          <span className="dim" style={{ fontSize: 12, marginRight: 2 }}>сайт:</span>
-          <button className={'chip' + (allOn ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setSel(new Set(allKeys))}>Все</button>
-          {sites.map((s) => (
-            <button key={s.key} className={'chip' + (!allOn && on(s.key) ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => clickSite(s.key)}>{s.name}</button>
-          ))}
-          <span className="dim" style={{ fontSize: 12, marginLeft: 'auto' }}>фильтр меняет все показатели, график и таблицы ниже</span>
-        </div>
-      </Card>
-
       <div className="grid kpis">
         <Kpi label="Визиты" value={num(ov.visits)} delta={delta(ov.visits, prev.visits)} />
         <Kpi label="Посетители" value={num(ov.visitors)} delta={delta(ov.visitors, prev.visitors)} />

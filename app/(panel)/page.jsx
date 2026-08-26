@@ -9,9 +9,9 @@ export const dynamic = 'force-dynamic';
 
 export default async function Overview({ searchParams }) {
   const f = parseFilters(await searchParams);
-  // Сайт выбирается кнопками на самой вкладке (мультивыбор), поэтому тянем
-  // данные сразу по всем сайтам, а глобальный фильтр сайта тут не применяем.
-  const f2 = { ...f, site: null };
+  // Сайт выбирается в единой шапке (общий фильтр). Разбивка по сайту сохраняется:
+  // при «Все сайты» показываем все, при выборе конкретного — только его.
+  const f2 = { ...f };
   const prevF = { ...f2, from: f.prevFrom, toExclusive: f.from };
 
   const [ovRows, prevRows, dayRows, hourRows, siteRows, channelRows, provRows, names, siteList] = await Promise.all([

@@ -66,14 +66,15 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
 
   const { perSite, tot } = useMemo(() => {
     const bs = {};
-    const t = { org: 0, ya: 0, go: 0, ot: 0, clicks: 0, yaC: 0, goC: 0 };
+    const t = { org: 0, ya: 0, go: 0, none: 0, ot: 0, clicks: 0, yaC: 0, goC: 0 };
     for (const r of rep.byEngineSite || []) {
-      const m = bs[r.site_key] || (bs[r.site_key] = { site_key: r.site_key, yandex: 0, google: 0, other: 0, visits: 0, clicks: 0 });
-      const bucket = r.engine === 'yandex' ? 'yandex' : r.engine === 'google' ? 'google' : 'other';
+      const m = bs[r.site_key] || (bs[r.site_key] = { site_key: r.site_key, yandex: 0, google: 0, none: 0, other: 0, visits: 0, clicks: 0 });
+      const bucket = r.engine === 'yandex' ? 'yandex' : r.engine === 'google' ? 'google' : r.engine === 'none' ? 'none' : 'other';
       m[bucket] += r.visits; m.visits += r.visits; m.clicks += r.clicks;
       t.org += r.visits; t.clicks += r.clicks;
       if (r.engine === 'yandex') { t.ya += r.visits; t.yaC += r.clicks; }
       else if (r.engine === 'google') { t.go += r.visits; t.goC += r.clicks; }
+      else if (r.engine === 'none') { t.none += r.visits; }
       else t.ot += r.visits;
     }
     return { perSite: Object.values(bs).sort((a, b) => b.visits - a.visits), tot: t };
@@ -156,7 +157,8 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       <Card>
         <div className="note" style={{ margin: 0 }}>
           Бесплатный поиск по нашим сайтам: сколько визитов и переходов даёт органика, из Яндекса и Google, по каким
-          страницам и городам, и что подкрутить. Трафик, гео и конверсия — живьём из нашего пикселя за выбранный период.
+          страницам и городам, и что подкрутить. Заходы без реферера (браузер не передал источник, но это не реклама)
+          считаем органикой «без источника» — движок у них не определить. Трафик, гео и конверсия — живьём из пикселя за период.
           Поисковые запросы: Яндекс — из Вебмастера{wmGenerated ? ` (снимок ${wmGenerated})` : ''}, Google — из Search Console
           {gscGenerated ? ` (снимок ${gscGenerated})` : (gsc.length ? '' : ' (подключается)')}.
         </div>
@@ -167,6 +169,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
         <Kpi label="Органика всего" value={num(tot.org)} sub={`${share}% от всех заходов`} />
         <Kpi label="Яндекс" value={num(tot.ya)} sub={`${pctF(tot.ya, tot.org)}% органики`} />
         <Kpi label="Google" value={num(tot.go)} sub={`${pctF(tot.go, tot.org)}% органики`} />
+        <Kpi label="Без источника" value={num(tot.none)} sub={`${pctF(tot.none, tot.org)}% · движок неизвестен`} />
         <Kpi label="Конверсия в переход" value={conv + '%'} sub={`${num(tot.clicks)} переходов`} />
       </div>
 
@@ -222,7 +225,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
         <div className="scroll">
           <table>
             <thead>
-              <tr><th>Сайт</th><th className="n">Визиты</th><th className="n">Яндекс</th><th className="n">Google</th><th className="n">Переходы</th><th className="n">Конверсия</th></tr>
+              <tr><th>Сайт</th><th className="n">Визиты</th><th className="n">Яндекс</th><th className="n">Google</th><th className="n">Без источника</th><th className="n">Переходы</th><th className="n">Конверсия</th></tr>
             </thead>
             <tbody>
               {perSite.map((s) => {
@@ -233,12 +236,13 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
                     <td className="n">{num(s.visits)}</td>
                     <td className="n muted" style={{ color: s.yandex ? YA : undefined }}>{num(s.yandex)}</td>
                     <td className="n muted" style={{ color: s.google ? GO : undefined }}>{num(s.google)}</td>
+                    <td className="n muted">{num(s.none)}</td>
                     <td className="n">{num(s.clicks)}</td>
                     <td className="n" style={{ color: convColor(c), fontWeight: 600 }}>{c}%</td>
                   </tr>
                 );
               })}
-              {perSite.length === 0 ? <tr><td colSpan={6}><Empty text="Органических визитов за период нет" /></td></tr> : null}
+              {perSite.length === 0 ? <tr><td colSpan={7}><Empty text="Органических визитов за период нет" /></td></tr> : null}
             </tbody>
           </table>
         </div>

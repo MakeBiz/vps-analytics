@@ -10,27 +10,30 @@ const pctF = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)');
 const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 
-function Line({ rows }) {
-  const max = Math.max(1, ...rows.map((r) => Math.max(r.yandex, r.google)));
+// Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}]
+function Line({ rows, series }) {
   const n = rows.length;
   const W = 320, H = 92;
+  const max = Math.max(1, ...rows.flatMap((r) => series.map((s) => r[s.key] || 0)));
   const pts = (key) =>
     rows.map((r, i) => {
       const x = n > 1 ? (i / (n - 1)) * W : 0;
-      const y = H - (r[key] / max) * (H - 8) - 4;
+      const y = H - ((r[key] || 0) / max) * (H - 8) - 4;
       return `${x.toFixed(1)},${y.toFixed(1)}`;
     }).join(' ');
-  const empty = rows.every((r) => r.yandex === 0 && r.google === 0);
+  const empty = series.length === 0 || rows.every((r) => series.every((s) => !r[s.key]));
   if (empty) return <div className="empty">Органических визитов за период пока нет</div>;
   return (
     <>
       <svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: 'block' }}>
-        <polyline points={pts('yandex')} fill="none" stroke={YA} strokeWidth="2" />
-        <polyline points={pts('google')} fill="none" stroke={GO} strokeWidth="2" strokeDasharray="3 3" />
+        {series.map((s) => (
+          <polyline key={s.key} points={pts(s.key)} fill="none" stroke={s.color} strokeWidth="2" />
+        ))}
       </svg>
-      <div className="dim" style={{ fontSize: 11.5, marginTop: 6, display: 'flex', gap: 16 }}>
-        <span><b style={{ color: YA }}>—</b> Яндекс</span>
-        <span><b style={{ color: GO }}>- -</b> Google</span>
+      <div className="dim" style={{ fontSize: 11.5, marginTop: 6, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+        {series.map((s) => (
+          <span key={s.key}><b style={{ color: s.color }}>—</b> {s.name}</span>
+        ))}
         <span style={{ marginLeft: 'auto' }}>{rows[0]?.d} … {rows[rows.length - 1]?.d}</span>
       </div>
     </>
@@ -130,6 +133,24 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
 
   const cityMax = Math.max(1, ...(rep.cities || []).map((c) => c.visits));
 
+  // Динамика по дням в разрезе САЙТОВ: сводим строки {d, site_key, visits} в
+  // {d, [siteKey]: visits} и оставляем только сайты с органикой, каждому — свой цвет.
+  const daySeries = useMemo(() => {
+    const palette = ['#c6a15b', '#5b7a99', '#6cbf8b', '#d1697a', '#d9a441', '#7f9dbb'];
+    const byD = {};
+    const totals = {};
+    for (const r of rep.byDay || []) {
+      (byD[r.d] || (byD[r.d] = { d: r.d }))[r.site_key] = r.visits;
+      totals[r.site_key] = (totals[r.site_key] || 0) + r.visits;
+    }
+    const rows = Object.values(byD).sort((a, b) => (a.d < b.d ? -1 : 1));
+    const series = Object.keys(totals)
+      .filter((k) => totals[k] > 0)
+      .sort((a, b) => totals[b] - totals[a])
+      .map((k, i) => ({ key: k, name: nameOf[k] || k, color: palette[i % palette.length] }));
+    return { rows, series };
+  }, [rep.byDay, nameOf]);
+
   return (
     <div className="grid" style={{ gap: 14 }}>
       <Card>
@@ -150,8 +171,8 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       </div>
 
       {/* Динамика */}
-      <Card title="Динамика органики" hint="визиты по дням: Яндекс и Google">
-        <Line rows={rep.byDay || []} />
+      <Card title="Динамика органики" hint="визиты по дням, линия на каждый сайт">
+        <Line rows={daySeries.rows} series={daySeries.series} />
       </Card>
 
       {/* Поисковые запросы: Яндекс + Google вместе — вынесены наверх */}

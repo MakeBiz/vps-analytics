@@ -184,16 +184,6 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
 
   return (
     <div className="grid" style={{ gap: 14 }}>
-      <Card>
-        <div className="note" style={{ margin: 0 }}>
-          Бесплатный поиск по нашим сайтам: сколько визитов и переходов даёт органика, из Яндекса и Google, по каким
-          страницам и городам, и что подкрутить. Заходы без реферера (это не реклама — просто браузер не передал источник)
-          относим к движку по сайту: servercalc.com → Google, русские сайты → Яндекс (оценка, точный движок поисковик не передал).
-          Трафик, гео и конверсия — живьём из пикселя за период. Поисковые запросы: Яндекс — из Вебмастера{wmGenerated ? ` (снимок ${wmGenerated})` : ''}, Google — из Search Console
-          {gscGenerated ? ` (снимок ${gscGenerated})` : (gsc.length ? '' : ' (подключается)')}.
-        </div>
-      </Card>
-
       {/* KPI */}
       <div className="grid kpis">
         <Kpi label="Органика всего" value={num(tot.org)} sub={`${share}% от всех заходов`} />

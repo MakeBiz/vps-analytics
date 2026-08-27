@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { num } from '@/lib/format';
+import { num, shortDate } from '@/lib/format';
 import { Card, Kpi, Empty } from '@/components/ui';
 
 const YA = '#c6a15b';   // Яндекс — латунь
@@ -11,32 +11,75 @@ const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)')
 const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 
 // Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}].
-// При наведении показываем вертикальную линию и всплывающие цифры по каждому сайту за день.
+// Оформление один-в-один как график «Динамика по дням» на «Обзоре» (компонент
+// Chart): ось Y с делениями, сетка, заливка под линией, подписи дат по оси X,
+// та же высота и легенда-теги. Плюс наведение: вертикаль и всплывающие цифры по
+// каждому сайту за день (этого на «Обзоре» нет — оставляем как бонус).
 function Line({ rows, series }) {
   const [hi, setHi] = useState(null);
   const n = rows.length;
-  const W = 320, H = 92;
+  const W = 1000, H = 220, PL = 44, PR = 12, PT = 14, PB = 26;
   const max = Math.max(1, ...rows.flatMap((r) => series.map((s) => r[s.key] || 0)));
-  const X = (i) => (n > 1 ? (i / (n - 1)) * W : 0);
-  const Y = (v) => H - ((v || 0) / max) * (H - 8) - 4;
+  const step = n > 1 ? (W - PL - PR) / (n - 1) : 0;
+  const X = (i) => PL + i * step;
+  const Y = (v) => PT + (H - PT - PB) * (1 - (v || 0) / max);
   const pts = (key) => rows.map((r, i) => `${X(i).toFixed(1)},${Y(r[key]).toFixed(1)}`).join(' ');
   const empty = series.length === 0 || rows.every((r) => series.every((s) => !r[s.key]));
   if (empty) return <div className="empty">Органических визитов за период пока нет</div>;
+
+  const ticks = 4;
+  const gridVals = Array.from({ length: ticks + 1 }, (_, i) => Math.round((max / ticks) * i));
+  const labelEvery = Math.max(1, Math.ceil(n / 12));
+
   const onMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     if (!rect.width) return;
-    let i = Math.round(((e.clientX - rect.left) / rect.width) * (n - 1));
+    const dataFrac = ((e.clientX - rect.left) / rect.width * W - PL) / (W - PL - PR);
+    const i = Math.round(dataFrac * (n - 1));
     setHi(Math.max(0, Math.min(n - 1, i)));
   };
   const leftPct = hi != null ? (X(hi) / W) * 100 : 0;
+
   return (
-    <div style={{ position: 'relative' }} onMouseLeave={() => setHi(null)}>
-      <svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none"
-           style={{ display: 'block', cursor: 'crosshair' }} onMouseMove={onMove}>
-        {hi != null && <line x1={X(hi)} x2={X(hi)} y1="0" y2={H} stroke="var(--line)" strokeWidth="1" />}
-        {series.map((s) => (
-          <polyline key={s.key} points={pts(s.key)} fill="none" stroke={s.color} strokeWidth="2" />
+    <div className="scroll" style={{ position: 'relative' }} onMouseLeave={() => setHi(null)}>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="230" preserveAspectRatio="none"
+           role="img" style={{ display: 'block', cursor: 'crosshair' }} onMouseMove={onMove}>
+        {gridVals.map((v, i) => (
+          <g key={i}>
+            <line x1={PL} x2={W - PR} y1={Y(v)} y2={Y(v)} stroke="#26313d" strokeWidth="1" />
+            <text x={PL - 8} y={Y(v) + 4} textAnchor="end" fill="#6b7987" fontSize="11">{v}</text>
+          </g>
         ))}
+        {series.map((s) => {
+          const line = pts(s.key);
+          const area = `${PL},${Y(0)} ${line} ${X(n - 1)},${Y(0)}`;
+          return (
+            <g key={s.key}>
+              <polygon points={area} fill={s.color} opacity="0.10" />
+              <polyline points={line} fill="none" stroke={s.color} strokeWidth="2"
+                strokeLinejoin="round" strokeLinecap="round" />
+              {n <= 60 ? rows.map((r, i) => (
+                <circle key={i} cx={X(i)} cy={Y(r[s.key])} r="2.5" fill={s.color} />
+              )) : null}
+            </g>
+          );
+        })}
+        {rows.map((r, i) =>
+          i % labelEvery === 0 || i === n - 1 ? (
+            <text key={i} x={X(i)} y={H - 8} textAnchor="middle" fill="#6b7987" fontSize="11">
+              {shortDate(new Date(r.d), 'UTC')}
+            </text>
+          ) : null
+        )}
+        {hi != null && (
+          <g>
+            <line x1={X(hi)} x2={X(hi)} y1={PT} y2={H - PB} stroke="var(--line)" strokeWidth="1" />
+            {series.map((s) => (
+              <circle key={s.key} cx={X(hi)} cy={Y(rows[hi][s.key])} r="3.5" fill={s.color}
+                stroke="var(--panel)" strokeWidth="1.5" />
+            ))}
+          </g>
+        )}
       </svg>
       {hi != null && (
         <div style={{
@@ -55,11 +98,10 @@ function Line({ rows, series }) {
           ))}
         </div>
       )}
-      <div className="dim" style={{ fontSize: 11.5, marginTop: 6, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+      <div className="chips" style={{ marginTop: 6 }}>
         {series.map((s) => (
-          <span key={s.key}><b style={{ color: s.color }}>—</b> {s.name}</span>
+          <span key={s.key} className="tag" style={{ borderColor: s.color, color: s.color }}>{s.name}</span>
         ))}
-        <span style={{ marginLeft: 'auto' }}>{rows[0]?.d} … {rows[rows.length - 1]?.d}</span>
       </div>
     </div>
   );

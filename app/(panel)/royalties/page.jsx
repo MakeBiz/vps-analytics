@@ -10,6 +10,7 @@ const BRASS = '#c6a15b';       // TW первичные / основной
 const BRASS_D = '#977c3f';     // TW повторные
 const STEEL = '#5b7a99';       // AdminVPS / вторичный
 const GREEN = '#6cbf8b';       // is*hosting / плюс
+const AEZA = '#b98cd6';        // Aeza / 4-й партнёр
 const RED = '#d1697a';         // минус / риск
 const BUILD = 'rgba(198,161,91,.32)'; // достройка месяца
 const FORE = '#46586b';        // прогноз
@@ -38,10 +39,12 @@ export default async function Royalties() {
     return <div className="grid" style={{ gap: 14 }}><Card><Empty text="Снимок партнёрок не найден (data/royalties.json)" /></Card></div>;
   }
   const { tw, avps, ish, ads, derived, current, dow, net_months, health, meta } = R;
+  const aeza = R.aeza || { months: {}, total: 0 };
   const months = R.months || [];
   const fcMonths = Object.keys(tw.forecast || {});
+  const aezaM = (m) => aeza.months?.[m] || {};
 
-  const grandTotal = (tw.total || 0) + (avps.total || 0) + (ish.total || 0);
+  const grandTotal = (tw.total || 0) + (avps.total || 0) + (ish.total || 0) + (aeza.total || 0);
   const netCum = net_months.length ? net_months[net_months.length - 1].cum : (derived.net || 0);
   const days = daysElapsed(meta.period_start, meta.asof);
   const weeksElapsed = Math.max(1, Math.round(days / 7));
@@ -63,7 +66,7 @@ export default async function Royalties() {
   const cm = current.month;
   const pmIdx = months.indexOf(cm) - 1;
   const pm = pmIdx >= 0 ? months[pmIdx] : null;
-  const mtot = (m) => (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0);
+  const mtot = (m) => (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0) + (aezaM(m).income || 0);
   const pctChg = (a, b) => (b ? ((a - b) / b) * 100 : null);
   const dRev = pm ? pctChg(current.total?.proj || mtot(cm), mtot(pm)) : null;
   const dNet = pm ? pctChg((current.total?.proj || 0) - (current.ads?.proj || 0), (net_months.find((r) => r.m === pm) || {}).net || 0) : null;
@@ -78,6 +81,7 @@ export default async function Royalties() {
       { name: 'TW повторные', value: tw.months[m]?.rs || 0, color: BRASS_D },
       { name: 'AdminVPS', value: avps.months[m]?.isum || 0, color: STEEL },
       { name: 'is*hosting', value: ish.months[m]?.income || 0, color: GREEN },
+      { name: 'Aeza', value: aezaM(m).income || 0, color: AEZA },
     ];
     if (m === current.month) parts.push({ name: 'достройка месяца', value: Math.max(0, (current.total?.proj || 0) - (current.total?.fact || 0)), color: BUILD });
     return { label: monthLabel(m), parts };
@@ -88,7 +92,7 @@ export default async function Royalties() {
 
   // ——— средняя оплата в день (по месяцам) и средний чек (по месяцам)
   const perDaySeries = months.map((m) => {
-    const s = (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0);
+    const s = (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0) + (aezaM(m).income || 0);
     const dm = m === current.month ? (current.days_done || daysInMonth(m)) : daysInMonth(m);
     return one(monthLabel(m), Math.round(s / dm), STEEL);
   });
@@ -117,14 +121,14 @@ export default async function Royalties() {
 
   // ——— сводная
   const factRows = months.map((m) => {
-    const t = tw.months[m]?.sum || 0, a = avps.months[m]?.isum || 0, i = ish.months[m]?.income || 0;
+    const t = tw.months[m]?.sum || 0, a = avps.months[m]?.isum || 0, i = ish.months[m]?.income || 0, z = aezaM(m).income || 0;
     const net = (net_months.find((r) => r.m === m) || {}).net;
     const cnt = tw.months[m]?.cnt || 0;
     const dm = m === current.month ? (current.days_done || daysInMonth(m)) : daysInMonth(m);
     const regs = tw.months[m]?.regs || 0, paid = tw.months[m]?.regs_paid || 0;
-    return { m, t, a, i, all: t + a + i, net, check: cnt ? Math.round(t / cnt) : 0, perday: Math.round((t + a + i) / dm), cReg: ads.eff?.[m]?.conv_click_reg, cPay: regs ? Math.round((paid / regs) * 100) : null };
+    return { m, t, a, i, z, all: t + a + i + z, net, check: cnt ? Math.round(t / cnt) : 0, perday: Math.round((t + a + i + z) / dm), cReg: ads.eff?.[m]?.conv_click_reg, cPay: regs ? Math.round((paid / regs) * 100) : null };
   });
-  const totFact = factRows.reduce((s, r) => ({ t: s.t + r.t, a: s.a + r.a, i: s.i + r.i, all: s.all + r.all }), { t: 0, a: 0, i: 0, all: 0 });
+  const totFact = factRows.reduce((s, r) => ({ t: s.t + r.t, a: s.a + r.a, i: s.i + r.i, z: s.z + r.z, all: s.all + r.all }), { t: 0, a: 0, i: 0, z: 0, all: 0 });
   const fcRows = fcMonths.map((m) => { const t = (tw.forecast[m]?.first || 0) + (tw.forecast[m]?.rep || 0); const a = avps.forecast?.[m] || 0; return { m, t, a, all: t + a }; });
 
   const note = (t) => <div className="note" style={{ marginTop: 10 }}>{t}</div>;
@@ -133,9 +137,9 @@ export default async function Royalties() {
     <div className="grid" style={{ gap: 14 }}>
       <Card>
         <div className="note" style={{ margin: 0 }}>
-          Партнёрки Директ: реф-реклама и выплаты по Timeweb, AdminVPS и is*hosting (Affise). Снимок на{' '}
+          Партнёрки Директ: реф-реклама и выплаты по Timeweb, AdminVPS, is*hosting (Affise) и Aeza. Снимок на{' '}
           <b>{meta.asof}</b>, период с {meta.period_start}. Тот же источник, что и Royalties-дашборд: деньги по журналу
-          оплат кабинетов, доход is*hosting переведён из USD по курсу {ish.rate}. Обновляется по запросу вместе с роялти.
+          оплат кабинетов, доход is*hosting из USD по курсу {ish.rate}, Aeza из EUR по курсу {aeza.rate || 100}. Обновляется по запросу вместе с роялти.
         </div>
       </Card>
 
@@ -162,7 +166,7 @@ export default async function Royalties() {
       <Card title="Доход по месяцам и прогноз, ₽" hint="факт по источникам + подтверждённые продления, наведите на столбец">
         <RoyBars series={incSeries} height={264} mode="stack" kilo unit="₽" />
         <div className="chips" style={{ marginTop: 10 }}>
-          {[['TW первичные', BRASS], ['TW повторные', BRASS_D], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['достройка месяца', BRASS], ['прогноз', FORE]].map(([l, c]) => (
+          {[['TW первичные', BRASS], ['TW повторные', BRASS_D], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['Aeza', AEZA], ['достройка месяца', BRASS], ['прогноз', FORE]].map(([l, c]) => (
             <span key={l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
         </div>
@@ -312,12 +316,74 @@ export default async function Royalties() {
         </Card>
       </div>
 
+      <div className="grid cols2">
+        <Card title="Aeza, ₽" hint="VPS-хостинг, доход в рублях по курсу из евро">
+          <div className="grid kpis" style={{ gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
+            <Kpi label="Доход, ₽" value={num(aeza.total)} sub={`€${dec(String(aeza.eur ?? 0))} × ${aeza.rate || 100}`} />
+            <Kpi label="Операции" value={num(aeza.ops || 0)} sub="холд + оплаты" />
+            {aeza.snapshot ? <Kpi label="Регистрации" value={num(aeza.snapshot.registrations)} sub={`активных ${num(aeza.snapshot.active_referrals)}`} /> : null}
+            {aeza.snapshot ? <Kpi label="Средств в холде, ₽" value={num(aeza.snapshot.hold_rub)} sub={`€${dec(String(aeza.snapshot.hold_eur ?? 0))}`} /> : null}
+          </div>
+          {note(`Четвёртый партнёр Aeza. Доход = «Зачисление в холд» + «Оплата» из ленты реф-кабинета в евро × ${aeza.rate || 100}. Регистрации и активных рефералов берём из недельного снимка кабинета${aeza.snapshot?.asof ? ', ' + aeza.snapshot.asof : ''} — платёжная лента их не отдаёт.`)}
+        </Card>
+        <Card title="AdminVPS · снимок кабинета" hint="со сводного экрана реф-программы, весь период">
+          {avps.snapshot ? (
+            <div className="grid kpis" style={{ gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
+              <Kpi label="Посетители" value={num(avps.snapshot.visitors)} sub={`конверсия ${dec(String(avps.snapshot.conversion ?? 0))}%`} />
+              <Kpi label="Клиенты" value={num(avps.snapshot.clients)} sub="со снимка" />
+              <Kpi label="Ожидающие, ₽" value={num(Math.round(avps.snapshot.pending_rub || 0))} sub="в холде, ~40 дн" />
+              <Kpi label="Баланс, ₽" value={num(Math.round(avps.snapshot.balance_rub || 0))} sub={`к выводу ${num(Math.round(avps.snapshot.available_rub || 0))}`} />
+            </div>
+          ) : <Empty text="Снимок кабинета AdminVPS не задан" />}
+          {avps.snapshot ? note('Посетители и конверсия видны только на этом снимке — в платёжных выгрузках их нет. «Ожидающие» это заработанный доход в холде, разморозится за ~40 дней; заложено в план (достройка месяца).') : null}
+        </Card>
+      </div>
+
+      {(() => {
+        const dd = Math.max(1, days);
+        const ishCnt = ish.conv || 0, aezaCnt = aeza.ops || 0;
+        const rows = [
+          ['Timeweb', tw.total || 0, tw.cnt || 0, 'оплаты', BRASS],
+          ['AdminVPS', avps.total || 0, avps.cnt || 0, 'начисления', STEEL],
+          ['is*hosting', ish.total || 0, ishCnt, 'конверсии', GREEN],
+          ['Aeza', aeza.total || 0, aezaCnt, 'операции', AEZA],
+        ].filter((r) => r[1] > 0).sort((a, b) => b[1] - a[1]);
+        const tot = rows.reduce((s, r) => s + r[1], 0) || 1;
+        return (
+          <Card title="Заход по партнёрам, ₽" hint="доход, доля, средняя сумма в день и средний чек за период">
+            <div style={{ display: 'flex', height: 20, borderRadius: 6, overflow: 'hidden', margin: '2px 0 12px' }}>
+              {rows.map((r) => <div key={r[0]} title={`${r[0]}: ${num(Math.round(r[1]))} ₽`} style={{ width: (r[1] / tot * 100).toFixed(1) + '%', background: r[4] }} />)}
+            </div>
+            <div className="scroll">
+              <table>
+                <thead><tr><th>Партнёр</th><th className="n">Доход, ₽</th><th className="n">Доля</th><th className="n">Сумма в день, ₽</th><th className="n">Средний чек, ₽</th></tr></thead>
+                <tbody>
+                  {rows.map((r) => (
+                    <tr key={r[0]}>
+                      <td><span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: 2, background: r[4], marginRight: 6 }} />{r[0]}</td>
+                      <td className="n"><b>{num(Math.round(r[1]))}</b></td>
+                      <td className="n">{dec((r[1] / tot * 100).toFixed(1))}%</td>
+                      <td className="n">{num(Math.round(r[1] / dd))}</td>
+                      <td className="n" title={`${r[3]}: ${num(r[2])}`}>{r[2] ? num(Math.round(r[1] / r[2])) : '—'}</td>
+                    </tr>
+                  ))}
+                  <tr style={{ fontWeight: 600, borderTop: '2px solid var(--line)' }}>
+                    <td>Итого</td><td className="n">{num(Math.round(tot))}</td><td className="n">100%</td><td className="n">{num(Math.round(tot / dd))}</td><td className="n">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {note('Вклад каждого партнёра деньгами. Средний чек это доход на одну оплату (у is*hosting на конверсию, у Aeza на операцию начисления). Основную выручку даёт Timeweb, AdminVPS второй, is*hosting и Aeza пока небольшие, но живые.')}
+          </Card>
+        );
+      })()}
+
       <Card title="Сводная по месяцам, ₽" hint="факт с итогом, ниже достройка и подтверждённые продления">
         <div className="scroll">
           <table>
             <thead>
               <tr>
-                <th>Месяц</th><th className="n">Timeweb</th><th className="n">AdminVPS</th><th className="n">is*hosting</th>
+                <th>Месяц</th><th className="n">Timeweb</th><th className="n">AdminVPS</th><th className="n">is*hosting</th><th className="n">Aeza</th>
                 <th className="n">Всего</th><th className="n">Чистыми</th><th className="n">Ср. чек</th>
                 <th className="n">Оплат/день</th><th className="n">Конв. в рег.</th><th className="n">Конв. в оплату</th>
               </tr>
@@ -329,6 +395,7 @@ export default async function Royalties() {
                   <td className="n">{num(r.t)}</td>
                   <td className="n">{r.a ? num(r.a) : '—'}</td>
                   <td className="n">{r.i ? num(r.i) : '—'}</td>
+                  <td className="n">{r.z ? num(r.z) : '—'}</td>
                   <td className="n"><b>{num(r.all)}</b></td>
                   <td className="n" style={{ color: r.net == null ? undefined : r.net >= 0 ? GREEN : RED }}>{r.net == null ? '—' : (r.net >= 0 ? '+' : '') + num(r.net)}</td>
                   <td className="n muted">{r.check ? num(r.check) : '—'}</td>
@@ -338,13 +405,13 @@ export default async function Royalties() {
                 </tr>
               ))}
               <tr style={{ fontWeight: 600, borderTop: '2px solid var(--line)' }}>
-                <td>Итого факт</td><td className="n">{num(totFact.t)}</td><td className="n">{num(totFact.a)}</td><td className="n">{num(totFact.i)}</td>
+                <td>Итого факт</td><td className="n">{num(totFact.t)}</td><td className="n">{num(totFact.a)}</td><td className="n">{num(totFact.i)}</td><td className="n">{num(totFact.z)}</td>
                 <td className="n">{num(totFact.all)}</td><td className="n" style={{ color: GREEN }}>+{num(netCum)}</td>
                 <td className="n muted">{num(tw.avg_check)}</td><td className="n muted">—</td><td className="n muted">—</td><td className="n muted">—</td>
               </tr>
               {fcRows.map((r) => (
                 <tr key={r.m} style={{ color: 'var(--dim)' }}>
-                  <td>{monthLabel(r.m)} · прогноз</td><td className="n">{num(r.t)}</td><td className="n">{r.a ? num(r.a) : '—'}</td><td className="n">—</td>
+                  <td>{monthLabel(r.m)} · прогноз</td><td className="n">{num(r.t)}</td><td className="n">{r.a ? num(r.a) : '—'}</td><td className="n">—</td><td className="n">—</td>
                   <td className="n">{num(r.all)}</td><td className="n" colSpan={5}></td>
                 </tr>
               ))}

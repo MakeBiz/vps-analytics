@@ -1496,11 +1496,22 @@
     }
   ],
   "webmaster": {
-    "generated": "27.08.2026",
+    "generated": "28.08.2026",
     "sites": [
       {
         "host": "podborvps.ru",
-        "queries": []
+        "queries": [
+          [
+            "vps 402, stip 2, co",
+            1,
+            0
+          ],
+          [
+            "pasarguard dual vps алот про",
+            1,
+            0
+          ]
+        ]
       },
       {
         "host": "servercalc.com",
@@ -1511,7 +1522,7 @@
         "queries": [
           [
             "тарифы таймвеб клауд",
-            6,
+            7,
             0
           ],
           [
@@ -1522,6 +1533,11 @@
           [
             "timeweb cloud цены",
             2,
+            0
+          ],
+          [
+            "тариф тайм веб cloud msk 50 с ндс или без?",
+            1,
             0
           ],
           [
@@ -1544,21 +1560,93 @@
     ]
   },
   "gsc": {
-    "generated": "26.08.2026",
+    "generated": "28.08.2026",
     "window": {
-      "from": "2026-02-27",
-      "to": "2026-08-25"
+      "from": "2026-03-01",
+      "to": "2026-08-27"
     },
     "sites": [
       {
         "host": "podborvps.ru",
         "property": "sc-domain:podborvps.ru",
-        "queries": []
+        "queries": [
+          {
+            "q": "ruvds",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 155.0
+          }
+        ]
       },
       {
         "host": "servercalc.com",
         "property": "sc-domain:servercalc.com",
-        "queries": []
+        "queries": [
+          {
+            "q": "buy vps cheap",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 89.0
+          },
+          {
+            "q": "cheap server vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 86.0
+          },
+          {
+            "q": "cheapest virtual private server hosting",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 69.0
+          },
+          {
+            "q": "kazakhstan vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 64.0
+          },
+          {
+            "q": "virtual server cheap",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 89.0
+          },
+          {
+            "q": "vps best price",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 80.5
+          },
+          {
+            "q": "vps price comparison",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 77.0
+          },
+          {
+            "q": "vps server cost",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.0
+          },
+          {
+            "q": "vps server price",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 92.0
+          }
+        ]
       },
       {
         "host": "servercalc.ru",

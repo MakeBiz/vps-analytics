@@ -75,6 +75,9 @@ export default async function Royalties() {
   const dLtv = pm ? pctChg(tw.months[cm]?.ltv_cum || 0, tw.months[pm]?.ltv_cum || 0) : null;
 
   // ——— доход по месяцам + прогноз (стек)
+  const HOLD = '#e0b34e';                 // потенциал: разморозка холда AdminVPS
+  const holdSchedule = R.projection?.avps?.pending_schedule || {};
+  const holdOf = (m) => holdSchedule[m] || 0;
   const incSeries = months.map((m) => {
     const parts = [
       { name: 'TW первичные', value: tw.months[m]?.fs || 0, color: BRASS },
@@ -84,10 +87,14 @@ export default async function Royalties() {
       { name: 'Aeza', value: aezaM(m).income || 0, color: AEZA },
     ];
     if (m === current.month) parts.push({ name: 'достройка месяца', value: Math.max(0, (current.total?.proj || 0) - (current.total?.fact || 0)), color: BUILD });
+    if (holdOf(m)) parts.push({ name: 'потенциал холд AdminVPS', value: holdOf(m), color: HOLD });
     return { label: monthLabel(m), parts };
   });
   for (const m of fcMonths) {
-    incSeries.push({ label: monthLabel(m) + ' п', parts: [{ name: 'прогноз', value: (tw.forecast[m]?.first || 0) + (tw.forecast[m]?.rep || 0) + (avps.forecast?.[m] || 0), color: FORE }] });
+    incSeries.push({ label: monthLabel(m) + ' п', parts: [
+      { name: 'прогноз', value: (tw.forecast[m]?.first || 0) + (tw.forecast[m]?.rep || 0) + (avps.forecast?.[m] || 0), color: FORE },
+      ...(holdOf(m) ? [{ name: 'потенциал холд AdminVPS', value: holdOf(m), color: HOLD }] : []),
+    ] });
   }
 
   // ——— средняя оплата в день (по месяцам) и средний чек (по месяцам)
@@ -166,11 +173,11 @@ export default async function Royalties() {
       <Card title="Доход по месяцам и прогноз, ₽" hint="факт по источникам + подтверждённые продления, наведите на столбец">
         <RoyBars series={incSeries} height={264} mode="stack" kilo unit="₽" />
         <div className="chips" style={{ marginTop: 10 }}>
-          {[['TW первичные', BRASS], ['TW повторные', BRASS_D], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['Aeza', AEZA], ['достройка месяца', BRASS], ['прогноз', FORE]].map(([l, c]) => (
+          {[['TW первичные', BRASS], ['TW повторные', BRASS_D], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['Aeza', AEZA], ['достройка месяца', BRASS], ['потенциал холд AdminVPS', HOLD], ['прогноз', FORE]].map(([l, c]) => (
             <span key={l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
         </div>
-        {note('Столбцы факта разбиты по источникам, светлый хвост августа это достройка до конца месяца по текущему темпу, серые столбцы справа это прогноз продлений. Видно, что основную выручку даёт Timeweb, и что повторные оплаты стабильно тянут месяц вверх.')}
+        {note(`Столбцы факта разбиты по источникам, включая is*hosting и Aeza. Светлый хвост текущего месяца это достройка по темпу, жёлтая часть это потенциал разморозки холда AdminVPS (${num(R.projection?.avps?.pending || 0)} ₽ ровными долями до ${R.projection?.avps?.pending_until || ''}, теперь в прогнозе), серые столбцы справа это прогноз продлений. Основную выручку даёт Timeweb.`)}
       </Card>
 
       <div className="grid cols2">

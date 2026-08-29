@@ -49,14 +49,17 @@ export default function ProjectsView({ initial }) {
 
   // клиентское разнесение — для живого предпросмотра (сервер пересчитает при сохранении)
   const attr = useMemo(() => {
+    const provSet = new Set(activeProvs.map((p) => p.slug));
+    const siteSet = new Set(activeSites.map((p) => p.slug));
     const sp = {}; activeProvs.forEach((p) => { sp[p.slug] = 0; });
     const ss = {}; activeSites.forEach((p) => { ss[p.slug] = 0; });
     let sharedP = 0; let sharedS = 0; let counted = 0;
     for (const c of camps) {
       if (c.status === 'excluded' || !c.in_budget) continue;
       counted += c.cost;
-      if (c.provider_alloc === 'split') sharedP += c.cost; else if (sp[c.provider_alloc] != null) sp[c.provider_alloc] += c.cost;
-      if (c.site_alloc === 'split') sharedS += c.cost; else if (ss[c.site_alloc] != null) ss[c.site_alloc] += c.cost;
+      const a = c.alloc;
+      if (provSet.has(a)) sp[a] += c.cost; else sharedP += c.cost;
+      if (siteSet.has(a)) ss[a] += c.cost; else sharedS += c.cost;
     }
     const perP = activeProvs.length ? sharedP / activeProvs.length : 0;
     activeProvs.forEach((p) => { sp[p.slug] += perP; });
@@ -86,7 +89,7 @@ export default function ProjectsView({ initial }) {
       const body = {
         projects: projects.map((p, i) => ({ id: p.id, slug: p.slug, name: p.name, kind: p.kind, roy_key: p.roy_key, archived: p.archived, sort: p.sort ?? i })),
         deletedProjects: delProj,
-        settings: camps.map((c) => ({ campaign_id: c.id, status: c.status, in_budget: c.in_budget, provider_alloc: c.provider_alloc, site_alloc: c.site_alloc })),
+        settings: camps.map((c) => ({ campaign_id: c.id, status: c.status, in_budget: c.in_budget, alloc: c.alloc })),
         deletedCampaigns: delCamp,
       };
       const r = await fetch('/api/projects', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -98,16 +101,14 @@ export default function ProjectsView({ initial }) {
     setSaving(false);
   };
 
-  const allocSelect = (c, dim) => {
-    const opts = dim === 'provider' ? activeProvs : activeSites;
-    const val = dim === 'provider' ? c.provider_alloc : c.site_alloc;
+  const allocSelect = (c) => {
     const isNew = c.is_new;
     return (
-      <select value={val} onChange={(e) => patchCamp(c.id, dim === 'provider' ? { provider_alloc: e.target.value, is_new: false } : { site_alloc: e.target.value, is_new: false })}
-        style={{ background: 'var(--panel-2)', color: 'var(--text)', colorScheme: 'dark', border: '1px solid ' + (isNew ? 'var(--brass)' : 'var(--line)'), borderRadius: 8, padding: '5px 7px', fontSize: 12.5, maxWidth: 170 }}>
-        <option value="split">Общая — поровну</option>
-        <option value="none">Не относить</option>
-        {opts.map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}
+      <select value={c.alloc} onChange={(e) => patchCamp(c.id, { alloc: e.target.value, is_new: false })}
+        style={{ background: 'var(--panel-2)', color: 'var(--text)', colorScheme: 'dark', border: '1px solid ' + (isNew ? 'var(--brass)' : 'var(--line)'), borderRadius: 8, padding: '5px 7px', fontSize: 12.5, maxWidth: 210 }}>
+        <option value="split">Общая — поровну на всё</option>
+        <optgroup label="Провайдер">{activeProvs.map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}</optgroup>
+        <optgroup label="Сайт">{activeSites.map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}</optgroup>
       </select>
     );
   };
@@ -119,8 +120,7 @@ export default function ProjectsView({ initial }) {
         {c.name}
         <div style={{ color: 'var(--muted)', fontSize: 11 }}>№ {c.id}{!c.present ? ' · нет в снимке' : ''}</div>
       </td>
-      <td>{allocSelect(c, 'provider')}</td>
-      <td>{allocSelect(c, 'site')}</td>
+      <td>{allocSelect(c)}</td>
       <td>
         <select value={c.status} onChange={(e) => setStatus(c, e.target.value)}
           style={{ ...stStyle[c.status], colorScheme: 'dark', fontSize: 12.5, padding: '4px 8px', borderRadius: 8, border: '1px solid', cursor: 'pointer', fontWeight: 500 }}>
@@ -138,7 +138,7 @@ export default function ProjectsView({ initial }) {
   const active = camps.filter((c) => c.status === 'active');
   const archived = camps.filter((c) => c.status !== 'active');
   const head = (
-    <tr><th>Кампания</th><th>Провайдер</th><th>Сайт</th><th>Статус</th><th style={{ textAlign: 'center' }}>В бюджете</th><th className="n">Расход</th><th /></tr>
+    <tr><th>Кампания</th><th>Привязка</th><th>Статус</th><th style={{ textAlign: 'center' }}>В бюджете</th><th className="n">Расход</th><th /></tr>
   );
 
   const spendBars = (list, spend) => {
@@ -199,7 +199,7 @@ export default function ProjectsView({ initial }) {
       {/* АКТИВНЫЕ КАМПАНИИ */}
       <Card title="Активные кампании Директа" hint={`Тянутся автоматически при утреннем прогоне. Расход — накопительно с ${initial.since || '2026-02-01'} (не за 30 дней). Новые — сверху с пометкой «новая».`}>
         <div className="scroll"><table><thead>{head}</thead>
-          <tbody>{active.length ? active.map(campRow) : <tr><td colSpan={7} style={{ color: 'var(--muted)' }}>активных кампаний нет</td></tr>}</tbody>
+          <tbody>{active.length ? active.map(campRow) : <tr><td colSpan={6} style={{ color: 'var(--muted)' }}>активных кампаний нет</td></tr>}</tbody>
         </table></div>
       </Card>
 
@@ -207,7 +207,7 @@ export default function ProjectsView({ initial }) {
       <Card title={<span onClick={() => setArchOpen((v) => !v)} style={{ cursor: 'pointer' }}>Архив кампаний ({archived.length}) {archOpen ? '▾' : '▸'}</span>} hint="Архивные и исключённые — не мешают наверху. По галке решаешь, учитывать их расход в бюджете.">
         {archOpen ? (
           <div className="scroll"><table><thead>{head}</thead>
-            <tbody>{archived.length ? archived.map(campRow) : <tr><td colSpan={7} style={{ color: 'var(--muted)' }}>архив пуст</td></tr>}</tbody>
+            <tbody>{archived.length ? archived.map(campRow) : <tr><td colSpan={6} style={{ color: 'var(--muted)' }}>архив пуст</td></tr>}</tbody>
           </table></div>
         ) : <div className="note" style={{ margin: 0 }}>Свёрнуто. Нажми заголовок, чтобы раскрыть {archived.length} кампан.</div>}
       </Card>

@@ -104,7 +104,7 @@ export default function ProjectsView({ initial }) {
     const isNew = c.is_new;
     return (
       <select value={val} onChange={(e) => patchCamp(c.id, dim === 'provider' ? { provider_alloc: e.target.value, is_new: false } : { site_alloc: e.target.value, is_new: false })}
-        style={{ background: 'var(--panel-2)', color: 'var(--ink)', border: '1px solid ' + (isNew ? 'var(--brass)' : 'var(--line)'), borderRadius: 8, padding: '5px 7px', fontSize: 12.5, maxWidth: 170 }}>
+        style={{ background: 'var(--panel-2)', color: 'var(--text)', colorScheme: 'dark', border: '1px solid ' + (isNew ? 'var(--brass)' : 'var(--line)'), borderRadius: 8, padding: '5px 7px', fontSize: 12.5, maxWidth: 170 }}>
         <option value="split">Общая — поровну</option>
         <option value="none">Не относить</option>
         {opts.map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}
@@ -123,7 +123,7 @@ export default function ProjectsView({ initial }) {
       <td>{allocSelect(c, 'site')}</td>
       <td>
         <select value={c.status} onChange={(e) => setStatus(c, e.target.value)}
-          style={{ ...stStyle[c.status], fontSize: 12.5, padding: '4px 8px', borderRadius: 8, border: '1px solid', cursor: 'pointer', fontWeight: 500 }}>
+          style={{ ...stStyle[c.status], colorScheme: 'dark', fontSize: 12.5, padding: '4px 8px', borderRadius: 8, border: '1px solid', cursor: 'pointer', fontWeight: 500 }}>
           <option value="active">Активная</option>
           <option value="archived">Архивная</option>
           <option value="excluded">Исключена</option>
@@ -187,12 +187,12 @@ export default function ProjectsView({ initial }) {
           </div>
         ))}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center', marginTop: 4 }}>
-          <input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Новый проект" style={{ minWidth: 200, background: 'var(--panel-2)', color: 'var(--ink)', border: '1px solid var(--line)', borderRadius: 8, padding: '7px 9px', fontSize: 13 }} />
-          <select value={newKind} onChange={(e) => setNewKind(e.target.value)} style={{ background: 'var(--panel-2)', color: 'var(--ink)', border: '1px solid var(--line)', borderRadius: 8, padding: '7px 9px', fontSize: 13 }}>
+          <input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Новый проект" style={{ minWidth: 200, background: 'var(--panel-2)', color: 'var(--text)', border: '1px solid var(--line)', borderRadius: 8, padding: '7px 9px', fontSize: 13 }} />
+          <select value={newKind} onChange={(e) => setNewKind(e.target.value)} style={{ background: 'var(--panel-2)', color: 'var(--text)', border: '1px solid var(--line)', borderRadius: 8, padding: '7px 9px', fontSize: 13 }}>
             <option value="provider">Провайдер</option>
             <option value="site">Сайт</option>
           </select>
-          <button onClick={addProject} style={{ background: 'var(--panel-2)', border: '1px solid var(--line)', color: 'var(--ink)', borderRadius: 9, padding: '8px 14px', cursor: 'pointer', fontSize: 13 }}>+ Добавить</button>
+          <button onClick={addProject} style={{ background: 'var(--panel-2)', border: '1px solid var(--line)', color: 'var(--text)', borderRadius: 9, padding: '8px 14px', cursor: 'pointer', fontSize: 13 }}>+ Добавить</button>
         </div>
       </Card>
 
@@ -243,7 +243,7 @@ export default function ProjectsView({ initial }) {
           </tbody>
         </table></div>
         <div className="note" style={{ marginTop: 10 }}>
-          Доход берём из снимка партнёрок по ключу провайдера (tw/avps/ish/aeza). У кого ключ не задан — впиши его в чипе проекта. Расход — накопительный с {initial.since || '2026-02-01'}, разнесённый выше. Всего в бюджете: <b style={{ color: 'var(--ink)' }}>{rub(attr.counted)}</b>, из них общих <b style={{ color: 'var(--ink)' }}>{rub(attr.sharedP)}</b> (по {rub(attr.perP)} на провайдера).
+          Доход берём из снимка партнёрок по ключу провайдера (tw/avps/ish/aeza). У кого ключ не задан — впиши его в чипе проекта. Расход — накопительный с {initial.since || '2026-02-01'}, разнесённый выше. Всего в бюджете: <b style={{ color: 'var(--text)' }}>{rub(attr.counted)}</b>, из них общих <b style={{ color: 'var(--text)' }}>{rub(attr.sharedP)}</b> (по {rub(attr.perP)} на провайдера).
         </div>
       </Card>
     </div>

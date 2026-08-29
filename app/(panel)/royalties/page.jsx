@@ -135,7 +135,6 @@ export default async function Royalties() {
 
   return (
     <div className="grid" style={{ gap: 14 }}>
-      {spend ? <RoyMarketingSpend spend={spend} /> : null}
       <Card>
         <div className="note" style={{ margin: 0 }}>
           Партнёрки Директ: реф-реклама и выплаты по Timeweb, AdminVPS и is*hosting (Affise). Снимок на{' '}
@@ -416,6 +415,7 @@ export default async function Royalties() {
           ) : null}
         </Card>
       </div>
+      {spend ? <RoyMarketingSpend spend={spend} /> : null}
     </div>
   );
 }

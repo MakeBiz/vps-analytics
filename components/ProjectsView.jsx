@@ -1,9 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { Card, Kpi } from '@/components/ui';
-
-const MONTHS_RU = { '01': 'янв', '02': 'фев', '03': 'мар', '04': 'апр', '05': 'май', '06': 'июн', '07': 'июл', '08': 'авг', '09': 'сен', '10': 'окт', '11': 'ноя', '12': 'дек' };
-const moLabel = (m) => { const mm = String(m).split('-')[1]; return MONTHS_RU[mm] || m; };
+import { Card } from '@/components/ui';
+import RoyMarketingSpend from '@/components/RoyMarketingSpend';
 
 const rub = (n) => Math.round(Number(n) || 0).toLocaleString('ru-RU') + ' ₽';
 const GOOD = '#3fae7a';
@@ -29,13 +27,14 @@ function Toggle({ on, onClick, title }) {
   );
 }
 
-export default function ProjectsView({ initial }) {
+export default function ProjectsView({ initial, spend }) {
   const [projects, setProjects] = useState(() => initial.projects.map((p, i) => ({ ...p, color: COLORS[i % COLORS.length] })));
   const [camps, setCamps] = useState(() => initial.campaigns);
   const [delProj, setDelProj] = useState([]);
   const [delCamp, setDelCamp] = useState([]);
   const [archOpen, setArchOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const [msg, setMsg] = useState('');
   const [newName, setNewName] = useState('');
   const [newKind, setNewKind] = useState('provider');
@@ -72,19 +71,20 @@ export default function ProjectsView({ initial }) {
   }, [camps, projects]);
 
   // ---- правки кампаний ----
-  const patchCamp = (id, patch) => setCamps((cs) => cs.map((c) => (c.id === id ? { ...c, ...patch } : c)));
+  const patchCamp = (id, patch) => { setDirty(true); setCamps((cs) => cs.map((c) => (c.id === id ? { ...c, ...patch } : c))); };
   const setStatus = (c, status) => patchCamp(c.id, { status, ...(status === 'excluded' ? { in_budget: false } : {}), is_new: false });
-  const removeCamp = (id) => { setDelCamp((d) => [...d, id]); setCamps((cs) => cs.filter((c) => c.id !== id)); };
+  const removeCamp = (id) => { setDirty(true); setDelCamp((d) => [...d, id]); setCamps((cs) => cs.filter((c) => c.id !== id)); };
 
   // ---- правки проектов ----
-  const patchProj = (id, patch) => setProjects((ps) => ps.map((p) => (p.id === id ? { ...p, ...patch } : p)));
+  const patchProj = (id, patch) => { setDirty(true); setProjects((ps) => ps.map((p) => (p.id === id ? { ...p, ...patch } : p))); };
   const addProject = () => {
     const name = newName.trim(); if (!name) return;
     const slug = name.toLowerCase().replace(/[^a-z0-9а-я]+/gi, '-').replace(/(^-|-$)/g, '') + '-' + Date.now().toString(36).slice(-4);
+    setDirty(true);
     setProjects((ps) => [...ps, { id: null, slug, name, kind: newKind, roy_key: '', archived: false, sort: 900, color: COLORS[ps.length % COLORS.length] }]);
     setNewName('');
   };
-  const removeProject = (p) => { if (p.id) setDelProj((d) => [...d, p.id]); setProjects((ps) => ps.filter((x) => x !== p)); };
+  const removeProject = (p) => { setDirty(true); if (p.id) setDelProj((d) => [...d, p.id]); setProjects((ps) => ps.filter((x) => x !== p)); };
 
   const save = async () => {
     setSaving(true); setMsg('');
@@ -98,7 +98,7 @@ export default function ProjectsView({ initial }) {
       const r = await fetch('/api/projects', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
-      setMsg('Сохранено'); setDelProj([]); setDelCamp([]);
+      setMsg('Сохранено'); setDirty(false); setDelProj([]); setDelCamp([]);
       setTimeout(() => setMsg(''), 2500);
     } catch (e) { setMsg('Ошибка: ' + (e.message || e)); }
     setSaving(false);
@@ -159,43 +159,19 @@ export default function ProjectsView({ initial }) {
     ));
   };
 
-  const totalRevenue = (initial.net || []).reduce((s, n) => s + (n.revenue || 0), 0);
-  const totalBudget = attr.counted;
-  let totalNet = 0;
-  for (const n of (initial.net || [])) if (n.revenue != null) totalNet += n.revenue - (attr.sp[n.slug] || 0);
-  const byMonth = initial.byMonth || [];
-  const maxMo = Math.max(1, ...byMonth.map((x) => x.cost));
-
   return (
     <div className="grid" style={{ gap: 14 }}>
       {/* сохранение */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
+        {dirty ? <span style={{ fontSize: 13, color: 'var(--brass)' }}>● есть несохранённые изменения</span> : null}
         {msg ? <span style={{ fontSize: 13, color: msg.startsWith('Ошибка') ? RED : GOOD }}>{msg}</span> : null}
-        <button onClick={save} disabled={saving} style={{ background: 'linear-gradient(180deg,#c6a15b,#b18e49)', border: '1px solid #b18e49', color: '#20170a', fontWeight: 600, borderRadius: 9, padding: '9px 18px', cursor: 'pointer', fontSize: 13.5, opacity: saving ? 0.6 : 1 }}>
+        <button onClick={save} disabled={saving} style={{ background: dirty ? 'linear-gradient(180deg,#c6a15b,#b18e49)' : 'var(--panel-2)', border: '1px solid ' + (dirty ? '#b18e49' : 'var(--line)'), color: dirty ? '#20170a' : 'var(--text)', fontWeight: 600, borderRadius: 9, padding: '9px 18px', cursor: 'pointer', fontSize: 13.5, opacity: saving ? 0.6 : 1 }}>
           {saving ? 'Сохраняю…' : 'Сохранить'}
         </button>
       </div>
 
-      {/* ИТОГИ */}
-      <div className="grid kpis">
-        <Kpi label="Всего на рекламу" value={rub(totalBudget)} sub={`в бюджете, с ${initial.since || '2026-02-01'}`} />
-        <Kpi label="Доход (партнёрки)" value={rub(totalRevenue)} sub="из снимка роялти" />
-        <Kpi label="Net: доход − реклама" value={rub(totalNet)} sub={totalNet >= 0 ? 'в плюсе' : 'в минусе'} />
-      </div>
-
-      {byMonth.length ? (
-        <Card title="Расход на рекламу по месяцам" hint={`только «в бюджете», с ${initial.since || '2026-02-01'}. По сохранённым отметкам.`}>
-          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 140 }}>
-            {byMonth.map((x) => (
-              <div key={x.m} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, justifyContent: 'flex-end', height: '100%' }} title={`${x.m}: ${rub(x.cost)}`}>
-                <div style={{ fontSize: 11, color: 'var(--muted)', fontVariantNumeric: 'tabular-nums' }}>{Math.round(x.cost / 1000)}к</div>
-                <div style={{ width: '100%', maxWidth: 38, height: Math.round((x.cost / maxMo) * 88) + '%', minHeight: 2, background: 'var(--brass)', borderRadius: '3px 3px 0 0' }} />
-                <div style={{ fontSize: 11.5, color: 'var(--dim)' }}>{moLabel(x.m)}</div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      ) : null}
+      {/* РАСХОД НА РЕКЛАМУ (снимок по сохранённым отметкам) */}
+      {spend ? <RoyMarketingSpend spend={spend} /> : null}
 
       {/* ПРОЕКТЫ */}
       <Card title="Проекты" hint="Два уровня: провайдеры (под них считаем net-роялти) и сайты. Архивный проект не участвует в разнесении.">
@@ -241,11 +217,6 @@ export default function ProjectsView({ initial }) {
             <tbody>{archived.length ? archived.map(campRow) : <tr><td colSpan={6} style={{ color: 'var(--muted)' }}>архив пуст</td></tr>}</tbody>
           </table></div>
         ) : <div className="note" style={{ margin: 0 }}>Свёрнуто. Нажми заголовок, чтобы раскрыть {archived.length} кампан.</div>}
-      </Card>
-
-      {/* РАСХОД ПО ПРОВАЙДЕРАМ */}
-      <Card title="Расход по провайдерам" hint="свои кампании + доля общих и сайтовых поровну на всех провайдеров">
-        {activeProvs.length ? spendBars(activeProvs, attr.sp) : <div className="note" style={{ margin: 0 }}>нет активных провайдеров</div>}
       </Card>
 
       {/* NET-РОЯЛТИ */}

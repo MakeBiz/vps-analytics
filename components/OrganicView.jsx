@@ -169,8 +169,16 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
   const yaQ = useMemo(() => allQ.filter((x) => x.engine === 'yandex'), [allQ]);
   const goQ = useMemo(() => allQ.filter((x) => x.engine === 'google'), [allQ]);
 
+  // «Глубокий шум» Google: позиция хуже 30 (4-я страница и дальше) и ноль кликов.
+  // Это реальные данные Search Console, но сайт там лишь мелькает на одном показе,
+  // не ранжируется. Такие строки сортируются по показам вверх и создают ложное
+  // ощущение «сплошного Google» — прячем их из таблицы, но честно считаем и
+  // показываем сколько скрыто.
+  const isNoise = (x) => x.position != null && x.position > 30 && x.clicks === 0;
+  const noiseCount = useMemo(() => allQ.filter(isNoise).length, [allQ]);
+
   const qRows = useMemo(() => {
-    let r = allQ;
+    let r = allQ.filter((x) => !isNoise(x));
     if (qfilter === 'yandex') r = r.filter((x) => x.engine === 'yandex');
     else if (qfilter === 'google') r = r.filter((x) => x.engine === 'google');
     else if (qfilter === 'opp') r = r.filter((x) => x.position != null && x.position >= 4 && x.position <= 15);
@@ -203,8 +211,8 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       if (pg.visits >= 8 && c < 8) { out.push({ sev: 'bad', t: `Низкая конверсия: ${pg.path}`, x: `${nameOf[pg.site_key] || pg.site_key} · органика ${pg.visits}, переходов ${pg.clicks} (${c}%) — усилить блоки провайдеров и CTA` }); }
       if (out.length >= 4) break;
     }
-    // низкий CTR при высоких показах (любой движок)
-    allQ.filter((w) => w.impressions >= 50 && w.ctr < 3).slice(0, 2)
+    // низкий CTR при высоких показах (любой движок), исключая глубокий шум Google
+    allQ.filter((w) => w.impressions >= 50 && w.ctr < 3 && !(w.position != null && w.position > 30)).slice(0, 2)
       .forEach((w) => out.push({ sev: 'warn', t: `Низкий CTR (${ENG_RU[w.engine]}): «${w.q}»`, x: `${num(w.impressions)} показов, CTR ${w.ctr.toFixed(1)}% — переписать title и description посадочной` }));
     // разрыв движков по сайту
     for (const s of perSite) {
@@ -249,7 +257,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       </Card>
 
       {/* Поисковые запросы: Яндекс + Google вместе — вынесены наверх */}
-      <Card title="Поисковые запросы" hint="Яндекс (Вебмастер) и Google (Search Console) вместе">
+      <Card title="Поисковые запросы" hint="«Источник» — откуда пришли данные о запросе: Google Search Console или Яндекс.Вебмастер (не канал захода). Google индексирует и русские сайты, поэтому у них тоже есть строки Google">
         <div className="chips" style={{ margin: '0 0 12px' }}>
           {[['all', 'Все'], ['yandex', 'Яндекс'], ['google', 'Google'], ['opp', 'Позиция 4–15'], ['lowctr', 'Низкий CTR']].map(([k, l]) => (
             <button key={k} className={'chip' + (qfilter === k ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setQfilter(k)}>{l}</button>
@@ -264,7 +272,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
             <table>
               <thead>
                 <tr>
-                  <th>Запрос</th><th>Движок</th><th>Сайт</th>
+                  <th>Запрос</th><th>Источник</th><th>Сайт</th>
                   <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'impressions' ? 'var(--brass)' : undefined }} onClick={() => sortBy('impressions')}>Показы</th>
                   <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'clicks' ? 'var(--brass)' : undefined }} onClick={() => sortBy('clicks')}>Клики</th>
                   <th className="n" style={{ cursor: 'pointer', color: qsort.k === 'ctr' ? 'var(--brass)' : undefined }} onClick={() => sortBy('ctr')}>CTR</th>
@@ -288,6 +296,11 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
           </div>
         )}
         <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+          {noiseCount > 0 && (
+            <div style={{ marginBottom: 4 }}>
+              Скрыто {noiseCount} глубоких показов Google (позиция хуже 30, без кликов) — сайт там лишь мелькает на выдаче, реально не ранжируется.
+            </div>
+          )}
           Позиция по Яндексу появится, когда добавим её в коннектор Вебмастера. По Google позиция и CTR приходят из Search Console.
         </div>
       </Card>

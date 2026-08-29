@@ -15,12 +15,13 @@ const nextStatus = { active: 'archived', archived: 'excluded', excluded: 'active
 const COLORS = ['#c6a15b', '#5b7a99', '#6cbf8b', '#d1697a', '#d9a441', '#7f9dbb', '#b98cc4', '#5bb0b0'];
 
 function Toggle({ on, onClick, title }) {
+  // Включено — зелёная; выключено — белый бегунок на нейтральном фоне.
   return (
     <span onClick={onClick} title={title} style={{
       display: 'inline-block', position: 'relative', width: 38, height: 22, borderRadius: 20, cursor: 'pointer',
-      background: on ? 'rgba(91,122,153,.5)' : 'var(--panel-2)', border: '1px solid ' + (on ? 'var(--steel)' : 'var(--line)'), transition: '.15s',
+      background: on ? 'rgba(63,174,122,.55)' : 'var(--panel-2)', border: '1px solid ' + (on ? '#3fae7a' : 'var(--line)'), transition: '.15s',
     }}>
-      <span style={{ position: 'absolute', top: 2, left: on ? 18 : 2, width: 16, height: 16, borderRadius: '50%', background: '#dfe9f4', transition: '.15s' }} />
+      <span style={{ position: 'absolute', top: 2, left: on ? 18 : 2, width: 16, height: 16, borderRadius: '50%', background: '#ffffff', transition: '.15s' }} />
     </span>
   );
 }
@@ -66,7 +67,7 @@ export default function ProjectsView({ initial }) {
 
   // ---- правки кампаний ----
   const patchCamp = (id, patch) => setCamps((cs) => cs.map((c) => (c.id === id ? { ...c, ...patch } : c)));
-  const cycleStatus = (c) => patchCamp(c.id, { status: nextStatus[c.status], ...(nextStatus[c.status] === 'excluded' ? { in_budget: false } : {}), is_new: false });
+  const setStatus = (c, status) => patchCamp(c.id, { status, ...(status === 'excluded' ? { in_budget: false } : {}), is_new: false });
   const removeCamp = (id) => { setDelCamp((d) => [...d, id]); setCamps((cs) => cs.filter((c) => c.id !== id)); };
 
   // ---- правки проектов ----
@@ -120,7 +121,14 @@ export default function ProjectsView({ initial }) {
       </td>
       <td>{allocSelect(c, 'provider')}</td>
       <td>{allocSelect(c, 'site')}</td>
-      <td><span onClick={() => cycleStatus(c)} style={{ ...stStyle[c.status], fontSize: 12, padding: '3px 10px', borderRadius: 20, border: '1px solid', cursor: 'pointer', fontWeight: 500, whiteSpace: 'nowrap' }}>{stLabel[c.status]}</span></td>
+      <td>
+        <select value={c.status} onChange={(e) => setStatus(c, e.target.value)}
+          style={{ ...stStyle[c.status], fontSize: 12.5, padding: '4px 8px', borderRadius: 8, border: '1px solid', cursor: 'pointer', fontWeight: 500 }}>
+          <option value="active">Активная</option>
+          <option value="archived">Архивная</option>
+          <option value="excluded">Исключена</option>
+        </select>
+      </td>
       <td style={{ textAlign: 'center' }}><Toggle on={c.in_budget} onClick={() => patchCamp(c.id, { in_budget: !c.in_budget })} title="учитывать в бюджете" /></td>
       <td className="n">{rub(c.cost)}</td>
       <td><span onClick={() => removeCamp(c.id)} title="удалить" style={{ color: 'var(--muted)', cursor: 'pointer', padding: '2px 6px' }}>✕</span></td>
@@ -189,7 +197,7 @@ export default function ProjectsView({ initial }) {
       </Card>
 
       {/* АКТИВНЫЕ КАМПАНИИ */}
-      <Card title="Активные кампании Директа" hint="Тянутся автоматически при утреннем прогоне. Новые — сверху с пометкой «новая». «Общая — поровну» делит расход на активные проекты уровня.">
+      <Card title="Активные кампании Директа" hint={`Тянутся автоматически при утреннем прогоне. Расход — накопительно с ${initial.since || '2026-02-01'} (не за 30 дней). Новые — сверху с пометкой «новая».`}>
         <div className="scroll"><table><thead>{head}</thead>
           <tbody>{active.length ? active.map(campRow) : <tr><td colSpan={7} style={{ color: 'var(--muted)' }}>активных кампаний нет</td></tr>}</tbody>
         </table></div>
@@ -235,7 +243,7 @@ export default function ProjectsView({ initial }) {
           </tbody>
         </table></div>
         <div className="note" style={{ marginTop: 10 }}>
-          Доход берём из снимка партнёрок по ключу провайдера (tw/avps/ish/aeza). У кого ключ не задан — впиши его в чипе проекта. Расход — разнесённый выше. Учтено в бюджете за период: <b style={{ color: 'var(--ink)' }}>{rub(attr.counted)}</b>, из них общих <b style={{ color: 'var(--ink)' }}>{rub(attr.sharedP)}</b> (по {rub(attr.perP)} на провайдера).
+          Доход берём из снимка партнёрок по ключу провайдера (tw/avps/ish/aeza). У кого ключ не задан — впиши его в чипе проекта. Расход — накопительный с {initial.since || '2026-02-01'}, разнесённый выше. Всего в бюджете: <b style={{ color: 'var(--ink)' }}>{rub(attr.counted)}</b>, из них общих <b style={{ color: 'var(--ink)' }}>{rub(attr.sharedP)}</b> (по {rub(attr.perP)} на провайдера).
         </div>
       </Card>
     </div>

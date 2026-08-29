@@ -227,6 +227,13 @@
         "avg_cpc": 22.4
       },
       {
+        "campaign_name": "TW Cloud МСК (РСЯ)",
+        "group_name": "TW Cloud VPS МСК",
+        "clicks": 256,
+        "cost": 1629,
+        "avg_cpc": 6.36
+      },
+      {
         "campaign_name": "Servercalc",
         "group_name": "Подбор и выбор конфигурации",
         "clicks": 61,
@@ -274,6 +281,13 @@
         "clicks": 40,
         "cost": 997,
         "avg_cpc": 24.93
+      },
+      {
+        "campaign_name": "Провайдер Регионы (Бренд)",
+        "group_name": "Timeweb рег",
+        "clicks": 60,
+        "cost": 922,
+        "avg_cpc": 15.36
       },
       {
         "campaign_name": "ishosting",
@@ -372,6 +386,13 @@
         "clicks": 13,
         "cost": 198,
         "avg_cpc": 15.24
+      },
+      {
+        "campaign_name": "AdminVPS (Бренд)",
+        "group_name": "Бренд МСК",
+        "clicks": 13,
+        "cost": 144,
+        "avg_cpc": 11.06
       },
       {
         "campaign_name": "TW МСК (Бренд)",
@@ -1132,25 +1153,25 @@
       },
       {
         "date": "2026-08-18",
-        "impressions": 280,
-        "clicks": 64,
-        "cost": 2702
+        "impressions": 8110,
+        "clicks": 151,
+        "cost": 3175
       },
       {
         "date": "2026-08-19",
-        "impressions": 1590,
-        "clicks": 105,
-        "cost": 4099
+        "impressions": 12788,
+        "clicks": 218,
+        "cost": 4757
       },
       {
         "date": "2026-08-20",
-        "impressions": 1408,
-        "clicks": 99,
-        "cost": 3969
+        "impressions": 6154,
+        "clicks": 155,
+        "cost": 4468
       },
       {
         "date": "2026-08-21",
-        "impressions": 1514,
+        "impressions": 1515,
         "clicks": 85,
         "cost": 3358
       },
@@ -1186,15 +1207,15 @@
       },
       {
         "date": "2026-08-27",
-        "impressions": 971,
-        "clicks": 157,
-        "cost": 2890
+        "impressions": 1063,
+        "clicks": 175,
+        "cost": 3228
       },
       {
         "date": "2026-08-28",
-        "impressions": 726,
-        "clicks": 118,
-        "cost": 3138
+        "impressions": 1118,
+        "clicks": 173,
+        "cost": 3865
       }
     ],
     "trends": {
@@ -1431,6 +1452,12 @@
         "camp": "TW Cloud МСК",
         "clicks": 10,
         "cost": 509
+      },
+      {
+        "q": "timeweb",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 31,
+        "cost": 496
       },
       {
         "q": "тайм веб",
@@ -1826,12 +1853,6 @@
         "q": "vps купить",
         "camp": "Podborvps.ru",
         "clicks": 2,
-        "cost": 104
-      },
-      {
-        "q": "купить хостинг недорого",
-        "camp": "TW Cloud Регионы",
-        "clicks": 1,
         "cost": 104
       }
     ],

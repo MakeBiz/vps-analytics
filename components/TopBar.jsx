@@ -10,6 +10,7 @@ const TITLES = {
   '/pages': 'Страницы',
   '/geo': 'Гео и устройства',
   '/marketing': 'Маркетинг',
+  '/projects': 'Проекты и кампании',
   '/organic': 'Органика и SEO',
   '/partners': 'Партнёрки',
   '/royalties': 'Партнёрки Директ',
@@ -20,16 +21,13 @@ const TITLES = {
 
 // Вкладки на снимке коннектора (30 дней): фильтры периода/сайта/источника к ним не применяются.
 const SNAPSHOT_TABS = new Set(['/marketing']);
-// Страницы, где переключатель источника не нужен (уже только органика).
-const NO_SOURCE_TABS = new Set(['/organic']);
+// Страницы, где переключатель источника (Всё/Органика/Реклама) не нужен.
+const NO_SOURCE_TABS = new Set(['/organic', '/projects']);
 
 export default function TopBar({ sites }) {
   const path = usePathname();
   const sp = useSearchParams();
   const router = useRouter();
-
-  // На «Проекты и кампании» верхний фильтр (период/сайт/источник) не нужен.
-  if (path === '/projects') return null;
 
   const set = (patch) => {
     const p = new URLSearchParams(sp.toString());

@@ -174,11 +174,9 @@ export default function ProjectsView({ initial, spend }) {
       {/* РАСХОД НА РЕКЛАМУ (снимок по сохранённым отметкам) */}
       {spend ? <RoyMarketingSpend spend={spend} /> : null}
 
-      {/* сохранение — рядом с редактированием */}
-      {saveBar}
-
       {/* ПРОЕКТЫ */}
       <Card title="Проекты" hint="Два уровня: провайдеры (под них считаем net-роялти) и сайты. Архивный проект не участвует в разнесении.">
+        <div style={{ marginBottom: 12 }}>{saveBar}</div>
         {[['provider', 'Провайдеры'], ['site', 'Сайты']].map(([kind, label]) => (
           <div key={kind} style={{ marginBottom: 12 }}>
             <div style={{ fontSize: 12, color: 'var(--dim)', marginBottom: 6 }}>{label}</div>
@@ -223,8 +221,6 @@ export default function ProjectsView({ initial, spend }) {
         ) : <div className="note" style={{ margin: 0 }}>Свёрнуто. Нажми заголовок, чтобы раскрыть {archived.length} кампан.</div>}
       </Card>
 
-      {/* сохранение снизу тоже — удобно после правок */}
-      {saveBar}
       <div className="note" style={{ margin: 0 }}>
         Доход и рентабельность по провайдерам — в блоке «Расход на рекламу» вверху (обновляются после «Сохранить»). Расход — накопительный с {initial.since || '2026-02-01'}.
       </div>

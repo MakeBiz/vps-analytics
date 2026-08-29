@@ -28,6 +28,9 @@ export default function TopBar({ sites }) {
   const sp = useSearchParams();
   const router = useRouter();
 
+  // На «Проекты и кампании» верхний фильтр (период/сайт/источник) не нужен.
+  if (path === '/projects') return null;
+
   const set = (patch) => {
     const p = new URLSearchParams(sp.toString());
     for (const [k, v] of Object.entries(patch)) {

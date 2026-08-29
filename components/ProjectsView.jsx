@@ -159,19 +159,23 @@ export default function ProjectsView({ initial, spend }) {
     ));
   };
 
+  const saveBar = (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
+      {dirty ? <span style={{ fontSize: 13, color: 'var(--brass)' }}>● есть несохранённые изменения</span> : null}
+      {msg ? <span style={{ fontSize: 13, color: msg.startsWith('Ошибка') ? RED : GOOD }}>{msg}</span> : null}
+      <button onClick={save} disabled={saving} style={{ background: dirty ? 'linear-gradient(180deg,#c6a15b,#b18e49)' : 'var(--panel-2)', border: '1px solid ' + (dirty ? '#b18e49' : 'var(--line)'), color: dirty ? '#20170a' : 'var(--text)', fontWeight: 600, borderRadius: 9, padding: '9px 18px', cursor: 'pointer', fontSize: 13.5, opacity: saving ? 0.6 : 1 }}>
+        {saving ? 'Сохраняю…' : 'Сохранить'}
+      </button>
+    </div>
+  );
+
   return (
     <div className="grid" style={{ gap: 14 }}>
-      {/* сохранение */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
-        {dirty ? <span style={{ fontSize: 13, color: 'var(--brass)' }}>● есть несохранённые изменения</span> : null}
-        {msg ? <span style={{ fontSize: 13, color: msg.startsWith('Ошибка') ? RED : GOOD }}>{msg}</span> : null}
-        <button onClick={save} disabled={saving} style={{ background: dirty ? 'linear-gradient(180deg,#c6a15b,#b18e49)' : 'var(--panel-2)', border: '1px solid ' + (dirty ? '#b18e49' : 'var(--line)'), color: dirty ? '#20170a' : 'var(--text)', fontWeight: 600, borderRadius: 9, padding: '9px 18px', cursor: 'pointer', fontSize: 13.5, opacity: saving ? 0.6 : 1 }}>
-          {saving ? 'Сохраняю…' : 'Сохранить'}
-        </button>
-      </div>
-
       {/* РАСХОД НА РЕКЛАМУ (снимок по сохранённым отметкам) */}
       {spend ? <RoyMarketingSpend spend={spend} /> : null}
+
+      {/* сохранение — рядом с редактированием */}
+      {saveBar}
 
       {/* ПРОЕКТЫ */}
       <Card title="Проекты" hint="Два уровня: провайдеры (под них считаем net-роялти) и сайты. Архивный проект не участвует в разнесении.">
@@ -219,30 +223,11 @@ export default function ProjectsView({ initial, spend }) {
         ) : <div className="note" style={{ margin: 0 }}>Свёрнуто. Нажми заголовок, чтобы раскрыть {archived.length} кампан.</div>}
       </Card>
 
-      {/* NET-РОЯЛТИ */}
-      <Card title="Net-роялти по провайдерам" hint="доход из снимка партнёрок (royalties.json) − разнесённый рекламный расход">
-        <div className="scroll"><table>
-          <thead><tr><th>Провайдер</th><th className="n">Доход</th><th className="n">Расход рекламы</th><th className="n">Net</th></tr></thead>
-          <tbody>
-            {activeProvs.filter((p) => p.roy_key).map((p) => {
-              const rev = revenueMap[p.slug];
-              const spend = attr.sp[p.slug] || 0;
-              const net = rev == null ? null : rev - spend;
-              return (
-                <tr key={p.slug}>
-                  <td><span style={{ display: 'inline-block', width: 9, height: 9, borderRadius: '50%', background: p.color, marginRight: 7 }} />{p.name}</td>
-                  <td className="n">{rev == null ? '—' : rub(rev)}</td>
-                  <td className="n">{rub(spend)}</td>
-                  <td className="n" style={{ fontWeight: 600, color: net == null ? undefined : net >= 0 ? GOOD : RED }}>{net == null ? '—' : rub(net)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table></div>
-        <div className="note" style={{ marginTop: 10 }}>
-          Доход берём из снимка партнёрок по ключу провайдера (tw/avps/ish/aeza). У кого ключ не задан — впиши его в чипе проекта. Расход — накопительный с {initial.since || '2026-02-01'}, разнесённый выше. Всего в бюджете: <b style={{ color: 'var(--text)' }}>{rub(attr.counted)}</b>, из них общих <b style={{ color: 'var(--text)' }}>{rub(attr.sharedP)}</b> (по {rub(attr.perP)} на провайдера).
-        </div>
-      </Card>
+      {/* сохранение снизу тоже — удобно после правок */}
+      {saveBar}
+      <div className="note" style={{ margin: 0 }}>
+        Доход и рентабельность по провайдерам — в блоке «Расход на рекламу» вверху (обновляются после «Сохранить»). Расход — накопительный с {initial.since || '2026-02-01'}.
+      </div>
     </div>
   );
 }

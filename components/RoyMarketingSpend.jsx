@@ -51,21 +51,33 @@ function MonthlyStacked({ byMonthProv, providers }) {
   );
 }
 
-function ProviderBars({ providers, spendProv }) {
-  const max = Math.max(1, ...providers.map((p) => spendProv[p.slug] || 0));
+// Рентабельность по провайдерам: доход (роялти) − расход (реклама) = net,
+// «Рентаб.» = прибыль на ₽ рекламы (net / расход).
+function ProfitTable({ providers, net, spendProv }) {
+  const byNet = {}; for (const n of net || []) byNet[n.slug] = n;
   return (
-    <div>
-      {providers.map((p) => (
-        <div key={p.slug} style={{ margin: '10px 0' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4 }}>
-            <span><span style={{ display: 'inline-block', width: 9, height: 9, borderRadius: '50%', background: p.color, marginRight: 7 }} />{p.name}</span>
-            <span className="n" style={{ fontWeight: 600 }}>{rub(spendProv[p.slug] || 0)}</span>
-          </div>
-          <div style={{ height: 10, borderRadius: 5, background: 'var(--panel-2)', border: '1px solid var(--line)', overflow: 'hidden' }}>
-            <span style={{ display: 'block', height: '100%', width: Math.round((spendProv[p.slug] || 0) / max * 100) + '%', background: p.color }} />
-          </div>
-        </div>
-      ))}
+    <div className="scroll">
+      <table>
+        <thead><tr><th>Провайдер</th><th className="n">Доход</th><th className="n">Расход</th><th className="n">Net</th><th className="n" title="прибыль на ₽ рекламы (net / расход)">Рентаб.</th></tr></thead>
+        <tbody>
+          {providers.map((p) => {
+            const n = byNet[p.slug] || {};
+            const revenue = n.revenue;
+            const sp = n.spend != null ? n.spend : (spendProv[p.slug] || 0);
+            const nt = revenue == null ? null : revenue - sp;
+            const pct = (nt == null || !sp) ? null : (nt / sp) * 100;
+            return (
+              <tr key={p.slug}>
+                <td><span style={{ display: 'inline-block', width: 9, height: 9, borderRadius: '50%', background: p.color, marginRight: 7 }} />{p.name}</td>
+                <td className="n muted">{revenue == null ? '—' : rub(revenue)}</td>
+                <td className="n">{rub(sp)}</td>
+                <td className="n" style={{ fontWeight: 600, color: nt == null ? undefined : nt >= 0 ? GOOD : RED }}>{nt == null ? '—' : rub(nt)}</td>
+                <td className="n" style={{ color: pct == null ? undefined : pct >= 0 ? GOOD : RED }}>{pct == null ? '—' : (Math.round(pct) + '%')}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -91,8 +103,8 @@ export default function RoyMarketingSpend({ spend }) {
           {bmp.length ? <MonthlyStacked byMonthProv={bmp} providers={providers} /> : <div className="note" style={{ margin: 0 }}>нет данных</div>}
         </div>
         <div>
-          <div style={{ fontSize: 12, color: 'var(--dim)', marginBottom: 8 }}>По провайдерам (всего)</div>
-          {providers.length ? <ProviderBars providers={providers} spendProv={spend.spendProv || {}} /> : <div className="note" style={{ margin: 0 }}>нет провайдеров</div>}
+          <div style={{ fontSize: 12, color: 'var(--dim)', marginBottom: 8 }}>Рентабельность по провайдерам (доход − реклама)</div>
+          {providers.length ? <ProfitTable providers={providers} net={spend.net} spendProv={spend.spendProv || {}} /> : <div className="note" style={{ margin: 0 }}>нет провайдеров</div>}
         </div>
       </div>
 

@@ -1496,7 +1496,7 @@
     }
   ],
   "webmaster": {
-    "generated": "28.08.2026",
+    "generated": "29.08.2026",
     "sites": [
       {
         "host": "podborvps.ru",
@@ -1508,6 +1508,11 @@
           ],
           [
             "pasarguard dual vps алот про",
+            1,
+            0
+          ],
+          [
+            "врм gpu-standard-v4 900 гб врам стоимость в месяц",
             1,
             0
           ]
@@ -1560,10 +1565,10 @@
     ]
   },
   "gsc": {
-    "generated": "28.08.2026",
+    "generated": "29.08.2026",
     "window": {
-      "from": "2026-03-01",
-      "to": "2026-08-27"
+      "from": "2026-03-02",
+      "to": "2026-08-28"
     },
     "sites": [
       {
@@ -1576,6 +1581,90 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 155.0
+          },
+          {
+            "q": "vps america",
+            "impressions": 8,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 84.6
+          },
+          {
+            "q": "vps in usa",
+            "impressions": 10,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 97.7
+          },
+          {
+            "q": "vps server usa",
+            "impressions": 10,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 97.4
+          },
+          {
+            "q": "vps servers usa",
+            "impressions": 11,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.4
+          },
+          {
+            "q": "vps usa",
+            "impressions": 10,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 97.2
+          },
+          {
+            "q": "vps америка",
+            "impressions": 9,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.4
+          },
+          {
+            "q": "vps в нидерландах",
+            "impressions": 6,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 92.8
+          },
+          {
+            "q": "vps в сша",
+            "impressions": 8,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.8
+          },
+          {
+            "q": "vps нидерланды",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 90.0
+          },
+          {
+            "q": "vps сервер нидерланды",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.0
+          },
+          {
+            "q": "виртуальный сервер в нидерландах",
+            "impressions": 5,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.8
+          },
+          {
+            "q": "сервер usa",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 100.0
           }
         ]
       },
@@ -1591,11 +1680,25 @@
             "position": 89.0
           },
           {
+            "q": "cheap dedicated server pricing",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 98.0
+          },
+          {
             "q": "cheap server vps",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
             "position": 86.0
+          },
+          {
+            "q": "cheap vps hosting",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 78.0
           },
           {
             "q": "cheapest virtual private server hosting",
@@ -1605,11 +1708,60 @@
             "position": 69.0
           },
           {
+            "q": "cheapest vps servers",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 83.0
+          },
+          {
+            "q": "database vps",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 78.0
+          },
+          {
+            "q": "how much is a vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 97.0
+          },
+          {
             "q": "kazakhstan vps",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
             "position": 64.0
+          },
+          {
+            "q": "low cost vps server",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 85.0
+          },
+          {
+            "q": "ml workload hosting",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 98.0
+          },
+          {
+            "q": "serverpla",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 80.0
+          },
+          {
+            "q": "ultahost status",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 56.0
           },
           {
             "q": "virtual server cheap",
@@ -1619,6 +1771,27 @@
             "position": 89.0
           },
           {
+            "q": "virtual server hosting price",
+            "impressions": 5,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 90.6
+          },
+          {
+            "q": "virtual server hosting prices",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 92.0
+          },
+          {
+            "q": "vps ai hosting",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 63.0
+          },
+          {
             "q": "vps best price",
             "impressions": 2,
             "clicks": 0,
@@ -1626,11 +1799,67 @@
             "position": 80.5
           },
           {
+            "q": "vps cheap price",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 83.0
+          },
+          {
+            "q": "vps cloud wordpress",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 80.0
+          },
+          {
+            "q": "vps cost",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.0
+          },
+          {
+            "q": "vps datacenter locations",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 88.0
+          },
+          {
+            "q": "vps for wordpress",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 64.0
+          },
+          {
+            "q": "vps hosting prices",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.0
+          },
+          {
+            "q": "vps minecraft server",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 78.0
+          },
+          {
             "q": "vps price comparison",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
             "position": 77.0
+          },
+          {
+            "q": "vps pricing",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 91.0
           },
           {
             "q": "vps server cost",
@@ -1645,13 +1874,56 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 92.0
+          },
+          {
+            "q": "vps servers cheap",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 78.0
+          },
+          {
+            "q": "vps servers in kazakhstan",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 61.0
+          },
+          {
+            "q": "wordpress vps hosting",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 71.0
           }
         ]
       },
       {
         "host": "servercalc.ru",
         "property": "sc-domain:servercalc.ru",
-        "queries": []
+        "queries": [
+          {
+            "q": "vps для ии",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 87.0
+          },
+          {
+            "q": "виртуальный сервер цена",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 85.0
+          },
+          {
+            "q": "стоимость виртуального сервера",
+            "impressions": 11,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 85.2
+          }
+        ]
       }
     ]
   },

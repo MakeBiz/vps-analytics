@@ -1,6 +1,9 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { Card } from '@/components/ui';
+import { Card, Kpi } from '@/components/ui';
+
+const MONTHS_RU = { '01': 'янв', '02': 'фев', '03': 'мар', '04': 'апр', '05': 'май', '06': 'июн', '07': 'июл', '08': 'авг', '09': 'сен', '10': 'окт', '11': 'ноя', '12': 'дек' };
+const moLabel = (m) => { const mm = String(m).split('-')[1]; return MONTHS_RU[mm] || m; };
 
 const rub = (n) => Math.round(Number(n) || 0).toLocaleString('ru-RU') + ' ₽';
 const GOOD = '#3fae7a';
@@ -156,6 +159,13 @@ export default function ProjectsView({ initial }) {
     ));
   };
 
+  const totalRevenue = (initial.net || []).reduce((s, n) => s + (n.revenue || 0), 0);
+  const totalBudget = attr.counted;
+  let totalNet = 0;
+  for (const n of (initial.net || [])) if (n.revenue != null) totalNet += n.revenue - (attr.sp[n.slug] || 0);
+  const byMonth = initial.byMonth || [];
+  const maxMo = Math.max(1, ...byMonth.map((x) => x.cost));
+
   return (
     <div className="grid" style={{ gap: 14 }}>
       {/* сохранение */}
@@ -165,6 +175,27 @@ export default function ProjectsView({ initial }) {
           {saving ? 'Сохраняю…' : 'Сохранить'}
         </button>
       </div>
+
+      {/* ИТОГИ */}
+      <div className="grid kpis">
+        <Kpi label="Всего на рекламу" value={rub(totalBudget)} sub={`в бюджете, с ${initial.since || '2026-02-01'}`} />
+        <Kpi label="Доход (партнёрки)" value={rub(totalRevenue)} sub="из снимка роялти" />
+        <Kpi label="Net: доход − реклама" value={rub(totalNet)} sub={totalNet >= 0 ? 'в плюсе' : 'в минусе'} />
+      </div>
+
+      {byMonth.length ? (
+        <Card title="Расход на рекламу по месяцам" hint={`только «в бюджете», с ${initial.since || '2026-02-01'}. По сохранённым отметкам.`}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 140 }}>
+            {byMonth.map((x) => (
+              <div key={x.m} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, justifyContent: 'flex-end', height: '100%' }} title={`${x.m}: ${rub(x.cost)}`}>
+                <div style={{ fontSize: 11, color: 'var(--muted)', fontVariantNumeric: 'tabular-nums' }}>{Math.round(x.cost / 1000)}к</div>
+                <div style={{ width: '100%', maxWidth: 38, height: Math.round((x.cost / maxMo) * 88) + '%', minHeight: 2, background: 'var(--brass)', borderRadius: '3px 3px 0 0' }} />
+                <div style={{ fontSize: 11.5, color: 'var(--dim)' }}>{moLabel(x.m)}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      ) : null}
 
       {/* ПРОЕКТЫ */}
       <Card title="Проекты" hint="Два уровня: провайдеры (под них считаем net-роялти) и сайты. Архивный проект не участвует в разнесении.">
@@ -212,15 +243,10 @@ export default function ProjectsView({ initial }) {
         ) : <div className="note" style={{ margin: 0 }}>Свёрнуто. Нажми заголовок, чтобы раскрыть {archived.length} кампан.</div>}
       </Card>
 
-      {/* РАСХОД ПО ПРОЕКТАМ */}
-      <div className="grid cols2" style={{ gap: 14 }}>
-        <Card title="Расход по провайдерам" hint="свои кампании + доля общих поровну">
-          {activeProvs.length ? spendBars(activeProvs, attr.sp) : <div className="note" style={{ margin: 0 }}>нет активных провайдеров</div>}
-        </Card>
-        <Card title="Расход по сайтам" hint="свои кампании + доля общих поровну">
-          {activeSites.length ? spendBars(activeSites, attr.ss) : <div className="note" style={{ margin: 0 }}>нет активных сайтов</div>}
-        </Card>
-      </div>
+      {/* РАСХОД ПО ПРОВАЙДЕРАМ */}
+      <Card title="Расход по провайдерам" hint="свои кампании + доля общих и сайтовых поровну на всех провайдеров">
+        {activeProvs.length ? spendBars(activeProvs, attr.sp) : <div className="note" style={{ margin: 0 }}>нет активных провайдеров</div>}
+      </Card>
 
       {/* NET-РОЯЛТИ */}
       <Card title="Net-роялти по провайдерам" hint="доход из снимка партнёрок (royalties.json) − разнесённый рекламный расход">

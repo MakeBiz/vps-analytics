@@ -43,6 +43,8 @@ export default async function Royalties() {
   const months = R.months || [];
   const fcMonths = Object.keys(tw.forecast || {});
   const aezaM = (m) => aeza.months?.[m] || {};
+  const aezaFc = aeza.forecast || {};
+  const aezaFcOf = (m) => aezaFc[m] || 0;
 
   const grandTotal = (tw.total || 0) + (avps.total || 0) + (ish.total || 0) + (aeza.total || 0);
   const netCum = net_months.length ? net_months[net_months.length - 1].cum : (derived.net || 0);
@@ -93,6 +95,7 @@ export default async function Royalties() {
   for (const m of fcMonths) {
     incSeries.push({ label: monthLabel(m) + ' п', parts: [
       { name: 'прогноз', value: (tw.forecast[m]?.first || 0) + (tw.forecast[m]?.rep || 0) + (avps.forecast?.[m] || 0), color: FORE },
+      ...(aezaFcOf(m) ? [{ name: 'Aeza (прогноз)', value: aezaFcOf(m), color: AEZA }] : []),
       ...(holdOf(m) ? [{ name: 'потенциал холд AdminVPS', value: holdOf(m), color: HOLD }] : []),
     ] });
   }
@@ -136,7 +139,7 @@ export default async function Royalties() {
     return { m, t, a, i, z, all: t + a + i + z, net, check: cnt ? Math.round(t / cnt) : 0, perday: Math.round((t + a + i + z) / dm), cReg: ads.eff?.[m]?.conv_click_reg, cPay: regs ? Math.round((paid / regs) * 100) : null };
   });
   const totFact = factRows.reduce((s, r) => ({ t: s.t + r.t, a: s.a + r.a, i: s.i + r.i, z: s.z + r.z, all: s.all + r.all }), { t: 0, a: 0, i: 0, z: 0, all: 0 });
-  const fcRows = fcMonths.map((m) => { const t = (tw.forecast[m]?.first || 0) + (tw.forecast[m]?.rep || 0); const a = avps.forecast?.[m] || 0; return { m, t, a, all: t + a }; });
+  const fcRows = fcMonths.map((m) => { const t = (tw.forecast[m]?.first || 0) + (tw.forecast[m]?.rep || 0); const a = avps.forecast?.[m] || 0; const z = aezaFcOf(m); return { m, t, a, z, all: t + a + z }; });
 
   const note = (t) => <div className="note" style={{ marginTop: 10 }}>{t}</div>;
 
@@ -177,7 +180,7 @@ export default async function Royalties() {
             <span key={l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
         </div>
-        {note(`Столбцы факта разбиты по источникам, включая is*hosting и Aeza. Светлый хвост текущего месяца это достройка по темпу, жёлтая часть это потенциал разморозки холда AdminVPS (рулонный буфер ~${num(R.projection?.avps?.pending_monthly || 0)} ₽/мес: сейчас в холде ${num(R.projection?.avps?.pending || 0)} ₽, он постоянно пополняется новыми начислениями и столько же размораживается, поэтому в прогнозе держится ровно, а не иссякает, и каждый следующий месяц выше). Серые столбцы справа это прогноз продлений. Основную выручку даёт Timeweb.`)}
+        {note(`Столбцы факта разбиты по источникам, включая is*hosting и Aeza. Светлый хвост текущего месяца это достройка по темпу, жёлтая часть это потенциал разморозки холда AdminVPS (рулонный буфер ~${num(R.projection?.avps?.pending_monthly || 0)} ₽/мес: сейчас в холде ${num(R.projection?.avps?.pending || 0)} ₽, он постоянно пополняется новыми начислениями и столько же размораживается, поэтому в прогнозе держится ровно, а не иссякает, и каждый следующий месяц выше). Серые столбцы справа это прогноз продлений; розовый сегмент на них это прогноз Aeza — ровный темп ~${num(aeza.run_rate_month || 0)} ₽/мес (средний за первые ${aeza.fc_days || '—'} дн., партнёр только разгоняется, пересчитается по мере накопления). Основную выручку даёт Timeweb.`)}
       </Card>
 
       <div className="grid cols2">
@@ -332,9 +335,9 @@ export default async function Royalties() {
             <Kpi label="Доход, ₽" value={num(aeza.total)} sub={`€${dec(String(aeza.eur ?? 0))} × ${aeza.rate || 100}`} />
             <Kpi label="Операции" value={num(aeza.ops || 0)} sub="холд + оплаты" />
             {aeza.snapshot ? <Kpi label="Регистрации" value={num(aeza.snapshot.registrations)} sub={`активных ${num(aeza.snapshot.active_referrals)}`} /> : null}
-            {aeza.snapshot ? <Kpi label="Средств в холде, ₽" value={num(aeza.snapshot.hold_rub)} sub={`€${dec(String(aeza.snapshot.hold_eur ?? 0))}`} /> : null}
+            {aeza.run_rate_month != null ? <Kpi label="Прогноз, ₽/мес" value={num(aeza.run_rate_month)} sub={`темп ${num(aeza.run_rate_day || 0)} ₽/день`} /> : null}
           </div>
-          {note(`Четвёртый партнёр Aeza. Доход = «Зачисление в холд» + «Оплата» из ленты реф-кабинета в евро × ${aeza.rate || 100}. Регистрации и активных рефералов берём из недельного снимка кабинета${aeza.snapshot?.asof ? ', ' + aeza.snapshot.asof : ''} — платёжная лента их не отдаёт.`)}
+          {note(`Четвёртый партнёр Aeza. Доход = «Зачисление в холд» + «Оплата» из ленты реф-кабинета в евро × ${aeza.rate || 100}. Регистрации и активных рефералов берём из недельного снимка кабинета${aeza.snapshot?.asof ? ', ' + aeza.snapshot.asof : ''} — платёжная лента их не отдаёт. Партнёр растёт: в прогноз заложен ровный темп ~${num(aeza.run_rate_month || 0)} ₽/мес (средний за первые ${aeza.fc_days || '—'} дн. с ${aeza.first || '—'}), обновится по мере накопления.`)}
         </Card>
         <Card title="AdminVPS · снимок кабинета" hint="со сводного экрана реф-программы, весь период">
           {avps.snapshot ? (
@@ -431,7 +434,7 @@ export default async function Royalties() {
               </tr>
               {fcRows.map((r) => (
                 <tr key={r.m} style={{ color: 'var(--dim)' }}>
-                  <td>{monthLabel(r.m)} · прогноз</td><td className="n">{num(r.t)}</td><td className="n">{r.a ? num(r.a) : '—'}</td><td className="n">—</td><td className="n">—</td>
+                  <td>{monthLabel(r.m)} · прогноз</td><td className="n">{num(r.t)}</td><td className="n">{r.a ? num(r.a) : '—'}</td><td className="n">—</td><td className="n">{r.z ? num(r.z) : '—'}</td>
                   <td className="n">{num(r.all)}</td><td className="n" colSpan={5}></td>
                 </tr>
               ))}

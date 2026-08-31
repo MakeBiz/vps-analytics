@@ -177,7 +177,7 @@ export default async function Royalties() {
             <span key={l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
         </div>
-        {note(`Столбцы факта разбиты по источникам, включая is*hosting и Aeza. Светлый хвост текущего месяца это достройка по темпу, жёлтая часть это потенциал разморозки холда AdminVPS (${num(R.projection?.avps?.pending || 0)} ₽ ровными долями до ${R.projection?.avps?.pending_until || ''}, теперь в прогнозе), серые столбцы справа это прогноз продлений. Основную выручку даёт Timeweb.`)}
+        {note(`Столбцы факта разбиты по источникам, включая is*hosting и Aeza. Светлый хвост текущего месяца это достройка по темпу, жёлтая часть это потенциал разморозки холда AdminVPS (рулонный буфер ~${num(R.projection?.avps?.pending_monthly || 0)} ₽/мес: сейчас в холде ${num(R.projection?.avps?.pending || 0)} ₽, он постоянно пополняется новыми начислениями и столько же размораживается, поэтому в прогнозе держится ровно, а не иссякает, и каждый следующий месяц выше). Серые столбцы справа это прогноз продлений. Основную выручку даёт Timeweb.`)}
       </Card>
 
       <div className="grid cols2">
@@ -345,7 +345,7 @@ export default async function Royalties() {
               <Kpi label="Баланс, ₽" value={num(Math.round(avps.snapshot.balance_rub || 0))} sub={`к выводу ${num(Math.round(avps.snapshot.available_rub || 0))}`} />
             </div>
           ) : <Empty text="Снимок кабинета AdminVPS не задан" />}
-          {avps.snapshot ? note('Посетители и конверсия видны только на этом снимке — в платёжных выгрузках их нет. «Ожидающие» это заработанный доход в холде, разморозится за ~40 дней; заложено в план (достройка месяца).') : null}
+          {avps.snapshot ? note(`Посетители и конверсия видны только на этом снимке — в платёжных выгрузках их нет. «Ожидающие» это заработанный доход в холде (${num(R.projection?.avps?.pending || 0)} ₽), разморозка ~40 дней. Холд рулонный: пока старое размораживается, новые начисления его пополняют, поэтому в прогнозе он идёт ровным темпом ~${num(R.projection?.avps?.pending_monthly || 0)} ₽/мес и не иссякает.`) : null}
         </Card>
       </div>
 
@@ -353,37 +353,47 @@ export default async function Royalties() {
         const dd = Math.max(1, days);
         const ishCnt = ish.conv || 0, aezaCnt = aeza.ops || 0;
         const rows = [
-          ['Timeweb', tw.total || 0, tw.cnt || 0, 'оплаты', BRASS],
-          ['AdminVPS', avps.total || 0, avps.cnt || 0, 'начисления', STEEL],
-          ['is*hosting', ish.total || 0, ishCnt, 'конверсии', GREEN],
-          ['Aeza', aeza.total || 0, aezaCnt, 'операции', AEZA],
+          ['Timeweb', tw.total || 0, tw.cnt || 0, 'оплаты', BRASS, ads.total?.tw_spend || 0],
+          ['AdminVPS', avps.total || 0, avps.cnt || 0, 'начисления', STEEL, ads.total?.av_spend || 0],
+          ['is*hosting', ish.total || 0, ishCnt, 'конверсии', GREEN, 0],
+          ['Aeza', aeza.total || 0, aezaCnt, 'операции', AEZA, 0],
         ].filter((r) => r[1] > 0).sort((a, b) => b[1] - a[1]);
         const tot = rows.reduce((s, r) => s + r[1], 0) || 1;
+        const totSpend = rows.reduce((s, r) => s + (r[5] || 0), 0);
+        const totNet = tot - totSpend;
         return (
-          <Card title="Заход по партнёрам, ₽" hint="доход, доля, средняя сумма в день и средний чек за период">
+          <Card title="Заход по партнёрам, ₽" hint="доход, доля, расход, чистая прибыль, средняя сумма в день и средний чек за период">
             <div style={{ display: 'flex', height: 20, borderRadius: 6, overflow: 'hidden', margin: '2px 0 12px' }}>
               {rows.map((r) => <div key={r[0]} title={`${r[0]}: ${num(Math.round(r[1]))} ₽`} style={{ width: (r[1] / tot * 100).toFixed(1) + '%', background: r[4] }} />)}
             </div>
             <div className="scroll">
               <table>
-                <thead><tr><th>Партнёр</th><th className="n">Доход, ₽</th><th className="n">Доля</th><th className="n">Сумма в день, ₽</th><th className="n">Средний чек, ₽</th></tr></thead>
+                <thead><tr><th>Партнёр</th><th className="n">Доход, ₽</th><th className="n">Доля</th><th className="n">Расход, ₽</th><th className="n">Чистыми, ₽</th><th className="n">Сумма в день, ₽</th><th className="n">Средний чек, ₽</th></tr></thead>
                 <tbody>
-                  {rows.map((r) => (
-                    <tr key={r[0]}>
-                      <td><span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: 2, background: r[4], marginRight: 6 }} />{r[0]}</td>
-                      <td className="n"><b>{num(Math.round(r[1]))}</b></td>
-                      <td className="n">{dec((r[1] / tot * 100).toFixed(1))}%</td>
-                      <td className="n">{num(Math.round(r[1] / dd))}</td>
-                      <td className="n" title={`${r[3]}: ${num(r[2])}`}>{r[2] ? num(Math.round(r[1] / r[2])) : '—'}</td>
-                    </tr>
-                  ))}
+                  {rows.map((r) => {
+                    const net = r[1] - (r[5] || 0);
+                    return (
+                      <tr key={r[0]}>
+                        <td><span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: 2, background: r[4], marginRight: 6 }} />{r[0]}</td>
+                        <td className="n"><b>{num(Math.round(r[1]))}</b></td>
+                        <td className="n">{dec((r[1] / tot * 100).toFixed(1))}%</td>
+                        <td className="n" style={{ color: r[5] ? RED : undefined }}>{r[5] ? '−' + num(Math.round(r[5])) : '—'}</td>
+                        <td className="n" style={{ color: net >= 0 ? GREEN : RED }}>{(net >= 0 ? '+' : '') + num(Math.round(net))}</td>
+                        <td className="n">{num(Math.round(r[1] / dd))}</td>
+                        <td className="n" title={`${r[3]}: ${num(r[2])}`}>{r[2] ? num(Math.round(r[1] / r[2])) : '—'}</td>
+                      </tr>
+                    );
+                  })}
                   <tr style={{ fontWeight: 600, borderTop: '2px solid var(--line)' }}>
-                    <td>Итого</td><td className="n">{num(Math.round(tot))}</td><td className="n">100%</td><td className="n">{num(Math.round(tot / dd))}</td><td className="n">—</td>
+                    <td>Итого</td><td className="n">{num(Math.round(tot))}</td><td className="n">100%</td>
+                    <td className="n" style={{ color: totSpend ? RED : undefined }}>{totSpend ? '−' + num(Math.round(totSpend)) : '—'}</td>
+                    <td className="n" style={{ color: totNet >= 0 ? GREEN : RED }}>{(totNet >= 0 ? '+' : '') + num(Math.round(totNet))}</td>
+                    <td className="n">{num(Math.round(tot / dd))}</td><td className="n">—</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            {note('Вклад каждого партнёра деньгами. Средний чек это доход на одну оплату (у is*hosting на конверсию, у Aeza на операцию начисления). Основную выручку даёт Timeweb, AdminVPS второй, is*hosting и Aeza пока небольшие, но живые.')}
+            {note('Вклад каждого партнёра деньгами: доход, расход Директа и чистая прибыль. Расход рекламы есть только у Timeweb и AdminVPS, у is*hosting и Aeza выплаты без нашей рекламы. Средний чек это доход на одну оплату (у is*hosting на конверсию, у Aeza на операцию начисления). Основную выручку даёт Timeweb, AdminVPS второй, is*hosting и Aeza пока небольшие, но живые.')}
           </Card>
         );
       })()}

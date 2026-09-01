@@ -330,14 +330,24 @@ export default async function Royalties() {
       </div>
 
       <div className="grid cols2">
-        <Card title="Aeza, ₽" hint="VPS-хостинг, доход в рублях по курсу из евро">
+        <Card title="Aeza, ₽" hint="VPS-хостинг, доход накопительно по недельным снимкам кабинета">
           <div className="grid kpis" style={{ gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
-            <Kpi label="Доход, ₽" value={num(aeza.total)} sub={`€${dec(String(aeza.eur ?? 0))} × ${aeza.rate || 100}`} />
-            <Kpi label="Операции" value={num(aeza.ops || 0)} sub="холд + оплаты" />
+            <Kpi label="Доход всего, ₽" value={num(aeza.total)} sub={`холд + заработано, €${dec(String(aeza.eur ?? 0))}`} />
+            {aeza.weekly ? <Kpi label="За неделю, ₽" value={'+' + num(aeza.weekly.income)} sub={`${aeza.weekly.from}→${aeza.weekly.to}${aeza.weekly.regs ? ', +' + aeza.weekly.regs + ' рег.' : ''}`} /> : <Kpi label="Операции" value={num(aeza.ops || 0)} sub="за последние дни" />}
             {aeza.snapshot ? <Kpi label="Регистрации" value={num(aeza.snapshot.registrations)} sub={`активных ${num(aeza.snapshot.active_referrals)}`} /> : null}
             {aeza.run_rate_month != null ? <Kpi label="Прогноз, ₽/мес" value={num(aeza.run_rate_month)} sub={`темп ${num(aeza.run_rate_day || 0)} ₽/день`} /> : null}
           </div>
-          {note(`Четвёртый партнёр Aeza. Доход = «Зачисление в холд» + «Оплата» из ленты реф-кабинета в евро × ${aeza.rate || 100}. Регистрации и активных рефералов берём из недельного снимка кабинета${aeza.snapshot?.asof ? ', ' + aeza.snapshot.asof : ''} — платёжная лента их не отдаёт. Партнёр растёт: в прогноз заложен ровный темп ~${num(aeza.run_rate_month || 0)} ₽/мес (средний за первые ${aeza.fc_days || '—'} дн. с ${aeza.first || '—'}), обновится по мере накопления.`)}
+          {Array.isArray(aeza.history) && aeza.history.length ? (
+            <table style={{ marginTop: 10 }}>
+              <thead><tr><th>Снимок</th><th className="n">Холд, €</th><th className="n">Заработано, €</th><th className="n">Всего, ₽</th><th className="n">Рег.</th></tr></thead>
+              <tbody>
+                {aeza.history.map((x) => (
+                  <tr key={x.date}><td>{x.date}</td><td className="n">{x.hold_eur != null ? dec(String(x.hold_eur)) : '—'}</td><td className="n">{x.earned_eur != null ? dec(String(x.earned_eur)) : '—'}</td><td className="n"><b>{num(Math.round((x.cum_eur || 0) * (aeza.rate || 100)))}</b></td><td className="n muted">{x.registrations != null ? num(x.registrations) : '—'}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          {note(`Четвёртый партнёр Aeza. Лента операций в кабинете живёт всего 3 дня, поэтому историю ведём по недельным скринам сводного экрана (реестр выше). Доход накопительно: «средств в холде» + «всего заработано» × ${aeza.rate || 100} ₽ — эти цифры из 3-дневного окна не выпадают. ${aeza.snapshot?.ahead ? `Последний снимок (${aeza.snapshot.asof}) свежее данных роялти (на ${aeza.asof || '—'}) — показан на карточках, а в факт войдёт при следующем полном обновлении. ` : ''}В прогноз заложен ровный темп ~${num(aeza.run_rate_month || 0)} ₽/мес (средний за ${aeza.fc_days || '—'} дн. с ${aeza.first || '—'}), пересчитывается по мере накопления снимков.`)}
         </Card>
         <Card title="AdminVPS · снимок кабинета" hint="со сводного экрана реф-программы, весь период">
           {avps.snapshot ? (

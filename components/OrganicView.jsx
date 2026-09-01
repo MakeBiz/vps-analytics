@@ -149,8 +149,14 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       else if (eng === 'google') { t.go += r.visits; t.goC += r.clicks; }
       else t.ot += r.visits;
     }
+    // Добиваем нулями живые сайты, по которым органики ещё нет: rep.byDay кросс-джойнит
+    // все живые сайты, поэтому новый сайт (serverselection.online) появится в таблице
+    // строкой с нулями, а не пропадёт совсем.
+    for (const r of rep.byDay || []) {
+      if (!bs[r.site_key]) bs[r.site_key] = { site_key: r.site_key, yandex: 0, google: 0, other: 0, visits: 0, clicks: 0 };
+    }
     return { perSite: Object.values(bs).sort((a, b) => b.visits - a.visits), tot: t };
-  }, [rep.byEngineSite]);
+  }, [rep.byEngineSite, rep.byDay]);
 
   const share = pctF(tot.org, total);
   const conv = pctF(tot.clicks, tot.org);
@@ -234,8 +240,10 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       totals[r.site_key] = (totals[r.site_key] || 0) + r.visits;
     }
     const rows = Object.values(byD).sort((a, b) => (a.d < b.d ? -1 : 1));
+    // Показываем ВСЕ живые сайты (rep.byDay уже кросс-джойнит их все), даже с нулём —
+    // чтобы новый сайт (serverselection.online) был виден в легенде и как линия, а не
+    // отсеивался фильтром totals>0, пока по нему ещё нет органических визитов.
     const series = Object.keys(totals)
-      .filter((k) => totals[k] > 0)
       .sort((a, b) => totals[b] - totals[a])
       .map((k, i) => ({ key: k, name: nameOf[k] || k, color: palette[i % palette.length] }));
     return { rows, series };

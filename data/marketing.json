@@ -1,5 +1,5 @@
 {
-  "generated": "31.08.2026",
+  "generated": "01.09.2026",
   "window": "последние 30 дней",
   "note": "Снимок маркетинга из коннектора Яндекса (Директ, Метрика, Вебмастер, Wordstat). Обновляется по запросу.",
   "direct": {
@@ -18,7 +18,7 @@
         "name": "TW Cloud МСК",
         "cost": 14397,
         "clicks": 294,
-        "ctr": 23.9,
+        "ctr": 23.84,
         "cpc": 48.97,
         "kind": "brand"
       },
@@ -63,19 +63,28 @@
       {
         "id": "713771451",
         "name": "Aeza МСК (бренд)",
-        "cost": 5802,
-        "clicks": 284,
-        "ctr": 14.42,
-        "cpc": 20.43,
+        "cost": 6596,
+        "clicks": 330,
+        "ctr": 15.87,
+        "cpc": 19.99,
+        "kind": "brand"
+      },
+      {
+        "id": "713886156",
+        "name": "Провайдер Регионы (Бренд)",
+        "cost": 4405,
+        "clicks": 495,
+        "ctr": 21.95,
+        "cpc": 8.9,
         "kind": "brand"
       },
       {
         "id": "713792287",
         "name": "TW МСК (Бренд)",
-        "cost": 3625,
-        "clicks": 212,
-        "ctr": 14.02,
-        "cpc": 17.1,
+        "cost": 4256,
+        "clicks": 256,
+        "ctr": 13.89,
+        "cpc": 16.62,
         "kind": "brand"
       },
       {
@@ -108,15 +117,6 @@
         "kind": "brand"
       },
       {
-        "id": "713886156",
-        "name": "Провайдер Регионы (Бренд)",
-        "cost": 2619,
-        "clicks": 284,
-        "ctr": 23.65,
-        "cpc": 9.22,
-        "kind": "brand"
-      },
-      {
         "id": "713636116",
         "name": "TW Cloud МСК (РСЯ)",
         "cost": 1629,
@@ -128,10 +128,10 @@
       {
         "id": "713897708",
         "name": "AdminVPS (Бренд)",
-        "cost": 294,
-        "clicks": 32,
-        "ctr": 21.77,
-        "cpc": 9.2,
+        "cost": 452,
+        "clicks": 55,
+        "ctr": 25.0,
+        "cpc": 8.22,
         "kind": "brand"
       }
     ],
@@ -171,16 +171,16 @@
       {
         "campaign_name": "Aeza МСК (бренд)",
         "group_name": "Нейтральная",
-        "clicks": 214,
-        "cost": 3655,
-        "avg_cpc": 17.08
+        "clicks": 260,
+        "cost": 4449,
+        "avg_cpc": 17.11
       },
       {
         "campaign_name": "TW МСК (Бренд)",
         "group_name": "Бренд",
-        "clicks": 209,
-        "cost": 3547,
-        "avg_cpc": 16.97
+        "clicks": 253,
+        "cost": 4178,
+        "avg_cpc": 16.51
       },
       {
         "campaign_name": "Podborvps.ru",
@@ -188,6 +188,13 @@
         "clicks": 164,
         "cost": 3085,
         "avg_cpc": 18.81
+      },
+      {
+        "campaign_name": "Провайдер Регионы (Бренд)",
+        "group_name": "Timeweb рег",
+        "clicks": 237,
+        "cost": 3026,
+        "avg_cpc": 12.77
       },
       {
         "campaign_name": "Servercalc",
@@ -202,13 +209,6 @@
         "clicks": 67,
         "cost": 2054,
         "avg_cpc": 30.65
-      },
-      {
-        "campaign_name": "Провайдер Регионы (Бренд)",
-        "group_name": "Timeweb рег",
-        "clicks": 158,
-        "cost": 1996,
-        "avg_cpc": 12.64
       },
       {
         "campaign_name": "TW Cloud Регионы",
@@ -258,6 +258,13 @@
         "clicks": 25,
         "cost": 1098,
         "avg_cpc": 43.92
+      },
+      {
+        "campaign_name": "Провайдер Регионы (Бренд)",
+        "group_name": "Aeza",
+        "clicks": 183,
+        "cost": 1091,
+        "avg_cpc": 5.96
       },
       {
         "campaign_name": "PodborVPS",
@@ -330,18 +337,18 @@
         "avg_cpc": 28.92
       },
       {
-        "campaign_name": "Провайдер Регионы (Бренд)",
-        "group_name": "Aeza",
-        "clicks": 87,
-        "cost": 474,
-        "avg_cpc": 5.45
-      },
-      {
         "campaign_name": "Servercalc",
         "group_name": "Сравнение и каталог",
         "clicks": 14,
         "cost": 462,
         "avg_cpc": 32.99
+      },
+      {
+        "campaign_name": "AdminVPS (Бренд)",
+        "group_name": "Бренд МСК",
+        "clicks": 55,
+        "cost": 452,
+        "avg_cpc": 8.22
       },
       {
         "campaign_name": "Aeza МСК (бренд)",
@@ -358,11 +365,11 @@
         "avg_cpc": 28.04
       },
       {
-        "campaign_name": "AdminVPS (Бренд)",
-        "group_name": "Бренд МСК",
-        "clicks": 32,
-        "cost": 294,
-        "avg_cpc": 9.2
+        "campaign_name": "Провайдер Регионы (Бренд)",
+        "group_name": "Adminvps рег",
+        "clicks": 75,
+        "cost": 288,
+        "avg_cpc": 3.84
       },
       {
         "campaign_name": "Servercalc",
@@ -384,13 +391,6 @@
         "clicks": 13,
         "cost": 198,
         "avg_cpc": 15.24
-      },
-      {
-        "campaign_name": "Провайдер Регионы (Бренд)",
-        "group_name": "Adminvps рег",
-        "clicks": 39,
-        "cost": 149,
-        "avg_cpc": 3.82
       },
       {
         "campaign_name": "TW МСК (Бренд)",
@@ -1230,7 +1230,7 @@
         "key": "podborvps",
         "name": "ПодборVPS",
         "counter": "111248718",
-        "visits": 533,
+        "visits": 537,
         "providerClicks": 236,
         "promo": 0,
         "goals": [
@@ -1304,8 +1304,8 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 408,
-        "providerClicks": 106,
+        "visits": 410,
+        "providerClicks": 108,
         "promo": 5,
         "goals": [
           [
@@ -1355,7 +1355,7 @@
         "key": "servercalc-com",
         "name": "ServerCalc.com",
         "counter": "111369260",
-        "visits": 0,
+        "visits": 35,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1364,7 +1364,7 @@
         "key": "serverselection-online",
         "name": "ServerSelection",
         "counter": "112072146",
-        "visits": 1,
+        "visits": 2,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1398,10 +1398,16 @@
         "cost": 2231
       },
       {
+        "q": "aeza",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 105,
+        "cost": 2182
+      },
+      {
         "q": "timeweb",
         "camp": "TW МСК (Бренд)",
-        "clicks": 103,
-        "cost": 1694
+        "clicks": 125,
+        "cost": 2001
       },
       {
         "q": "admin vps",
@@ -1410,16 +1416,16 @@
         "cost": 1670
       },
       {
-        "q": "aeza",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 83,
-        "cost": 1639
-      },
-      {
         "q": "таймвеб",
         "camp": "TW Cloud Регионы",
         "clicks": 44,
         "cost": 1596
+      },
+      {
+        "q": "timeweb",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 126,
+        "cost": 1512
       },
       {
         "q": "timeweb cloud",
@@ -1434,16 +1440,22 @@
         "cost": 1306
       },
       {
-        "q": "timeweb",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 86,
-        "cost": 1057
-      },
-      {
         "q": "timeweb cloud",
         "camp": "TW Cloud Регионы",
         "clicks": 19,
         "cost": 703
+      },
+      {
+        "q": "aeza",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 103,
+        "cost": 680
+      },
+      {
+        "q": "таймвеб",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 29,
+        "cost": 504
       },
       {
         "q": "time web",
@@ -1465,9 +1477,15 @@
       },
       {
         "q": "таймвеб",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 22,
-        "cost": 424
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 25,
+        "cost": 342
+      },
+      {
+        "q": "adminvps",
+        "camp": "AdminVPS (Бренд)",
+        "clicks": 38,
+        "cost": 327
       },
       {
         "q": "vps admin",
@@ -1482,16 +1500,40 @@
         "cost": 302
       },
       {
-        "q": "aeza",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 50,
-        "cost": 301
+        "q": "aeza net",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 39,
+        "cost": 297
       },
       {
         "q": "vps",
         "camp": "AdminVPS МСК",
         "clicks": 2,
         "cost": 296
+      },
+      {
+        "q": "тайм веб",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 16,
+        "cost": 286
+      },
+      {
+        "q": "timeweb cloud",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 26,
+        "cost": 272
+      },
+      {
+        "q": "аеза",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 23,
+        "cost": 263
+      },
+      {
+        "q": "timeweb cloud",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 18,
+        "cost": 255
       },
       {
         "q": "vps",
@@ -1512,22 +1554,10 @@
         "cost": 240
       },
       {
-        "q": "timeweb cloud",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 16,
-        "cost": 237
-      },
-      {
         "q": "впс",
         "camp": "AdminVPS МСК",
         "clicks": 3,
         "cost": 236
-      },
-      {
-        "q": "aeza net",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 29,
-        "cost": 226
       },
       {
         "q": "админвпс",
@@ -1560,34 +1590,16 @@
         "cost": 215
       },
       {
-        "q": "аеза",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 20,
-        "cost": 214
-      },
-      {
-        "q": "adminvps",
-        "camp": "AdminVPS (Бренд)",
-        "clicks": 21,
-        "cost": 208
-      },
-      {
         "q": "vps сервера рейтинг",
         "camp": "AdminVPS МСК",
         "clicks": 1,
         "cost": 208
       },
       {
-        "q": "тайм веб",
+        "q": "adminvps",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 10,
-        "cost": 198
-      },
-      {
-        "q": "timeweb cloud",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 20,
-        "cost": 197
+        "clicks": 48,
+        "cost": 199
       },
       {
         "q": "vps сервер",
@@ -1626,9 +1638,9 @@
         "cost": 158
       },
       {
-        "q": "таймвеб",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 13,
+        "q": "таймвеб клауд",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 9,
         "cost": 151
       },
       {
@@ -1686,6 +1698,12 @@
         "cost": 135
       },
       {
+        "q": "аеза",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 30,
+        "cost": 130
+      },
+      {
         "q": "аренда vps грузия",
         "camp": "AdminVPS МСК",
         "clicks": 1,
@@ -1732,12 +1750,6 @@
         "camp": "AdminVPS МСК",
         "clicks": 1,
         "cost": 121
-      },
-      {
-        "q": "adminvps",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 27,
-        "cost": 118
       },
       {
         "q": "vps сервер нидерланды рейтинг",
@@ -1818,16 +1830,16 @@
         "cost": 109
       },
       {
-        "q": "таймвеб клауд",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 6,
-        "cost": 108
-      },
-      {
         "q": "личный vps в нидерландах",
         "camp": "AdminVPS МСК",
         "clicks": 1,
         "cost": 107
+      },
+      {
+        "q": "тайм веб",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 8,
+        "cost": 106
       },
       {
         "q": "аренда vps москва",
@@ -1840,18 +1852,6 @@
         "camp": "AdminVPS МСК",
         "clicks": 1,
         "cost": 106
-      },
-      {
-        "q": "купить впс испания",
-        "camp": "AdminVPS МСК",
-        "clicks": 1,
-        "cost": 105
-      },
-      {
-        "q": "vps купить",
-        "camp": "Podborvps.ru",
-        "clicks": 2,
-        "cost": 104
       }
     ],
     "minusCandidates": [
@@ -1868,49 +1868,49 @@
   "wordstat": [
     {
       "phrase": "аренда vps",
-      "count": 6256,
+      "count": 6253,
       "tails": [
         [
           "vps сервер аренда",
-          3277
+          3272
         ],
         [
           "аренда vps в россии",
-          276
+          279
         ],
         [
           "аренда vps vds",
-          258
+          257
         ],
         [
           "аренда vps в европе",
-          230
+          228
         ],
         [
           "аренда vps для vpn",
-          224
+          223
         ]
       ]
     },
     {
       "phrase": "купить vps",
-      "count": 5206,
+      "count": 5169,
       "tails": [
         [
           "vps сервер купить",
-          1725
+          1716
         ],
         [
           "купить vps дешево",
-          213
+          221
         ],
         [
           "vps купить россия",
-          207
+          209
         ],
         [
           "купить vps для vpn",
-          178
+          181
         ],
         [
           "vps сервер купить для vpn",
@@ -1920,137 +1920,137 @@
     },
     {
       "phrase": "vps сервер",
-      "count": 20883,
+      "count": 20761,
       "tails": [
         [
           "vps сервер аренда",
-          3277
+          3272
         ],
         [
           "vps сервер купить",
-          1725
+          1716
         ],
         [
           "vps сервер для vpn",
-          1076
+          1062
         ],
         [
           "бесплатный vps сервер",
-          853
+          843
         ],
         [
           "арендовать vps сервер",
-          740
+          741
         ]
       ]
     },
     {
       "phrase": "vps хостинг",
-      "count": 2691,
+      "count": 2669,
       "tails": [
         [
-          "хостинг vps серверов",
-          256
+          "лучшие vps хостинги",
+          252
         ],
         [
-          "лучшие vps хостинги",
-          255
+          "хостинг vps серверов",
+          235
         ],
         [
           "vds vps хостинг",
-          178
+          166
         ],
         [
           "рейтинг vps хостингов",
-          160
+          153
         ],
         [
           "хостинг vps для vpn",
-          97
+          109
         ]
       ]
     },
     {
       "phrase": "зарубежный vps",
-      "count": 721,
+      "count": 725,
       "tails": [
         [
           "vps сервер зарубежный",
-          191
+          196
         ],
         [
           "аренда зарубежного vps",
-          69
+          67
         ],
         [
           "купить зарубежный vps",
-          58
+          56
         ],
         [
           "зарубежный vps с оплатой из россии",
-          43
+          45
         ],
         [
-          "vps хостинг зарубежный",
-          37
+          "зарубежные vps хостинги",
+          40
         ]
       ]
     },
     {
       "phrase": "vds",
-      "count": 31094,
+      "count": 30745,
       "tails": [
         [
           "vds сервер",
-          4275
+          4196
         ],
         [
           "vps vds",
-          2801
+          2750
         ],
         [
           "ghost vds",
-          2001
+          2205
         ],
         [
           "vincea vds",
-          1360
+          1374
         ],
         [
           "vds купить",
-          1258
+          1210
         ]
       ]
     },
     {
       "phrase": "аренда сервера",
-      "count": 22445,
+      "count": 22375,
       "tails": [
         [
           "vps сервер аренда",
-          3277
+          3272
         ],
         [
           "аренда сервера майнкрафт",
-          1442
+          1433
         ],
         [
           "аренда виртуального сервера",
-          885
+          877
         ],
         [
           "аренда сервера для впн",
-          600
+          613
         ],
         [
-          "аренда сервера в россии",
-          590
+          "аренда сервера 1с",
+          578
         ]
       ]
     },
     {
       "phrase": "nvme vps",
-      "count": 104,
+      "count": 102,
       "tails": [
         [
           "vps kvm nvme",
@@ -2060,7 +2060,7 @@
     }
   ],
   "webmaster": {
-    "generated": "31.08.2026",
+    "generated": "01.09.2026",
     "sites": [
       {
         "host": "podborvps.ru",
@@ -2105,11 +2105,6 @@
         "host": "servercalc.ru",
         "queries": [
           [
-            "тарифы таймвеб клауд",
-            6,
-            0
-          ],
-          [
             "тариф тайм веб cloud msk 50 с ндс или без?",
             1,
             0
@@ -2128,6 +2123,11 @@
             "timeweb cloud тарифная сетка",
             1,
             0
+          ],
+          [
+            "тарифы таймвеб клауд",
+            1,
+            0
           ]
         ]
       },
@@ -2138,10 +2138,10 @@
     ]
   },
   "gsc": {
-    "generated": "31.08.2026",
+    "generated": "01.09.2026",
     "window": {
-      "from": "2026-03-04",
-      "to": "2026-08-30"
+      "from": "2026-03-05",
+      "to": "2026-08-31"
     },
     "sites": [
       {
@@ -2156,18 +2156,32 @@
             "position": 155.0
           },
           {
-            "q": "vds в нидерландах",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 95.5
-          },
-          {
-            "q": "vds в сша",
-            "impressions": 3,
+            "q": "vds server germany",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
             "position": 96.0
+          },
+          {
+            "q": "vds в нидерландах",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 95.3
+          },
+          {
+            "q": "vds в сша",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.2
+          },
+          {
+            "q": "vds германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 97.0
           },
           {
             "q": "vds нидерланды",
@@ -2178,80 +2192,122 @@
           },
           {
             "q": "vds сша",
-            "impressions": 4,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 95.8
+            "position": 96.2
+          },
+          {
+            "q": "vds хостинг германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 92.0
           },
           {
             "q": "vps america",
-            "impressions": 14,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.6
+            "position": 84.7
           },
           {
             "q": "vps in usa",
-            "impressions": 16,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 97.7
+            "position": 97.5
           },
           {
             "q": "vps server usa",
-            "impressions": 16,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 96.3
+            "position": 96.6
           },
           {
             "q": "vps servers usa",
-            "impressions": 16,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
             "position": 93.7
           },
           {
             "q": "vps usa",
-            "impressions": 16,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 97.4
+            "position": 96.1
           },
           {
             "q": "vps америка",
-            "impressions": 15,
+            "impressions": 17,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.9
+            "position": 94.1
           },
           {
-            "q": "vps в нидерландах",
-            "impressions": 9,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 89.8
-          },
-          {
-            "q": "vps в сша",
-            "impressions": 19,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 90.8
-          },
-          {
-            "q": "vps нидерланды",
-            "impressions": 9,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 85.7
-          },
-          {
-            "q": "vps сервер в нидерландах",
+            "q": "vps англия",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.0
+            "position": 74.0
+          },
+          {
+            "q": "vps в германии",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.0
+          },
+          {
+            "q": "vps в нидерландах",
+            "impressions": 10,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 88.8
+          },
+          {
+            "q": "vps в сша",
+            "impressions": 23,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 88.8
+          },
+          {
+            "q": "vps германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 94.0
+          },
+          {
+            "q": "vps нидерланды",
+            "impressions": 11,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 84.2
+          },
+          {
+            "q": "vps сервер аренда германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 97.0
+          },
+          {
+            "q": "vps сервер в нидерландах",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.5
+          },
+          {
+            "q": "vps сервер германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 95.0
           },
           {
             "q": "vps сервер нидерланды",
@@ -2262,35 +2318,77 @@
           },
           {
             "q": "vps сервер сша",
-            "impressions": 3,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 99.7
+            "position": 99.6
           },
           {
             "q": "vps сша",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 95.3
+            "position": 95.8
+          },
+          {
+            "q": "аренда vds в германии",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 98.0
           },
           {
             "q": "аренда vds сша",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
             "position": 99.0
           },
           {
-            "q": "аренда vps в сша",
-            "impressions": 3,
+            "q": "аренда vps в германии",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 97.7
+            "position": 95.0
+          },
+          {
+            "q": "аренда vps в сша",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 98.0
+          },
+          {
+            "q": "аренда vps германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 95.0
+          },
+          {
+            "q": "аренда виртуального сервера германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 99.0
+          },
+          {
+            "q": "аренда сервера в сша",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 100.0
+          },
+          {
+            "q": "аренда сервера германия",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 98.0
           },
           {
             "q": "арендовать сервер в сша",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
             "position": 100.0
@@ -2304,38 +2402,52 @@
           },
           {
             "q": "виртуальный сервер в сша",
-            "impressions": 2,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 98.5
+            "position": 98.8
           },
           {
             "q": "нидерланды vps",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 85.0
-          },
-          {
-            "q": "сервер usa",
             "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 99.7
+            "position": 82.7
+          },
+          {
+            "q": "сервер usa",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 99.2
+          },
+          {
+            "q": "сервер в сша",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 99.0
           },
           {
             "q": "сервер сша",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 97.0
+            "position": 96.3
           },
           {
             "q": "сша vps сервер",
-            "impressions": 21,
+            "impressions": 23,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 96.7
+            "position": 96.8
+          },
+          {
+            "q": "хостинг vps в германии",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 89.0
           }
         ]
       },
@@ -2359,10 +2471,10 @@
           },
           {
             "q": "asia vps",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 74.5
+            "position": 75.3
           },
           {
             "q": "asia vps hosting",
@@ -2380,10 +2492,24 @@
           },
           {
             "q": "beget",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 63.5
+          },
+          {
+            "q": "beget vps pricing russia 2026",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 65.0
+            "position": 9.0
+          },
+          {
+            "q": "best vps for ai",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 77.0
           },
           {
             "q": "budget vps servers",
@@ -2512,6 +2638,13 @@
             "position": 83.0
           },
           {
+            "q": "chery server",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 56.0
+          },
+          {
             "q": "cloud server price list",
             "impressions": 1,
             "clicks": 0,
@@ -2576,10 +2709,10 @@
           },
           {
             "q": "database vps",
-            "impressions": 10,
+            "impressions": 11,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 70.5
+            "position": 70.6
           },
           {
             "q": "dedicated server asia",
@@ -2603,6 +2736,13 @@
             "position": 99.0
           },
           {
+            "q": "dedicated server pricing",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 84.0
+          },
+          {
             "q": "ethernet servers",
             "impressions": 1,
             "clicks": 0,
@@ -2610,11 +2750,25 @@
             "position": 50.0
           },
           {
-            "q": "how much is a vps",
-            "impressions": 3,
+            "q": "ethernet vps",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 91.7
+            "position": 7.0
+          },
+          {
+            "q": "hostman ltd",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 59.0
+          },
+          {
+            "q": "how much is a vps",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 88.5
           },
           {
             "q": "is hosting",
@@ -2632,10 +2786,10 @@
           },
           {
             "q": "kazakhstan vps",
-            "impressions": 10,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 61.7
+            "position": 61.5
           },
           {
             "q": "low cost vps server",
@@ -2645,11 +2799,25 @@
             "position": 85.0
           },
           {
-            "q": "minecraft vps",
-            "impressions": 4,
+            "q": "machine learning vps",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 67.5
+            "position": 72.0
+          },
+          {
+            "q": "mailcow pricing",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 76.0
+          },
+          {
+            "q": "minecraft vps",
+            "impressions": 5,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 68.2
           },
           {
             "q": "ml workload hosting",
@@ -2667,10 +2835,17 @@
           },
           {
             "q": "multi location vps",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 99.5
+            "position": 99.3
+          },
+          {
+            "q": "price vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.0
           },
           {
             "q": "server price list",
@@ -2688,10 +2863,31 @@
           },
           {
             "q": "ultahost",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 33.8
+          },
+          {
+            "q": "ultahost inc",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 61.0
+          },
+          {
+            "q": "ultahost server",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 45.0
+          },
+          {
+            "q": "ultahost speed",
             "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 36.0
+            "position": 51.0
           },
           {
             "q": "ultahost status",
@@ -2702,10 +2898,10 @@
           },
           {
             "q": "usa vps price",
-            "impressions": 1,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 94.0
+            "position": 93.7
           },
           {
             "q": "vdsina",
@@ -2758,10 +2954,10 @@
           },
           {
             "q": "virtual server costs",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.2
+            "position": 93.4
           },
           {
             "q": "virtual server hosting cost",
@@ -2772,17 +2968,17 @@
           },
           {
             "q": "virtual server hosting price",
-            "impressions": 15,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 91.9
-          },
-          {
-            "q": "virtual server hosting prices",
             "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 92.7
+            "position": 92.1
+          },
+          {
+            "q": "virtual server hosting prices",
+            "impressions": 23,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.0
           },
           {
             "q": "virtual server hosting providers",
@@ -2793,10 +2989,10 @@
           },
           {
             "q": "virtual server price",
-            "impressions": 7,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 92.7
+            "position": 92.9
           },
           {
             "q": "vps ai hosting",
@@ -2821,10 +3017,10 @@
           },
           {
             "q": "vps cheap price",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 83.3
+            "position": 84.2
           },
           {
             "q": "vps cheapest",
@@ -2835,10 +3031,17 @@
           },
           {
             "q": "vps cloud wordpress",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 79.5
+            "position": 79.7
+          },
+          {
+            "q": "vps compare price",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 81.0
           },
           {
             "q": "vps containers",
@@ -2849,10 +3052,10 @@
           },
           {
             "q": "vps cost",
-            "impressions": 17,
+            "impressions": 20,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 91.4
+            "position": 91.6
           },
           {
             "q": "vps cost calculator",
@@ -2863,7 +3066,7 @@
           },
           {
             "q": "vps costs",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
             "position": 90.0
@@ -2884,17 +3087,24 @@
           },
           {
             "q": "vps for minecraft",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 67.0
+            "position": 68.0
           },
           {
             "q": "vps for wordpress",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 63.6
+            "position": 64.3
+          },
+          {
+            "q": "vps hosting asia",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 67.0
           },
           {
             "q": "vps hosting cost",
@@ -2912,136 +3122,38 @@
           },
           {
             "q": "vps hosting price",
-            "impressions": 8,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 93.9
-          },
-          {
-            "q": "vps hosting prices",
-            "impressions": 6,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 91.5
-          },
-          {
-            "q": "vps hosting pricing",
-            "impressions": 5,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 93.0
-          },
-          {
-            "q": "vps minecraft server",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 77.0
-          },
-          {
-            "q": "vps price",
             "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 96.0
+            "position": 94.1
           },
           {
-            "q": "vps price comparison",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 77.0
-          },
-          {
-            "q": "vps prices",
-            "impressions": 6,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 87.7
-          },
-          {
-            "q": "vps pricing",
-            "impressions": 11,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 89.5
-          },
-          {
-            "q": "vps server cost",
-            "impressions": 12,
+            "q": "vps hosting prices",
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
             "position": 91.9
           },
           {
-            "q": "vps server for minecraft",
+            "q": "vps hosting pricing",
+            "impressions": 6,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.2
+          },
+          {
+            "q": "vps locations",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.0
+            "position": 79.0
           },
           {
-            "q": "vps server hosting price",
-            "impressions": 1,
+            "q": "vps minecraft server",
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 90.0
-          },
-          {
-            "q": "vps server minecraft",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 73.0
-          },
-          {
-            "q": "vps server price",
-            "impressions": 12,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 90.8
-          },
-          {
-            "q": "vps server pricing",
-            "impressions": 5,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 92.0
-          },
-          {
-            "q": "vps server uae",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 85.0
-          },
-          {
-            "q": "vps server wordpress",
-            "impressions": 5,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 63.2
-          },
-          {
-            "q": "vps servers cheap",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 78.0
-          },
-          {
-            "q": "vps servers in kazakhstan",
-            "impressions": 9,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 59.4
-          },
-          {
-            "q": "vps wordpress",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 68.0
+            "position": 76.8
           }
         ]
       },
@@ -3050,11 +3162,32 @@
         "property": "sc-domain:servercalc.ru",
         "queries": [
           {
+            "q": "dedicated server pricing",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 86.0
+          },
+          {
+            "q": "hostman",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 6.0
+          },
+          {
             "q": "rackned",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
             "position": 77.0
+          },
+          {
+            "q": "ssd versus nvme",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 86.0
           },
           {
             "q": "vm singapore",
@@ -3065,10 +3198,10 @@
           },
           {
             "q": "vps для ии",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 85.0
+            "position": 84.8
           },
           {
             "q": "виртуальный сервер цена",
@@ -3100,17 +3233,17 @@
           },
           {
             "q": "хостинг цена в год",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 83.0
+            "position": 82.5
           },
           {
             "q": "хостинг цена год",
-            "impressions": 3,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 81.3
+            "position": 82.4
           },
           {
             "q": "цена хостинга на год",
@@ -3152,6 +3285,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 31.0
+          },
+          {
+            "q": "best vps for ai",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 70.5
           },
           {
             "q": "best vps location for seo",
@@ -3211,10 +3351,10 @@
           },
           {
             "q": "cloud vps usa",
-            "impressions": 9,
+            "impressions": 11,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 85.8
+            "position": 86.0
           },
           {
             "q": "cloudvds",
@@ -3229,6 +3369,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 94.0
+          },
+          {
+            "q": "cloudways",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 27.7
           },
           {
             "q": "cloudways hosting plans",
@@ -3260,10 +3407,10 @@
           },
           {
             "q": "database vps",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 78.3
+            "position": 77.0
           },
           {
             "q": "database vps hosting",
@@ -3281,10 +3428,17 @@
           },
           {
             "q": "hostman",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.4
+            "position": 7.3
+          },
+          {
+            "q": "hostman ltd",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 62.0
           },
           {
             "q": "how to choose server for rent",
@@ -3295,10 +3449,10 @@
           },
           {
             "q": "kazakhstan vps",
-            "impressions": 7,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 66.4
+            "position": 70.0
           },
           {
             "q": "kvm vps",
@@ -3306,6 +3460,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 192.0
+          },
+          {
+            "q": "machine learning vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 78.0
           },
           {
             "q": "managed vps hosting usa",
@@ -3330,10 +3491,10 @@
           },
           {
             "q": "racknerd",
-            "impressions": 5,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 29.6
+            "position": 32.2
           },
           {
             "q": "racknerd review",
@@ -3341,6 +3502,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 38.5
+          },
+          {
+            "q": "rackners",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 59.0
           },
           {
             "q": "racknetd",
@@ -3385,11 +3553,25 @@
             "position": 86.0
           },
           {
-            "q": "united states vps",
-            "impressions": 28,
+            "q": "ssd versus nvme",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.7
+            "position": 87.0
+          },
+          {
+            "q": "united states vps",
+            "impressions": 32,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 84.3
+          },
+          {
+            "q": "us based vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 83.0
           },
           {
             "q": "us vps hosting",
@@ -3511,6 +3693,13 @@
             "position": 82.6
           },
           {
+            "q": "vps central europe",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 90.0
+          },
+          {
             "q": "vps for ai",
             "impressions": 3,
             "clicks": 0,
@@ -3575,17 +3764,17 @@
           },
           {
             "q": "vps in usa",
-            "impressions": 33,
+            "impressions": 37,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 82.9
+            "position": 82.5
           },
           {
             "q": "vps kazakhstan",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 68.2
+            "position": 68.6
           },
           {
             "q": "vps location for website speed",
@@ -3624,17 +3813,17 @@
           },
           {
             "q": "vps servers in kazakhstan",
-            "impressions": 4,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 61.8
+            "position": 63.8
           },
           {
             "q": "vps servers usa",
-            "impressions": 16,
+            "impressions": 17,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.8
+            "position": 84.6
           },
           {
             "q": "vps to run ai models",
@@ -3680,14 +3869,14 @@
           },
           {
             "q": "vps америка",
-            "impressions": 13,
+            "impressions": 17,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 86.8
+            "position": 86.9
           },
           {
             "q": "vps в европе",
-            "impressions": 4,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
             "position": 85.0
@@ -3701,24 +3890,52 @@
           },
           {
             "q": "vps в сша",
-            "impressions": 22,
+            "impressions": 28,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 87.9
+            "position": 87.5
+          },
+          {
+            "q": "vps для ии",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 85.0
+          },
+          {
+            "q": "vps европа",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 25.0
+          },
+          {
+            "q": "vps сервер в европе",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 85.0
+          },
+          {
+            "q": "vps сервер в европе с безлимитным трафиком",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 82.0
           },
           {
             "q": "vps сервер сша",
-            "impressions": 8,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 91.2
+            "position": 91.5
           },
           {
             "q": "vps сша",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 89.8
+            "position": 89.7
           },
           {
             "q": "vps тарифы",
@@ -3747,83 +3964,6 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 88.0
-          },
-          {
-            "q": "аренда сервера в сша",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 94.7
-          },
-          {
-            "q": "виртуальный сервер в сша",
-            "impressions": 4,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 93.2
-          },
-          {
-            "q": "виртуальный хостинг цены",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 92.3
-          },
-          {
-            "q": "выделенный сервер в европе",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 99.0
-          },
-          {
-            "q": "купить vps в европе",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 177.0
-          },
-          {
-            "q": "купить сервер в америке",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 91.0
-          },
-          {
-            "q": "сервер usa",
-            "impressions": 4,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 95.5
-          },
-          {
-            "q": "сервер в сша",
-            "impressions": 6,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 90.3
-          },
-          {
-            "q": "сервер сша",
-            "impressions": 9,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 94.4
-          },
-          {
-            "q": "серверы сша",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 95.0
-          },
-          {
-            "q": "сша vps сервер",
-            "impressions": 11,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 89.5
           }
         ]
       }
@@ -4087,7 +4227,8 @@
         "2026-08-23": 477,
         "2026-08-24": 832,
         "2026-08-25": 344,
-        "2026-08-26": 524
+        "2026-08-26": 524,
+        "2026-08-31": 0
       }
     },
     "706716163": {
@@ -5063,7 +5204,8 @@
         "2026-08-27": 643,
         "2026-08-28": 646,
         "2026-08-29": 415,
-        "2026-08-30": 309
+        "2026-08-30": 309,
+        "2026-08-31": 794
       }
     },
     "713775967": {
@@ -5083,7 +5225,8 @@
         "2026-08-27": 448,
         "2026-08-28": 656,
         "2026-08-29": 76,
-        "2026-08-30": 128
+        "2026-08-30": 128,
+        "2026-08-31": 631
       }
     },
     "713793556": {
@@ -5112,7 +5255,8 @@
         "2026-08-27": 269,
         "2026-08-28": 652,
         "2026-08-29": 766,
-        "2026-08-30": 931
+        "2026-08-30": 931,
+        "2026-08-31": 1785
       }
     },
     "713897708": {
@@ -5121,7 +5265,8 @@
         "2026-08-27": 69,
         "2026-08-28": 75,
         "2026-08-29": 102,
-        "2026-08-30": 48
+        "2026-08-30": 48,
+        "2026-08-31": 158
       }
     }
   },

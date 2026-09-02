@@ -2181,31 +2181,11 @@
         "host": "servercalc.com",
         "queries": [],
         "indexing": {
-          "searchable": 0,
-          "excluded": 0,
-          "sqi": 0,
-          "problems": {
-            "RECOMMENDATION": 1,
-            "POSSIBLE_PROBLEM": 1
-          },
-          "history": [
-            [
-              "2026-08-27",
-              0
-            ],
-            [
-              "2026-08-28",
-              0
-            ],
-            [
-              "2026-08-31",
-              0
-            ],
-            [
-              "2026-09-02",
-              0
-            ]
-          ]
+          "searchable": null,
+          "excluded": null,
+          "sqi": null,
+          "problems": {},
+          "history": []
         }
       },
       {
@@ -7706,5 +7686,388 @@
       }
     }
   },
-  "spendSince": "2026-02-01"
+  "spendSince": "2026-02-01",
+  "aiviz": {
+    "generated": "03.09.2026",
+    "engines": [
+      "perplexity",
+      "openai"
+    ],
+    "questions": [
+      {
+        "q": "как выбрать VPS хостинг",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "habr.com",
+              "hostinghub.ru",
+              "serverspace.ru",
+              "ru.tophosts.net",
+              "cloud4box.com",
+              "stormwall.pro",
+              "poiskvps.ru",
+              "4pda.to"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "лучший VPS хостинг в России 2026",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "timeweb.com",
+              "dtf.ru",
+              "vc.ru",
+              "pq.hosting",
+              "sostav.ru",
+              "pikabu.ru",
+              "hostinghub.ru",
+              "ru.tophosts.net"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "habr.com",
+              "vps-top.ru",
+              "vpsradar.ru",
+              "easylinklife.com",
+              "vpsvrossii.ru",
+              "freerank.ru",
+              "vpsindex.ru",
+              "hostmetrika.ru"
+            ]
+          }
+        }
+      },
+      {
+        "q": "аренда VPS сервера — что выбрать",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "habr.com",
+              "hostinghub.ru",
+              "hostkey.ru",
+              "ru.tophosts.net",
+              "4pda.to",
+              "poiskvps.ru",
+              "selectel.ru",
+              "vps.today"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "онлайн калькулятор конфигурации сервера",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "hostkey.ru",
+              "brigo.ru",
+              "itelon.ru",
+              "asilan.ru",
+              "serverflow.ru",
+              "servermall.ru",
+              "dellexpert.ru",
+              "trinity.ru"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "подбор VPS по параметрам",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "cloudvps.by",
+              "habr.com",
+              "vpscatalog.ru",
+              "hostinghub.ru",
+              "ru.tophosts.net",
+              "market.cnews.ru",
+              "vds.menu",
+              "ruvds.com"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "надёжный виртуальный сервер для сайта",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "hostkey.ru",
+              "habr.com",
+              "ru.tophosts.net",
+              "hostinghub.ru",
+              "reg.ru",
+              "ruvds.com",
+              "firstvds.ru",
+              "timeweb.cloud"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "how to choose a VPS hosting provider",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "hostgator.com",
+              "reddit.com",
+              "serverspace.io",
+              "scalahosting.com",
+              "forbes.com",
+              "namecheap.com",
+              "pq.hosting"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "best VPS hosting 2026",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "contabo.com",
+              "massivegrid.com",
+              "lowendbox.com",
+              "hostdean.com",
+              "hostingadvice.com",
+              "cybernews.com",
+              "cloudsurph.com"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "vpsscout.com",
+              "hostinger.com",
+              "hosting-atlas.com",
+              "vpsrated.com",
+              "itechguides.com",
+              "whysogeek.com",
+              "techcognate.com",
+              "reddit.com"
+            ]
+          }
+        }
+      },
+      {
+        "q": "VPS server configuration calculator online",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "cloudhosting.lv",
+              "casbay.com",
+              "retzor.com",
+              "serverspace.io",
+              "ionos.com",
+              "togglebox.com",
+              "help.yeastar.com",
+              "cloud.google.com"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "digitalocean.com",
+              "dropvps.com",
+              "infrapilot.cc",
+              "servercostcalculator.com",
+              "hostperl.com",
+              "remarkablecloud.com",
+              "datahouse.net"
+            ]
+          }
+        }
+      },
+      {
+        "q": "compare VPS hosting providers",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "comparevps.com",
+              "pcmag.com",
+              "techradar.com",
+              "liquidweb.com",
+              "vpsbenchmarks.com",
+              "reddit.com",
+              "digitalocean.com",
+              "us.ovhcloud.com"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "cheap reliable VPS hosting",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "reddit.com",
+              "lowendbox.com",
+              "liquidweb.com",
+              "us.ovhcloud.com",
+              "contabo.com",
+              "ionos.com",
+              "digitalocean.com"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      },
+      {
+        "q": "dedicated server vs VPS which to choose",
+        "per": {
+          "perplexity": {
+            "cited": [],
+            "mentioned": [],
+            "sources": [
+              "atlantic.net",
+              "reddit.com",
+              "liquidweb.com",
+              "us.ovhcloud.com",
+              "dreamhost.com",
+              "aws.amazon.com",
+              "netrouting.com",
+              "talk.plesk.com"
+            ]
+          },
+          "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          }
+        }
+      }
+    ],
+    "bySite": {
+      "podborvps.ru": {
+        "perplexity": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        },
+        "openai": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        }
+      },
+      "servercalc.com": {
+        "perplexity": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        },
+        "openai": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        }
+      },
+      "servercalc.ru": {
+        "perplexity": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        },
+        "openai": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        }
+      },
+      "serverselection.online": {
+        "perplexity": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        },
+        "openai": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        }
+      }
+    },
+    "totals": {
+      "perplexity": {
+        "asked": 12,
+        "cited": 0,
+        "mentioned": 0
+      },
+      "openai": {
+        "asked": 12,
+        "cited": 0,
+        "mentioned": 0
+      }
+    },
+    "note": "зонд answer-движков: цитируют ли нас (домен в источниках) и упоминают ли (в тексте)"
+  }
 }

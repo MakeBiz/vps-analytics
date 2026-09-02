@@ -17,6 +17,7 @@ export default async function SeoPage() {
     <SeoView
       webmaster={m?.webmaster?.sites || []}
       gsc={m?.gsc?.sites || []}
+      aiviz={m?.aiviz || null}
       sites={sites}
       wmGenerated={m?.webmaster?.generated || null}
       gscGenerated={m?.gsc?.generated || null}

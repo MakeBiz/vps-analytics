@@ -344,8 +344,114 @@ function GeoTab({ list }) {
   );
 }
 
+// ─────────────────────────── ВКЛАДКА: AI-ВИДИМОСТЬ ───────────────────────────
+const ENG_LABEL = { perplexity: 'Perplexity', openai: 'ChatGPT' };
+
+function AIVizTab({ aiviz, nameByHost }) {
+  const ourDomains = useMemo(() => Object.keys(nameByHost), [nameByHost]);
+  const isOurs = (h) => ourDomains.some((d) => h === d || h.endsWith('.' + d));
+
+  if (!aiviz || !aiviz.engines || !aiviz.engines.length || !(aiviz.questions || []).length) {
+    return (
+      <Card title="AI-видимость (GEO)" hint="цитируют ли нас ChatGPT и Perplexity по целевым вопросам">
+        <div className="note" style={{ margin: 0 }}>
+          Зонд готов, но ещё не запускался. Добавь API-ключи Perplexity и/или OpenAI в файл <b>ai-keys.json</b> на Маке
+          (папка «Аналитика рынка», рядом с токенами) — и при следующем обновлении зонд сам прогонит целевые вопросы через
+          answer-движки и покажет, по каким из них нас цитируют и упоминают. Запускается раз в неделю (платные вызовы API).
+          {aiviz && aiviz.note ? <div className="dim" style={{ marginTop: 8, fontSize: 12 }}>Статус: {aiviz.note}</div> : null}
+        </div>
+      </Card>
+    );
+  }
+
+  const engines = aiviz.engines;
+  const totals = aiviz.totals || {};
+  const bySite = aiviz.bySite || {};
+
+  const Badge = ({ cell }) => {
+    if (!cell || cell.error) return <span className="dim" style={{ fontSize: 12 }}>ошибка</span>;
+    const cited = cell.cited || [], ment = cell.mentioned || [];
+    const c = cited.length ? GOOD : ment.length ? WARN : 'var(--dim)';
+    const label = cited.length ? 'цитируют' : ment.length ? 'упоминают' : 'нет';
+    const who = (cited.length ? cited : ment).map((d) => nameByHost[d] || d).join(', ');
+    return (
+      <div>
+        <span style={{ color: c, fontWeight: 600, fontSize: 12.5 }}>{label}</span>
+        {who ? <span className="dim" style={{ fontSize: 11.5 }}> · {who}</span> : null}
+        {cell.sources && cell.sources.length ? (
+          <div style={{ fontSize: 11, marginTop: 2 }}>
+            {cell.sources.slice(0, 6).map((h, i) => (
+              <span key={i} style={{ color: isOurs(h) ? GOOD : 'var(--muted)' }}>{h}{i < Math.min(5, cell.sources.length - 1) ? ', ' : ''}</span>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    );
+  };
+
+  return (
+    <div className="grid" style={{ gap: 14 }}>
+      <Card title="AI-видимость (GEO)" hint={`цитируют ли нас answer-движки по целевым вопросам · снимок ${aiviz.generated || ''}`}>
+        <div className="grid cols2" style={{ gap: 16 }}>
+          {engines.map((e) => {
+            const t = totals[e] || { asked: 0, cited: 0, mentioned: 0 };
+            return (
+              <div key={e} style={{ border: '1px solid var(--line)', borderRadius: 8, padding: '12px 14px' }}>
+                <div style={{ fontWeight: 600, marginBottom: 8 }}>{ENG_LABEL[e] || e}</div>
+                <div style={{ display: 'flex', gap: 22 }}>
+                  <div><div style={{ fontSize: 22, fontWeight: 700, color: GOOD }}>{t.cited}<span className="dim" style={{ fontSize: 14, fontWeight: 400 }}> / {t.asked}</span></div><div className="dim" style={{ fontSize: 11.5 }}>цитируют (ссылка на нас)</div></div>
+                  <div><div style={{ fontSize: 22, fontWeight: 700, color: WARN }}>{t.mentioned}<span className="dim" style={{ fontSize: 14, fontWeight: 400 }}> / {t.asked}</span></div><div className="dim" style={{ fontSize: 11.5 }}>упоминают (в тексте)</div></div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
+
+      <Card title="По сайтам" hint="в скольких вопросах движок сослался на сайт / упомянул его">
+        <div className="scroll">
+          <table>
+            <thead>
+              <tr><th>Сайт</th>{engines.map((e) => <th key={e} className="n">{ENG_LABEL[e] || e}</th>)}</tr>
+            </thead>
+            <tbody>
+              {Object.keys(bySite).map((dom) => (
+                <tr key={dom}>
+                  <td>{nameByHost[dom] || dom}<div style={{ color: 'var(--muted)', fontSize: 11 }}>{dom}</div></td>
+                  {engines.map((e) => {
+                    const s = (bySite[dom] || {})[e] || { asked: 0, cited: 0, mentioned: 0 };
+                    return <td key={e} className="n"><span style={{ color: s.cited ? GOOD : 'var(--dim)', fontWeight: 600 }}>{s.cited}</span> <span className="dim">цит</span> · <span style={{ color: s.mentioned ? WARN : 'var(--dim)' }}>{s.mentioned}</span> <span className="dim">упом</span></td>;
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <Card title="По вопросам" hint="что отвечают движки и кого цитируют. Наши домены в источниках подсвечены зелёным — так видно, кого выдают вместо нас">
+        <div className="scroll tall">
+          <table>
+            <thead>
+              <tr><th>Вопрос</th>{engines.map((e) => <th key={e}>{ENG_LABEL[e] || e}</th>)}</tr>
+            </thead>
+            <tbody>
+              {aiviz.questions.map((row, i) => (
+                <tr key={i}>
+                  <td style={{ maxWidth: 260 }}>{row.q}</td>
+                  {engines.map((e) => <td key={e}><Badge cell={(row.per || {})[e]} /></td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
 // ─────────────────────────── КОРНЕВОЙ КОМПОНЕНТ ───────────────────────────
-export default function SeoView({ webmaster = [], gsc = [], sites = [], wmGenerated, gscGenerated, gscWindow }) {
+export default function SeoView({ webmaster = [], gsc = [], aiviz = null, sites = [], wmGenerated, gscGenerated, gscWindow }) {
   const [tab, setTab] = useState('positions'); // positions | indexing | geo
   const [site, setSite] = useState('all');     // 'all' | host
 
@@ -391,7 +497,7 @@ export default function SeoView({ webmaster = [], gsc = [], sites = [], wmGenera
     return out;
   }, [scopedList]);
 
-  const TABS = [['positions', 'Позиции'], ['indexing', 'Индексация'], ['geo', 'Гео']];
+  const TABS = [['positions', 'Позиции'], ['indexing', 'Индексация'], ['geo', 'Гео'], ['aiviz', 'AI-видимость']];
 
   return (
     <div className="grid" style={{ gap: 14 }}>
@@ -419,6 +525,7 @@ export default function SeoView({ webmaster = [], gsc = [], sites = [], wmGenera
       {tab === 'positions' ? <PositionsTab pool={pool} /> : null}
       {tab === 'indexing' ? <IndexingTab list={scopedList} /> : null}
       {tab === 'geo' ? <GeoTab list={scopedList} /> : null}
+      {tab === 'aiviz' ? <AIVizTab aiviz={aiviz} nameByHost={nameByHost} /> : null}
     </div>
   );
 }

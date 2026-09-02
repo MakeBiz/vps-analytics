@@ -1242,7 +1242,7 @@
         "key": "podborvps",
         "name": "ПодборVPS",
         "counter": "111248718",
-        "visits": 499,
+        "visits": 500,
         "providerClicks": 236,
         "promo": 0,
         "goals": [
@@ -1376,7 +1376,16 @@
         "key": "serverselection-online",
         "name": "ServerSelection",
         "counter": "112072146",
-        "visits": 5,
+        "visits": 6,
+        "providerClicks": 0,
+        "promo": 0,
+        "goals": []
+      },
+      {
+        "key": "makebiz-life",
+        "name": "MakeBiz",
+        "counter": "112151442",
+        "visits": 15,
         "providerClicks": 0,
         "promo": 0,
         "goals": []

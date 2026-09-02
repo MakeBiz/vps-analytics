@@ -165,7 +165,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
   const allQ = useMemo(() => {
     const out = [];
     for (const s of webmaster) for (const w of s.queries || []) {
-      out.push({ q: w.q, host: s.host, engine: 'yandex', impressions: w.impressions, clicks: w.clicks, ctr: w.impressions ? (w.clicks / w.impressions) * 100 : 0, position: null });
+      out.push({ q: w.q, host: s.host, engine: 'yandex', impressions: w.impressions, clicks: w.clicks, ctr: w.impressions ? (w.clicks / w.impressions) * 100 : 0, position: w.position != null ? w.position : null });
     }
     for (const s of gsc) for (const w of s.queries || []) {
       out.push({ q: w.q, host: s.host, engine: 'google', impressions: w.impressions, clicks: w.clicks, ctr: w.ctr != null && w.ctr > 0 ? w.ctr : (w.impressions ? (w.clicks / w.impressions) * 100 : 0), position: w.position });
@@ -197,7 +197,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
   // ещё копит, позиции по Яндексу не приходят, показов пока немного).
   const qEmpty = {
     google: 'По Google запросов пока нет — Search Console по этим сайтам ещё накапливает данные (свойство подключено 26.08, Google индексирует). Появятся здесь автоматически.',
-    opp: 'Нет запросов на позициях 4–15 — позиции приходят из Google Search Console (по Яндексу позиции пока не подключены). Появятся, когда накопятся данные.',
+    opp: 'Нет запросов на позициях 4–15 — позиции теперь приходят и из Яндекс.Вебмастера, и из Google Search Console. Появятся, когда накопятся данные.',
     lowctr: 'Нет запросов с низким CTR при заметных показах — пока мало показов на запрос (нужно от 20). Наберётся по мере роста трафика.',
     yandex: 'Запросов из Яндекс.Вебмастера в текущем снимке нет.',
     all: 'Запросов пока нет.',
@@ -309,7 +309,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
               Скрыто {noiseCount} глубоких показов Google (позиция хуже 30, без кликов) — сайт там лишь мелькает на выдаче, реально не ранжируется.
             </div>
           )}
-          Позиция по Яндексу появится, когда добавим её в коннектор Вебмастера. По Google позиция и CTR приходят из Search Console.
+          Позиции приходят из Яндекс.Вебмастера и Google Search Console. Развёрнутая картина по позициям, индексации и гео — на вкладке «Позиции и индекс».
         </div>
       </Card>
 

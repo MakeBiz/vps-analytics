@@ -16,11 +16,12 @@ export default async function Organic({ searchParams }) {
 
   // Запросы поиска — из снимка коннектора (обновляется командой «обнови маркетинг»).
   const m = loadMarketing();
-  // Яндекс.Вебмастер: строки [запрос, показы, клики]
+  // Яндекс.Вебмастер: строки [запрос, показы, клики, позиция, ctr%]
   const webmaster = (m?.webmaster?.sites || []).map((s) => ({
     host: s.host,
     queries: (s.queries || []).map((r) => ({
       q: r[0], impressions: Number(r[1]) || 0, clicks: Number(r[2]) || 0,
+      position: r[3] != null ? Number(r[3]) : null, ctr: Number(r[4]) || 0,
     })),
   }));
   // Google Search Console: {host, queries:[{q,impressions,clicks,ctr,position}]} либо строки [q,impr,clicks,ctr,pos].

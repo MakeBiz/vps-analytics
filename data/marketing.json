@@ -7691,7 +7691,8 @@
     "generated": "03.09.2026",
     "engines": [
       "perplexity",
-      "openai"
+      "openai",
+      "gigachat"
     ],
     "questions": [
       {
@@ -7715,6 +7716,11 @@
             "cited": [],
             "mentioned": [],
             "sources": []
+          },
+          "gigachat": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
           }
         }
       },
@@ -7725,13 +7731,13 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "timeweb.com",
-              "dtf.ru",
               "vc.ru",
-              "pq.hosting",
               "sostav.ru",
               "pikabu.ru",
+              "mediacontext.pro",
+              "habr.com",
               "hostinghub.ru",
+              "pq.hosting",
               "ru.tophosts.net"
             ]
           },
@@ -7739,15 +7745,19 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "habr.com",
-              "vps-top.ru",
               "vpsradar.ru",
-              "easylinklife.com",
-              "vpsvrossii.ru",
-              "freerank.ru",
+              "goodfirms.co",
+              "russiavps.site",
               "vpsindex.ru",
-              "hostmetrika.ru"
+              "redvpshub.ru",
+              "digit-tools.ru",
+              "hosting-hunter.ru"
             ]
+          },
+          "gigachat": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
           }
         }
       },
@@ -7758,17 +7768,22 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "habr.com",
               "hostinghub.ru",
+              "makecloud.ru",
               "hostkey.ru",
               "ru.tophosts.net",
               "4pda.to",
               "poiskvps.ru",
-              "selectel.ru",
-              "vps.today"
+              "habr.com",
+              "serverspace.ru"
             ]
           },
           "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          },
+          "gigachat": {
             "cited": [],
             "mentioned": [],
             "sources": []
@@ -7786,13 +7801,18 @@
               "brigo.ru",
               "itelon.ru",
               "asilan.ru",
-              "serverflow.ru",
               "servermall.ru",
+              "serverflow.ru",
               "dellexpert.ru",
               "trinity.ru"
             ]
           },
           "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          },
+          "gigachat": {
             "cited": [],
             "mentioned": [],
             "sources": []
@@ -7804,19 +7824,26 @@
         "per": {
           "perplexity": {
             "cited": [],
-            "mentioned": [],
+            "mentioned": [
+              "podborvps.ru"
+            ],
             "sources": [
-              "cloudvps.by",
               "habr.com",
               "vpscatalog.ru",
               "hostinghub.ru",
               "ru.tophosts.net",
               "market.cnews.ru",
               "vds.menu",
+              "tendence.ru",
               "ruvds.com"
             ]
           },
           "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          },
+          "gigachat": {
             "cited": [],
             "mentioned": [],
             "sources": []
@@ -7832,15 +7859,20 @@
             "sources": [
               "hostkey.ru",
               "habr.com",
-              "ru.tophosts.net",
               "hostinghub.ru",
               "reg.ru",
+              "ru.tophosts.net",
               "ruvds.com",
-              "firstvds.ru",
-              "timeweb.cloud"
+              "timeweb.cloud",
+              "netangels.ru"
             ]
           },
           "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          },
+          "gigachat": {
             "cited": [],
             "mentioned": [],
             "sources": []
@@ -7867,6 +7899,11 @@
             "cited": [],
             "mentioned": [],
             "sources": []
+          },
+          "gigachat": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
           }
         }
       },
@@ -7890,15 +7927,20 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "vpsscout.com",
+              "hostingscale.com",
               "hostinger.com",
-              "hosting-atlas.com",
               "vpsrated.com",
-              "itechguides.com",
-              "whysogeek.com",
+              "reddit.com",
               "techcognate.com",
-              "reddit.com"
+              "itechguides.com",
+              "vpshostreview.com",
+              "hostings.info"
             ]
+          },
+          "gigachat": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
           }
         }
       },
@@ -7915,22 +7957,28 @@
               "serverspace.io",
               "ionos.com",
               "togglebox.com",
-              "help.yeastar.com",
-              "cloud.google.com"
+              "wintelguy.com",
+              "help.yeastar.com"
             ]
           },
           "openai": {
             "cited": [],
             "mentioned": [],
             "sources": [
-              "digitalocean.com",
-              "dropvps.com",
               "infrapilot.cc",
+              "dropvps.com",
+              "rdp.sh",
               "servercostcalculator.com",
-              "hostperl.com",
-              "remarkablecloud.com",
-              "datahouse.net"
+              "agentcalc.com",
+              "calculatorcatalog.com",
+              "flaviocopes.com",
+              "voxa.host"
             ]
+          },
+          "gigachat": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
           }
         }
       },
@@ -7944,14 +7992,19 @@
               "comparevps.com",
               "pcmag.com",
               "techradar.com",
-              "liquidweb.com",
               "vpsbenchmarks.com",
-              "reddit.com",
               "digitalocean.com",
-              "us.ovhcloud.com"
+              "reddit.com",
+              "us.ovhcloud.com",
+              "contabo.com"
             ]
           },
           "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          },
+          "gigachat": {
             "cited": [],
             "mentioned": [],
             "sources": []
@@ -7975,6 +8028,11 @@
             ]
           },
           "openai": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
+          },
+          "gigachat": {
             "cited": [],
             "mentioned": [],
             "sources": []
@@ -8002,6 +8060,11 @@
             "cited": [],
             "mentioned": [],
             "sources": []
+          },
+          "gigachat": {
+            "cited": [],
+            "mentioned": [],
+            "sources": []
           }
         }
       }
@@ -8011,9 +8074,14 @@
         "perplexity": {
           "asked": 12,
           "cited": 0,
-          "mentioned": 0
+          "mentioned": 1
         },
         "openai": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        },
+        "gigachat": {
           "asked": 12,
           "cited": 0,
           "mentioned": 0
@@ -8029,6 +8097,11 @@
           "asked": 12,
           "cited": 0,
           "mentioned": 0
+        },
+        "gigachat": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
         }
       },
       "servercalc.ru": {
@@ -8038,6 +8111,11 @@
           "mentioned": 0
         },
         "openai": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
+        },
+        "gigachat": {
           "asked": 12,
           "cited": 0,
           "mentioned": 0
@@ -8053,6 +8131,11 @@
           "asked": 12,
           "cited": 0,
           "mentioned": 0
+        },
+        "gigachat": {
+          "asked": 12,
+          "cited": 0,
+          "mentioned": 0
         }
       }
     },
@@ -8060,9 +8143,14 @@
       "perplexity": {
         "asked": 12,
         "cited": 0,
-        "mentioned": 0
+        "mentioned": 1
       },
       "openai": {
+        "asked": 12,
+        "cited": 0,
+        "mentioned": 0
+      },
+      "gigachat": {
         "asked": 12,
         "cited": 0,
         "mentioned": 0

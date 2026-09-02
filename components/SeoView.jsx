@@ -345,7 +345,7 @@ function GeoTab({ list }) {
 }
 
 // ─────────────────────────── ВКЛАДКА: AI-ВИДИМОСТЬ ───────────────────────────
-const ENG_LABEL = { perplexity: 'Perplexity', openai: 'ChatGPT' };
+const ENG_LABEL = { perplexity: 'Perplexity', openai: 'ChatGPT', gigachat: 'GigaChat' };
 
 function AIVizTab({ aiviz, nameByHost }) {
   const ourDomains = useMemo(() => Object.keys(nameByHost), [nameByHost]);

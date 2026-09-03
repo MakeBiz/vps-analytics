@@ -9,6 +9,8 @@
         "name": "TW Cloud МСК",
         "cost": 16193,
         "clicks": 339,
+        "impressions": 1395,
+        "conversions": 217.0,
         "ctr": 24.3,
         "cpc": 47.77,
         "kind": "brand"
@@ -18,6 +20,8 @@
         "name": "AdminVPS МСК",
         "cost": 14591,
         "clicks": 426,
+        "impressions": 1685,
+        "conversions": 68.0,
         "ctr": 25.28,
         "cpc": 34.25,
         "kind": "brand"
@@ -27,6 +31,8 @@
         "name": "TW Cloud Регионы",
         "cost": 9607,
         "clicks": 232,
+        "impressions": 1281,
+        "conversions": 135.0,
         "ctr": 18.11,
         "cpc": 41.41,
         "kind": "brand"
@@ -36,6 +42,8 @@
         "name": "Solara",
         "cost": 9574,
         "clicks": 1739,
+        "impressions": 25394,
+        "conversions": 308.0,
         "ctr": 6.85,
         "cpc": 5.51,
         "kind": "brand"
@@ -45,6 +53,8 @@
         "name": "Servercalc",
         "cost": 9047,
         "clicks": 366,
+        "impressions": 5974,
+        "conversions": 58.0,
         "ctr": 6.13,
         "cpc": 24.72,
         "kind": "site",
@@ -55,6 +65,8 @@
         "name": "Провайдер Регионы (Бренд)",
         "cost": 8784,
         "clicks": 827,
+        "impressions": 3653,
+        "conversions": 486.0,
         "ctr": 22.64,
         "cpc": 10.62,
         "kind": "brand"
@@ -64,6 +76,8 @@
         "name": "Podborvps.ru",
         "cost": 8524,
         "clicks": 340,
+        "impressions": 6810,
+        "conversions": 71.0,
         "ctr": 4.99,
         "cpc": 25.07,
         "kind": "site",
@@ -74,6 +88,8 @@
         "name": "Aeza МСК (бренд)",
         "cost": 8348,
         "clicks": 419,
+        "impressions": 2282,
+        "conversions": 268.0,
         "ctr": 18.36,
         "cpc": 19.92,
         "kind": "brand"
@@ -83,6 +99,8 @@
         "name": "TW МСК (Бренд)",
         "cost": 4256,
         "clicks": 256,
+        "impressions": 1843,
+        "conversions": 169.0,
         "ctr": 13.89,
         "cpc": 16.62,
         "kind": "brand"
@@ -92,6 +110,8 @@
         "name": "PodborVPS",
         "cost": 3428,
         "clicks": 114,
+        "impressions": 1006,
+        "conversions": 61.0,
         "ctr": 11.33,
         "cpc": 30.07,
         "kind": "site",
@@ -102,6 +122,8 @@
         "name": "Servercalc",
         "cost": 3177,
         "clicks": 119,
+        "impressions": 1474,
+        "conversions": 63.0,
         "ctr": 8.07,
         "cpc": 26.7,
         "kind": "site",
@@ -112,6 +134,8 @@
         "name": "ishosting",
         "cost": 3159,
         "clicks": 84,
+        "impressions": 1899,
+        "conversions": 0.0,
         "ctr": 4.42,
         "cpc": 37.61,
         "kind": "brand"
@@ -121,6 +145,8 @@
         "name": "TW Cloud МСК (РСЯ)",
         "cost": 1629,
         "clicks": 256,
+        "impressions": 23775,
+        "conversions": 1.0,
         "ctr": 1.08,
         "cpc": 6.36,
         "kind": "rsya"
@@ -130,6 +156,8 @@
         "name": "AdminVPS (Бренд)",
         "cost": 850,
         "clicks": 116,
+        "impressions": 393,
+        "conversions": 10.0,
         "ctr": 29.52,
         "cpc": 7.33,
         "kind": "brand"
@@ -1051,181 +1079,211 @@
         "date": "2026-08-04",
         "impressions": 575,
         "clicks": 102,
-        "cost": 3815
+        "cost": 3815,
+        "conversions": 43.0
       },
       {
         "date": "2026-08-05",
         "impressions": 1384,
         "clicks": 153,
-        "cost": 4942
+        "cost": 4942,
+        "conversions": 52.0
       },
       {
         "date": "2026-08-06",
         "impressions": 1712,
         "clicks": 168,
-        "cost": 4345
+        "cost": 4345,
+        "conversions": 44.0
       },
       {
         "date": "2026-08-07",
         "impressions": 2174,
         "clicks": 212,
-        "cost": 5323
+        "cost": 5323,
+        "conversions": 30.0
       },
       {
         "date": "2026-08-08",
         "impressions": 878,
         "clicks": 63,
-        "cost": 872
+        "cost": 872,
+        "conversions": 9.0
       },
       {
         "date": "2026-08-09",
         "impressions": 1036,
         "clicks": 51,
-        "cost": 797
+        "cost": 797,
+        "conversions": 4.0
       },
       {
         "date": "2026-08-10",
         "impressions": 214,
         "clicks": 46,
-        "cost": 1487
+        "cost": 1487,
+        "conversions": 16.0
       },
       {
         "date": "2026-08-11",
         "impressions": 549,
         "clicks": 51,
-        "cost": 2130
+        "cost": 2130,
+        "conversions": 17.0
       },
       {
         "date": "2026-08-12",
         "impressions": 597,
         "clicks": 68,
-        "cost": 2694
+        "cost": 2694,
+        "conversions": 19.0
       },
       {
         "date": "2026-08-13",
         "impressions": 389,
         "clicks": 39,
-        "cost": 1426
+        "cost": 1426,
+        "conversions": 12.0
       },
       {
         "date": "2026-08-14",
         "impressions": 377,
         "clicks": 43,
-        "cost": 2030
+        "cost": 2030,
+        "conversions": 16.0
       },
       {
         "date": "2026-08-15",
         "impressions": 440,
         "clicks": 32,
-        "cost": 1111
+        "cost": 1111,
+        "conversions": 12.0
       },
       {
         "date": "2026-08-16",
         "impressions": 219,
         "clicks": 25,
-        "cost": 1024
+        "cost": 1024,
+        "conversions": 11.0
       },
       {
         "date": "2026-08-17",
         "impressions": 835,
         "clicks": 59,
-        "cost": 2430
+        "cost": 2430,
+        "conversions": 20.0
       },
       {
         "date": "2026-08-18",
         "impressions": 8110,
         "clicks": 151,
-        "cost": 3175
+        "cost": 3175,
+        "conversions": 33.0
       },
       {
         "date": "2026-08-19",
         "impressions": 12788,
         "clicks": 218,
-        "cost": 4757
+        "cost": 4757,
+        "conversions": 44.0
       },
       {
         "date": "2026-08-20",
         "impressions": 6154,
         "clicks": 155,
-        "cost": 4468
+        "cost": 4468,
+        "conversions": 41.0
       },
       {
         "date": "2026-08-21",
         "impressions": 1515,
         "clicks": 85,
-        "cost": 3358
+        "cost": 3358,
+        "conversions": 30.0
       },
       {
         "date": "2026-08-22",
         "impressions": 102,
         "clicks": 21,
-        "cost": 1165
+        "cost": 1165,
+        "conversions": 5.0
       },
       {
         "date": "2026-08-23",
         "impressions": 24,
         "clicks": 10,
-        "cost": 510
+        "cost": 510,
+        "conversions": 8.0
       },
       {
         "date": "2026-08-24",
         "impressions": 1058,
         "clicks": 105,
-        "cost": 3886
+        "cost": 3886,
+        "conversions": 53.0
       },
       {
         "date": "2026-08-25",
         "impressions": 2617,
         "clicks": 258,
-        "cost": 6513
+        "cost": 6513,
+        "conversions": 113.0
       },
       {
         "date": "2026-08-26",
         "impressions": 2790,
         "clicks": 248,
-        "cost": 6489
+        "cost": 6489,
+        "conversions": 115.0
       },
       {
         "date": "2026-08-27",
         "impressions": 1063,
         "clicks": 175,
-        "cost": 3228
+        "cost": 3228,
+        "conversions": 97.0
       },
       {
         "date": "2026-08-28",
         "impressions": 1118,
         "clicks": 173,
-        "cost": 3865
+        "cost": 3865,
+        "conversions": 96.0
       },
       {
         "date": "2026-08-29",
         "impressions": 560,
         "clicks": 160,
-        "cost": 1822
+        "cost": 1822,
+        "conversions": 83.0
       },
       {
         "date": "2026-08-30",
         "impressions": 630,
         "clicks": 158,
-        "cost": 1561
+        "cost": 1561,
+        "conversions": 89.0
       },
       {
         "date": "2026-08-31",
         "impressions": 1572,
         "clicks": 324,
-        "cost": 3368
+        "cost": 3368,
+        "conversions": 182.0
       },
       {
         "date": "2026-09-01",
         "impressions": 1009,
         "clicks": 279,
-        "cost": 4457
+        "cost": 4457,
+        "conversions": 159.0
       },
       {
         "date": "2026-09-02",
         "impressions": 981,
         "clicks": 262,
-        "cost": 4549
+        "cost": 4549,
+        "conversions": 154.0
       }
     ],
     "trends": {
@@ -1316,7 +1374,7 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 376,
+        "visits": 377,
         "providerClicks": 109,
         "promo": 5,
         "goals": [
@@ -1376,7 +1434,7 @@
         "key": "serverselection-online",
         "name": "ServerSelection",
         "counter": "112072146",
-        "visits": 6,
+        "visits": 7,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1385,7 +1443,7 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 15,
+        "visits": 20,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1889,75 +1947,75 @@
   "wordstat": [
     {
       "phrase": "аренда vps",
-      "count": 6311,
+      "count": 6347,
       "tails": [
         [
           "vps сервер аренда",
-          3328
+          3348
         ],
         [
           "аренда vps в россии",
-          286
-        ],
-        [
-          "аренда vps vds",
-          257
+          284
         ],
         [
           "аренда vps для vpn",
-          233
+          241
+        ],
+        [
+          "аренда vps vds",
+          231
         ],
         [
           "аренда vps в европе",
-          229
+          230
         ]
       ]
     },
     {
       "phrase": "купить vps",
-      "count": 5195,
+      "count": 5205,
       "tails": [
         [
           "vps сервер купить",
-          1730
+          1720
         ],
         [
           "купить vps дешево",
-          215
+          211
         ],
         [
           "vps купить россия",
-          200
+          196
         ],
         [
           "купить vps для vpn",
-          185
+          191
         ],
         [
           "vps сервер купить для vpn",
-          152
+          155
         ]
       ]
     },
     {
       "phrase": "vps сервер",
-      "count": 21010,
+      "count": 21270,
       "tails": [
         [
           "vps сервер аренда",
-          3328
+          3348
         ],
         [
           "vps сервер купить",
-          1730
+          1720
         ],
         [
           "vps сервер для vpn",
-          1094
+          1128
         ],
         [
           "бесплатный vps сервер",
-          878
+          889
         ],
         [
           "арендовать vps сервер",
@@ -1967,7 +2025,7 @@
     },
     {
       "phrase": "vps хостинг",
-      "count": 2709,
+      "count": 2768,
       "tails": [
         [
           "хостинг vps серверов",
@@ -1975,103 +2033,103 @@
         ],
         [
           "лучшие vps хостинги",
-          246
+          239
         ],
         [
           "vds vps хостинг",
-          160
+          164
         ],
         [
           "рейтинг vps хостингов",
-          154
+          163
         ],
         [
           "хостинг vps для vpn",
-          107
+          105
         ]
       ]
     },
     {
       "phrase": "зарубежный vps",
-      "count": 731,
+      "count": 742,
       "tails": [
         [
           "vps сервер зарубежный",
-          201
+          204
         ],
         [
           "аренда зарубежного vps",
-          65
+          67
         ],
         [
           "купить зарубежный vps",
-          55
+          57
         ],
         [
           "зарубежный vps с оплатой из россии",
-          46
+          45
         ],
         [
           "vps хостинг зарубежный",
-          38
+          41
         ]
       ]
     },
     {
       "phrase": "vds",
-      "count": 31255,
+      "count": 31584,
       "tails": [
         [
           "vds сервер",
-          4223
+          4251
         ],
         [
           "vps vds",
-          2767
+          2787
         ],
         [
           "ghost vds",
-          2308
+          2362
         ],
         [
           "vincea vds",
-          1382
+          1354
         ],
         [
           "vds купить",
-          1221
+          1225
         ]
       ]
     },
     {
       "phrase": "аренда сервера",
-      "count": 22740,
+      "count": 22985,
       "tails": [
         [
           "vps сервер аренда",
-          3328
+          3348
         ],
         [
           "аренда сервера майнкрафт",
-          1438
+          1417
         ],
         [
           "аренда виртуального сервера",
-          901
+          909
         ],
         [
           "аренда сервера для впн",
-          617
+          632
         ],
         [
           "аренда сервера 1с",
-          608
+          619
         ]
       ]
     },
     {
       "phrase": "nvme vps",
-      "count": 101,
+      "count": 106,
       "tails": [
         [
           "vps kvm nvme",
@@ -6377,7 +6435,7 @@
           {
             "path": "https://serverselection.online/sitemap.xml",
             "lastSubmitted": "2026-08-29T19:30:56.207Z",
-            "submitted": 33,
+            "submitted": 39,
             "isPending": false,
             "errors": 0,
             "warnings": 0

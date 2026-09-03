@@ -119,6 +119,84 @@ function CampTable({ camps, medCPA }) {
   );
 }
 
+// Грубая привязка кампании к провайдеру/сайту по названию — для разреза воронки.
+const GROUPS = [
+  ['timeweb', 'Timeweb', /(?:^|[^a-zа-я])(tw|timeweb)(?:[^a-zа-я]|$)/i, '#c6a15b'],
+  ['adminvps', 'AdminVPS', /adminvps/i, '#5b7a99'],
+  ['aeza', 'Aeza', /aeza/i, '#b98cc4'],
+  ['ishosting', 'is*hosting', /ishosting|is\*hosting|ish\b/i, '#6cbf8b'],
+  ['podborvps', 'ПодборVPS', /podborvps|подбор/i, '#7f9dbb'],
+  ['servercalc', 'ServerCalc', /servercalc/i, '#d9a441'],
+];
+function groupOf(name) {
+  for (const [slug, label, re, color] of GROUPS) if (re.test(name || '')) return { slug, label, color };
+  if (/провайдер/i.test(name || '')) return { slug: 'providers', label: 'Провайдеры (общее)', color: '#8a97a4' };
+  return { slug: 'other', label: 'Прочее', color: '#6b7987' };
+}
+
+// Воронка канала: Показы → Клики → Конверсии (с CTR/CR), общая и по провайдерам.
+function ChannelFunnel({ campaigns }) {
+  const a = campaigns.reduce((t, c) => { t.imp += c.impressions || 0; t.clk += c.clicks || 0; t.conv += c.conversions || 0; t.cost += c.cost || 0; return t; }, { imp: 0, clk: 0, conv: 0, cost: 0 });
+  const ctr = pct(a.clk, a.imp), cr = pct(a.conv, a.clk), cpa = a.conv ? Math.round(a.cost / a.conv) : null;
+  const byProv = useMemo(() => {
+    const g = {};
+    for (const c of campaigns) {
+      const gr = groupOf(c.name); const e = g[gr.slug] || (g[gr.slug] = { ...gr, imp: 0, clk: 0, conv: 0, cost: 0 });
+      e.imp += c.impressions || 0; e.clk += c.clicks || 0; e.conv += c.conversions || 0; e.cost += c.cost || 0;
+    }
+    return Object.values(g).sort((x, y) => y.cost - x.cost);
+  }, [campaigns]);
+  const Stage = ({ label, value, sub, color }) => (
+    <div style={{ flex: 1, textAlign: 'center', padding: '12px 6px', background: 'var(--panel-2)', border: '1px solid var(--line)', borderRadius: 8 }}>
+      <div style={{ fontSize: 23, fontWeight: 700, color: color || 'var(--text)', fontVariantNumeric: 'tabular-nums' }}>{value}</div>
+      <div className="dim" style={{ fontSize: 12 }}>{label}</div>
+      {sub ? <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>{sub}</div> : null}
+    </div>
+  );
+  const Arrow = ({ v }) => (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 8px', minWidth: 62 }}>
+      <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--brass)' }}>{v}</div>
+      <div style={{ color: 'var(--dim)', fontSize: 18, lineHeight: 1 }}>→</div>
+    </div>
+  );
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'stretch' }}>
+        <Stage label="Показы" value={num(a.imp)} />
+        <Arrow v={`CTR ${ctr}%`} />
+        <Stage label="Клики" value={num(a.clk)} />
+        <Arrow v={`CR ${cr}%`} />
+        <Stage label="Конверсии" value={num(Math.round(a.conv))} sub={cpa != null ? `CPA ${rub(cpa)}` : null} color={GOOD} />
+      </div>
+      <div className="scroll" style={{ marginTop: 14 }}>
+        <table>
+          <thead><tr><th>Провайдер / сайт</th><th className="n">Показы</th><th className="n">Клики</th><th className="n">CTR</th><th className="n">Конв.</th><th className="n">CR</th><th className="n">Расход</th><th className="n">CPA</th></tr></thead>
+          <tbody>
+            {byProv.map((p) => {
+              const pctr = pct(p.clk, p.imp), pcr = pct(p.conv, p.clk), pcpa = p.conv ? Math.round(p.cost / p.conv) : null;
+              return (
+                <tr key={p.slug}>
+                  <td><span style={{ display: 'inline-block', width: 9, height: 9, borderRadius: '50%', background: p.color, marginRight: 7 }} />{p.label}</td>
+                  <td className="n muted">{num(p.imp)}</td>
+                  <td className="n">{num(p.clk)}</td>
+                  <td className="n" style={{ color: pctr >= 10 ? GOOD : pctr < 5 ? WARN : undefined }}>{pctr}%</td>
+                  <td className="n">{Math.round(p.conv)}</td>
+                  <td className="n" style={{ color: pcr >= 8 ? GOOD : pcr < 2 ? WARN : undefined }}>{pcr}%</td>
+                  <td className="n">{rub(p.cost)}</td>
+                  <td className="n" style={{ fontWeight: 600 }}>{pcpa != null ? rub(pcpa) : '—'}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+        Окупаемость (доход роялти − расход, ROMI) — на «Партнёрки Директ» и «Проекты и кампании» (накопительно с 1 февраля). Здесь — эффективность самого канала за ~30 дней.
+      </div>
+    </div>
+  );
+}
+
 export default function DirectView({ campaigns = [], daily = [], queries = {}, generated, win }) {
   const agg = useMemo(() => {
     const t = { cost: 0, impressions: 0, clicks: 0, conversions: 0 };
@@ -178,6 +256,10 @@ export default function DirectView({ campaigns = [], daily = [], queries = {}, g
 
       <Card title="Кампании" hint="сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий">
         <CampTable camps={campaigns} medCPA={medCPA || 1} />
+      </Card>
+
+      <Card title="Воронка канала" hint="показы → клики → конверсии и где проседает, с разбивкой по провайдерам/сайтам">
+        <ChannelFunnel campaigns={campaigns} />
       </Card>
 
       <Card title="Рекомендации" hint="что подкрутить в Директе по текущим данным">

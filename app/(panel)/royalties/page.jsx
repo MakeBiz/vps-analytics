@@ -352,13 +352,23 @@ export default async function Royalties() {
         <Card title="AdminVPS · снимок кабинета" hint="со сводного экрана реф-программы, весь период">
           {avps.snapshot ? (
             <div className="grid kpis" style={{ gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
-              <Kpi label="Посетители" value={num(avps.snapshot.visitors)} sub={`конверсия ${dec(String(avps.snapshot.conversion ?? 0))}%`} />
-              <Kpi label="Клиенты" value={num(avps.snapshot.clients)} sub="со снимка" />
-              <Kpi label="Ожидающие, ₽" value={num(Math.round(avps.snapshot.pending_rub || 0))} sub="в холде, ~40 дн" />
+              <Kpi label="Посетители" value={num(avps.snapshot.visitors)} sub={avps.snap_weekly?.visitors ? `+${num(avps.snap_weekly.visitors)} за неделю` : `конверсия ${dec(String(avps.snapshot.conversion ?? 0))}%`} />
+              <Kpi label="Клиенты" value={num(avps.snapshot.clients)} sub={avps.snap_weekly?.clients ? `+${avps.snap_weekly.clients} за неделю` : 'со снимка'} />
+              <Kpi label="Ожидающие, ₽" value={num(Math.round(avps.snapshot.pending_rub || 0))} sub={avps.snap_weekly?.pending_rub ? `${avps.snap_weekly.pending_rub >= 0 ? '+' : ''}${num(avps.snap_weekly.pending_rub)} за неделю` : 'в холде, ~40 дн'} />
               <Kpi label="Баланс, ₽" value={num(Math.round(avps.snapshot.balance_rub || 0))} sub={`к выводу ${num(Math.round(avps.snapshot.available_rub || 0))}`} />
             </div>
           ) : <Empty text="Снимок кабинета AdminVPS не задан" />}
-          {avps.snapshot ? note(`Посетители и конверсия видны только на этом снимке — в платёжных выгрузках их нет. «Ожидающие» это заработанный доход в холде (${num(R.projection?.avps?.pending || 0)} ₽), разморозка ~40 дней. Холд рулонный: пока старое размораживается, новые начисления его пополняют, поэтому в прогнозе он идёт ровным темпом ~${num(R.projection?.avps?.pending_monthly || 0)} ₽/мес и не иссякает.`) : null}
+          {Array.isArray(avps.snap_history) && avps.snap_history.length > 1 ? (
+            <table style={{ marginTop: 10 }}>
+              <thead><tr><th>Снимок</th><th className="n">Посетители</th><th className="n">Клиенты</th><th className="n">Конв.</th><th className="n">Холд, ₽</th></tr></thead>
+              <tbody>
+                {avps.snap_history.map((x) => (
+                  <tr key={x.date}><td>{x.date}</td><td className="n">{x.visitors != null ? num(x.visitors) : '—'}</td><td className="n muted">{x.clients != null ? num(x.clients) : '—'}</td><td className="n muted">{x.conversion != null ? dec(String(x.conversion)) + '%' : '—'}</td><td className="n">{x.pending_rub != null ? num(Math.round(x.pending_rub)) : '—'}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          {avps.snapshot ? note(`Деньги и клиенты AdminVPS — из платёжных доков (полная история). Со снимка берём то, чего в доках нет: посетители, конверсия и холд, плюс их недельную динамику (реестр скринов). «Ожидающие» это заработанный доход в холде (${num(R.projection?.avps?.pending || 0)} ₽), разморозка ~40 дней. Холд рулонный: пока старое размораживается, новые начисления его пополняют, поэтому в прогнозе он идёт ровным темпом ~${num(R.projection?.avps?.pending_monthly || 0)} ₽/мес и не иссякает.`) : null}
         </Card>
       </div>
 

@@ -77,31 +77,28 @@ export default async function Royalties() {
   const dLtv = pm ? pctChg(tw.months[cm]?.ltv_cum || 0, tw.months[pm]?.ltv_cum || 0) : null;
 
   // ——— доход по месяцам + прогноз (стек): факт + достройка (план) по каждому продукту, живой
-  const HOLD = '#e0b34e';                 // AdminVPS холд (план)
-  const BRASS_L = '#d9c090', BRASS_LL = '#e8d9b8', STEEL_L = '#9fb3c7', AEZA_L = '#d6bce8';
+  const HOLD = '#e0b34e';
+  const BRASS_P = '#e3d3ad', STEEL_P = '#b3c3d1', GREEN_P = '#c2e3d0', AEZA_P = '#e0cef0';  // бледные (потенциал)
   const holdSchedule = R.projection?.avps?.pending_schedule || {};
   const holdOf = (m) => holdSchedule[m] || 0;
   const plan = R.plan || { months: {} };
   const planParts = (m) => {
     const q = plan.months?.[m];
     if (!q) return [
-      { name: 'TW первичные', value: tw.months[m]?.fs || 0, color: BRASS },
-      { name: 'TW повторные', value: tw.months[m]?.rs || 0, color: BRASS_D },
+      { name: 'Timeweb', value: tw.months[m]?.sum || 0, color: BRASS },
       { name: 'AdminVPS', value: avps.months[m]?.isum || 0, color: STEEL },
       { name: 'is*hosting', value: ish.months[m]?.income || 0, color: GREEN },
       { name: 'Aeza', value: aezaM(m).income || 0, color: AEZA },
     ];
     return [
-      { name: 'TW первичные', value: q.tw.fact_first || 0, color: BRASS },
-      { name: 'TW повторные', value: q.tw.fact_rep || 0, color: BRASS_D },
-      { name: 'TW продления (план)', value: q.tw.renew || 0, color: BRASS_L },
-      { name: 'TW новые (план)', value: q.tw.newfirst || 0, color: BRASS_LL },
+      { name: 'Timeweb', value: (q.tw.fact_first || 0) + (q.tw.fact_rep || 0), color: BRASS },
       { name: 'AdminVPS', value: q.avps.fact || 0, color: STEEL },
-      { name: 'AdminVPS холд (план)', value: q.avps.hold || 0, color: HOLD },
-      { name: 'AdminVPS новые (план)', value: q.avps.new || 0, color: STEEL_L },
       { name: 'is*hosting', value: q.ish.fact || 0, color: GREEN },
       { name: 'Aeza', value: q.aeza.fact || 0, color: AEZA },
-      { name: 'Aeza темп (план)', value: q.aeza.plan || 0, color: AEZA_L },
+      { name: 'Timeweb · потенциал', value: (q.tw.renew || 0) + (q.tw.newfirst || 0), color: BRASS_P },
+      { name: 'AdminVPS · потенциал', value: (q.avps.hold || 0) + (q.avps.new || 0), color: STEEL_P },
+      { name: 'is*hosting · потенциал', value: q.ish.plan || 0, color: GREEN_P },
+      { name: 'Aeza · потенциал', value: q.aeza.plan || 0, color: AEZA_P },
     ];
   };
   const incSeries = [
@@ -184,9 +181,14 @@ export default async function Royalties() {
 
       <Card title="Доход по месяцам и прогноз, ₽" hint="факт + достройка (план) по каждому продукту, наведите на столбец">
         <RoyBars series={incSeries} height={264} mode="stack" kilo unit="₽" />
-        <div className="chips" style={{ marginTop: 10 }}>
-          {[['TW первичные', BRASS], ['TW повторные', BRASS_D], ['TW продления (план)', BRASS_L], ['TW новые (план)', BRASS_LL], ['AdminVPS', STEEL], ['AdminVPS холд (план)', HOLD], ['AdminVPS новые (план)', STEEL_L], ['is*hosting', GREEN], ['Aeza', AEZA], ['Aeza темп (план)', AEZA_L]].map(([l, c]) => (
-            <span key={l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
+        <div className="chips" style={{ marginTop: 10, alignItems: 'center' }}>
+          <b style={{ fontSize: 12 }}>Факт:</b>
+          {[['Timeweb', BRASS], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['Aeza', AEZA]].map(([l, c]) => (
+            <span key={'f' + l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
+          ))}
+          <b style={{ fontSize: 12, marginLeft: 8 }}>Потенциал:</b>
+          {[['Timeweb', BRASS_P], ['AdminVPS', STEEL_P], ['is*hosting', GREEN_P], ['Aeza', AEZA_P]].map(([l, c]) => (
+            <span key={'p' + l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
         </div>
         {(() => { const q = plan.months?.[current.month] || { tw: {}, avps: {}, aeza: {} }; return note(`Тёмные части столбца это факт (что уже пришло), светлые это достройка (план до конца месяца), по каждому продукту отдельно. Текущий месяц: Timeweb продления по «оплачен до» ${num(q.tw.renew || 0)} ₽ + новые первичные (среднее за 3 мес) ${num(q.tw.newfirst || 0)} ₽; AdminVPS разморозка холда ${num(q.avps.hold || 0)} ₽ + новые по темпу ${num(q.avps.new || 0)} ₽; Aeza по темпу ${num(q.aeza.plan || 0)} ₽. Всё пересчитывается от текущего факта при каждом обновлении. Будущие месяцы справа это только план (продления + новые + холд + темп), тоже живой.`); })()}

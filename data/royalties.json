@@ -100,29 +100,29 @@
     "income": 4158
    },
    "2026-09": {
-    "eur": 5.37,
-    "income": 537
+    "eur": 43.87,
+    "income": 4387
    }
   },
-  "total": 4695,
-  "eur": 46.95,
+  "total": 8545,
+  "eur": 85.45,
   "rate": 100,
-  "asof": "2026-09-01",
+  "asof": "2026-09-04",
   "first": "2026-08-29",
   "ops": 50,
-  "run_rate_day": 1565,
-  "run_rate_month": 46950,
-  "fc_days": 3,
+  "run_rate_day": 1424,
+  "run_rate_month": 42725,
+  "fc_days": 6,
   "forecast": {
-   "2026-10": 46950,
-   "2026-11": 46950,
-   "2026-12": 46950,
-   "2027-01": 46950,
-   "2027-02": 46950,
-   "2027-03": 46950,
-   "2027-04": 46950,
-   "2027-05": 46950,
-   "2027-06": 46950
+   "2026-10": 42725,
+   "2026-11": 42725,
+   "2026-12": 42725,
+   "2027-01": 42725,
+   "2027-02": 42725,
+   "2027-03": 42725,
+   "2027-04": 42725,
+   "2027-05": 42725,
+   "2027-06": 42725
   },
   "history": [
    {
@@ -140,28 +140,36 @@
     "earned_eur": 5.6,
     "registrations": 59,
     "active_referrals": 28
+   },
+   {
+    "date": "2026-09-04",
+    "cum_eur": 85.45,
+    "hold_eur": 72.19,
+    "earned_eur": 13.26,
+    "registrations": 105,
+    "active_referrals": 49
    }
   ],
   "weekly": {
-   "from": "2026-08-31",
-   "to": "2026-09-01",
-   "days": 1,
-   "income": 537,
-   "regs": 5,
-   "active": 3
+   "from": "2026-09-01",
+   "to": "2026-09-04",
+   "days": 3,
+   "income": 3850,
+   "regs": 46,
+   "active": 21
   },
   "source": "registry",
   "snapshot": {
-   "asof": "2026-09-01",
-   "registrations": 59,
-   "active_referrals": 28,
-   "percent": 15,
-   "hold_eur": 41.35,
-   "earned_eur": 5.6,
-   "balance_eur": 5.6,
+   "asof": "2026-09-04",
+   "registrations": 105,
+   "active_referrals": 49,
+   "percent": 20,
+   "hold_eur": 72.19,
+   "earned_eur": 13.26,
+   "balance_eur": 13.26,
    "rate": 100,
-   "hold_rub": 4135,
-   "earned_rub": 560,
+   "hold_rub": 7219,
+   "earned_rub": 1326,
    "ahead": false
   }
  },
@@ -212,22 +220,22 @@
    "fact": 1847,
    "projected": 25637,
    "per_day": 462,
-   "pending": 57445,
+   "pending": 64438,
    "pending_note": "в холде, доступно за ~40 дней",
-   "pending_per_day": 1436,
-   "pending_monthly": 43084,
+   "pending_per_day": 1611,
+   "pending_monthly": 48328,
    "pending_days": 40,
    "pending_rolling": true,
    "pending_schedule": {
-    "2026-10": 43084,
-    "2026-11": 43084,
-    "2026-12": 43084,
-    "2027-01": 43084,
-    "2027-02": 43084,
-    "2027-03": 43084,
-    "2027-04": 43084,
-    "2027-05": 43084,
-    "2027-06": 43084
+    "2026-10": 48328,
+    "2026-11": 48328,
+    "2026-12": 48328,
+    "2027-01": 48328,
+    "2027-02": 48328,
+    "2027-03": 48328,
+    "2027-04": 48328,
+    "2027-05": 48328,
+    "2027-06": 48328
    }
   },
   "ads": {
@@ -650,8 +658,8 @@
   },
   {
    "m": "2026-09",
-   "net": 15673,
-   "cum": 234582
+   "net": 19523,
+   "cum": 238432
   }
  ],
  "tw": {
@@ -2153,7 +2161,12 @@
     "income": 303
    },
    {
-    "k": "Изменение",
+    "k": "Lite",
+    "regs": 36,
+    "income": 0
+   },
+   {
+    "k": "WIN2",
     "regs": 2,
     "income": 0
    },
@@ -2163,13 +2176,8 @@
     "income": 0
    },
    {
-    "k": "WIN2",
+    "k": "Изменение",
     "regs": 2,
-    "income": 0
-   },
-   {
-    "k": "Lite",
-    "regs": 36,
     "income": 0
    }
   ],
@@ -2420,13 +2428,13 @@
    "2027-06": 65320
   },
   "snapshot": {
-   "asof": "2026-09-01",
-   "visitors": 3994,
-   "clients": 379,
-   "conversion": 9.49,
-   "pending_rub": 57445.44,
-   "balance_rub": 35920.64,
-   "available_rub": 35052.87
+   "asof": "2026-09-04",
+   "visitors": 4199,
+   "clients": 399,
+   "conversion": 9.5,
+   "pending_rub": 64438.01,
+   "balance_rub": 36900.01,
+   "available_rub": 36760.1
   },
   "snap_history": [
    {
@@ -2444,14 +2452,22 @@
     "conversion": 9.49,
     "pending_rub": 57445.44,
     "available_rub": 35052.87
+   },
+   {
+    "date": "2026-09-04",
+    "visitors": 4199,
+    "clients": 399,
+    "conversion": 9.5,
+    "pending_rub": 64438.01,
+    "available_rub": 36760.1
    }
   ],
   "snap_weekly": {
-   "from": "2026-08-31",
-   "to": "2026-09-01",
-   "visitors": 24,
-   "clients": 1,
-   "pending_rub": -644
+   "from": "2026-09-01",
+   "to": "2026-09-04",
+   "visitors": 205,
+   "clients": 20,
+   "pending_rub": 6993
   }
  },
  "ads": {

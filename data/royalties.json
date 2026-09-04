@@ -254,7 +254,222 @@
   "aeza_monthly": 42725,
   "days_done": 4,
   "days_total": 30,
+  "growth": {
+   "tw": 1.106,
+   "avps": 1.166,
+   "aeza": 1.1
+  },
   "months": {
+   "2026-09": {
+    "tw": {
+     "fact_first": 5150,
+     "fact_rep": 8139,
+     "renew": 74927,
+     "newfirst": 14205
+    },
+    "avps": {
+     "fact": 1847,
+     "hold": 41886,
+     "new": 12006
+    },
+    "aeza": {
+     "fact": 4387,
+     "plan": 37024
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2026-10": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 107866,
+     "newfirst": 19329
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 29898
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 46998
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2026-11": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 119247,
+     "newfirst": 21369
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 34867
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 51697
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2026-12": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 131828,
+     "newfirst": 23623
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 40662
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 56867
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2027-01": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 138782,
+     "newfirst": 24869
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 44042
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 59710
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2027-02": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 146104,
+     "newfirst": 26181
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 47702
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 62696
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2027-03": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 153811,
+     "newfirst": 27562
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 51666
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 65831
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2027-04": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 161925,
+     "newfirst": 29016
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 55960
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 69122
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2027-05": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 170467,
+     "newfirst": 30547
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 60611
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 72578
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
+   "2027-06": {
+    "tw": {
+     "fact_first": 0,
+     "fact_rep": 0,
+     "renew": 179460,
+     "newfirst": 32158
+    },
+    "avps": {
+     "fact": 0,
+     "hold": 48328,
+     "new": 65648
+    },
+    "aeza": {
+     "fact": 0,
+     "plan": 76207
+    },
+    "ish": {
+     "fact": 0,
+     "plan": 0
+    }
+   },
    "2026-03": {
     "tw": {
      "fact_first": 38601,
@@ -378,216 +593,6 @@
     },
     "ish": {
      "fact": 48,
-     "plan": 0
-    }
-   },
-   "2026-09": {
-    "tw": {
-     "fact_first": 5150,
-     "fact_rep": 8139,
-     "renew": 74927,
-     "newfirst": 14205
-    },
-    "avps": {
-     "fact": 1847,
-     "hold": 41886,
-     "new": 12006
-    },
-    "aeza": {
-     "fact": 4387,
-     "plan": 37024
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2026-10": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 35536,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 30367
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2026-11": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 9602,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 35971
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2026-12": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 24367,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 42608
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2027-01": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 5804,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 45753
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2027-02": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 26593,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 49129
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2027-03": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 1989,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 52755
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2027-04": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 10863,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 56649
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2027-05": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 34130,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 60830
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
-     "plan": 0
-    }
-   },
-   "2027-06": {
-    "tw": {
-     "fact_first": 0,
-     "fact_rep": 0,
-     "renew": 0,
-     "newfirst": 16390
-    },
-    "avps": {
-     "fact": 0,
-     "hold": 48328,
-     "new": 65320
-    },
-    "aeza": {
-     "fact": 0,
-     "plan": 42725
-    },
-    "ish": {
-     "fact": 0,
      "plan": 0
     }
    }
@@ -2506,13 +2511,13 @@
     "income": 303
    },
    {
-    "k": "Панель",
+    "k": "Изменение",
     "regs": 2,
     "income": 0
    },
    {
-    "k": "Lite",
-    "regs": 36,
+    "k": "Панель",
+    "regs": 2,
     "income": 0
    },
    {
@@ -2521,8 +2526,8 @@
     "income": 0
    },
    {
-    "k": "Изменение",
-    "regs": 2,
+    "k": "Lite",
+    "regs": 36,
     "income": 0
    }
   ],

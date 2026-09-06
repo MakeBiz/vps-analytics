@@ -1,6 +1,6 @@
 {
  "meta": {
-  "asof": "04.09.2026",
+  "asof": "06.09.2026",
   "period_start": "01.03.2026",
   "vat": 22,
   "growth_tw": 1.045,
@@ -173,6 +173,45 @@
    "ahead": false
   }
  },
+ "hostman": {
+  "months": {
+   "2026-09": {
+    "usd": 2.0,
+    "income": 200
+   }
+  },
+  "total": 200,
+  "usd": 2,
+  "rate": 100,
+  "asof": "2026-09-06",
+  "first": "2026-09-06",
+  "ref_link": "https://hostman.com/r/pb752795",
+  "run_rate_day": 0,
+  "run_rate_month": 0,
+  "fc_days": null,
+  "forecast": {},
+  "history": [
+   {
+    "date": "2026-09-06",
+    "cum_usd": 2,
+    "registrations": 2,
+    "active_referrals": 1,
+    "link_visits": 63
+   }
+  ],
+  "weekly": null,
+  "source": "registry",
+  "snapshot": {
+   "asof": "2026-09-06",
+   "registrations": 2,
+   "active_referrals": 1,
+   "link_visits": 63,
+   "total_amount_usd": 2,
+   "rate": 100,
+   "total_rub": 200,
+   "ahead": false
+  }
+ },
  "current": {
   "month": "2026-09",
   "asof": "04.09.2026",
@@ -252,19 +291,21 @@
   "avg3_first": 16390,
   "hold_monthly": 48328,
   "aeza_monthly": 42725,
+  "hostman_monthly": 0,
   "days_done": 4,
   "days_total": 30,
   "growth": {
    "tw": 1.106,
    "avps": 1.166,
-   "aeza": 1.1
+   "aeza": 1.1,
+   "hostman": 1.1
   },
   "months": {
    "2026-09": {
     "tw": {
      "fact_first": 5150,
      "fact_rep": 8139,
-     "renew": 74927,
+     "renew": 62876,
      "newfirst": 14205
     },
     "avps": {
@@ -275,6 +316,10 @@
     "aeza": {
      "fact": 4387,
      "plan": 37024
+    },
+    "hm": {
+     "fact": 200,
+     "plan": 0
     },
     "ish": {
      "fact": 0,
@@ -297,6 +342,10 @@
      "fact": 0,
      "plan": 46998
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 0,
      "plan": 0
@@ -317,6 +366,10 @@
     "aeza": {
      "fact": 0,
      "plan": 51697
+    },
+    "hm": {
+     "fact": 0,
+     "plan": 0
     },
     "ish": {
      "fact": 0,
@@ -339,6 +392,10 @@
      "fact": 0,
      "plan": 56867
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 0,
      "plan": 0
@@ -359,6 +416,10 @@
     "aeza": {
      "fact": 0,
      "plan": 59710
+    },
+    "hm": {
+     "fact": 0,
+     "plan": 0
     },
     "ish": {
      "fact": 0,
@@ -381,6 +442,10 @@
      "fact": 0,
      "plan": 62696
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 0,
      "plan": 0
@@ -401,6 +466,10 @@
     "aeza": {
      "fact": 0,
      "plan": 65831
+    },
+    "hm": {
+     "fact": 0,
+     "plan": 0
     },
     "ish": {
      "fact": 0,
@@ -423,6 +492,10 @@
      "fact": 0,
      "plan": 69122
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 0,
      "plan": 0
@@ -443,6 +516,10 @@
     "aeza": {
      "fact": 0,
      "plan": 72578
+    },
+    "hm": {
+     "fact": 0,
+     "plan": 0
     },
     "ish": {
      "fact": 0,
@@ -465,6 +542,10 @@
      "fact": 0,
      "plan": 76207
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 0,
      "plan": 0
@@ -483,6 +564,10 @@
      "new": 0
     },
     "aeza": {
+     "fact": 0,
+     "plan": 0
+    },
+    "hm": {
      "fact": 0,
      "plan": 0
     },
@@ -507,6 +592,10 @@
      "fact": 0,
      "plan": 0
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 0,
      "plan": 0
@@ -525,6 +614,10 @@
      "new": 0
     },
     "aeza": {
+     "fact": 0,
+     "plan": 0
+    },
+    "hm": {
      "fact": 0,
      "plan": 0
     },
@@ -549,6 +642,10 @@
      "fact": 0,
      "plan": 0
     },
+    "hm": {
+     "fact": 0,
+     "plan": 0
+    },
     "ish": {
      "fact": 106,
      "plan": 0
@@ -567,6 +664,10 @@
      "new": 0
     },
     "aeza": {
+     "fact": 0,
+     "plan": 0
+    },
+    "hm": {
      "fact": 0,
      "plan": 0
     },
@@ -589,6 +690,10 @@
     },
     "aeza": {
      "fact": 4158,
+     "plan": 0
+    },
+    "hm": {
+     "fact": 0,
      "plan": 0
     },
     "ish": {
@@ -1008,8 +1113,8 @@
   },
   {
    "m": "2026-09",
-   "net": 19523,
-   "cum": 238432
+   "net": 19723,
+   "cum": 238632
   }
  ],
  "tw": {
@@ -1886,8 +1991,8 @@
    }
   ],
   "churn_risk": {
-   "cnt": 41,
-   "sum": 7267
+   "cnt": 51,
+   "sum": 18428
   },
   "top_clients": [
    {
@@ -1902,7 +2007,7 @@
     "sum": 28212,
     "cnt": 4,
     "status": "Активен",
-    "risk": false
+    "risk": true
    },
    {
     "login": "kj185069",
@@ -1972,7 +2077,7 @@
     "sum": 8400,
     "cnt": 5,
     "status": "Активен",
-    "risk": false
+    "risk": true
    },
    {
     "login": "cg057629",
@@ -2068,18 +2173,6 @@
   ],
   "potential": {
    "days": [
-    {
-     "d": "04.09",
-     "dow": "Пт",
-     "sum": 1150,
-     "cnt": 4
-    },
-    {
-     "d": "05.09",
-     "dow": "Сб",
-     "sum": 10901,
-     "cnt": 6
-    },
     {
      "d": "06.09",
      "dow": "Вс",
@@ -2247,13 +2340,25 @@
      "dow": "Сб",
      "sum": 3769,
      "cnt": 5
+    },
+    {
+     "d": "04.10",
+     "dow": "Вс",
+     "sum": 11194,
+     "cnt": 7
+    },
+    {
+     "d": "05.10",
+     "dow": "Пн",
+     "sum": 1557,
+     "cnt": 4
     }
    ],
    "weeks": [
     {
      "w": "31.08",
-     "sum": 12863,
-     "cnt": 16
+     "sum": 812,
+     "cnt": 6
     },
     {
      "w": "07.09",
@@ -2314,8 +2419,8 @@
    "months": [
     {
      "m": "2026-09",
-     "sum": 74927,
-     "cnt": 143
+     "sum": 62876,
+     "cnt": 133
     },
     {
      "m": "2026-10",
@@ -2379,10 +2484,10 @@
     }
    ],
    "total": {
-    "sum": 242223,
-    "cnt": 278,
-    "sum13": 230142,
-    "cnt13": 259
+    "sum": 230172,
+    "cnt": 268,
+    "sum13": 218091,
+    "cnt13": 249
    }
   },
   "statuses": {},
@@ -2511,23 +2616,23 @@
     "income": 303
    },
    {
-    "k": "Изменение",
-    "regs": 2,
-    "income": 0
-   },
-   {
     "k": "Панель",
     "regs": 2,
     "income": 0
    },
    {
-    "k": "WIN2",
+    "k": "Изменение",
     "regs": 2,
     "income": 0
    },
    {
     "k": "Lite",
     "regs": 36,
+    "income": 0
+   },
+   {
+    "k": "WIN2",
+    "regs": 2,
     "income": 0
    }
   ],

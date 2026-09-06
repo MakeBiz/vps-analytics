@@ -11,6 +11,7 @@ const BRASS_D = '#977c3f';     // TW повторные
 const STEEL = '#5b7a99';       // AdminVPS / вторичный
 const GREEN = '#6cbf8b';       // is*hosting / плюс
 const AEZA = '#b98cd6';        // Aeza / 4-й партнёр
+const HM = '#6e56cf';          // Hostman / 5-й партнёр
 const RED = '#d1697a';         // минус / риск
 const BUILD = 'rgba(198,161,91,.32)'; // достройка месяца
 const FORE = '#46586b';        // прогноз
@@ -40,13 +41,15 @@ export default async function Royalties() {
   }
   const { tw, avps, ish, ads, derived, current, dow, net_months, health, meta } = R;
   const aeza = R.aeza || { months: {}, total: 0 };
+  const hostman = R.hostman || { months: {}, total: 0 };
   const months = R.months || [];
   const fcMonths = Object.keys(tw.forecast || {});
   const aezaM = (m) => aeza.months?.[m] || {};
   const aezaFc = aeza.forecast || {};
   const aezaFcOf = (m) => aezaFc[m] || 0;
+  const hmM = (m) => hostman.months?.[m] || {};
 
-  const grandTotal = (tw.total || 0) + (avps.total || 0) + (ish.total || 0) + (aeza.total || 0);
+  const grandTotal = (tw.total || 0) + (avps.total || 0) + (ish.total || 0) + (aeza.total || 0) + (hostman.total || 0);
   const netCum = net_months.length ? net_months[net_months.length - 1].cum : (derived.net || 0);
   const days = daysElapsed(meta.period_start, meta.asof);
   const weeksElapsed = Math.max(1, Math.round(days / 7));
@@ -68,7 +71,7 @@ export default async function Royalties() {
   const cm = current.month;
   const pmIdx = months.indexOf(cm) - 1;
   const pm = pmIdx >= 0 ? months[pmIdx] : null;
-  const mtot = (m) => (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0) + (aezaM(m).income || 0);
+  const mtot = (m) => (tw.months[m]?.sum || 0) + (avps.months[m]?.isum || 0) + (ish.months[m]?.income || 0) + (aezaM(m).income || 0) + (hmM(m).income || 0);
   const pctChg = (a, b) => (b ? ((a - b) / b) * 100 : null);
   const dRev = pm ? pctChg(current.total?.proj || mtot(cm), mtot(pm)) : null;
   const dNet = pm ? pctChg((current.total?.proj || 0) - (current.ads?.proj || 0), (net_months.find((r) => r.m === pm) || {}).net || 0) : null;
@@ -78,7 +81,7 @@ export default async function Royalties() {
 
   // ——— доход по месяцам + прогноз (стек): факт + достройка (план) по каждому продукту, живой
   const HOLD = '#e0b34e';
-  const BRASS_P = '#e3d3ad', STEEL_P = '#b3c3d1', GREEN_P = '#c2e3d0', AEZA_P = '#e0cef0';  // бледные (потенциал)
+  const BRASS_P = '#e3d3ad', STEEL_P = '#b3c3d1', GREEN_P = '#c2e3d0', AEZA_P = '#e0cef0', HM_P = '#c9bef0';  // бледные (потенциал)
   const holdSchedule = R.projection?.avps?.pending_schedule || {};
   const holdOf = (m) => holdSchedule[m] || 0;
   const plan = R.plan || { months: {} };
@@ -89,16 +92,19 @@ export default async function Royalties() {
       { name: 'AdminVPS', value: avps.months[m]?.isum || 0, color: STEEL },
       { name: 'is*hosting', value: ish.months[m]?.income || 0, color: GREEN },
       { name: 'Aeza', value: aezaM(m).income || 0, color: AEZA },
+      { name: 'Hostman', value: hmM(m).income || 0, color: HM },
     ];
     return [
       { name: 'Timeweb', value: (q.tw.fact_first || 0) + (q.tw.fact_rep || 0), color: BRASS },
       { name: 'AdminVPS', value: q.avps.fact || 0, color: STEEL },
       { name: 'is*hosting', value: q.ish.fact || 0, color: GREEN },
       { name: 'Aeza', value: q.aeza.fact || 0, color: AEZA },
+      { name: 'Hostman', value: (q.hm && q.hm.fact) || 0, color: HM },
       { name: 'Timeweb · потенциал', value: (q.tw.renew || 0) + (q.tw.newfirst || 0), color: BRASS_P },
       { name: 'AdminVPS · потенциал', value: (q.avps.hold || 0) + (q.avps.new || 0), color: STEEL_P },
       { name: 'is*hosting · потенциал', value: q.ish.plan || 0, color: GREEN_P },
       { name: 'Aeza · потенциал', value: q.aeza.plan || 0, color: AEZA_P },
+      { name: 'Hostman · потенциал', value: (q.hm && q.hm.plan) || 0, color: HM_P },
     ];
   };
   const incSeries = [
@@ -137,15 +143,15 @@ export default async function Royalties() {
 
   // ——— сводная
   const factRows = months.map((m) => {
-    const t = tw.months[m]?.sum || 0, a = avps.months[m]?.isum || 0, i = ish.months[m]?.income || 0, z = aezaM(m).income || 0;
+    const t = tw.months[m]?.sum || 0, a = avps.months[m]?.isum || 0, i = ish.months[m]?.income || 0, z = aezaM(m).income || 0, hm = hmM(m).income || 0;
     const net = (net_months.find((r) => r.m === m) || {}).net;
     const cnt = tw.months[m]?.cnt || 0;
     const dm = m === current.month ? (current.days_done || daysInMonth(m)) : daysInMonth(m);
     const regs = tw.months[m]?.regs || 0, paid = tw.months[m]?.regs_paid || 0;
-    return { m, t, a, i, z, all: t + a + i + z, net, check: cnt ? Math.round(t / cnt) : 0, perday: Math.round((t + a + i + z) / dm), cReg: ads.eff?.[m]?.conv_click_reg, cPay: regs ? Math.round((paid / regs) * 100) : null };
+    return { m, t, a, i, z, hm, all: t + a + i + z + hm, net, check: cnt ? Math.round(t / cnt) : 0, perday: Math.round((t + a + i + z + hm) / dm), cReg: ads.eff?.[m]?.conv_click_reg, cPay: regs ? Math.round((paid / regs) * 100) : null };
   });
-  const totFact = factRows.reduce((s, r) => ({ t: s.t + r.t, a: s.a + r.a, i: s.i + r.i, z: s.z + r.z, all: s.all + r.all }), { t: 0, a: 0, i: 0, z: 0, all: 0 });
-  const fcRows = fcMonths.map((m) => { const q = plan.months?.[m] || { tw: {}, avps: {}, aeza: {} }; const t = (q.tw.renew || 0) + (q.tw.newfirst || 0); const a = (q.avps.hold || 0) + (q.avps.new || 0); const z = q.aeza.plan || 0; return { m, t, a, z, all: t + a + z }; });
+  const totFact = factRows.reduce((s, r) => ({ t: s.t + r.t, a: s.a + r.a, i: s.i + r.i, z: s.z + r.z, hm: s.hm + r.hm, all: s.all + r.all }), { t: 0, a: 0, i: 0, z: 0, hm: 0, all: 0 });
+  const fcRows = fcMonths.map((m) => { const q = plan.months?.[m] || { tw: {}, avps: {}, aeza: {} }; const t = (q.tw.renew || 0) + (q.tw.newfirst || 0); const a = (q.avps.hold || 0) + (q.avps.new || 0); const z = q.aeza.plan || 0; const hm = (q.hm && q.hm.plan) || 0; return { m, t, a, z, hm, all: t + a + z + hm }; });
 
   const note = (t) => <div className="note" style={{ marginTop: 10 }}>{t}</div>;
 
@@ -153,9 +159,9 @@ export default async function Royalties() {
     <div className="grid" style={{ gap: 14 }}>
       <Card>
         <div className="note" style={{ margin: 0 }}>
-          Партнёрки Директ: реф-реклама и выплаты по Timeweb, AdminVPS, is*hosting (Affise) и Aeza. Снимок на{' '}
+          Партнёрки Директ: реф-реклама и выплаты по Timeweb, AdminVPS, is*hosting (Affise), Aeza и Hostman. Снимок на{' '}
           <b>{meta.asof}</b>, период с {meta.period_start}. Тот же источник, что и Royalties-дашборд: деньги по журналу
-          оплат кабинетов, доход is*hosting из USD по курсу {ish.rate}, Aeza из EUR по курсу {aeza.rate || 100}. Обновляется по запросу вместе с роялти.
+          оплат кабинетов, доход is*hosting из USD по курсу {ish.rate}, Aeza из EUR по курсу {aeza.rate || 100}, Hostman из USD по курсу {hostman.rate || 100}. Обновляется по запросу вместе с роялти.
         </div>
       </Card>
 
@@ -183,11 +189,11 @@ export default async function Royalties() {
         <RoyBars series={incSeries} height={264} mode="stack" kilo unit="₽" />
         <div className="chips" style={{ marginTop: 10, alignItems: 'center' }}>
           <b style={{ fontSize: 12 }}>Факт:</b>
-          {[['Timeweb', BRASS], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['Aeza', AEZA]].map(([l, c]) => (
+          {[['Timeweb', BRASS], ['AdminVPS', STEEL], ['is*hosting', GREEN], ['Aeza', AEZA], ['Hostman', HM]].map(([l, c]) => (
             <span key={'f' + l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
           <b style={{ fontSize: 12, marginLeft: 8 }}>Потенциал:</b>
-          {[['Timeweb', BRASS_P], ['AdminVPS', STEEL_P], ['is*hosting', GREEN_P], ['Aeza', AEZA_P]].map(([l, c]) => (
+          {[['Timeweb', BRASS_P], ['AdminVPS', STEEL_P], ['is*hosting', GREEN_P], ['Aeza', AEZA_P], ['Hostman', HM_P]].map(([l, c]) => (
             <span key={'p' + l} className="tag" style={{ borderColor: c, color: c }}>{l}</span>
           ))}
         </div>
@@ -360,6 +366,25 @@ export default async function Royalties() {
           ) : null}
           {note(`Четвёртый партнёр Aeza. Лента операций в кабинете живёт всего 3 дня, поэтому историю ведём по недельным скринам сводного экрана (реестр выше). Доход накопительно: «средств в холде» + «всего заработано» × ${aeza.rate || 100} ₽ — эти цифры из 3-дневного окна не выпадают. ${aeza.snapshot?.ahead ? `Последний снимок (${aeza.snapshot.asof}) свежее данных роялти (на ${aeza.asof || '—'}) — показан на карточках, а в факт войдёт при следующем полном обновлении. ` : ''}В прогноз заложен ровный темп ~${num(aeza.run_rate_month || 0)} ₽/мес (средний за ${aeza.fc_days || '—'} дн. с ${aeza.first || '—'}), пересчитывается по мере накопления снимков.`)}
         </Card>
+        <Card title="Hostman, ₽" hint="VPS-хостинг, доход накопительно по недельным снимкам реф-кабинета">
+          <div className="grid kpis" style={{ gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
+            <Kpi label="Доход всего, ₽" value={num(hostman.total)} sub={`Total amount × ${hostman.rate || 100}, $${dec(String(hostman.usd ?? 0))}`} />
+            {hostman.weekly ? <Kpi label="За неделю, ₽" value={'+' + num(hostman.weekly.income)} sub={`${hostman.weekly.from}→${hostman.weekly.to}${hostman.weekly.regs ? ', +' + hostman.weekly.regs + ' рег.' : ''}`} /> : <Kpi label="За неделю, ₽" value="—" sub="нужен 2-й снимок" />}
+            {hostman.snapshot ? <Kpi label="Регистрации" value={num(hostman.snapshot.registrations)} sub={`активных ${num(hostman.snapshot.active_referrals)}, переходов ${num(hostman.snapshot.link_visits)}`} /> : null}
+            {hostman.run_rate_month ? <Kpi label="Прогноз, ₽/мес" value={num(hostman.run_rate_month)} sub={`темп ${num(hostman.run_rate_day || 0)} ₽/день`} /> : <Kpi label="Прогноз, ₽/мес" value="—" sub="появится со 2-го снимка" />}
+          </div>
+          {Array.isArray(hostman.history) && hostman.history.length ? (
+            <table style={{ marginTop: 10 }}>
+              <thead><tr><th>Снимок</th><th className="n">Total, $</th><th className="n">Доход, ₽</th><th className="n">Рег.</th><th className="n">Переходы</th></tr></thead>
+              <tbody>
+                {hostman.history.map((x) => (
+                  <tr key={x.date}><td>{x.date}</td><td className="n">{x.cum_usd != null ? dec(String(x.cum_usd)) : '—'}</td><td className="n"><b>{num(Math.round((x.cum_usd || 0) * (hostman.rate || 100)))}</b></td><td className="n muted">{x.registrations != null ? num(x.registrations) : '—'}</td><td className="n muted">{x.link_visits != null ? num(x.link_visits) : '—'}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          {note(`Пятый партнёр Hostman. Данные снимаем только скринами сводного экрана реф-кабинета, поэтому историю ведём в реестре (выше). Доход накопительно: «Total amount» × ${hostman.rate || 100} ₽ (курс доллара приравнен к 100 ₽). Программа: 20% выплат рефералов первый год, 10% далее. ${hostman.snapshot?.ahead ? `Последний снимок (${hostman.snapshot.asof}) свежее данных роялти (на ${hostman.asof || '—'}) — показан на карточках, а в факт войдёт при следующем полном обновлении. ` : ''}${hostman.run_rate_month ? `В прогноз заложен ровный темп ~${num(hostman.run_rate_month)} ₽/мес (средний за ${hostman.fc_days || '—'} дн. с ${hostman.first || '—'}), пересчитывается по мере накопления снимков.` : 'Прогноз/потенциал появится со 2-го снимка: по одному дню темп роста посчитать нельзя. Пока показываем только факт.'}`)}
+        </Card>
         <Card title="AdminVPS · снимок кабинета" hint="со сводного экрана реф-программы, весь период">
           {avps.snapshot ? (
             <div className="grid kpis" style={{ gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
@@ -391,6 +416,7 @@ export default async function Royalties() {
           ['AdminVPS', avps.total || 0, avps.cnt || 0, 'начисления', STEEL, ads.total?.av_spend || 0],
           ['is*hosting', ish.total || 0, ishCnt, 'конверсии', GREEN, 0],
           ['Aeza', aeza.total || 0, aezaCnt, 'операции', AEZA, 0],
+          ['Hostman', hostman.total || 0, 0, 'рефералы', HM, 0],
         ].filter((r) => r[1] > 0).sort((a, b) => b[1] - a[1]);
         const tot = rows.reduce((s, r) => s + r[1], 0) || 1;
         const totSpend = rows.reduce((s, r) => s + (r[5] || 0), 0);
@@ -427,7 +453,7 @@ export default async function Royalties() {
                 </tbody>
               </table>
             </div>
-            {note('Вклад каждого партнёра деньгами: доход, расход Директа и чистая прибыль. Расход рекламы есть только у Timeweb и AdminVPS, у is*hosting и Aeza выплаты без нашей рекламы. Средний чек это доход на одну оплату (у is*hosting на конверсию, у Aeza на операцию начисления). Основную выручку даёт Timeweb, AdminVPS второй, is*hosting и Aeza пока небольшие, но живые.')}
+            {note('Вклад каждого партнёра деньгами: доход, расход Директа и чистая прибыль. Расход рекламы есть только у Timeweb и AdminVPS, у is*hosting, Aeza и Hostman выплаты без нашей рекламы. Средний чек это доход на одну оплату (у is*hosting на конверсию, у Aeza на операцию начисления; у Hostman операции не детализируются). Основную выручку даёт Timeweb, AdminVPS второй, is*hosting, Aeza и Hostman пока небольшие, но живые.')}
           </Card>
         );
       })()}
@@ -437,7 +463,7 @@ export default async function Royalties() {
           <table>
             <thead>
               <tr>
-                <th>Месяц</th><th className="n">Timeweb</th><th className="n">AdminVPS</th><th className="n">is*hosting</th><th className="n">Aeza</th>
+                <th>Месяц</th><th className="n">Timeweb</th><th className="n">AdminVPS</th><th className="n">is*hosting</th><th className="n">Aeza</th><th className="n">Hostman</th>
                 <th className="n">Всего</th><th className="n">Чистыми</th><th className="n">Ср. чек</th>
                 <th className="n">Оплат/день</th><th className="n">Конв. в рег.</th><th className="n">Конв. в оплату</th>
               </tr>
@@ -450,6 +476,7 @@ export default async function Royalties() {
                   <td className="n">{r.a ? num(r.a) : '—'}</td>
                   <td className="n">{r.i ? num(r.i) : '—'}</td>
                   <td className="n">{r.z ? num(r.z) : '—'}</td>
+                  <td className="n">{r.hm ? num(r.hm) : '—'}</td>
                   <td className="n"><b>{num(r.all)}</b></td>
                   <td className="n" style={{ color: r.net == null ? undefined : r.net >= 0 ? GREEN : RED }}>{r.net == null ? '—' : (r.net >= 0 ? '+' : '') + num(r.net)}</td>
                   <td className="n muted">{r.check ? num(r.check) : '—'}</td>
@@ -459,13 +486,13 @@ export default async function Royalties() {
                 </tr>
               ))}
               <tr style={{ fontWeight: 600, borderTop: '2px solid var(--line)' }}>
-                <td>Итого факт</td><td className="n">{num(totFact.t)}</td><td className="n">{num(totFact.a)}</td><td className="n">{num(totFact.i)}</td><td className="n">{num(totFact.z)}</td>
+                <td>Итого факт</td><td className="n">{num(totFact.t)}</td><td className="n">{num(totFact.a)}</td><td className="n">{num(totFact.i)}</td><td className="n">{num(totFact.z)}</td><td className="n">{num(totFact.hm)}</td>
                 <td className="n">{num(totFact.all)}</td><td className="n" style={{ color: GREEN }}>+{num(netCum)}</td>
                 <td className="n muted">{num(tw.avg_check)}</td><td className="n muted">—</td><td className="n muted">—</td><td className="n muted">—</td>
               </tr>
               {fcRows.map((r) => (
                 <tr key={r.m} style={{ color: 'var(--dim)' }}>
-                  <td>{monthLabel(r.m)} · прогноз</td><td className="n">{num(r.t)}</td><td className="n">{r.a ? num(r.a) : '—'}</td><td className="n">—</td><td className="n">{r.z ? num(r.z) : '—'}</td>
+                  <td>{monthLabel(r.m)} · прогноз</td><td className="n">{num(r.t)}</td><td className="n">{r.a ? num(r.a) : '—'}</td><td className="n">—</td><td className="n">{r.z ? num(r.z) : '—'}</td><td className="n">{r.hm ? num(r.hm) : '—'}</td>
                   <td className="n">{num(r.all)}</td><td className="n" colSpan={5}></td>
                 </tr>
               ))}

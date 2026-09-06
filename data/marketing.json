@@ -1,5 +1,5 @@
 {
-  "generated": "05.09.2026",
+  "generated": "06.09.2026",
   "window": "последние 30 дней",
   "note": "Снимок маркетинга из коннектора Яндекса (Директ, Метрика, Вебмастер, Wordstat). Обновляется по запросу.",
   "direct": {
@@ -7,90 +7,90 @@
       {
         "id": "706715098",
         "name": "TW Cloud МСК",
-        "cost": 15525,
-        "clicks": 330,
-        "impressions": 1372,
-        "conversions": 213.0,
-        "ctr": 24.05,
-        "cpc": 47.05,
-        "kind": "brand"
-      },
-      {
-        "id": "708902123",
-        "name": "AdminVPS МСК",
-        "cost": 13547,
-        "clicks": 392,
-        "impressions": 1542,
-        "conversions": 66.0,
-        "ctr": 25.42,
-        "cpc": 34.56,
+        "cost": 14245,
+        "clicks": 316,
+        "impressions": 1316,
+        "conversions": 198.0,
+        "ctr": 24.01,
+        "cpc": 45.08,
         "kind": "brand"
       },
       {
         "id": "713886156",
         "name": "Провайдер Регионы (Бренд)",
-        "cost": 10931,
-        "clicks": 1012,
-        "impressions": 4342,
-        "conversions": 582.0,
-        "ctr": 23.31,
-        "cpc": 10.8,
+        "cost": 13480,
+        "clicks": 1229,
+        "impressions": 5250,
+        "conversions": 720.0,
+        "ctr": 23.41,
+        "cpc": 10.97,
+        "kind": "brand"
+      },
+      {
+        "id": "708902123",
+        "name": "AdminVPS МСК",
+        "cost": 12384,
+        "clicks": 349,
+        "impressions": 1345,
+        "conversions": 55.0,
+        "ctr": 25.95,
+        "cpc": 35.48,
         "kind": "brand"
       },
       {
         "id": "713771451",
         "name": "Aeza МСК (бренд)",
-        "cost": 9483,
-        "clicks": 473,
-        "impressions": 2416,
-        "conversions": 301.0,
-        "ctr": 19.58,
-        "cpc": 20.05,
+        "cost": 10822,
+        "clicks": 542,
+        "impressions": 2584,
+        "conversions": 350.0,
+        "ctr": 20.98,
+        "cpc": 19.97,
         "kind": "brand"
       },
       {
         "id": "713332123",
         "name": "Servercalc",
-        "cost": 9047,
-        "clicks": 366,
-        "impressions": 5974,
-        "conversions": 58.0,
-        "ctr": 6.13,
-        "cpc": 24.72,
+        "cost": 8395,
+        "clicks": 334,
+        "impressions": 5506,
+        "conversions": 56.0,
+        "ctr": 6.07,
+        "cpc": 25.13,
         "kind": "site",
         "site": "servercalc-ru"
       },
       {
         "id": "713238736",
         "name": "Solara",
-        "cost": 8839,
-        "clicks": 1424,
-        "impressions": 21261,
-        "conversions": 293.0,
-        "ctr": 6.7,
-        "cpc": 6.21,
+        "cost": 7585,
+        "clicks": 1096,
+        "impressions": 16825,
+        "conversions": 250.0,
+        "ctr": 6.51,
+        "cpc": 6.92,
         "kind": "brand"
       },
       {
         "id": "712849076",
         "name": "TW Cloud Регионы",
-        "cost": 8633,
-        "clicks": 202,
-        "impressions": 1068,
-        "conversions": 117.0,
-        "ctr": 18.91,
-        "cpc": 42.74,
+        "cost": 6591,
+        "clicks": 152,
+        "impressions": 835,
+        "conversions": 93.0,
+        "ctr": 18.2,
+        "cpc": 43.36,
         "kind": "brand"
       },
       {
         "id": "713245534",
         "name": "Podborvps.ru",
-        "cost": 8454,
-        "clicks": 336,
-        "impressions": 6697,
-        "conversions": 71.0,
-        "ctr": 5.02,
-        "cpc": 25.16,
+        "cost": 5420,
+        "clicks": 181,
+        "impressions": 4663,
+        "conversions": 42.0,
+        "ctr": 3.88,
+        "cpc": 29.95,
         "kind": "site",
         "site": "podborvps"
       },
@@ -154,12 +154,12 @@
       {
         "id": "713897708",
         "name": "AdminVPS (Бренд)",
-        "cost": 1117,
-        "clicks": 149,
-        "impressions": 477,
-        "conversions": 11.0,
-        "ctr": 31.24,
-        "cpc": 7.5,
+        "cost": 1616,
+        "clicks": 201,
+        "impressions": 619,
+        "conversions": 19.0,
+        "ctr": 32.47,
+        "cpc": 8.04,
         "kind": "brand"
       }
     ],
@@ -171,44 +171,51 @@
       {
         "campaign_name": "TW Cloud МСК",
         "group_name": "TW Cloud VPS МСК",
-        "clicks": 330,
-        "cost": 15525,
-        "avg_cpc": 47.05
+        "clicks": 316,
+        "cost": 14245,
+        "avg_cpc": 45.08
       },
       {
         "campaign_name": "AdminVPS МСК",
         "group_name": "AdminVPS",
-        "clicks": 392,
-        "cost": 13547,
-        "avg_cpc": 34.56
+        "clicks": 349,
+        "cost": 12384,
+        "avg_cpc": 35.48
       },
       {
         "campaign_name": "Aeza МСК (бренд)",
         "group_name": "Нейтральная",
-        "clicks": 403,
-        "cost": 7336,
-        "avg_cpc": 18.2
+        "clicks": 472,
+        "cost": 8675,
+        "avg_cpc": 18.38
       },
       {
         "campaign_name": "Провайдер Регионы (Бренд)",
         "group_name": "Timeweb рег",
-        "clicks": 445,
-        "cost": 6941,
-        "avg_cpc": 15.6
+        "clicks": 539,
+        "cost": 8354,
+        "avg_cpc": 15.5
       },
       {
         "campaign_name": "TW Cloud Регионы",
         "group_name": "TW Cloud Регионы",
-        "clicks": 156,
-        "cost": 6750,
-        "avg_cpc": 43.27
+        "clicks": 117,
+        "cost": 5203,
+        "avg_cpc": 44.47
       },
       {
         "campaign_name": "Podborvps.ru",
         "group_name": "dev",
-        "clicks": 182,
-        "cost": 5534,
-        "avg_cpc": 30.41
+        "clicks": 136,
+        "cost": 4443,
+        "avg_cpc": 32.67
+      },
+      {
+        "campaign_name": "Провайдер Регионы (Бренд)",
+        "group_name": "Aeza",
+        "clicks": 498,
+        "cost": 4194,
+        "avg_cpc": 8.42
       },
       {
         "campaign_name": "TW МСК (Бренд)",
@@ -218,46 +225,25 @@
         "avg_cpc": 16.51
       },
       {
-        "campaign_name": "Провайдер Регионы (Бренд)",
-        "group_name": "Aeza",
-        "clicks": 409,
-        "cost": 3226,
-        "avg_cpc": 7.89
-      },
-      {
-        "campaign_name": "Podborvps.ru",
-        "group_name": "sravnenie",
-        "clicks": 154,
-        "cost": 2920,
-        "avg_cpc": 18.96
-      },
-      {
         "campaign_name": "Servercalc",
         "group_name": "Сравнение и каталог тарифов",
-        "clicks": 97,
-        "cost": 2347,
-        "avg_cpc": 24.2
+        "clicks": 81,
+        "cost": 2057,
+        "avg_cpc": 25.4
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Зарубежные VPS",
-        "clicks": 67,
-        "cost": 2054,
-        "avg_cpc": 30.65
-      },
-      {
-        "campaign_name": "TW Cloud Регионы",
-        "group_name": "TW Cloud Регионы",
-        "clicks": 46,
-        "cost": 1883,
-        "avg_cpc": 40.93
+        "clicks": 62,
+        "cost": 1915,
+        "avg_cpc": 30.89
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "VPS, горячий спрос",
-        "clicks": 79,
-        "cost": 1770,
-        "avg_cpc": 22.4
+        "clicks": 76,
+        "cost": 1724,
+        "avg_cpc": 22.69
       },
       {
         "campaign_name": "TW Cloud МСК (РСЯ)",
@@ -267,18 +253,32 @@
         "avg_cpc": 6.36
       },
       {
+        "campaign_name": "AdminVPS (Бренд)",
+        "group_name": "Бренд МСК",
+        "clicks": 201,
+        "cost": 1616,
+        "avg_cpc": 8.04
+      },
+      {
+        "campaign_name": "TW Cloud Регионы",
+        "group_name": "TW Cloud Регионы",
+        "clicks": 35,
+        "cost": 1387,
+        "avg_cpc": 39.63
+      },
+      {
         "campaign_name": "Servercalc",
         "group_name": "Подбор и выбор конфигурации",
-        "clicks": 61,
-        "cost": 1480,
-        "avg_cpc": 24.26
+        "clicks": 55,
+        "cost": 1329,
+        "avg_cpc": 24.16
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Акции и промокоды",
-        "clicks": 49,
-        "cost": 1199,
-        "avg_cpc": 24.46
+        "clicks": 47,
+        "cost": 1170,
+        "avg_cpc": 24.9
       },
       {
         "campaign_name": "Aeza МСК (бренд)",
@@ -286,13 +286,6 @@
         "clicks": 32,
         "cost": 1133,
         "avg_cpc": 35.41
-      },
-      {
-        "campaign_name": "AdminVPS (Бренд)",
-        "group_name": "Бренд МСК",
-        "clicks": 149,
-        "cost": 1117,
-        "avg_cpc": 7.5
       },
       {
         "campaign_name": "ishosting",
@@ -314,6 +307,20 @@
         "clicks": 40,
         "cost": 997,
         "avg_cpc": 24.93
+      },
+      {
+        "campaign_name": "Podborvps.ru",
+        "group_name": "sravnenie",
+        "clicks": 45,
+        "cost": 977,
+        "avg_cpc": 21.71
+      },
+      {
+        "campaign_name": "Провайдер Регионы (Бренд)",
+        "group_name": "Adminvps рег",
+        "clicks": 192,
+        "cost": 932,
+        "avg_cpc": 4.85
       },
       {
         "campaign_name": "ishosting",
@@ -342,13 +349,6 @@
         "clicks": 27,
         "cost": 776,
         "avg_cpc": 28.74
-      },
-      {
-        "campaign_name": "Провайдер Регионы (Бренд)",
-        "group_name": "Adminvps рег",
-        "clicks": 158,
-        "cost": 764,
-        "avg_cpc": 4.84
       },
       {
         "campaign_name": "PodborVPS",
@@ -1076,20 +1076,6 @@
     ],
     "dailyVps": [
       {
-        "date": "2026-08-05",
-        "impressions": 1384,
-        "clicks": 153,
-        "cost": 4942,
-        "conversions": 52.0
-      },
-      {
-        "date": "2026-08-06",
-        "impressions": 1712,
-        "clicks": 168,
-        "cost": 4345,
-        "conversions": 44.0
-      },
-      {
         "date": "2026-08-07",
         "impressions": 2174,
         "clicks": 212,
@@ -1284,6 +1270,20 @@
         "clicks": 297,
         "cost": 4605,
         "conversions": 149.0
+      },
+      {
+        "date": "2026-09-04",
+        "impressions": 792,
+        "clicks": 195,
+        "cost": 2864,
+        "conversions": 101.0
+      },
+      {
+        "date": "2026-09-05",
+        "impressions": 534,
+        "clicks": 170,
+        "cost": 2640,
+        "conversions": 109.0
       }
     ],
     "trends": {
@@ -1300,8 +1300,8 @@
         "key": "podborvps",
         "name": "ПодборVPS",
         "counter": "111248718",
-        "visits": 414,
-        "providerClicks": 212,
+        "visits": 338,
+        "providerClicks": 163,
         "promo": 0,
         "goals": [
           [
@@ -1374,8 +1374,8 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 369,
-        "providerClicks": 109,
+        "visits": 346,
+        "providerClicks": 103,
         "promo": 5,
         "goals": [
           [
@@ -1425,7 +1425,7 @@
         "key": "servercalc-com",
         "name": "ServerCalc.com",
         "counter": "111369260",
-        "visits": 0,
+        "visits": 35,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1443,7 +1443,7 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 31,
+        "visits": 34,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1455,44 +1455,38 @@
       {
         "q": "timeweb",
         "camp": "TW Cloud МСК",
-        "clicks": 202,
-        "cost": 8747
-      },
-      {
-        "q": "adminvps",
-        "camp": "AdminVPS МСК",
-        "clicks": 209,
-        "cost": 4420
+        "clicks": 199,
+        "cost": 8307
       },
       {
         "q": "aeza",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 182,
-        "cost": 4175
+        "clicks": 211,
+        "cost": 4882
+      },
+      {
+        "q": "timeweb",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 278,
+        "cost": 4158
+      },
+      {
+        "q": "adminvps",
+        "camp": "AdminVPS МСК",
+        "clicks": 181,
+        "cost": 3893
       },
       {
         "q": "timeweb",
         "camp": "TW Cloud Регионы",
-        "clicks": 98,
-        "cost": 3947
-      },
-      {
-        "q": "timeweb",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 218,
-        "cost": 3325
+        "clicks": 78,
+        "cost": 3364
       },
       {
         "q": "aeza",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 229,
-        "cost": 2189
-      },
-      {
-        "q": "таймвеб",
-        "camp": "TW Cloud МСК",
-        "clicks": 41,
-        "cost": 2129
+        "clicks": 278,
+        "cost": 2834
       },
       {
         "q": "timeweb",
@@ -1501,76 +1495,76 @@
         "cost": 2001
       },
       {
+        "q": "таймвеб",
+        "camp": "TW Cloud МСК",
+        "clicks": 37,
+        "cost": 1860
+      },
+      {
         "q": "timeweb cloud",
         "camp": "TW Cloud МСК",
-        "clicks": 27,
-        "cost": 1632
+        "clicks": 25,
+        "cost": 1422
+      },
+      {
+        "q": "таймвеб",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 87,
+        "cost": 1345
       },
       {
         "q": "admin vps",
         "camp": "AdminVPS МСК",
-        "clicks": 31,
-        "cost": 1475
-      },
-      {
-        "q": "таймвеб",
-        "camp": "TW Cloud Регионы",
-        "clicks": 37,
-        "cost": 1418
+        "clicks": 26,
+        "cost": 1307
       },
       {
         "q": "админ впс",
         "camp": "AdminVPS МСК",
-        "clicks": 45,
-        "cost": 1181
+        "clicks": 42,
+        "cost": 1140
       },
       {
         "q": "таймвеб",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 71,
-        "cost": 1067
+        "camp": "TW Cloud Регионы",
+        "clicks": 27,
+        "cost": 1126
       },
       {
         "q": "timeweb cloud",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 51,
-        "cost": 803
+        "clicks": 58,
+        "cost": 954
       },
       {
         "q": "adminvps",
         "camp": "AdminVPS (Бренд)",
-        "clicks": 97,
-        "cost": 734
-      },
-      {
-        "q": "timeweb cloud",
-        "camp": "TW Cloud Регионы",
-        "clicks": 17,
-        "cost": 659
-      },
-      {
-        "q": "тайм веб",
-        "camp": "TW Cloud МСК",
-        "clicks": 13,
-        "cost": 651
+        "clicks": 127,
+        "cost": 923
       },
       {
         "q": "аеза",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 44,
-        "cost": 598
-      },
-      {
-        "q": "time web",
-        "camp": "TW Cloud МСК",
-        "clicks": 11,
-        "cost": 557
+        "clicks": 53,
+        "cost": 812
       },
       {
         "q": "adminvps",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 107,
-        "cost": 533
+        "clicks": 132,
+        "cost": 664
+      },
+      {
+        "q": "aeza net",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 68,
+        "cost": 596
+      },
+      {
+        "q": "аеза",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 83,
+        "cost": 561
       },
       {
         "q": "таймвеб",
@@ -1580,33 +1574,39 @@
       },
       {
         "q": "тайм веб",
-        "camp": "TW Cloud Регионы",
-        "clicks": 12,
-        "cost": 431
-      },
-      {
-        "q": "aeza net",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 53,
-        "cost": 422
-      },
-      {
-        "q": "аеза",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 68,
-        "cost": 417
+        "clicks": 29,
+        "cost": 503
+      },
+      {
+        "q": "time web",
+        "camp": "TW Cloud МСК",
+        "clicks": 10,
+        "cost": 496
       },
       {
         "q": "тайм веб",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 24,
-        "cost": 414
+        "camp": "TW Cloud МСК",
+        "clicks": 11,
+        "cost": 492
+      },
+      {
+        "q": "timeweb cloud",
+        "camp": "TW Cloud Регионы",
+        "clicks": 13,
+        "cost": 486
       },
       {
         "q": "aeza vps",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 19,
-        "cost": 396
+        "clicks": 22,
+        "cost": 480
+      },
+      {
+        "q": "тайм веб",
+        "camp": "TW Cloud Регионы",
+        "clicks": 10,
+        "cost": 352
       },
       {
         "q": "vps",
@@ -1621,12 +1621,6 @@
         "cost": 255
       },
       {
-        "q": "vps",
-        "camp": "Podborvps.ru",
-        "clicks": 7,
-        "cost": 254
-      },
-      {
         "q": "аренда vps сервера в japan",
         "camp": "AdminVPS МСК",
         "clicks": 1,
@@ -1639,10 +1633,10 @@
         "cost": 236
       },
       {
-        "q": "админвпс",
-        "camp": "AdminVPS МСК",
-        "clicks": 14,
-        "cost": 221
+        "q": "aeza vps",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 22,
+        "cost": 224
       },
       {
         "q": "vps сервер аренда",
@@ -1669,22 +1663,28 @@
         "cost": 208
       },
       {
-        "q": "time web",
-        "camp": "TW Cloud Регионы",
-        "clicks": 4,
-        "cost": 201
+        "q": "админвпс",
+        "camp": "AdminVPS МСК",
+        "clicks": 13,
+        "cost": 207
       },
       {
-        "q": "aeza vps",
-        "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 20,
-        "cost": 179
+        "q": "aeza vpn",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 11,
+        "cost": 196
       },
       {
-        "q": "vps сервер",
+        "q": "админ впс",
+        "camp": "AdminVPS (Бренд)",
+        "clicks": 30,
+        "cost": 192
+      },
+      {
+        "q": "vps",
         "camp": "Podborvps.ru",
-        "clicks": 6,
-        "cost": 179
+        "clicks": 4,
+        "cost": 188
       },
       {
         "q": "timeweb ru",
@@ -1697,18 +1697,6 @@
         "camp": "TW Cloud Регионы",
         "clicks": 2,
         "cost": 167
-      },
-      {
-        "q": "админ впс",
-        "camp": "AdminVPS (Бренд)",
-        "clicks": 26,
-        "cost": 166
-      },
-      {
-        "q": "хостинг",
-        "camp": "TW Cloud Регионы",
-        "clicks": 2,
-        "cost": 163
       },
       {
         "q": "vps сервер в европе",
@@ -1753,12 +1741,6 @@
         "cost": 147
       },
       {
-        "q": "aeza vpn",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 9,
-        "cost": 145
-      },
-      {
         "q": "аренда сервера vps",
         "camp": "AdminVPS МСК",
         "clicks": 1,
@@ -1777,6 +1759,18 @@
         "cost": 141
       },
       {
+        "q": "time web",
+        "camp": "TW Cloud Регионы",
+        "clicks": 2,
+        "cost": 140
+      },
+      {
+        "q": "aeza net",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 40,
+        "cost": 139
+      },
+      {
         "q": "vps казахстан",
         "camp": "Servercalc",
         "clicks": 1,
@@ -1789,28 +1783,10 @@
         "cost": 135
       },
       {
-        "q": "аренда vps грузия",
-        "camp": "AdminVPS МСК",
-        "clicks": 1,
-        "cost": 129
-      },
-      {
         "q": "timeweb tech",
         "camp": "TW Cloud МСК",
         "clicks": 2,
         "cost": 127
-      },
-      {
-        "q": "таймвеб клауд",
-        "camp": "TW Cloud МСК",
-        "clicks": 2,
-        "cost": 127
-      },
-      {
-        "q": "виртуальный сервер для хранения файлов",
-        "camp": "TW Cloud Регионы",
-        "clicks": 1,
-        "cost": 125
       },
       {
         "q": "арендовать сервер vps",
@@ -1843,16 +1819,22 @@
         "cost": 121
       },
       {
+        "q": "vps сервер",
+        "camp": "Podborvps.ru",
+        "clicks": 4,
+        "cost": 119
+      },
+      {
+        "q": "админ впс",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 31,
+        "cost": 118
+      },
+      {
         "q": "vps сервер нидерланды рейтинг",
         "camp": "AdminVPS МСК",
         "clicks": 1,
         "cost": 118
-      },
-      {
-        "q": "аренда vps",
-        "camp": "Podborvps.ru",
-        "clicks": 3,
-        "cost": 117
       },
       {
         "q": "аренда сервера",
@@ -1927,10 +1909,28 @@
         "cost": 106
       },
       {
-        "q": "аренда vps москва",
-        "camp": "Podborvps.ru",
-        "clicks": 3,
+        "q": "аренда vps сервера в турции",
+        "camp": "AdminVPS МСК",
+        "clicks": 1,
         "cost": 106
+      },
+      {
+        "q": "купить впс испания",
+        "camp": "AdminVPS МСК",
+        "clicks": 1,
+        "cost": 105
+      },
+      {
+        "q": "vps admin",
+        "camp": "AdminVPS МСК",
+        "clicks": 4,
+        "cost": 104
+      },
+      {
+        "q": "vps сингапур",
+        "camp": "AdminVPS МСК",
+        "clicks": 1,
+        "cost": 104
       }
     ],
     "minusCandidates": [
@@ -1947,208 +1947,208 @@
   "wordstat": [
     {
       "phrase": "аренда vps",
-      "count": 6347,
+      "count": 6411,
       "tails": [
         [
           "vps сервер аренда",
-          3348
+          3343
         ],
         [
           "аренда vps в россии",
-          284
+          259
         ],
         [
           "аренда vps для vpn",
-          241
+          245
         ],
         [
           "аренда vps vds",
-          231
+          228
         ],
         [
           "аренда vps в европе",
-          230
+          218
         ]
       ]
     },
     {
       "phrase": "купить vps",
-      "count": 5205,
+      "count": 5209,
       "tails": [
         [
           "vps сервер купить",
-          1720
-        ],
-        [
-          "купить vps дешево",
-          211
-        ],
-        [
-          "vps купить россия",
-          196
+          1713
         ],
         [
           "купить vps для vpn",
-          191
+          199
+        ],
+        [
+          "купить дешевый vps",
+          186
         ],
         [
           "vps сервер купить для vpn",
-          155
+          162
+        ],
+        [
+          "vps нидерланды купить",
+          113
         ]
       ]
     },
     {
       "phrase": "vps сервер",
-      "count": 21270,
+      "count": 21120,
       "tails": [
         [
           "vps сервер аренда",
-          3348
+          3343
         ],
         [
           "vps сервер купить",
-          1720
+          1713
         ],
         [
           "vps сервер для vpn",
-          1128
+          1105
         ],
         [
           "бесплатный vps сервер",
-          889
+          877
         ],
         [
           "арендовать vps сервер",
-          752
+          749
         ]
       ]
     },
     {
       "phrase": "vps хостинг",
-      "count": 2768,
+      "count": 2758,
       "tails": [
         [
-          "хостинг vps серверов",
-          247
-        ],
-        [
           "лучшие vps хостинги",
-          239
+          235
         ],
         [
-          "vds vps хостинг",
-          164
+          "хостинг vps серверов",
+          228
         ],
         [
           "рейтинг vps хостингов",
-          163
+          166
+        ],
+        [
+          "vds vps хостинг",
+          162
         ],
         [
           "хостинг vps для vpn",
-          105
+          104
         ]
       ]
     },
     {
       "phrase": "зарубежный vps",
-      "count": 742,
+      "count": 743,
       "tails": [
         [
           "vps сервер зарубежный",
-          204
+          195
         ],
         [
           "аренда зарубежного vps",
-          67
+          64
         ],
         [
           "купить зарубежный vps",
           57
         ],
         [
-          "зарубежный vps с оплатой из россии",
-          45
+          "зарубежные vps хостинги",
+          46
         ],
         [
-          "vps хостинг зарубежный",
-          41
+          "зарубежный vps с оплатой из россии",
+          44
         ]
       ]
     },
     {
       "phrase": "vds",
-      "count": 31584,
+      "count": 31349,
       "tails": [
         [
           "vds сервер",
-          4251
+          4179
         ],
         [
           "vps vds",
-          2787
+          2744
         ],
         [
           "ghost vds",
-          2362
+          2450
         ],
         [
           "vincea vds",
-          1354
+          1279
         ],
         [
           "vds купить",
-          1225
+          1162
         ]
       ]
     },
     {
       "phrase": "аренда сервера",
-      "count": 22985,
+      "count": 23099,
       "tails": [
         [
           "vps сервер аренда",
-          3348
+          3343
         ],
         [
           "аренда сервера майнкрафт",
-          1417
+          1362
         ],
         [
           "аренда виртуального сервера",
-          909
+          946
         ],
         [
           "аренда сервера для впн",
-          632
+          652
         ],
         [
           "аренда сервера 1с",
-          619
+          650
         ]
       ]
     },
     {
       "phrase": "nvme vps",
-      "count": 106,
+      "count": 104,
       "tails": [
         [
           "vps kvm nvme",
-          16
+          15
         ]
       ]
     }
   ],
   "webmaster": {
-    "generated": "05.09.2026",
+    "generated": "06.09.2026",
     "sites": [
       {
         "host": "podborvps.ru",
         "queries": [
           [
             "сервера vps тарифные планы про вопроса новокузнецк",
-            2,
+            5,
             0,
-            9.5,
+            9.8,
             0.0
           ],
           [
@@ -2159,24 +2159,10 @@
             50.0
           ],
           [
-            "поиск vps автоподбор",
-            1,
-            1,
-            4.0,
-            100.0
-          ],
-          [
             "сервер с gpu ителон.ру",
             1,
             0,
             7.0,
-            0.0
-          ],
-          [
-            "арм gpu-standard-v4 900 гб врам стоимость в месяц",
-            1,
-            0,
-            6.0,
             0.0
           ],
           [
@@ -2252,6 +2238,13 @@
         "host": "servercalc.ru",
         "queries": [
           [
+            "дефицит оперативной памяти новости",
+            2,
+            1,
+            10.5,
+            50.0
+          ],
+          [
             "уровень устойчивости хостинга",
             2,
             0,
@@ -2266,13 +2259,6 @@
             0.0
           ],
           [
-            "калькулятор selectel",
-            1,
-            0,
-            13.0,
-            0.0
-          ],
-          [
             "selectel аренда сервера калькулятор",
             1,
             0,
@@ -2280,10 +2266,10 @@
             0.0
           ],
           [
-            "таймвеб сдн цена",
+            "selectel калькулятор",
             1,
             0,
-            7.0,
+            11.0,
             0.0
           ],
           [
@@ -2294,10 +2280,10 @@
             0.0
           ],
           [
-            "timeweb cloud тарифная сетка",
+            "аренда nvidia timeweb cloud",
             1,
             0,
-            8.0,
+            13.0,
             0.0
           ]
         ],
@@ -7113,7 +7099,9 @@
         "2026-08-31": 0,
         "2026-09-01": 1409,
         "2026-09-02": 1066,
-        "2026-09-03": 1056
+        "2026-09-03": 1056,
+        "2026-09-04": 728,
+        "2026-09-05": 389
       }
     },
     "706716163": {
@@ -8093,7 +8081,9 @@
         "2026-08-31": 794,
         "2026-09-01": 677,
         "2026-09-02": 1076,
-        "2026-09-03": 1135
+        "2026-09-03": 1135,
+        "2026-09-04": 642,
+        "2026-09-05": 697
       }
     },
     "713775967": {
@@ -8147,7 +8137,9 @@
         "2026-08-31": 1785,
         "2026-09-01": 2209,
         "2026-09-02": 2171,
-        "2026-09-03": 2147
+        "2026-09-03": 2147,
+        "2026-09-04": 1248,
+        "2026-09-05": 1301
       }
     },
     "713897708": {
@@ -8160,7 +8152,9 @@
         "2026-08-31": 158,
         "2026-09-01": 162,
         "2026-09-02": 236,
-        "2026-09-03": 267
+        "2026-09-03": 267,
+        "2026-09-04": 246,
+        "2026-09-05": 253
       }
     }
   },

@@ -9,6 +9,15 @@ const SEV = { bad: '#d1697a', warn: '#d9a441', good: '#6cbf8b', steel: '#5b7a99'
 const pctF = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)');
 const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
+// Фиксированные цвета за сайтами — чтобы на графиках цвет не менялся между обновлениями.
+const SITE_COLORS = {
+  'makebiz-life': '#e0736d',            // MakeBiz — всегда красный
+  'podborvps': '#c6a15b',               // ПодборVPS — латунь
+  'servercalc-com': '#5b7a99',          // ServerCalc.com — сталь
+  'servercalc-ru': '#6cbf8b',           // ServerCalc.ru — зелёный
+  'serverselection-online': '#b98cc4',  // ServerSelection — сиреневый
+};
+const SITE_FALLBACK = ['#d9a441', '#7f9dbb', '#8a97a4', '#c98b6b'];
 
 // Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}].
 // Оформление один-в-один как график «Динамика по дням» на «Обзоре» (компонент
@@ -232,7 +241,6 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
   // Динамика по дням в разрезе САЙТОВ: сводим строки {d, site_key, visits} в
   // {d, [siteKey]: visits} и оставляем только сайты с органикой, каждому — свой цвет.
   const daySeries = useMemo(() => {
-    const palette = ['#c6a15b', '#5b7a99', '#6cbf8b', '#d1697a', '#d9a441', '#7f9dbb'];
     const byD = {};
     const totals = {};
     for (const r of rep.byDay || []) {
@@ -243,9 +251,10 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
     // Показываем ВСЕ живые сайты (rep.byDay уже кросс-джойнит их все), даже с нулём —
     // чтобы новый сайт (serverselection.online) был виден в легенде и как линия, а не
     // отсеивался фильтром totals>0, пока по нему ещё нет органических визитов.
+    let fb = 0;
     const series = Object.keys(totals)
       .sort((a, b) => totals[b] - totals[a])
-      .map((k, i) => ({ key: k, name: nameOf[k] || k, color: palette[i % palette.length] }));
+      .map((k) => ({ key: k, name: nameOf[k] || k, color: SITE_COLORS[k] || SITE_FALLBACK[fb++ % SITE_FALLBACK.length] }));
     return { rows, series };
   }, [rep.byDay, nameOf]);
 

@@ -527,7 +527,7 @@ export default async function Royalties() {
             <Kpi label="CPL, ₽" value={num(ads.total.cpl)} sub="расход / регистрация" />
             <Kpi label="CAC, ₽" value={num(ads.total.cac)} sub="расход / платящий" />
           </div>
-          {note(`Возврат на рекламу ROAS ${dec(derived.roas)}, окупаемость ${derived.payback} мес. Разнесение: Timeweb ${num(ads.total.tw_spend)}, AdminVPS ${num(ads.total.av_spend)}${ads.total.aeza_spend ? `, Aeza ${num(ads.total.aeza_spend)}` : ''}${ads.total.ish_spend ? `, is*hosting ${num(ads.total.ish_spend)}` : ''}. Расход берётся из кабинета «Проекты и кампании»: считаются только кампании «в бюджете», с ${ads.total.since || '01.02.2026'}, с марта (период роялти).`)}
+          {note(`Возврат на рекламу ROAS ${dec(derived.roas)}, окупаемость ${derived.payback} мес. Разнесение: Timeweb ${num(ads.total.tw_spend)}, AdminVPS ${num(ads.total.av_spend)}${ads.total.aeza_spend ? `, Aeza ${num(ads.total.aeza_spend)}` : ''}${ads.total.ish_spend ? `, is*hosting ${num(ads.total.ish_spend)}` : ''}${ads.total.hm_spend ? `, Hostman ${num(ads.total.hm_spend)}` : ''}. Расход берётся из кабинета «Проекты и кампании»: считаются только кампании «в бюджете», с ${ads.total.since || '01.02.2026'}, с марта (период роялти).`)}
         </Card>
       </div>
 

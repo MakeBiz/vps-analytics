@@ -235,8 +235,8 @@
    "proj": 25637
   },
   "ads": {
-   "fact": 0,
-   "proj": 0
+   "fact": 42245,
+   "proj": 115214
   },
   "total": {
    "fact": 37389,
@@ -280,9 +280,9 @@
    }
   },
   "ads": {
-   "fact": 0,
-   "projected": 0,
-   "per_day": 0
+   "fact": 42245,
+   "projected": 115214,
+   "per_day": 3840
   },
   "total": {
    "fact": 37389,
@@ -1065,9 +1065,9 @@
   },
   {
    "k": "CPC рекламы",
-   "v": "41 ₽",
-   "s": "amber",
-   "note": "терпимо"
+   "v": "21 ₽",
+   "s": "green",
+   "note": "в норме"
   },
   {
    "k": "Конверсия рег→оплата",
@@ -1077,46 +1077,46 @@
   },
   {
    "k": "CAC против LTV",
-   "v": "954 / 1430 ₽",
-   "s": "green",
-   "note": "запас есть"
+   "v": "1040 / 1430 ₽",
+   "s": "amber",
+   "note": "впритык"
   }
  ],
  "net_months": [
   {
    "m": "2026-03",
-   "net": -19031,
-   "cum": -19031
+   "net": -9247,
+   "cum": -9247
   },
   {
    "m": "2026-04",
-   "net": -7195,
-   "cum": -26226
+   "net": -10812,
+   "cum": -20059
   },
   {
    "m": "2026-05",
-   "net": 33177,
-   "cum": 6951
+   "net": 26156,
+   "cum": 6097
   },
   {
    "m": "2026-06",
-   "net": 35967,
-   "cum": 42918
+   "net": 41715,
+   "cum": 47812
   },
   {
    "m": "2026-07",
-   "net": 62710,
-   "cum": 105628
+   "net": 44887,
+   "cum": 92699
   },
   {
    "m": "2026-08",
-   "net": 107613,
-   "cum": 213241
+   "net": 81543,
+   "cum": 174242
   },
   {
    "m": "2026-09",
-   "net": 53274,
-   "cum": 266515
+   "net": 11029,
+   "cum": 185271
   }
  ],
  "tw": {
@@ -2636,11 +2636,6 @@
     "income": 303
    },
    {
-    "k": "Lite",
-    "regs": 36,
-    "income": 0
-   },
-   {
     "k": "Изменение",
     "regs": 2,
     "income": 0
@@ -2648,6 +2643,11 @@
    {
     "k": "Панель",
     "regs": 2,
+    "income": 0
+   },
+   {
+    "k": "Lite",
+    "regs": 36,
     "income": 0
    }
   ],
@@ -2968,199 +2968,281 @@
  "ads": {
   "months": {
    "2026-03": {
-    "spend": 88710,
-    "clicks": 2120,
-    "impr": 9181,
-    "ctr": 23.09,
-    "cpc": 41.8,
-    "tw_spend": 88710,
-    "av_spend": 0
+    "spend": 78926,
+    "clicks": 1927,
+    "impr": 8798,
+    "ctr": 21.9,
+    "cpc": 41.0,
+    "tw_spend": 78926,
+    "av_spend": 0,
+    "aeza_spend": 0,
+    "ish_spend": 0,
+    "prov": {
+     "timeweb": 78926,
+     "adminvps": 0,
+     "aeza": 0,
+     "ishosting": 0
+    }
    },
    "2026-04": {
-    "spend": 84317,
-    "clicks": 2094,
-    "impr": 11507,
-    "ctr": 18.2,
-    "cpc": 40.3,
-    "tw_spend": 69381,
-    "av_spend": 14936
+    "spend": 87934,
+    "clicks": 2176,
+    "impr": 11203,
+    "ctr": 19.42,
+    "cpc": 40.4,
+    "tw_spend": 74562,
+    "av_spend": 13372,
+    "aeza_spend": 0,
+    "ish_spend": 0,
+    "prov": {
+     "timeweb": 74562,
+     "adminvps": 13372,
+     "aeza": 0,
+     "ishosting": 0
+    }
    },
    "2026-05": {
-    "spend": 86442,
-    "clicks": 1880,
-    "impr": 8408,
-    "ctr": 22.36,
-    "cpc": 46.0,
-    "tw_spend": 72230,
-    "av_spend": 14212
+    "spend": 93463,
+    "clicks": 2019,
+    "impr": 9357,
+    "ctr": 21.58,
+    "cpc": 46.3,
+    "tw_spend": 77688,
+    "av_spend": 15775,
+    "aeza_spend": 0,
+    "ish_spend": 0,
+    "prov": {
+     "timeweb": 77688,
+     "adminvps": 15775,
+     "aeza": 0,
+     "ishosting": 0
+    }
    },
    "2026-06": {
-    "spend": 98841,
-    "clicks": 2125,
-    "impr": 7097,
-    "ctr": 29.94,
-    "cpc": 46.5,
-    "tw_spend": 69154,
-    "av_spend": 29687
+    "spend": 93094,
+    "clicks": 2012,
+    "impr": 6632,
+    "ctr": 30.34,
+    "cpc": 46.3,
+    "tw_spend": 66980,
+    "av_spend": 26114,
+    "aeza_spend": 0,
+    "ish_spend": 0,
+    "prov": {
+     "timeweb": 66980,
+     "adminvps": 26114,
+     "aeza": 0,
+     "ishosting": 0
+    }
    },
    "2026-07": {
-    "spend": 54705,
-    "clicks": 1056,
-    "impr": 4714,
-    "ctr": 22.4,
-    "cpc": 51.8,
-    "tw_spend": 40141,
-    "av_spend": 14564
+    "spend": 72528,
+    "clicks": 1346,
+    "impr": 5887,
+    "ctr": 22.86,
+    "cpc": 53.9,
+    "tw_spend": 51583,
+    "av_spend": 20945,
+    "aeza_spend": 0,
+    "ish_spend": 0,
+    "prov": {
+     "timeweb": 51583,
+     "adminvps": 20945,
+     "aeza": 0,
+     "ishosting": 0
+    }
    },
    "2026-08": {
-    "spend": 33080,
-    "clicks": 814,
-    "impr": 3685,
-    "ctr": 22.09,
-    "cpc": 40.6,
-    "tw_spend": 22045,
-    "av_spend": 11035
+    "spend": 59150,
+    "clicks": 2243,
+    "impr": 11845,
+    "ctr": 18.94,
+    "cpc": 26.4,
+    "tw_spend": 30970,
+    "av_spend": 17669,
+    "aeza_spend": 8554,
+    "ish_spend": 1958,
+    "prov": {
+     "timeweb": 30970,
+     "adminvps": 17669,
+     "aeza": 8554,
+     "ishosting": 1958
+    }
    },
    "2026-09": {
-    "spend": 0,
-    "clicks": 0,
-    "impr": 0,
-    "ctr": 0,
-    "cpc": 0,
-    "tw_spend": 0,
-    "av_spend": 0
+    "spend": 42245,
+    "clicks": 2011,
+    "impr": 7270,
+    "ctr": 27.66,
+    "cpc": 21.0,
+    "tw_spend": 13632,
+    "av_spend": 9605,
+    "aeza_spend": 14227,
+    "ish_spend": 4781,
+    "prov": {
+     "timeweb": 13632,
+     "adminvps": 9605,
+     "aeza": 14227,
+     "ishosting": 4781
+    }
    }
   },
   "total": {
-   "spend": 446095,
-   "clicks": 10089,
-   "impr": 44592,
-   "ctr": 22.63,
-   "cpc": 44.2,
-   "tw_spend": 361660,
-   "av_spend": 84435,
-   "cpl": 444,
-   "cac": 954
+   "spend": 527340,
+   "clicks": 13734,
+   "impr": 60992,
+   "ctr": 22.52,
+   "cpc": 38.4,
+   "tw_spend": 394341,
+   "av_spend": 103480,
+   "aeza_spend": 22781,
+   "ish_spend": 6739,
+   "prov": {
+    "timeweb": 394341,
+    "adminvps": 103480,
+    "aeza": 22781,
+    "ishosting": 6739
+   },
+   "source": "кабинет «Проекты и кампании»",
+   "since": "2026-02-01",
+   "cabinet_asof": "2026-09-11",
+   "cpl": 484,
+   "cac": 1040
   },
   "eff": {
    "2026-03": {
-    "tw_spend": 88710,
-    "cpl": 333,
-    "cac": 693,
-    "conv_click_reg": 12.5,
+    "tw_spend": 78926,
+    "cpl": 297,
+    "cac": 617,
+    "conv_click_reg": 13.8,
     "regs": 266,
     "newpay": 128,
-    "clicks": 2120
+    "clicks": 1927
    },
    "2026-04": {
-    "tw_spend": 69381,
-    "cpl": 463,
-    "cac": 1137,
-    "conv_click_reg": 7.2,
+    "tw_spend": 74562,
+    "cpl": 497,
+    "cac": 1222,
+    "conv_click_reg": 6.9,
     "regs": 150,
     "newpay": 61,
-    "clicks": 2094
+    "clicks": 2176
    },
    "2026-05": {
-    "tw_spend": 72230,
-    "cpl": 651,
-    "cac": 1147,
-    "conv_click_reg": 5.9,
+    "tw_spend": 77688,
+    "cpl": 700,
+    "cac": 1233,
+    "conv_click_reg": 5.5,
     "regs": 111,
     "newpay": 63,
-    "clicks": 1880
+    "clicks": 2019
    },
    "2026-06": {
-    "tw_spend": 69154,
-    "cpl": 612,
-    "cac": 1572,
-    "conv_click_reg": 5.3,
+    "tw_spend": 66980,
+    "cpl": 593,
+    "cac": 1522,
+    "conv_click_reg": 5.6,
     "regs": 113,
     "newpay": 44,
-    "clicks": 2125
+    "clicks": 2012
    },
    "2026-07": {
-    "tw_spend": 40141,
-    "cpl": 680,
-    "cac": 1384,
-    "conv_click_reg": 5.6,
+    "tw_spend": 51583,
+    "cpl": 874,
+    "cac": 1779,
+    "conv_click_reg": 4.4,
     "regs": 59,
     "newpay": 29,
-    "clicks": 1056
+    "clicks": 1346
    },
    "2026-08": {
-    "tw_spend": 22045,
-    "cpl": 290,
-    "cac": 565,
-    "conv_click_reg": 9.3,
+    "tw_spend": 30970,
+    "cpl": 408,
+    "cac": 794,
+    "conv_click_reg": 3.4,
     "regs": 76,
     "newpay": 39,
-    "clicks": 814
+    "clicks": 2243
+   },
+   "2026-09": {
+    "tw_spend": 13632,
+    "cpl": 341,
+    "cac": 909,
+    "conv_click_reg": 2.0,
+    "regs": 40,
+    "newpay": 15,
+    "clicks": 2011
    }
   },
   "weeks": [
    {
-    "w": "27.04",
-    "iso": "2026-04-27",
-    "spend": 22282,
-    "clicks": 524
+    "w": "06.07",
+    "iso": "2026-07-06",
+    "spend": 20574,
+    "clicks": 294
    },
    {
-    "w": "04.05",
-    "iso": "2026-05-04",
-    "spend": 19131,
-    "clicks": 407
+    "w": "13.07",
+    "iso": "2026-07-13",
+    "spend": 17683,
+    "clicks": 288
    },
    {
-    "w": "11.05",
-    "iso": "2026-05-11",
-    "spend": 22332,
-    "clicks": 408
+    "w": "20.07",
+    "iso": "2026-07-20",
+    "spend": 14407,
+    "clicks": 343
    },
    {
-    "w": "18.05",
-    "iso": "2026-05-18",
-    "spend": 22514,
-    "clicks": 457
+    "w": "27.07",
+    "iso": "2026-07-27",
+    "spend": 14119,
+    "clicks": 308
    },
    {
-    "w": "25.05",
-    "iso": "2026-05-25",
-    "spend": 22466,
-    "clicks": 608
+    "w": "03.08",
+    "iso": "2026-08-03",
+    "spend": 14075,
+    "clicks": 363
    },
    {
-    "w": "01.06",
-    "iso": "2026-06-01",
-    "spend": 24085,
-    "clicks": 623
+    "w": "10.08",
+    "iso": "2026-08-10",
+    "spend": 10053,
+    "clicks": 232
    },
    {
-    "w": "08.06",
-    "iso": "2026-06-08",
-    "spend": 19199,
-    "clicks": 412
+    "w": "17.08",
+    "iso": "2026-08-17",
+    "spend": 10627,
+    "clicks": 250
    },
    {
-    "w": "15.06",
-    "iso": "2026-06-15",
-    "spend": 19067,
-    "clicks": 384
+    "w": "24.08",
+    "iso": "2026-08-24",
+    "spend": 21027,
+    "clicks": 1074
    },
    {
-    "w": "22.06",
-    "iso": "2026-06-22",
-    "spend": 20695,
-    "clicks": 370
+    "w": "31.08",
+    "iso": "2026-08-31",
+    "spend": 25862,
+    "clicks": 1626
    },
    {
-    "w": "29.06",
-    "iso": "2026-06-29",
-    "spend": 15796,
-    "clicks": 336
+    "w": "07.09",
+    "iso": "2026-09-07",
+    "spend": 19751,
+    "clicks": 709
    }
   ],
   "weeks_all": [
+   {
+    "w": "23.02",
+    "iso": "2026-02-23",
+    "spend": 862,
+    "clicks": 28
+   },
    {
     "w": "02.03",
     "iso": "2026-03-02",
@@ -3170,19 +3252,19 @@
    {
     "w": "09.03",
     "iso": "2026-03-09",
-    "spend": 11355,
+    "spend": 11353,
     "clicks": 286
    },
    {
     "w": "16.03",
     "iso": "2026-03-16",
-    "spend": 32687,
+    "spend": 32686,
     "clicks": 822
    },
    {
     "w": "23.03",
     "iso": "2026-03-23",
-    "spend": 16568,
+    "spend": 16566,
     "clicks": 372
    },
    {
@@ -3194,13 +3276,13 @@
    {
     "w": "06.04",
     "iso": "2026-04-06",
-    "spend": 17334,
+    "spend": 17332,
     "clicks": 383
    },
    {
     "w": "13.04",
     "iso": "2026-04-13",
-    "spend": 22315,
+    "spend": 22314,
     "clicks": 555
    },
    {
@@ -3212,37 +3294,37 @@
    {
     "w": "27.04",
     "iso": "2026-04-27",
-    "spend": 22282,
+    "spend": 22283,
     "clicks": 524
    },
    {
     "w": "04.05",
     "iso": "2026-05-04",
-    "spend": 19131,
+    "spend": 19132,
     "clicks": 407
    },
    {
     "w": "11.05",
     "iso": "2026-05-11",
-    "spend": 22332,
+    "spend": 22331,
     "clicks": 408
    },
    {
     "w": "18.05",
     "iso": "2026-05-18",
-    "spend": 22514,
+    "spend": 22515,
     "clicks": 457
    },
    {
     "w": "25.05",
     "iso": "2026-05-25",
-    "spend": 22466,
+    "spend": 22465,
     "clicks": 608
    },
    {
     "w": "01.06",
     "iso": "2026-06-01",
-    "spend": 24085,
+    "spend": 24084,
     "clicks": 623
    },
    {
@@ -3254,7 +3336,7 @@
    {
     "w": "15.06",
     "iso": "2026-06-15",
-    "spend": 19067,
+    "spend": 19065,
     "clicks": 384
    },
    {
@@ -3268,6 +3350,66 @@
     "iso": "2026-06-29",
     "spend": 15796,
     "clicks": 336
+   },
+   {
+    "w": "06.07",
+    "iso": "2026-07-06",
+    "spend": 20574,
+    "clicks": 294
+   },
+   {
+    "w": "13.07",
+    "iso": "2026-07-13",
+    "spend": 17683,
+    "clicks": 288
+   },
+   {
+    "w": "20.07",
+    "iso": "2026-07-20",
+    "spend": 14407,
+    "clicks": 343
+   },
+   {
+    "w": "27.07",
+    "iso": "2026-07-27",
+    "spend": 14119,
+    "clicks": 308
+   },
+   {
+    "w": "03.08",
+    "iso": "2026-08-03",
+    "spend": 14075,
+    "clicks": 363
+   },
+   {
+    "w": "10.08",
+    "iso": "2026-08-10",
+    "spend": 10053,
+    "clicks": 232
+   },
+   {
+    "w": "17.08",
+    "iso": "2026-08-17",
+    "spend": 10627,
+    "clicks": 250
+   },
+   {
+    "w": "24.08",
+    "iso": "2026-08-24",
+    "spend": 21027,
+    "clicks": 1074
+   },
+   {
+    "w": "31.08",
+    "iso": "2026-08-31",
+    "spend": 25862,
+    "clicks": 1626
+   },
+   {
+    "w": "07.09",
+    "iso": "2026-09-07",
+    "spend": 19751,
+    "clicks": 709
    }
   ],
   "sources": [
@@ -4209,18 +4351,24 @@
   }
  },
  "derived": {
-  "net": 250630,
-  "roas": 1.56,
-  "net_tw": 243074,
-  "net_avps": 7556,
+  "net": 169385,
+  "roas": 1.32,
+  "net_tw": 210393,
+  "net_avps": -11489,
+  "spend_prov": {
+   "timeweb": 394341,
+   "adminvps": 103480,
+   "aeza": 22781,
+   "ishosting": 6739
+  },
   "ltv": 1430,
-  "cac": 954,
-  "cpl": 444,
+  "cac": 1040,
+  "cpl": 484,
   "payback": 2,
   "avg_first": 447,
   "avg_rep": 449,
-  "conv_click_reg": 8.1,
-  "cost_reg_tw": 444,
+  "conv_click_reg": 5.9,
+  "cost_reg_tw": 484,
   "conv_reg_pay": 51.9
  }
 }

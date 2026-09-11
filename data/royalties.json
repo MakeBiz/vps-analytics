@@ -1110,13 +1110,13 @@
   },
   {
    "m": "2026-08",
-   "net": 81543,
-   "cum": 174242
+   "net": 84971,
+   "cum": 177670
   },
   {
    "m": "2026-09",
    "net": 11029,
-   "cum": 185271
+   "cum": 188699
   }
  ],
  "tw": {
@@ -2977,11 +2977,13 @@
     "av_spend": 0,
     "aeza_spend": 0,
     "ish_spend": 0,
+    "hm_spend": 0,
     "prov": {
      "timeweb": 78926,
      "adminvps": 0,
      "aeza": 0,
-     "ishosting": 0
+     "ishosting": 0,
+     "hostman": 0
     }
    },
    "2026-04": {
@@ -2994,11 +2996,13 @@
     "av_spend": 13372,
     "aeza_spend": 0,
     "ish_spend": 0,
+    "hm_spend": 0,
     "prov": {
      "timeweb": 74562,
      "adminvps": 13372,
      "aeza": 0,
-     "ishosting": 0
+     "ishosting": 0,
+     "hostman": 0
     }
    },
    "2026-05": {
@@ -3011,11 +3015,13 @@
     "av_spend": 15775,
     "aeza_spend": 0,
     "ish_spend": 0,
+    "hm_spend": 0,
     "prov": {
      "timeweb": 77688,
      "adminvps": 15775,
      "aeza": 0,
-     "ishosting": 0
+     "ishosting": 0,
+     "hostman": 0
     }
    },
    "2026-06": {
@@ -3028,11 +3034,13 @@
     "av_spend": 26114,
     "aeza_spend": 0,
     "ish_spend": 0,
+    "hm_spend": 0,
     "prov": {
      "timeweb": 66980,
      "adminvps": 26114,
      "aeza": 0,
-     "ishosting": 0
+     "ishosting": 0,
+     "hostman": 0
     }
    },
    "2026-07": {
@@ -3045,28 +3053,32 @@
     "av_spend": 20945,
     "aeza_spend": 0,
     "ish_spend": 0,
+    "hm_spend": 0,
     "prov": {
      "timeweb": 51583,
      "adminvps": 20945,
      "aeza": 0,
-     "ishosting": 0
+     "ishosting": 0,
+     "hostman": 0
     }
    },
    "2026-08": {
-    "spend": 59150,
-    "clicks": 2243,
-    "impr": 11845,
-    "ctr": 18.94,
-    "cpc": 26.4,
-    "tw_spend": 30970,
-    "av_spend": 17669,
-    "aeza_spend": 8554,
-    "ish_spend": 1958,
+    "spend": 55722,
+    "clicks": 2129,
+    "impr": 10839,
+    "ctr": 19.64,
+    "cpc": 26.2,
+    "tw_spend": 29893,
+    "av_spend": 16592,
+    "aeza_spend": 7477,
+    "ish_spend": 881,
+    "hm_spend": 881,
     "prov": {
-     "timeweb": 30970,
-     "adminvps": 17669,
-     "aeza": 8554,
-     "ishosting": 1958
+     "timeweb": 29893,
+     "adminvps": 16592,
+     "aeza": 7477,
+     "ishosting": 881,
+     "hostman": 881
     }
    },
    "2026-09": {
@@ -3075,39 +3087,43 @@
     "impr": 7270,
     "ctr": 27.66,
     "cpc": 21.0,
-    "tw_spend": 13632,
-    "av_spend": 9605,
-    "aeza_spend": 14227,
-    "ish_spend": 4781,
+    "tw_spend": 12676,
+    "av_spend": 8649,
+    "aeza_spend": 13271,
+    "ish_spend": 3825,
+    "hm_spend": 3825,
     "prov": {
-     "timeweb": 13632,
-     "adminvps": 9605,
-     "aeza": 14227,
-     "ishosting": 4781
+     "timeweb": 12676,
+     "adminvps": 8649,
+     "aeza": 13271,
+     "ishosting": 3825,
+     "hostman": 3825
     }
    }
   },
   "total": {
-   "spend": 527340,
-   "clicks": 13734,
-   "impr": 60992,
-   "ctr": 22.52,
-   "cpc": 38.4,
-   "tw_spend": 394341,
-   "av_spend": 103480,
-   "aeza_spend": 22781,
-   "ish_spend": 6739,
+   "spend": 523912,
+   "clicks": 13620,
+   "impr": 59986,
+   "ctr": 22.71,
+   "cpc": 38.5,
+   "tw_spend": 392308,
+   "av_spend": 101447,
+   "aeza_spend": 20748,
+   "ish_spend": 4706,
+   "hm_spend": 4706,
    "prov": {
-    "timeweb": 394341,
-    "adminvps": 103480,
-    "aeza": 22781,
-    "ishosting": 6739
+    "timeweb": 392308,
+    "adminvps": 101447,
+    "aeza": 20748,
+    "ishosting": 4706,
+    "hostman": 4706
    },
    "source": "кабинет «Проекты и кампании»",
    "since": "2026-02-01",
    "cabinet_asof": "2026-09-11",
-   "cpl": 484,
-   "cac": 1040
+   "cpl": 481,
+   "cac": 1035
   },
   "eff": {
    "2026-03": {
@@ -3156,18 +3172,18 @@
     "clicks": 1346
    },
    "2026-08": {
-    "tw_spend": 30970,
-    "cpl": 408,
-    "cac": 794,
-    "conv_click_reg": 3.4,
+    "tw_spend": 29893,
+    "cpl": 393,
+    "cac": 766,
+    "conv_click_reg": 3.6,
     "regs": 76,
     "newpay": 39,
-    "clicks": 2243
+    "clicks": 2129
    },
    "2026-09": {
-    "tw_spend": 13632,
-    "cpl": 341,
-    "cac": 909,
+    "tw_spend": 12676,
+    "cpl": 317,
+    "cac": 845,
     "conv_click_reg": 2.0,
     "regs": 40,
     "newpay": 15,
@@ -3220,8 +3236,8 @@
    {
     "w": "24.08",
     "iso": "2026-08-24",
-    "spend": 21027,
-    "clicks": 1074
+    "spend": 17599,
+    "clicks": 960
    },
    {
     "w": "31.08",
@@ -3396,8 +3412,8 @@
    {
     "w": "24.08",
     "iso": "2026-08-24",
-    "spend": 21027,
-    "clicks": 1074
+    "spend": 17599,
+    "clicks": 960
    },
    {
     "w": "31.08",
@@ -4351,24 +4367,25 @@
   }
  },
  "derived": {
-  "net": 169385,
-  "roas": 1.32,
-  "net_tw": 210393,
-  "net_avps": -11489,
+  "net": 172813,
+  "roas": 1.33,
+  "net_tw": 212426,
+  "net_avps": -9456,
   "spend_prov": {
-   "timeweb": 394341,
-   "adminvps": 103480,
-   "aeza": 22781,
-   "ishosting": 6739
+   "timeweb": 392308,
+   "adminvps": 101447,
+   "aeza": 20748,
+   "ishosting": 4706,
+   "hostman": 4706
   },
   "ltv": 1430,
-  "cac": 1040,
-  "cpl": 484,
+  "cac": 1035,
+  "cpl": 481,
   "payback": 2,
   "avg_first": 447,
   "avg_rep": 449,
-  "conv_click_reg": 5.9,
-  "cost_reg_tw": 484,
+  "conv_click_reg": 6.0,
+  "cost_reg_tw": 481,
   "conv_reg_pay": 51.9
  }
 }

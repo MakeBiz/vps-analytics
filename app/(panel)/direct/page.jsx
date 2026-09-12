@@ -22,10 +22,11 @@ export default async function DirectPage({ searchParams }) {
   } catch {
     days = [];
   }
+  // Конверсии берём из истории кабинета, а где её ещё нет — из 30-дневного снимка.
   const convByDate = {};
   for (const r of (m?.direct?.dailyVps || [])) convByDate[String(r.date).slice(0, 10)] = r.conversions ?? null;
   const daily = days.length
-    ? days.map((d) => ({ ...d, conversions: convByDate[d.date] ?? null }))
+    ? days.map((d) => ({ ...d, conversions: d.conversions != null ? d.conversions : (convByDate[d.date] ?? null) }))
     : (m?.direct?.dailyVps || []);
 
   return (

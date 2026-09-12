@@ -10,6 +10,28 @@ const median = (arr) => { if (!arr.length) return 0; const s = [...arr].sort((a,
 const KIND_RU = { brand: 'бренд', rsya: 'РСЯ', site: 'сайт', search: 'поиск' };
 
 // Комбо-график: столбцы расхода + линия конверсий по дням, в подсказке CPA.
+// Разрез времени для графика: снимок приходит по дням, недели и месяцы складываем тут.
+const GRAN_LABEL = { day: 'дни', week: 'недели', month: 'месяцы' };
+function bucketRows(rows, g) {
+  if (!g || g === 'day') return rows;
+  const map = {};
+  for (const r of rows) {
+    const s = String(r.date).slice(0, 10);
+    let k = s.slice(0, 8) + '01';
+    if (g === 'week') {
+      const dt = new Date(s + 'T00:00:00Z');
+      dt.setUTCDate(dt.getUTCDate() - ((dt.getUTCDay() + 6) % 7));
+      k = dt.toISOString().slice(0, 10);
+    }
+    const e = map[k] || (map[k] = { date: k, cost: 0, clicks: 0, impressions: 0, conversions: 0 });
+    e.cost += r.cost || 0;
+    e.clicks += r.clicks || 0;
+    e.impressions += r.impressions || 0;
+    e.conversions += r.conversions || 0;
+  }
+  return Object.values(map).sort((a, b) => (a.date < b.date ? -1 : 1));
+}
+
 function DailyChart({ rows }) {
   const [hi, setHi] = useState(null);
   const n = rows.length;
@@ -197,7 +219,7 @@ function ChannelFunnel({ campaigns }) {
   );
 }
 
-export default function DirectView({ campaigns = [], daily = [], queries = {}, generated, win }) {
+export default function DirectView({ campaigns = [], daily = [], queries = {}, generated, win, gran = 'day', granAuto = true }) {
   const agg = useMemo(() => {
     const t = { cost: 0, impressions: 0, clicks: 0, conversions: 0 };
     for (const c of campaigns) { t.cost += c.cost || 0; t.impressions += c.impressions || 0; t.clicks += c.clicks || 0; t.conversions += c.conversions || 0; }
@@ -250,8 +272,8 @@ export default function DirectView({ campaigns = [], daily = [], queries = {}, g
         </div>
       </Card>
 
-      <Card title="Динамика по дням" hint="столбцы — расход, линия — конверсии; наведи — расход/конверсии/CPA за день">
-        <DailyChart rows={daily} />
+      <Card title="Динамика" hint={`столбцы расход, линия конверсии; наведи — расход, конверсии и CPA за точку · разрез: ${GRAN_LABEL[gran] || gran}${granAuto ? ' (авто)' : ''}`}>
+        <DailyChart rows={bucketRows(daily, gran)} />
       </Card>
 
       <Card title="Кампании" hint="сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий">

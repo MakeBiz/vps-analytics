@@ -17,8 +17,11 @@ export async function addSite(formData) {
   const name = String(formData.get('name') || '').trim();
   const domain = String(formData.get('domain') || '').trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
   const key = slugify(formData.get('key') || domain || name);
+  // Направление: vps (каталоги и партнёрки хостингов) или company (сайты MakeBiz).
+  // От него зависит, в какой разрез попадёт сайт и какие блоки панели ему показывать.
+  const line = formData.get('line') === 'company' ? 'company' : 'vps';
   if (!name || !key) return;
-  await q('insert into sites (key, name, domain) values ($1,$2,$3) on conflict (key) do nothing', [key, name, domain]);
+  await q('insert into sites (key, name, domain, line) values ($1,$2,$3,$4) on conflict (key) do nothing', [key, name, domain, line]);
   revalidatePath('/sites');
 }
 
@@ -28,8 +31,9 @@ export async function saveSite(formData) {
   const name = String(formData.get('name') || '').trim();
   const domain = String(formData.get('domain') || '').trim();
   const archived = formData.get('archived') === 'on';
+  const line = formData.get('line') === 'company' ? 'company' : 'vps';
   if (!id || !name) return;
-  await q('update sites set name = $2, domain = $3, archived = $4 where id = $1', [id, name, domain, archived]);
+  await q('update sites set name = $2, domain = $3, archived = $4, line = $5 where id = $1', [id, name, domain, archived, line]);
   revalidatePath('/sites');
 }
 

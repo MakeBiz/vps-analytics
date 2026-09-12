@@ -17,17 +17,21 @@ export default async function Sites() {
         <div className="scroll">
           <table>
             <thead>
-              <tr><th>Название</th><th>Домен</th><th>Ключ</th><th>В архиве</th><th /></tr>
+              <tr><th>Название</th><th>Домен</th><th>Ключ</th><th>Направление</th><th>В архиве</th><th /></tr>
             </thead>
             <tbody>
               {list.map((s) => (
                 <tr key={s.id}>
-                  <td colSpan={5} style={{ padding: 0, borderBottom: '1px solid var(--line-soft)' }}>
+                  <td colSpan={6} style={{ padding: 0, borderBottom: '1px solid var(--line-soft)' }}>
                     <form action={saveSite} style={{ display: 'flex', gap: 8, alignItems: 'center', padding: '7px 9px', flexWrap: 'wrap' }}>
                       <input type="hidden" name="id" value={s.id} />
                       <input type="text" name="name" defaultValue={s.name} size={20} />
                       <input type="text" name="domain" defaultValue={s.domain} size={22} />
                       <code className="tag">{s.key}</code>
+                      <select name="line" defaultValue={s.line || 'vps'} title="Направление: от него зависит фильтр в шапке и набор блоков">
+                        <option value="vps">VPS</option>
+                        <option value="company">MakeBiz</option>
+                      </select>
                       <label className="muted" style={{ display: 'flex', gap: 5, alignItems: 'center', fontSize: 12.5 }}>
                         <input type="checkbox" name="archived" defaultChecked={s.archived} /> архив
                       </label>
@@ -44,6 +48,10 @@ export default async function Sites() {
           <input type="text" name="name" placeholder="Название нового сайта" size={22} required />
           <input type="text" name="domain" placeholder="домен, например vpsdeals.ru" size={22} />
           <input type="text" name="key" placeholder="ключ (необязательно)" size={16} />
+          <select name="line" defaultValue="vps" title="Направление нового сайта">
+            <option value="vps">VPS</option>
+            <option value="company">MakeBiz</option>
+          </select>
           <button type="submit">Добавить сайт</button>
         </form>
       </Card>

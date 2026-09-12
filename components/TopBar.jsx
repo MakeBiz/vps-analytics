@@ -33,7 +33,7 @@ const SNAPSHOT_NOTE = {
   '/projects': 'накопительный расход по кампаниям с 01.02.2026',
 };
 // Где работает разрез времени (есть график по датам).
-const GRAN_TABS = new Set(['/', '/organic', '/seo']);
+const GRAN_TABS = new Set(['/', '/organic', '/seo', '/direct']);
 // Где переключатель источника не имеет смысла.
 const NO_SOURCE_TABS = new Set(['/organic', '/seo', '/projects', '/sites', '/log']);
 const RANGE_DAYS = { today: 1, yesterday: 1, '7d': 7, '30d': 30, '90d': 90, year: 365 };

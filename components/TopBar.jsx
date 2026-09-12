@@ -13,7 +13,8 @@ const TITLES = {
   '/direct': 'Реклама · Директ',
   '/projects': 'Проекты и кампании',
   '/organic': 'Органика и SEO',
-  '/seo': 'SEO: позиции, индексация, гео',
+  '/seo': 'Поиск',
+  '/ai': 'AI-видимость',
   '/partners': 'Партнёрки',
   '/royalties': 'Партнёрки Директ',
   '/funnels': 'Воронки',
@@ -26,15 +27,15 @@ const TITLES = {
 // Страницы-снимки кабинетов: период, сайт, источник и направление к ним не применяются.
 const SNAPSHOT_NOTE = {
   '/marketing': 'снимок коннектора за последние 30 дней',
-  '/seo': 'снимок кабинетов: Яндекс.Вебмастер + Google Search Console, сайт выбирается внутри страницы',
+  '/ai': 'снимок зонда нейросетей: Perplexity, OpenAI, GigaChat',
   '/direct': 'снимок Яндекс.Директа за ~30 дней',
   '/royalties': 'снимок партнёрок на дату сборки',
   '/projects': 'накопительный расход по кампаниям с 01.02.2026',
 };
 // Где работает разрез времени (есть график по датам).
-const GRAN_TABS = new Set(['/', '/organic']);
+const GRAN_TABS = new Set(['/', '/organic', '/seo']);
 // Где переключатель источника не имеет смысла.
-const NO_SOURCE_TABS = new Set(['/organic', '/projects', '/sites', '/log']);
+const NO_SOURCE_TABS = new Set(['/organic', '/seo', '/projects', '/sites', '/log']);
 const RANGE_DAYS = { today: 1, yesterday: 1, '7d': 7, '30d': 30, '90d': 90, year: 365 };
 
 export default function TopBar({ sites }) {

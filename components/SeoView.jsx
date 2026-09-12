@@ -451,8 +451,10 @@ function AIVizTab({ aiviz, nameByHost }) {
 }
 
 // ─────────────────────────── КОРНЕВОЙ КОМПОНЕНТ ───────────────────────────
-export default function SeoView({ webmaster = [], gsc = [], aiviz = null, sites = [], wmGenerated, gscGenerated, gscWindow }) {
-  const [tab, setTab] = useState('positions'); // positions | indexing | geo
+// mode: 'full' — страница «Поиск» (живые переходы + кабинеты), 'ai' — только AI-видимость.
+// organic — готовый блок живой органики, приходит со страницы как узел.
+export default function SeoView({ webmaster = [], gsc = [], aiviz = null, sites = [], wmGenerated, gscGenerated, gscWindow, organic = null, mode = 'full' }) {
+  const [tab, setTab] = useState(organic ? 'traffic' : 'positions'); // traffic | positions | indexing | geo
   const [site, setSite] = useState('all');     // 'all' | host
 
   const nameByHost = useMemo(() => Object.fromEntries(sites.map((s) => [s.domain, s.name])), [sites]);
@@ -497,19 +499,42 @@ export default function SeoView({ webmaster = [], gsc = [], aiviz = null, sites 
     return out;
   }, [scopedList]);
 
-  const TABS = [['positions', 'Позиции'], ['indexing', 'Индексация'], ['geo', 'Гео'], ['aiviz', 'AI-видимость']];
+  // AI-видимость вынесена в отдельный раздел меню: работы и метрики там другие.
+  const TABS = [
+    ...(organic ? [['traffic', 'Переходы']] : []),
+    ['positions', 'Позиции'], ['indexing', 'Индексация'], ['geo', 'Гео'],
+  ];
+
+  if (mode === 'ai') {
+    return (
+      <div className="grid" style={{ gap: 14 }}>
+        <Card>
+          <div className="dim" style={{ fontSize: 11.5 }}>
+            Цитируют ли нас нейросети. Снимок зонда: Perplexity, OpenAI, GigaChat · обновлён {wmGenerated || '—'}
+          </div>
+        </Card>
+        <AIVizTab aiviz={aiviz} nameByHost={nameByHost} />
+      </div>
+    );
+  }
 
   return (
     <div className="grid" style={{ gap: 14 }}>
       {/* Панель управления: сайт + вкладка */}
       <Card>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, alignItems: 'center', justifyContent: 'space-between' }}>
-          <div className="chips" title="Выбор сайта">
-            <button className={'chip' + (site === 'all' ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setSite('all')}>Все сайты</button>
-            {order.map((h) => (
-              <button key={h} className={'chip' + (site === h ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setSite(h)}>{bySite[h].name}</button>
-            ))}
-          </div>
+          {tab === 'traffic' ? (
+            <div className="dim" style={{ fontSize: 11.5 }}>
+              Период, сайт и разрез для переходов берутся из шапки панели
+            </div>
+          ) : (
+            <div className="chips" title="Выбор сайта в снимке кабинетов">
+              <button className={'chip' + (site === 'all' ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setSite('all')}>Все сайты</button>
+              {order.map((h) => (
+                <button key={h} className={'chip' + (site === h ? ' on' : '')} style={{ cursor: 'pointer' }} onClick={() => setSite(h)}>{bySite[h].name}</button>
+              ))}
+            </div>
+          )}
           <div className="dim" style={{ fontSize: 11.5, textAlign: 'right' }}>
             Вебмастер: {wmGenerated || '—'} · GSC: {gscGenerated || '—'}
             {gscWindow ? <div>окно Google: {gscWindow.from} — {gscWindow.to}</div> : null}
@@ -522,10 +547,10 @@ export default function SeoView({ webmaster = [], gsc = [], aiviz = null, sites 
         </div>
       </Card>
 
+      {tab === 'traffic' ? organic : null}
       {tab === 'positions' ? <PositionsTab pool={pool} /> : null}
       {tab === 'indexing' ? <IndexingTab list={scopedList} /> : null}
       {tab === 'geo' ? <GeoTab list={scopedList} /> : null}
-      {tab === 'aiviz' ? <AIVizTab aiviz={aiviz} nameByHost={nameByHost} /> : null}
     </div>
   );
 }

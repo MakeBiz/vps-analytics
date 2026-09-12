@@ -223,7 +223,7 @@ function ChannelFunnel({ campaigns }) {
   );
 }
 
-export default function DirectView({ campaigns = [], daily = [], queries = {}, generated, win, gran = 'day', granAuto = true, period = null }) {
+export default function DirectView({ campaigns = [], daily = [], totals = null, prevTotals = null, queries = {}, generated, win, gran = 'day', granAuto = true, period = null }) {
   const agg = useMemo(() => {
     const t = { cost: 0, impressions: 0, clicks: 0, conversions: 0 };
     for (const c of campaigns) { t.cost += c.cost || 0; t.impressions += c.impressions || 0; t.clicks += c.clicks || 0; t.conversions += c.conversions || 0; }
@@ -252,28 +252,58 @@ export default function DirectView({ campaigns = [], daily = [], queries = {}, g
     return out.slice(0, 10);
   }, [campaigns, medCPA, queries]);
 
-  const ctr = pct(agg.clicks, agg.impressions);
-  const cpc = agg.clicks ? Math.round(agg.cost / agg.clicks) : 0;
-  const cpa = agg.conversions ? Math.round(agg.cost / agg.conversions) : 0;
-  const cr = pct(agg.conversions, agg.clicks);
+  // Итоги сверху живут на истории кабинета за период из шапки (только кампании
+  // с галкой «в бюджете»). Если истории на этот период нет — падаем на
+  // 30-дневный снимок коннектора, как было раньше.
+  const hist = totals && totals.days ? totals : null;
+  const prev = hist && prevTotals && prevTotals.days ? prevTotals : null;
+  const base = hist || {
+    days: 0, cost: agg.cost, clicks: agg.clicks, impressions: agg.impressions,
+    conversions: agg.conversions, convDays: 0, convCost: agg.cost,
+  };
+  const delta = (now, was) => (was ? ((now - was) / was) * 100 : undefined);
+
+  const ctr = pct(base.clicks, base.impressions);
+  const cpc = base.clicks ? Math.round(base.cost / base.clicks) : 0;
+  const cpa = base.conversions ? Math.round(base.convCost / base.conversions) : 0;
+  const cr = pct(base.conversions, base.clicks);
+  const pCtr = prev ? pct(prev.clicks, prev.impressions) : null;
+  const pCpc = prev && prev.clicks ? Math.round(prev.cost / prev.clicks) : null;
+  const pCpa = prev && prev.conversions ? Math.round(prev.convCost / prev.conversions) : null;
+  const pCr = prev ? pct(prev.conversions, prev.clicks) : null;
 
   if (!campaigns.length) return <div className="grid" style={{ gap: 14 }}><Card><Empty text="Кампаний Директа в снимке нет. Обнови маркетинг и проверь список VPS-кампаний." /></Card></div>;
 
   return (
     <div className="grid" style={{ gap: 14 }}>
-      <Card title="Обзор рекламы (Директ)" hint={`снимок за ~30 дней${win ? ` (${win.from || ''}…${win.to || ''})` : ''}${generated ? ` · ${generated}` : ''}. «Конверсии» — цели Директа (для VPS — переход к провайдеру)`}>
+      <Card title="Обзор рекламы (Директ)" hint={hist
+        ? `период ${period?.from || ''} — ${period?.to || ''}, история кабинета по дням, только кампании «в бюджете»${prev ? ` · сравнение с ${period.prevFrom} — ${period.prevTo}` : ''}`
+        : `снимок за ~30 дней${win ? ` (${win.from || ''}…${win.to || ''})` : ''}${generated ? ` · ${generated}` : ''}. «Конверсии» — цели Директа (для VPS — переход к провайдеру)`}>
         <div className="grid kpis">
-          <Kpi label="Расход" value={rub(agg.cost)} sub={`${campaigns.length} кампаний`} />
-          <Kpi label="Показы" value={num(agg.impressions)} sub={`CTR ${ctr}%`} />
-          <Kpi label="Клики" value={num(agg.clicks)} sub={`CPC ${rub(cpc)}`} />
-          <Kpi label="Конверсии" value={num(Math.round(agg.conversions))} sub={`CR ${cr}%`} />
+          <Kpi label="Расход" value={rub(base.cost)} tone="neutral"
+            sub={prev ? `было ${rub(prev.cost)}` : `${campaigns.length} кампаний`} delta={prev ? delta(base.cost, prev.cost) : undefined} />
+          <Kpi label="Показы" value={num(base.impressions)}
+            sub={prev ? `было ${num(prev.impressions)}` : `CTR ${ctr}%`} delta={prev ? delta(base.impressions, prev.impressions) : undefined} />
+          <Kpi label="Клики" value={num(base.clicks)}
+            sub={prev ? `было ${num(prev.clicks)}` : `CPC ${rub(cpc)}`} delta={prev ? delta(base.clicks, prev.clicks) : undefined} />
+          <Kpi label="Конверсии" value={num(Math.round(base.conversions))}
+            sub={prev ? `было ${num(Math.round(prev.conversions))}` : `CR ${cr}%`} delta={prev ? delta(base.conversions, prev.conversions) : undefined} />
         </div>
         <div className="grid kpis" style={{ marginTop: 12 }}>
-          <Kpi label="CPA (цена конверсии)" value={rub(cpa)} sub="расход / конверсии" />
-          <Kpi label="CTR" value={ctr + '%'} sub="клики / показы" />
-          <Kpi label="CPC" value={rub(cpc)} sub="расход / клики" />
-          <Kpi label="CR (конверсия)" value={cr + '%'} sub="конверсии / клики" />
+          <Kpi label="CPA (цена конверсии)" value={rub(cpa)} tone="grow-bad"
+            sub={pCpa != null ? `было ${rub(pCpa)}` : 'расход / конверсии'} delta={pCpa ? delta(cpa, pCpa) : undefined} />
+          <Kpi label="CTR" value={ctr + '%'}
+            sub={pCtr != null ? `было ${pCtr}%` : 'клики / показы'} delta={pCtr ? delta(ctr, pCtr) : undefined} />
+          <Kpi label="CPC" value={rub(cpc)} tone="grow-bad"
+            sub={pCpc != null ? `было ${rub(pCpc)}` : 'расход / клики'} delta={pCpc ? delta(cpc, pCpc) : undefined} />
+          <Kpi label="CR (конверсия)" value={cr + '%'}
+            sub={pCr != null ? `было ${pCr}%` : 'конверсии / клики'} delta={pCr ? delta(cr, pCr) : undefined} />
         </div>
+        {hist && hist.convDays < hist.days ? (
+          <div className="dim" style={{ fontSize: 11.5, marginTop: 10 }}>
+            Конверсии есть за {hist.convDays} дней из {hist.days}: CPA и CR считаем только по этим дням, иначе цена конверсии была бы завышена.
+          </div>
+        ) : null}
       </Card>
 
       <Card title="Динамика" hint={`столбцы расход, линия конверсии; наведи — расход, конверсии и CPA за точку · разрез: ${GRAN_LABEL[gran] || gran}${granAuto ? ' (авто)' : ''}`}>
@@ -285,11 +315,16 @@ export default function DirectView({ campaigns = [], daily = [], queries = {}, g
         </div>
       </Card>
 
-      <Card title="Кампании" hint="сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий">
+      <Card title="Кампании" hint={`снимок Директа за ~30 дней${win ? ` (${win.from || ''}…${win.to || ''})` : ''} · сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий`}>
         <CampTable camps={campaigns} medCPA={medCPA || 1} />
+        {hist ? (
+          <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+            Разбивка по кампаниям есть только в 30-дневном снимке Директа. Итоги сверху считаются иначе — за период из шапки и только по кампаниям с галкой «в бюджете», поэтому суммы не совпадают.
+          </div>
+        ) : null}
       </Card>
 
-      <Card title="Воронка канала" hint="показы → клики → конверсии и где проседает, с разбивкой по провайдерам/сайтам">
+      <Card title="Воронка канала" hint="показы → клики → конверсии и где проседает, с разбивкой по провайдерам/сайтам · снимок за ~30 дней">
         <ChannelFunnel campaigns={campaigns} />
       </Card>
 

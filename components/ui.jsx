@@ -1,10 +1,15 @@
 import { num, pct } from '@/lib/format';
 
-export function Kpi({ label, value, sub, delta }) {
+// tone: куда метрике «хорошо» расти. Клики и конверсии вверх — зелёное,
+// цена клика и конверсии вверх — красное, сам расход нейтрален (это решение,
+// а не результат), поэтому у него дельта серая.
+export function Kpi({ label, value, sub, delta, tone = 'grow-good' }) {
   let cls = 'flat', sign = '';
   if (typeof delta === 'number' && isFinite(delta)) {
-    if (delta > 0.5) { cls = 'up'; sign = '+'; }
-    else if (delta < -0.5) { cls = 'down'; }
+    if (delta > 0.5) sign = '+';
+    if (Math.abs(delta) > 0.5 && tone !== 'neutral') {
+      cls = (delta > 0) === (tone === 'grow-good') ? 'up' : 'down';
+    }
   }
   return (
     <div className="card kpi">

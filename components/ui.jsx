@@ -17,7 +17,9 @@ export function Kpi({ label, value, sub, delta, tone = 'grow-good' }) {
       <div className="l">{label}</div>
       {sub ? <div className="d dim">{sub}</div> : null}
       {typeof delta === 'number' && isFinite(delta) ? (
-        <div className={'d ' + cls}>{sign + delta.toFixed(0).replace('-', '−')}% к прошлому периоду</div>
+        <div className={'d ' + cls}>
+          {Math.abs(delta) < 0.5 ? 'без изменений к прошлому периоду' : `${sign}${delta.toFixed(0).replace('-', '−')}% к прошлому периоду`}
+        </div>
       ) : null}
     </div>
   );

@@ -12,7 +12,14 @@ const delta = (now, prev) => (prev ? ((now - prev) / prev) * 100 : undefined);
  * динамикой к прошлому периоду, график по дням, таблицы сайтов/провайдеров/каналов
  * и график по часам. Разбивка по сайту в данных сохраняется (для таблицы «Сайты»).
  */
-export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, siteRows, channelRows, provRows, provNames, sites, tz, gran = 'day', granAuto = true }) {
+// Небольшая стрелка роста рядом с числом в таблицах (в KPI-карточках для этого
+// есть свой блок, тут нужен компактный вариант в одну строку).
+const Trend = ({ v }) => (typeof v === 'number' && isFinite(v) && Math.abs(v) > 0.5
+  ? <span className={v > 0 ? 'up' : 'down'} style={{ fontSize: 11, marginLeft: 6 }}>{(v > 0 ? '+' : '') + v.toFixed(0).replace('-', '−')}%</span>
+  : null);
+const LINE_RU = { vps: 'VPS', company: 'MakeBiz' };
+
+export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, siteRows, channelRows, provRows, provNames, sites, tz, gran = 'day', granAuto = true, line = '', lineHrefs = {} }) {
   const on = () => true; // фильтр сайта теперь в шапке; здесь берём все пришедшие строки
 
   const sumOv = (rows) => rows.filter((r) => on(r.site_key)).reduce((a, r) => ({
@@ -52,6 +59,33 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
   const hourAgg = Array.from({ length: 24 }, (_, h) => ({ h, visits: 0, clicks: 0 }));
   for (const r of hourRows) { if (on(r.site_key)) { hourAgg[r.h].visits += r.visits; hourAgg[r.h].clicks += r.clicks; } }
 
+  // Направления: VPS-каталоги и сайты компании. Складываем те же строки «по
+  // сайтам», отдельный запрос не нужен. Блок показываем только когда в шапке
+  // выбрано «Все направления» и данные есть больше чем у одного направления —
+  // иначе это просто дубль общих цифр.
+  const lineOf = {};
+  for (const s of (sites || [])) lineOf[s.key] = s.line || 'vps';
+  const lineAgg = (rows) => {
+    const m = {};
+    for (const r of rows) {
+      const k = lineOf[r.site_key] || 'vps';
+      const e = m[k] || (m[k] = { line: k, visits: 0, visitors: 0, pv: 0, clicks: 0 });
+      e.visits += r.visits; e.visitors += r.visitors; e.pv += r.pv; e.clicks += r.clicks;
+    }
+    return m;
+  };
+  const curL = lineAgg(ovRows), prevL = lineAgg(prevRows);
+  const siteCount = {};
+  for (const s of (sites || [])) siteCount[s.line || 'vps'] = (siteCount[s.line || 'vps'] || 0) + 1;
+  const byLine = Object.values(curL)
+    .filter((r) => r.visits || r.clicks)
+    .sort((a, b) => b.visits - a.visits)
+    .map((r) => ({
+      ...r, label: LINE_RU[r.line] || r.line, count: siteCount[r.line] || 0,
+      p: prevL[r.line] || { visits: 0, visitors: 0, pv: 0, clicks: 0 },
+    }));
+  const showLines = !line && byLine.length > 1;
+
   // сайты: только выбранные
   const siteFiltered = siteRows.filter((r) => on(r.key));
   const maxSiteClicks = Math.max(1, ...siteFiltered.map((r) => r.clicks));
@@ -87,6 +121,38 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
         <Kpi label="Среднее время визита" value={dur(avgSec)} sub={`отказы ${pct(ov.bounced, ov.visits)}, было ${pct(prev.bounced, prev.visits)}`} />
       </div>
 
+      {showLines ? (
+        <Card title="По направлениям" hint="VPS-каталоги и сайты компании за один и тот же период; клик по названию открывает направление целиком">
+          <div className="scroll">
+            <table>
+              <thead>
+                <tr><th>Направление</th><th className="n">Сайты</th><th className="n">Визиты</th><th className="n">Посетители</th><th className="n">Просмотры</th><th className="n">Переходы</th><th className="n">Конверсия</th></tr>
+              </thead>
+              <tbody>
+                {byLine.map((r) => (
+                  <tr key={r.line}>
+                    <td>
+                      {lineHrefs[r.line]
+                        ? <a href={lineHrefs[r.line]} style={{ color: 'var(--brass)', textDecoration: 'none', fontWeight: 600 }}>{r.label}</a>
+                        : <b>{r.label}</b>}
+                    </td>
+                    <td className="n muted">{r.count}</td>
+                    <td className="n">{num(r.visits)}<Trend v={delta(r.visits, r.p.visits)} /></td>
+                    <td className="n muted">{num(r.visitors)}<Trend v={delta(r.visitors, r.p.visitors)} /></td>
+                    <td className="n muted">{num(r.pv)}</td>
+                    <td className="n">{num(r.clicks)}<Trend v={delta(r.clicks, r.p.clicks)} /></td>
+                    <td className="n muted">{pct(r.clicks, r.visits)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+            Проценты — к прошлому такому же отрезку. «Переходы» у VPS это уходы к провайдеру, у сайтов компании — целевые действия формы.
+          </div>
+        </Card>
+      ) : null}
+
       <Card title="Динамика" hint={`визиты и переходы по выбранным сайтам · ${granHint}`}>
         <Chart rows={days} tz={tz} />
       </Card>
@@ -101,7 +167,7 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
               <tbody>
                 {siteFiltered.map((r) => (
                   <tr key={r.key}>
-                    <td>{r.name}</td>
+                    <td>{r.name}{!line && lineOf[r.key] ? <span className="dim" style={{ fontSize: 10.5, marginLeft: 7, border: '1px solid var(--line)', borderRadius: 4, padding: '0 5px' }}>{LINE_RU[lineOf[r.key]] || lineOf[r.key]}</span> : null}</td>
                     <td className="n">{num(r.visits)}</td>
                     <td className="n muted">{num(r.visitors)}</td>
                     <td className="n muted">{num(r.pv)}</td>

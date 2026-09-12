@@ -1,4 +1,4 @@
-import { parseFilters } from '@/lib/filters';
+import { parseFilters, qs } from '@/lib/filters';
 import {
   overviewBySite, byDayBySite, byHourBySite, bySite,
   channelsBySite, providerBySite, providerNames, sites as allSites,
@@ -20,13 +20,15 @@ export default async function Overview({ searchParams }) {
   ]);
 
   const provNames = Object.fromEntries(names); // Map -> объект для передачи в клиент
-  const sites = siteList.filter((s) => !s.archived).map((s) => ({ key: s.key, name: s.name }));
+  const sites = siteList.filter((s) => !s.archived).map((s) => ({ key: s.key, name: s.name, line: s.line || 'vps' }));
 
   return (
     <OverviewView
       ovRows={ovRows} prevRows={prevRows} dayRows={dayRows} hourRows={hourRows}
       siteRows={siteRows} channelRows={channelRows} provRows={provRows}
       provNames={provNames} sites={sites} tz={f.tz} gran={f.gran} granAuto={f.granAuto}
+      line={f.line}
+      lineHrefs={{ vps: '/' + qs(f, { line: 'vps' }), company: '/' + qs(f, { line: 'company' }) }}
     />
   );
 }

@@ -12,6 +12,7 @@ const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 // Фиксированные цвета за сайтами — чтобы на графиках цвет не менялся между обновлениями.
 const SITE_COLORS = {
   'makebiz-life': '#e0736d',            // MakeBiz — всегда красный
+  'makebiz-com': '#00c46a',             // MakeBiz Technologies — яркий зелёный (ОАЭ)
   'podborvps': '#c6a15b',               // ПодборVPS — латунь
   'servercalc-com': '#5b7a99',          // ServerCalc.com — сталь
   'servercalc-ru': '#6cbf8b',           // ServerCalc.ru — зелёный

@@ -367,6 +367,14 @@ function AIVizTab({ aiviz, nameByHost }) {
   const engines = aiviz.engines;
   const totals = aiviz.totals || {};
   const bySite = aiviz.bySite || {};
+  // Снимки старее 12.09.2026 не знают про направления: тогда показываем как раньше,
+  // одной общей цифрой, а не пустыми блоками.
+  const byLine = aiviz.totalsByLine || null;
+  const LINE_RU = { vps: 'VPS-каталоги', company: 'Сайты компании' };
+  const lineKeys = byLine ? Object.keys(byLine).filter((k) => {
+    const per = byLine[k] || {};
+    return engines.some((e) => (per[e] || {}).asked);
+  }) : [];
 
   const Badge = ({ cell }) => {
     if (!cell || cell.error) return <span className="dim" style={{ fontSize: 12 }}>ошибка</span>;
@@ -402,10 +410,33 @@ function AIVizTab({ aiviz, nameByHost }) {
                   <div><div style={{ fontSize: 22, fontWeight: 700, color: GOOD }}>{t.cited}<span className="dim" style={{ fontSize: 14, fontWeight: 400 }}> / {t.asked}</span></div><div className="dim" style={{ fontSize: 11.5 }}>цитируют (ссылка на нас)</div></div>
                   <div><div style={{ fontSize: 22, fontWeight: 700, color: WARN }}>{t.mentioned}<span className="dim" style={{ fontSize: 14, fontWeight: 400 }}> / {t.asked}</span></div><div className="dim" style={{ fontSize: 11.5 }}>упоминают (в тексте)</div></div>
                 </div>
+                {lineKeys.length > 1 ? (
+                  <div style={{ marginTop: 10, paddingTop: 9, borderTop: '1px solid var(--line-soft)', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    {lineKeys.map((ln) => {
+                      const s = (byLine[ln] || {})[e] || { asked: 0, cited: 0, mentioned: 0 };
+                      return (
+                        <div key={ln} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
+                          <span className="dim">{LINE_RU[ln] || ln}</span>
+                          <span className="mono">
+                            <span style={{ color: GOOD }}>{s.cited}</span>
+                            <span className="dim"> · </span>
+                            <span style={{ color: WARN }}>{s.mentioned}</span>
+                            <span className="dim"> из {s.asked}</span>
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : null}
               </div>
             );
           })}
         </div>
+        {lineKeys.length > 1 ? (
+          <div className="dim" style={{ fontSize: 11.5, marginTop: 10 }}>
+            Вопросы разные у направлений: у VPS-каталогов про выбор и аренду сервера, у сайтов компании про внедрение Битрикс24, AI-агентов и речевую аналитику. Каждому сайту в таблице ниже считаются только вопросы его направления, поэтому знаменатели отличаются.
+          </div>
+        ) : null}
       </Card>
 
       <Card title="По сайтам" hint="в скольких вопросах движок сослался на сайт / упомянул его">

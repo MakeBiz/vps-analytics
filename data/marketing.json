@@ -1443,7 +1443,16 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 81,
+        "visits": 83,
+        "providerClicks": 0,
+        "promo": 0,
+        "goals": []
+      },
+      {
+        "key": "makebiz-com",
+        "name": "MakeBiz Technologies",
+        "counter": "112503709",
+        "visits": 5,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -3131,6 +3140,17 @@
         }
       },
       {
+        "host": "makebiztechnologies.com",
+        "queries": [],
+        "indexing": {
+          "searchable": null,
+          "excluded": null,
+          "sqi": null,
+          "problems": {},
+          "history": []
+        }
+      },
+      {
         "host": "podborvps.ru",
         "queries": [
           [
@@ -3438,10 +3458,10 @@
           },
           {
             "q": "vds в нидерландах",
-            "impressions": 6,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 96.0
+            "position": 95.0
           },
           {
             "q": "vds в сша",
@@ -3452,10 +3472,10 @@
           },
           {
             "q": "vds в турции",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 75.7
+            "position": 76.0
           },
           {
             "q": "vds великобритания",
@@ -3501,10 +3521,10 @@
           },
           {
             "q": "vds сша",
-            "impressions": 27,
+            "impressions": 28,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.6
+            "position": 93.4
           },
           {
             "q": "vds турция",
@@ -3529,10 +3549,10 @@
           },
           {
             "q": "vps america",
-            "impressions": 38,
+            "impressions": 40,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.5
+            "position": 84.4
           },
           {
             "q": "vps find",
@@ -3550,10 +3570,10 @@
           },
           {
             "q": "vps in usa",
-            "impressions": 39,
+            "impressions": 41,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 94.3
+            "position": 94.0
           },
           {
             "q": "vps server usa",
@@ -3585,17 +3605,17 @@
           },
           {
             "q": "vps usa",
-            "impressions": 50,
+            "impressions": 53,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.4
+            "position": 93.2
           },
           {
             "q": "vps америка",
-            "impressions": 40,
+            "impressions": 42,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 90.3
+            "position": 90.0
           },
           {
             "q": "vps англия",
@@ -3603,6 +3623,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 76.2
+          },
+          {
+            "q": "vps бот",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 58.0
           },
           {
             "q": "vps в америке",
@@ -3627,10 +3654,10 @@
           },
           {
             "q": "vps в германии за рубли",
-            "impressions": 12,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.9
+            "position": 94.3
           },
           {
             "q": "vps в германии недорого",
@@ -3641,17 +3668,17 @@
           },
           {
             "q": "vps в нидерландах",
-            "impressions": 26,
+            "impressions": 29,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 85.7
+            "position": 85.9
           },
           {
             "q": "vps в сша",
-            "impressions": 68,
+            "impressions": 71,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 83.1
+            "position": 83.2
           },
           {
             "q": "vps в турции",
@@ -3662,7 +3689,7 @@
           },
           {
             "q": "vps в турции для vpn",
-            "impressions": 9,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
             "position": 75.3
@@ -3690,10 +3717,10 @@
           },
           {
             "q": "vps для ии",
-            "impressions": 7,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.6
+            "position": 73.4
           },
           {
             "q": "vps для сайта",
@@ -3711,10 +3738,10 @@
           },
           {
             "q": "vps нидерланды",
-            "impressions": 35,
+            "impressions": 38,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 83.2
+            "position": 83.6
           },
           {
             "q": "vps сервер docker",
@@ -3732,24 +3759,24 @@
           },
           {
             "q": "vps сервер аренда германия",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 97.6
+            "position": 98.0
           },
           {
             "q": "vps сервер в германии",
-            "impressions": 14,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.1
+            "position": 93.3
           },
           {
             "q": "vps сервер в нидерландах",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 91.2
+            "position": 90.4
           },
           {
             "q": "vps сервер в сша",
@@ -3760,10 +3787,10 @@
           },
           {
             "q": "vps сервер в турции",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.2
+            "position": 73.9
           },
           {
             "q": "vps сервер германия",
@@ -3795,28 +3822,28 @@
           },
           {
             "q": "vps сервера германия",
-            "impressions": 6,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 93.0
+            "position": 93.9
           },
           {
             "q": "vps сингапур",
-            "impressions": 6,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.2
+            "position": 77.1
           },
           {
             "q": "vps сша",
-            "impressions": 14,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 87.6
+            "position": 87.8
           },
           {
             "q": "vps турция",
-            "impressions": 9,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
             "position": 80.3
@@ -3851,10 +3878,10 @@
           },
           {
             "q": "аренда vds сша",
-            "impressions": 14,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 98.3
+            "position": 98.1
           },
           {
             "q": "аренда vps в германии",
@@ -3984,10 +4011,10 @@
           },
           {
             "q": "арендовать сервер в сша",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 99.4
+            "position": 99.2
           },
           {
             "q": "виртуальные серверы сингапур",
@@ -4005,17 +4032,17 @@
           },
           {
             "q": "виртуальный сервер в нидерландах",
-            "impressions": 13,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 93.1
-          },
-          {
-            "q": "виртуальный сервер в сша",
             "impressions": 14,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 95.4
+            "position": 92.7
+          },
+          {
+            "q": "виртуальный сервер в сша",
+            "impressions": 16,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 95.2
           },
           {
             "q": "виртуальный сервер нидерланды",
@@ -4145,10 +4172,10 @@
           },
           {
             "q": "нидерланды vps",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.1
+            "position": 73.9
           },
           {
             "q": "подбор vds",
@@ -4159,10 +4186,10 @@
           },
           {
             "q": "подбор vps",
-            "impressions": 29,
+            "impressions": 30,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 21.2
+            "position": 20.7
           },
           {
             "q": "подбор vps по параметрам",
@@ -4222,10 +4249,10 @@
           },
           {
             "q": "сайт на vps",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 56.4
+            "position": 59.5
           },
           {
             "q": "сервер usa",
@@ -4250,10 +4277,10 @@
           },
           {
             "q": "сервер сша",
-            "impressions": 22,
+            "impressions": 23,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 92.8
+            "position": 92.4
           },
           {
             "q": "сервера в германии",
@@ -4271,10 +4298,10 @@
           },
           {
             "q": "сша vps сервер",
-            "impressions": 54,
+            "impressions": 56,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 90.7
+            "position": 90.5
           },
           {
             "q": "турецкий vps",
@@ -4292,7 +4319,7 @@
           },
           {
             "q": "хостинг в турции",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
             "position": 85.0
@@ -4308,10 +4335,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 1165,
+            "impressions": 1213,
             "clicks": 4,
-            "ctr": 0.0034,
-            "position": 85.2
+            "ctr": 0.0033,
+            "position": 85.1
           },
           {
             "country": "blr",
@@ -4322,10 +4349,10 @@
           },
           {
             "country": "bra",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.0
+            "position": 8.5
           },
           {
             "country": "cze",
@@ -4412,8 +4439,17 @@
             "position": 6.0
           }
         ],
-        "pagesInSearch": 26,
-        "sitemaps": []
+        "pagesInSearch": 27,
+        "sitemaps": [
+          {
+            "path": "https://podborvps.ru/sitemap.xml",
+            "lastSubmitted": "2026-09-12T14:23:25.898Z",
+            "submitted": 43,
+            "isPending": false,
+            "errors": 0,
+            "warnings": 0
+          }
+        ]
       },
       {
         "host": "servercalc.com",
@@ -4449,10 +4485,10 @@
           },
           {
             "q": "asia vps",
-            "impressions": 18,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.6
+            "position": 73.4
           },
           {
             "q": "asia vps cheap",
@@ -4498,10 +4534,10 @@
           },
           {
             "q": "beget",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 56.5
+            "position": 55.9
           },
           {
             "q": "beget python",
@@ -4820,10 +4856,10 @@
           },
           {
             "q": "cherry servers",
-            "impressions": 11,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 44.3
+            "position": 44.0
           },
           {
             "q": "cherryroad pricing",
@@ -4911,10 +4947,10 @@
           },
           {
             "q": "container vps",
-            "impressions": 17,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 75.4
+            "position": 75.5
           },
           {
             "q": "cost of vps",
@@ -4932,10 +4968,10 @@
           },
           {
             "q": "database vps",
-            "impressions": 26,
+            "impressions": 27,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.5
+            "position": 72.8
           },
           {
             "q": "database vps hosting",
@@ -4980,6 +5016,13 @@
             "position": 84.5
           },
           {
+            "q": "dedicated servers asia",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 87.0
+          },
+          {
             "q": "developer vps",
             "impressions": 8,
             "clicks": 0,
@@ -4995,10 +5038,10 @@
           },
           {
             "q": "docker vps hosting",
-            "impressions": 13,
+            "impressions": 14,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 70.2
+            "position": 69.9
           },
           {
             "q": "ethernet servers",
@@ -5142,10 +5185,10 @@
           },
           {
             "q": "ml workload hosting",
-            "impressions": 10,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 88.0
+            "position": 87.3
           },
           {
             "q": "monthly vps hosting",
@@ -5156,10 +5199,10 @@
           },
           {
             "q": "multi location vps",
-            "impressions": 9,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 95.7
+            "position": 95.0
           },
           {
             "q": "price vps",
@@ -5191,10 +5234,10 @@
           },
           {
             "q": "server cost per month",
-            "impressions": 11,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 94.1
+            "position": 93.8
           },
           {
             "q": "server minecraft vps",
@@ -5562,10 +5605,10 @@
           },
           {
             "q": "vps datacenter locations",
-            "impressions": 2,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 88.0
+            "position": 86.9
           },
           {
             "q": "vps for ai",
@@ -5583,10 +5626,10 @@
           },
           {
             "q": "vps for ai hosting",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 64.0
+            "position": 63.8
           },
           {
             "q": "vps for app testing",
@@ -5632,7 +5675,7 @@
           },
           {
             "q": "vps for minecraft",
-            "impressions": 14,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
             "position": 70.8
@@ -5744,10 +5787,10 @@
           },
           {
             "q": "vps minecraft server",
-            "impressions": 18,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 77.8
+            "position": 77.9
           },
           {
             "q": "vps monthly cost",
@@ -5765,10 +5808,10 @@
           },
           {
             "q": "vps price",
-            "impressions": 55,
+            "impressions": 56,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 91.3
+            "position": 91.2
           },
           {
             "q": "vps price comparison",
@@ -5786,17 +5829,17 @@
           },
           {
             "q": "vps prices",
-            "impressions": 51,
+            "impressions": 52,
             "clicks": 0,
             "ctr": 0.0,
             "position": 86.7
           },
           {
             "q": "vps pricing",
-            "impressions": 63,
+            "impressions": 64,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 88.8
+            "position": 88.6
           },
           {
             "q": "vps server cheap",
@@ -5814,7 +5857,7 @@
           },
           {
             "q": "vps server comparison",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
             "position": 86.0
@@ -5975,10 +6018,10 @@
           },
           {
             "q": "wordpress vps hosting",
-            "impressions": 28,
+            "impressions": 29,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.1
+            "position": 72.0
           },
           {
             "q": "wp vds",
@@ -5991,10 +6034,10 @@
         "countries": [
           {
             "country": "usa",
-            "impressions": 1407,
+            "impressions": 1435,
             "clicks": 3,
             "ctr": 0.0021,
-            "position": 75.3
+            "position": 74.9
           },
           {
             "country": "bra",
@@ -6068,10 +6111,10 @@
           },
           {
             "country": "can",
-            "impressions": 17,
+            "impressions": 20,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 54.4
+            "position": 52.2
           },
           {
             "country": "chn",
@@ -6082,10 +6125,10 @@
           },
           {
             "country": "col",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 4.0
+            "position": 3.9
           },
           {
             "country": "cyp",
@@ -6166,10 +6209,10 @@
           },
           {
             "country": "gbr",
-            "impressions": 78,
+            "impressions": 83,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 60.2
+            "position": 62.0
           },
           {
             "country": "geo",
@@ -6208,10 +6251,10 @@
           },
           {
             "country": "idn",
-            "impressions": 34,
+            "impressions": 35,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 67.9
+            "position": 66.1
           },
           {
             "country": "ind",
@@ -6320,10 +6363,10 @@
           },
           {
             "country": "nld",
-            "impressions": 31,
+            "impressions": 35,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 65.3
+            "position": 65.8
           },
           {
             "country": "nor",
@@ -6334,10 +6377,10 @@
           },
           {
             "country": "pak",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 60.4
+            "position": 59.2
           },
           {
             "country": "pan",
@@ -6446,17 +6489,17 @@
           },
           {
             "country": "ukr",
-            "impressions": 12,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 69.8
+            "position": 69.9
           },
           {
             "country": "vnm",
-            "impressions": 78,
+            "impressions": 79,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 68.6
+            "position": 68.8
           },
           {
             "country": "zaf",
@@ -6488,6 +6531,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 34.0
+          },
+          {
+            "q": "aeza аналоги",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 64.0
           },
           {
             "q": "aeza купить сервер",
@@ -6589,7 +6639,7 @@
           },
           {
             "q": "racknerd vps",
-            "impressions": 3,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
             "position": 5.0
@@ -6679,6 +6729,13 @@
             "position": 73.0
           },
           {
+            "q": "vps pricing",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 93.0
+          },
+          {
             "q": "vps server plans",
             "impressions": 1,
             "clicks": 0,
@@ -6722,10 +6779,10 @@
           },
           {
             "q": "vps для ии",
-            "impressions": 18,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 65.7
+            "position": 65.1
           },
           {
             "q": "vps для нейросетей",
@@ -6743,10 +6800,10 @@
           },
           {
             "q": "vps промокод",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 62.5
+            "position": 62.3
           },
           {
             "q": "vps сервер цена",
@@ -6791,6 +6848,13 @@
             "position": 71.5
           },
           {
+            "q": "аеза хостинг",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 79.0
+          },
+          {
             "q": "акции впс",
             "impressions": 1,
             "clicks": 0,
@@ -6799,10 +6863,10 @@
           },
           {
             "q": "аренда gpu сервера для инференса",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 90.0
+            "position": 90.2
           },
           {
             "q": "аренда сервера",
@@ -6876,10 +6940,10 @@
           },
           {
             "q": "промокоды vps",
-            "impressions": 13,
+            "impressions": 14,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 65.8
+            "position": 67.6
           },
           {
             "q": "селектел калькулятор",
@@ -6897,17 +6961,17 @@
           },
           {
             "q": "сервер для рендеринга",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 86.7
-          },
-          {
-            "q": "сервера для рендеринга",
             "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 89.0
+            "position": 86.8
+          },
+          {
+            "q": "сервера для рендеринга",
+            "impressions": 5,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 88.6
           },
           {
             "q": "сервера цены",
@@ -6925,10 +6989,10 @@
           },
           {
             "q": "серверы для рендеринга",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 99.5
+            "position": 99.0
           },
           {
             "q": "сколько стоит аренда сервера в месяц",
@@ -6967,10 +7031,10 @@
           },
           {
             "q": "сравнение тарифов хостинг-провайдеров",
-            "impressions": 8,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 71.1
+            "position": 71.2
           },
           {
             "q": "стоимость vps",
@@ -7022,6 +7086,13 @@
             "position": 72.0
           },
           {
+            "q": "хостинг fornex",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 111.0
+          },
+          {
             "q": "хостинг цена в год",
             "impressions": 9,
             "clicks": 0,
@@ -7060,10 +7131,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 236,
+            "impressions": 254,
             "clicks": 2,
-            "ctr": 0.0085,
-            "position": 45.0
+            "ctr": 0.0079,
+            "position": 46.2
           },
           {
             "country": "arg",
@@ -7116,7 +7187,7 @@
           },
           {
             "country": "chn",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
             "position": 9.0
@@ -7151,10 +7222,10 @@
           },
           {
             "country": "ind",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 17.0
+            "position": 12.3
           },
           {
             "country": "jor",
@@ -7162,6 +7233,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 95.0
+          },
+          {
+            "country": "kaz",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 5.0
           },
           {
             "country": "mar",
@@ -7242,17 +7320,17 @@
           },
           {
             "country": "ukr",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.5
+            "position": 77.4
           },
           {
             "country": "usa",
-            "impressions": 81,
+            "impressions": 82,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 50.9
+            "position": 50.3
           },
           {
             "country": "vnm",
@@ -7262,8 +7340,17 @@
             "position": 55.0
           }
         ],
-        "pagesInSearch": 51,
-        "sitemaps": []
+        "pagesInSearch": 52,
+        "sitemaps": [
+          {
+            "path": "https://servercalc.ru/sitemap.xml",
+            "lastSubmitted": "2026-09-12T14:21:51.783Z",
+            "submitted": 66,
+            "isPending": false,
+            "errors": 0,
+            "warnings": 0
+          }
+        ]
       },
       {
         "host": "serverselection.online",
@@ -7369,10 +7456,10 @@
           },
           {
             "q": "buy vps server usa",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 81.1
+            "position": 81.6
           },
           {
             "q": "buy vps usa",
@@ -7446,10 +7533,10 @@
           },
           {
             "q": "cloud vps usa",
-            "impressions": 28,
+            "impressions": 29,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 86.1
+            "position": 86.0
           },
           {
             "q": "cloudvds",
@@ -7467,10 +7554,10 @@
           },
           {
             "q": "cloudways",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 23.6
+            "position": 20.8
           },
           {
             "q": "cloudways hosting plans",
@@ -7515,11 +7602,18 @@
             "position": 90.0
           },
           {
-            "q": "database vps",
-            "impressions": 16,
+            "q": "compare servers",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 74.1
+            "position": 87.0
+          },
+          {
+            "q": "database vps",
+            "impressions": 17,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 74.7
           },
           {
             "q": "database vps hosting",
@@ -7775,10 +7869,10 @@
           },
           {
             "q": "racknerd",
-            "impressions": 27,
+            "impressions": 28,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 33.9
+            "position": 33.8
           },
           {
             "q": "racknerd hosting",
@@ -7789,10 +7883,10 @@
           },
           {
             "q": "racknerd review",
-            "impressions": 7,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 42.3
+            "position": 42.7
           },
           {
             "q": "racknerd reviews",
@@ -7887,10 +7981,10 @@
           },
           {
             "q": "server sizing calculator",
-            "impressions": 5,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.6
+            "position": 73.8
           },
           {
             "q": "servers comparison",
@@ -7978,10 +8072,10 @@
           },
           {
             "q": "united states vps",
-            "impressions": 78,
+            "impressions": 79,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.5
+            "position": 84.6
           },
           {
             "q": "unmanaged server",
@@ -8272,10 +8366,10 @@
           },
           {
             "q": "vps for usa",
-            "impressions": 24,
+            "impressions": 25,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.3
+            "position": 84.4
           },
           {
             "q": "vps for vpn",
@@ -8391,7 +8485,7 @@
           },
           {
             "q": "vps in usa",
-            "impressions": 92,
+            "impressions": 95,
             "clicks": 0,
             "ctr": 0.0,
             "position": 82.3
@@ -8524,10 +8618,10 @@
           },
           {
             "q": "vps servers usa",
-            "impressions": 40,
+            "impressions": 42,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 85.3
+            "position": 85.5
           },
           {
             "q": "vps ssd",
@@ -8988,10 +9082,10 @@
         "countries": [
           {
             "country": "ukr",
-            "impressions": 145,
+            "impressions": 147,
             "clicks": 1,
-            "ctr": 0.0069,
-            "position": 77.2
+            "ctr": 0.0068,
+            "position": 76.6
           },
           {
             "country": "are",
@@ -9009,10 +9103,10 @@
           },
           {
             "country": "aus",
-            "impressions": 27,
+            "impressions": 28,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 68.8
+            "position": 67.4
           },
           {
             "country": "aut",
@@ -9065,17 +9159,17 @@
           },
           {
             "country": "col",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
             "position": 2.0
           },
           {
             "country": "deu",
-            "impressions": 18,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 36.1
+            "position": 34.7
           },
           {
             "country": "dnk",
@@ -9128,10 +9222,10 @@
           },
           {
             "country": "gbr",
-            "impressions": 170,
+            "impressions": 172,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 66.3
+            "position": 66.4
           },
           {
             "country": "hkg",
@@ -9149,10 +9243,10 @@
           },
           {
             "country": "ind",
-            "impressions": 153,
+            "impressions": 154,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.4
+            "position": 72.5
           },
           {
             "country": "irn",
@@ -9226,10 +9320,10 @@
           },
           {
             "country": "mex",
-            "impressions": 27,
+            "impressions": 28,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.1
+            "position": 70.6
           },
           {
             "country": "mmr",
@@ -9303,10 +9397,10 @@
           },
           {
             "country": "rus",
-            "impressions": 356,
+            "impressions": 357,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 81.7
+            "position": 81.5
           },
           {
             "country": "sau",
@@ -9366,10 +9460,10 @@
           },
           {
             "country": "usa",
-            "impressions": 908,
+            "impressions": 923,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 75.5
+            "position": 75.4
           },
           {
             "country": "ven",
@@ -9391,7 +9485,7 @@
           {
             "path": "https://serverselection.online/sitemap.xml",
             "lastSubmitted": "2026-08-29T19:30:56.207Z",
-            "submitted": 40,
+            "submitted": 42,
             "isPending": false,
             "errors": 0,
             "warnings": 0
@@ -9446,17 +9540,24 @@
           },
           {
             "q": "ai агенты для бизнеса",
-            "impressions": 2,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 62.5
+            "position": 68.4
+          },
+          {
+            "q": "ai агенты купить",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 65.0
           },
           {
             "q": "ai ассистент для бизнеса",
-            "impressions": 66,
+            "impressions": 68,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 39.1
+            "position": 39.8
           },
           {
             "q": "ai бизнес ассистент",
@@ -9467,10 +9568,10 @@
           },
           {
             "q": "ai бизнес помощник",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 52.6
+            "position": 54.4
           },
           {
             "q": "ai помощник для бизнеса",
@@ -9481,10 +9582,10 @@
           },
           {
             "q": "ai продавец",
-            "impressions": 4,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 56.5
+            "position": 53.7
           },
           {
             "q": "apartico",
@@ -9516,10 +9617,10 @@
           },
           {
             "q": "mygribs",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 8.5
+            "position": 7.7
           },
           {
             "q": "vallab",
@@ -9537,10 +9638,10 @@
           },
           {
             "q": "автоматизация отдела продаж",
-            "impressions": 23,
+            "impressions": 26,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 50.9
+            "position": 50.8
           },
           {
             "q": "автоматизация отдела продаж crm",
@@ -9558,10 +9659,10 @@
           },
           {
             "q": "автоматизация продаж",
-            "impressions": 14,
+            "impressions": 17,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 75.3
+            "position": 74.1
           },
           {
             "q": "автоматизация процесса продаж",
@@ -9578,6 +9679,13 @@
             "position": 55.0
           },
           {
+            "q": "автоматизация процессов продаж",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 76.0
+          },
+          {
             "q": "автоматизация работы отдела продаж",
             "impressions": 2,
             "clicks": 0,
@@ -9586,10 +9694,10 @@
           },
           {
             "q": "автоматизація відділу продажів",
-            "impressions": 14,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.7
+            "position": 84.4
           },
           {
             "q": "аи ассистент для бизнеса",
@@ -9614,10 +9722,10 @@
           },
           {
             "q": "анализ звонков отдела продаж",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 24.0
+            "position": 24.3
           },
           {
             "q": "анализ телефонных звонков",
@@ -9656,17 +9764,17 @@
           },
           {
             "q": "внедрение битрикс 24 под ключ",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.0
+            "position": 6.0
           },
           {
             "q": "внедрение битрикс24 под ключ",
-            "impressions": 5,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 22.4
+            "position": 22.1
           },
           {
             "q": "внедрение ии в бизнес под ключ",
@@ -9676,11 +9784,18 @@
             "position": 77.0
           },
           {
-            "q": "ии агент в компанию",
-            "impressions": 1,
+            "q": "голосовой ии агент для бизнеса",
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 79.0
+            "position": 87.5
+          },
+          {
+            "q": "ии агент в компанию",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 74.7
           },
           {
             "q": "ии агент для бизнеса",
@@ -9690,6 +9805,13 @@
             "position": 59.0
           },
           {
+            "q": "ии агент заказать",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 82.0
+          },
+          {
             "q": "ии агент под ключ",
             "impressions": 2,
             "clicks": 0,
@@ -9697,11 +9819,18 @@
             "position": 51.0
           },
           {
-            "q": "ии ассистент для бизнеса",
-            "impressions": 55,
+            "q": "ии агенты для бизнеса купить",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 38.0
+            "position": 76.0
+          },
+          {
+            "q": "ии ассистент для бизнеса",
+            "impressions": 59,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 40.2
           },
           {
             "q": "ии ассистент для бизнеса партнерская программа",
@@ -9747,10 +9876,17 @@
           },
           {
             "q": "ии консультант для бизнеса",
-            "impressions": 4,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 70.2
+            "position": 74.0
+          },
+          {
+            "q": "ии менеджер для бизнеса",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 86.0
           },
           {
             "q": "ии под ключ",
@@ -9768,10 +9904,10 @@
           },
           {
             "q": "ии помощник для бизнеса",
-            "impressions": 49,
+            "impressions": 54,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 39.3
+            "position": 41.8
           },
           {
             "q": "ии помощники для бизнеса",
@@ -9779,6 +9915,20 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 45.0
+          },
+          {
+            "q": "ии сотрудники для бизнеса",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 89.0
+          },
+          {
+            "q": "корпоративные ии агенты",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 66.0
           },
           {
             "q": "нейросеть бизнес ассистент",
@@ -9796,10 +9946,10 @@
           },
           {
             "q": "платформа для ии агентов",
-            "impressions": 1,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.0
+            "position": 82.7
           },
           {
             "q": "речевая аналитика в продажах",
@@ -9817,10 +9967,10 @@
           },
           {
             "q": "речевая аналитика звонков битрикс24",
-            "impressions": 11,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 30.7
+            "position": 28.8
           },
           {
             "q": "речевая аналитика отдела продаж",
@@ -9845,10 +9995,17 @@
           },
           {
             "q": "сервис для создания ии агента",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 63.0
+            "position": 65.5
+          },
+          {
+            "q": "сервисы ии агенты",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 64.0
           },
           {
             "q": "сервисы ии ассистентов для малого бизнеса",
@@ -9896,10 +10053,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 224,
+            "impressions": 264,
             "clicks": 5,
-            "ctr": 0.0223,
-            "position": 41.6
+            "ctr": 0.0189,
+            "position": 45.7
           },
           {
             "country": "are",
@@ -9938,10 +10095,10 @@
           },
           {
             "country": "bra",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 13.2
+            "position": 14.4
           },
           {
             "country": "che",
@@ -9980,10 +10137,10 @@
           },
           {
             "country": "gbr",
-            "impressions": 10,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 3.8
+            "position": 4.0
           },
           {
             "country": "geo",
@@ -10063,6 +10220,13 @@
             "position": 4.0
           },
           {
+            "country": "rou",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 1.0
+          },
+          {
             "country": "tha",
             "impressions": 1,
             "clicks": 0,
@@ -10071,21 +10235,21 @@
           },
           {
             "country": "tur",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 6.0
+            "position": 5.8
           },
           {
             "country": "ukr",
-            "impressions": 209,
+            "impressions": 228,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 45.0
+            "position": 46.1
           },
           {
             "country": "usa",
-            "impressions": 56,
+            "impressions": 57,
             "clicks": 0,
             "ctr": 0.0,
             "position": 7.3
@@ -10099,7 +10263,33 @@
           }
         ],
         "pagesInSearch": 65,
-        "sitemaps": []
+        "sitemaps": [
+          {
+            "path": "https://makebiz.life/sitemap.xml",
+            "lastSubmitted": "2026-09-12T08:40:44.982Z",
+            "submitted": 50,
+            "isPending": false,
+            "errors": 0,
+            "warnings": 0
+          }
+        ]
+      },
+      {
+        "host": "makebiztechnologies.com",
+        "property": "sc-domain:makebiztechnologies.com",
+        "queries": [],
+        "countries": [],
+        "pagesInSearch": 0,
+        "sitemaps": [
+          {
+            "path": "https://makebiztechnologies.com/sitemap.xml",
+            "lastSubmitted": "2026-09-12T14:26:25.477Z",
+            "submitted": 51,
+            "isPending": false,
+            "errors": 0,
+            "warnings": 0
+          }
+        ]
       }
     ]
   },

@@ -38,12 +38,15 @@ function DailyChart({ rows }) {
   if (n < 2) return <div className="empty">мало точек для динамики</div>;
   const W = 1000, H = 210, PL = 46, PR = 46, PT = 12, PB = 26;
   const maxCost = Math.max(1, ...rows.map((r) => r.cost));
-  const maxConv = Math.max(1, ...rows.map((r) => r.conversions || 0));
+  // Конверсии есть только в окне снимка коннектора: линию рисуем по тем точкам,
+  // где значение реально пришло, а не притягиваем недостающие дни к нулю.
+  const convPts = rows.map((r, i) => ({ i, v: r.conversions })).filter((p) => p.v != null);
+  const maxConv = Math.max(1, ...convPts.map((p) => p.v));
   const bw = (W - PL - PR) / n;
   const X = (i) => PL + i * bw + bw / 2;
   const yCost = (v) => H - PB - (H - PT - PB) * (v / maxCost);
   const yConv = (v) => H - PB - (H - PT - PB) * (v / maxConv);
-  const line = rows.map((r, i) => `${X(i).toFixed(1)},${yConv(r.conversions || 0).toFixed(1)}`).join(' ');
+  const line = convPts.map((p) => `${X(p.i).toFixed(1)},${yConv(p.v).toFixed(1)}`).join(' ');
   const onMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     if (!rect.width) return;
@@ -62,7 +65,7 @@ function DailyChart({ rows }) {
             fill={BRASS} opacity={hi == null || hi === i ? 0.85 : 0.4} rx="1.5" />
         ))}
         <polyline points={line} fill="none" stroke={GOOD} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
-        {rows.map((r, i) => <circle key={i} cx={X(i)} cy={yConv(r.conversions || 0)} r="2.4" fill={GOOD} />)}
+        {convPts.map((p) => <circle key={p.i} cx={X(p.i)} cy={yConv(p.v)} r="2.4" fill={GOOD} />)}
         {rows.map((r, i) => i % labelEvery === 0 || i === n - 1 ? (
           <text key={i} x={X(i)} y={H - 8} textAnchor="middle" fill="#6b7987" fontSize="11">{shortDate(new Date(r.date), 'UTC')}</text>
         ) : null)}
@@ -70,12 +73,13 @@ function DailyChart({ rows }) {
       </svg>
       {hi != null && rows[hi] && (() => {
         const r = rows[hi]; const cpa = r.conversions ? Math.round(r.cost / r.conversions) : null;
+        const convTxt = r.conversions == null ? 'нет данных' : String(r.conversions);
         const leftPct = (X(hi) / W) * 100;
         return (
           <div style={{ position: 'absolute', top: -4, left: `${leftPct}%`, transform: `translateX(${leftPct > 70 ? '-100%' : '-50%'})`, background: 'var(--panel-2)', border: '1px solid var(--line)', borderRadius: 8, padding: '7px 10px', fontSize: 12, pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 3, boxShadow: '0 6px 20px rgba(0,0,0,.35)' }}>
             <div className="dim" style={{ fontSize: 11, marginBottom: 4 }}>{r.date}</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14 }}><span style={{ color: BRASS }}>Расход</span><b className="mono">{rub(r.cost)}</b></div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14 }}><span style={{ color: GOOD }}>Конверсии</span><b className="mono">{r.conversions || 0}</b></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14 }}><span style={{ color: GOOD }}>Конверсии</span><b className="mono">{convTxt}</b></div>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14, borderTop: '1px solid var(--line)', marginTop: 4, paddingTop: 4 }}><span className="dim">CPA</span><b className="mono">{cpa != null ? rub(cpa) : '—'}</b></div>
           </div>
         );
@@ -219,7 +223,7 @@ function ChannelFunnel({ campaigns }) {
   );
 }
 
-export default function DirectView({ campaigns = [], daily = [], queries = {}, generated, win, gran = 'day', granAuto = true }) {
+export default function DirectView({ campaigns = [], daily = [], queries = {}, generated, win, gran = 'day', granAuto = true, period = null }) {
   const agg = useMemo(() => {
     const t = { cost: 0, impressions: 0, clicks: 0, conversions: 0 };
     for (const c of campaigns) { t.cost += c.cost || 0; t.impressions += c.impressions || 0; t.clicks += c.clicks || 0; t.conversions += c.conversions || 0; }
@@ -274,6 +278,11 @@ export default function DirectView({ campaigns = [], daily = [], queries = {}, g
 
       <Card title="Динамика" hint={`столбцы расход, линия конверсии; наведи — расход, конверсии и CPA за точку · разрез: ${GRAN_LABEL[gran] || gran}${granAuto ? ' (авто)' : ''}`}>
         <DailyChart rows={bucketRows(daily, gran)} />
+        <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+          {period && !period.fallback
+            ? `Расход и клики — история кабинета по дням за период из шапки (${period.from} — ${period.to}). Конверсии Директ отдаёт только в 30-дневном окне снимка, поэтому линия начинается там, где они есть.`
+            : 'Расход и конверсии — из 30-дневного снимка коннектора: истории по дням пока нет.'}
+        </div>
       </Card>
 
       <Card title="Кампании" hint="сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий">

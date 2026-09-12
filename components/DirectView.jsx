@@ -127,7 +127,7 @@ function CampTable({ camps, medCPA }) {
             return (
               <tr key={c.id}>
                 <td>{c.name}{flag ? <span style={{ marginLeft: 6, fontSize: 10.5, color: flag.c, border: `1px solid ${flag.c}`, borderRadius: 4, padding: '0 5px' }}>{flag.t}</span> : null}<div style={{ color: 'var(--muted)', fontSize: 10.5 }}>№ {c.id}</div></td>
-                <td className="dim" style={{ fontSize: 12 }}>{KIND_RU[c.kind] || c.kind}</td>
+                <td className="dim" style={{ fontSize: 12 }}>{KIND_RU[c.kind] || c.kind || '—'}</td>
                 <td className="n muted">{num(c.impressions || 0)}</td>
                 <td className="n">{num(c.clicks)}</td>
                 <td className="n" style={{ color: c.ctr >= 10 ? GOOD : c.ctr < 5 && c.kind !== 'rsya' ? WARN : undefined }}>{c.ctr}%</td>
@@ -217,13 +217,13 @@ function ChannelFunnel({ campaigns }) {
         </table>
       </div>
       <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
-        Окупаемость (доход роялти − расход, ROMI) — на «Партнёрки Директ» и «Проекты и кампании» (накопительно с 1 февраля). Здесь — эффективность самого канала за ~30 дней.
+        Окупаемость (доход роялти − расход, ROMI) — на «Доход партнёрок» и «Проекты и бюджет» (накопительно с 1 февраля). Здесь — эффективность самого канала за выбранный период.
       </div>
     </div>
   );
 }
 
-export default function DirectView({ campaigns = [], daily = [], totals = null, prevTotals = null, queries = {}, generated, win, gran = 'day', granAuto = true, period = null }) {
+export default function DirectView({ campaigns = [], fromHistory = false, daily = [], totals = null, prevTotals = null, queries = {}, generated, win, gran = 'day', granAuto = true, period = null }) {
   const agg = useMemo(() => {
     const t = { cost: 0, impressions: 0, clicks: 0, conversions: 0 };
     for (const c of campaigns) { t.cost += c.cost || 0; t.impressions += c.impressions || 0; t.clicks += c.clicks || 0; t.conversions += c.conversions || 0; }
@@ -315,16 +315,18 @@ export default function DirectView({ campaigns = [], daily = [], totals = null, 
         </div>
       </Card>
 
-      <Card title="Кампании" hint={`снимок Директа за ~30 дней${win ? ` (${win.from || ''}…${win.to || ''})` : ''} · сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий`}>
+      <Card title="Кампании" hint={fromHistory
+        ? `за период ${period?.from || ''} — ${period?.to || ''}, только кампании «в бюджете» · сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий`
+        : `снимок Директа за ~30 дней${win ? ` (${win.from || ''}…${win.to || ''})` : ''} · сортировка по клику на заголовок. CPA цветом: зелёный ≤ медианы, жёлтый до ×2, красный дороже или без конверсий`}>
         <CampTable camps={campaigns} medCPA={medCPA || 1} />
-        {hist ? (
-          <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
-            Разбивка по кампаниям есть только в 30-дневном снимке Директа. Итоги сверху считаются иначе — за период из шапки и только по кампаниям с галкой «в бюджете», поэтому суммы не совпадают.
-          </div>
-        ) : null}
+        <div className="dim" style={{ fontSize: 11.5, marginTop: 8 }}>
+          {fromHistory
+            ? `${campaigns.length} кампаний из кабинета, сумма расхода сходится с итогами сверху. Кампании без галки «в бюджете» сюда не попадают — галки правятся на «Проекты и бюджет».`
+            : 'Снимок коннектора за ~30 дней: истории по дням на этот период ещё нет.'}
+        </div>
       </Card>
 
-      <Card title="Воронка канала" hint="показы → клики → конверсии и где проседает, с разбивкой по провайдерам/сайтам · снимок за ~30 дней">
+      <Card title="Воронка канала" hint={`показы → клики → конверсии и где проседает, с разбивкой по провайдерам/сайтам · ${fromHistory ? 'за период из шапки' : 'снимок за ~30 дней'}`}>
         <ChannelFunnel campaigns={campaigns} />
       </Card>
 

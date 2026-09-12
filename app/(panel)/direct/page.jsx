@@ -1,7 +1,7 @@
 import { parseFilters } from '@/lib/filters';
 import { loadMarketing } from '@/lib/marketing';
 import { VPS_CAMPAIGN_ALLOW as ALLOW } from '@/lib/direct';
-import { spendDaysRange } from '@/lib/projects';
+import { spendPeriod } from '@/lib/projects';
 import DirectView from '@/components/DirectView';
 
 export const dynamic = 'force-dynamic';
@@ -30,17 +30,21 @@ export default async function DirectPage({ searchParams }) {
   // График живёт на истории по дням из кабинета (с 01.02.2026) и слушается периода
   // из шапки. Конверсии есть только в 30-дневном снимке коннектора — накладываем их
   // на те дни, где они реально есть, остальные точки линии не рисуем.
-  // Берём сразу период из шапки и предыдущий такой же отрезок одним проходом
-  // (внутри spendDaysRange запрос настроек кампаний, дважды его гонять незачем)
-  // и делим полученные дни по дате начала периода.
-  let days = [], prevDays = [];
+  // Дни периода, дни прошлого такого же отрезка и разбивка по кампаниям —
+  // одним проходом по истории кабинета и одним запросом настроек.
+  let days = [], prevDays = [], periodCamps = [];
   try {
-    const all = await spendDaysRange(f.prevFrom, f.to);
-    days = all.filter((r) => r.date >= f.from);
-    prevDays = all.filter((r) => r.date < f.from);
+    const r = await spendPeriod(f.from, f.to, f.prevFrom);
+    days = r.days; prevDays = r.prevDays; periodCamps = r.campaigns;
   } catch {
-    days = []; prevDays = [];
+    days = []; prevDays = []; periodCamps = [];
   }
+  // Тип кампании (поиск / РСЯ / бренд) есть только в снимке — подмешиваем по id.
+  const kindById = {};
+  for (const c of (m?.direct?.campaigns || [])) kindById[String(c.id)] = c.kind;
+  const campTable = periodCamps.length
+    ? periodCamps.map((c) => ({ ...c, kind: kindById[String(c.id)] || '' }))
+    : campaigns;
   // Конверсии берём из истории кабинета, а где её ещё нет — из 30-дневного снимка.
   const convByDate = {};
   for (const r of (m?.direct?.dailyVps || [])) convByDate[String(r.date).slice(0, 10)] = r.conversions ?? null;
@@ -50,7 +54,8 @@ export default async function DirectPage({ searchParams }) {
 
   return (
     <DirectView
-      campaigns={campaigns}
+      campaigns={campTable}
+      fromHistory={periodCamps.length > 0}
       daily={daily}
       totals={days.length ? sumDays(daily) : null}
       prevTotals={prevDays.length ? sumDays(prevDays) : null}

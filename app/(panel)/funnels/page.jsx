@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { parseFilters } from '@/lib/filters';
 import { num, pct } from '@/lib/format';
-import { funnelTraffic, funnelEvents } from '@/lib/query';
+import { funnelTraffic, funnelEvents, sites as allSites } from '@/lib/query';
 import { Card, Empty } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
@@ -9,13 +9,6 @@ export const dynamic = 'force-dynamic';
 const BRASS = '#c6a15b';
 const STEEL = '#5b7a99';
 const GREEN = '#3fae7a';
-
-// Направления = наши сайты (ServerSelection выведен из аналитики 24.08).
-const DIRECTIONS = [
-  { key: 'podborvps', name: 'ПодборVPS', dom: 'podborvps.ru' },
-  { key: 'servercalc-ru', name: 'ServerCalc.ru', dom: 'servercalc.ru' },
-  { key: 'servercalc-com', name: 'ServerCalc.com', dom: 'servercalc.com' },
-];
 
 function Steps({ steps, color }) {
   const top = steps[0]?.value || 0;
@@ -54,7 +47,15 @@ export default async function Funnels({ searchParams }) {
   const f = parseFilters(sp);
   const dir = typeof sp.dir === 'string' ? sp.dir : 'all';
 
-  const [traffic, fe] = await Promise.all([funnelTraffic(f), funnelEvents(f)]);
+  const [traffic, fe, siteList] = await Promise.all([funnelTraffic(f), funnelEvents(f), allSites()]);
+
+  // Направления = живые площадки из той же таблицы, что и везде в панели.
+  // Раньше тут лежал список из трёх сайтов прямо в коде, и новый сайт в воронки
+  // не попадал вообще: ни в таблицу, ни в чипы. Теперь список не может разойтись.
+  const DIRECTIONS = siteList
+    .filter((s) => !s.archived)
+    .filter((s) => !f.line || (s.line || 'vps') === f.line)
+    .map((s) => ({ key: s.key, name: s.name, dom: s.domain }));
 
   const tBy = new Map(traffic.map((r) => [r.direction, r]));
   const eBy = new Map();
@@ -66,7 +67,7 @@ export default async function Funnels({ searchParams }) {
 
   function href(d) {
     const q = new URLSearchParams();
-    for (const k of ['d', 'from', 'to', 'tz', 'bots']) if (sp[k]) q.set(k, String(sp[k]));
+    for (const k of ['d', 'from', 'to', 'tz', 'bots', 'line', 'g', 'src']) if (sp[k]) q.set(k, String(sp[k]));
     if (d && d !== 'all') q.set('dir', d);
     const s = q.toString();
     return '/funnels' + (s ? '?' + s : '');
@@ -85,8 +86,8 @@ export default async function Funnels({ searchParams }) {
     <div className="grid" style={{ gap: 14 }}>
       <Card>
         <div className="note" style={{ margin: 0 }}>
-          Путь пользователя по каждому направлению и где теряются люди. ServerSelection разделён на английскую (Дубай)
-          и русскую версии — это четыре разных направления. Трафик-воронка считается из наших данных сразу; воронки
+          Путь пользователя по каждой площадке и где теряются люди. Список берётся из «Сайтов и подключения»,
+          поэтому новый сайт появляется тут сам. Трафик-воронка считается из наших данных сразу; воронки
           «Калькулятор» и «Акции» собираются из событий сайта и копятся с момента подключения этих шагов к пикселю.
           {!anyEv ? <><br /><b style={{ color: BRASS }}>Шаги калькулятора и акций пока не накопились</b> — появятся после первых заходов.</> : null}
         </div>
@@ -97,6 +98,10 @@ export default async function Funnels({ searchParams }) {
           ))}
         </div>
       </Card>
+
+      {DIRECTIONS.length === 0 ? (
+        <Card><Empty text="Для выбранного направления нет активных площадок. Смени фильтр в шапке или заведи сайт в «Сайтах и подключении»." /></Card>
+      ) : null}
 
       <Card title="Сравнение направлений" hint="конверсия по периоду фильтра">
         <div className="scroll">

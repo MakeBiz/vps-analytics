@@ -17,6 +17,7 @@ const SITE_COLORS = {
   'servercalc-ru': '#6cbf8b',           // ServerCalc.ru — зелёный
   'serverselection-online': '#b98cc4',  // ServerSelection — сиреневый
 };
+const GRAN_LABEL = { day: 'дни', week: 'недели', month: 'месяцы' };
 const SITE_FALLBACK = ['#d9a441', '#7f9dbb', '#8a97a4', '#c98b6b'];
 
 // Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}].
@@ -135,7 +136,7 @@ function Bars({ rows, label, color = YA, max }) {
   );
 }
 
-export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], wmGenerated, gscGenerated, sites = [], tz }) {
+export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], wmGenerated, gscGenerated, sites = [], tz, gran = 'day', granAuto = true }) {
   const nameOf = useMemo(() => Object.fromEntries(sites.map((s) => [s.key, s.name])), [sites]);
   const [qfilter, setQfilter] = useState('all'); // all | yandex | google | opp | lowctr
   const [qsort, setQsort] = useState({ k: 'impressions', d: -1 });
@@ -240,11 +241,25 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
 
   // Динамика по дням в разрезе САЙТОВ: сводим строки {d, site_key, visits} в
   // {d, [siteKey]: visits} и оставляем только сайты с органикой, каждому — свой цвет.
+  // Разрез времени приходит из единой шапки: день / неделя с понедельника / месяц.
   const daySeries = useMemo(() => {
+    const iso = (d) => (typeof d === 'string' ? d.slice(0, 10) : new Date(d).toISOString().slice(0, 10));
+    const bucket = (d) => {
+      const s = iso(d);
+      if (gran === 'month') return s.slice(0, 8) + '01';
+      if (gran === 'week') {
+        const dt = new Date(s + 'T00:00:00Z');
+        dt.setUTCDate(dt.getUTCDate() - ((dt.getUTCDay() + 6) % 7));
+        return dt.toISOString().slice(0, 10);
+      }
+      return s;
+    };
     const byD = {};
     const totals = {};
     for (const r of rep.byDay || []) {
-      (byD[r.d] || (byD[r.d] = { d: r.d }))[r.site_key] = r.visits;
+      const k = bucket(r.d);
+      const row = byD[k] || (byD[k] = { d: k });
+      row[r.site_key] = (row[r.site_key] || 0) + r.visits;
       totals[r.site_key] = (totals[r.site_key] || 0) + r.visits;
     }
     const rows = Object.values(byD).sort((a, b) => (a.d < b.d ? -1 : 1));
@@ -256,7 +271,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       .sort((a, b) => totals[b] - totals[a])
       .map((k) => ({ key: k, name: nameOf[k] || k, color: SITE_COLORS[k] || SITE_FALLBACK[fb++ % SITE_FALLBACK.length] }));
     return { rows, series };
-  }, [rep.byDay, nameOf]);
+  }, [rep.byDay, nameOf, gran]);
 
   return (
     <div className="grid" style={{ gap: 14 }}>
@@ -269,7 +284,7 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
       </div>
 
       {/* Динамика */}
-      <Card title="Динамика органики" hint="визиты по дням, линия на каждый сайт">
+      <Card title="Динамика органики" hint={`визиты, линия на каждый сайт · разрез: ${GRAN_LABEL[gran] || gran}${granAuto ? ' (авто по длине периода)' : ''}`}>
         <Line rows={daySeries.rows} series={daySeries.series} />
       </Card>
 

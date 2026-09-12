@@ -45,6 +45,8 @@ export default async function Organic({ searchParams }) {
       gscGenerated={m?.gsc?.generated || null}
       sites={sites}
       tz={f.tz}
+      gran={f.gran}
+      granAuto={f.granAuto}
     />
   );
 }

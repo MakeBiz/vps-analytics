@@ -26,7 +26,7 @@ export default async function Overview({ searchParams }) {
     <OverviewView
       ovRows={ovRows} prevRows={prevRows} dayRows={dayRows} hourRows={hourRows}
       siteRows={siteRows} channelRows={channelRows} provRows={provRows}
-      provNames={provNames} sites={sites} tz={f.tz}
+      provNames={provNames} sites={sites} tz={f.tz} gran={f.gran} granAuto={f.granAuto}
     />
   );
 }

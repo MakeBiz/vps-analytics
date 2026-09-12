@@ -12,7 +12,7 @@ const delta = (now, prev) => (prev ? ((now - prev) / prev) * 100 : undefined);
  * динамикой к прошлому периоду, график по дням, таблицы сайтов/провайдеров/каналов
  * и график по часам. Разбивка по сайту в данных сохраняется (для таблицы «Сайты»).
  */
-export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, siteRows, channelRows, provRows, provNames, sites, tz }) {
+export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, siteRows, channelRows, provRows, provNames, sites, tz, gran = 'day', granAuto = true }) {
   const on = () => true; // фильтр сайта теперь в шапке; здесь берём все пришедшие строки
 
   const sumOv = (rows) => rows.filter((r) => on(r.site_key)).reduce((a, r) => ({
@@ -24,14 +24,29 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
   const avgSec = ov.visits ? Math.round(ov.sec_sum / ov.visits) : 0;
   const prevAvgSec = prev.visits ? Math.round(prev.sec_sum / prev.visits) : 0;
 
-  // график по дням: суммируем выбранные сайты по дате
+  // график по времени: суммируем выбранные сайты и кладём в корзину разреза
+  // (день / неделя с понедельника / месяц). Разрез приходит из единой шапки.
+  const iso = (d) => (typeof d === 'string' ? d.slice(0, 10) : new Date(d).toISOString().slice(0, 10));
+  const bucket = (d) => {
+    const s = iso(d);
+    if (gran === 'month') return s.slice(0, 8) + '01';
+    if (gran === 'week') {
+      const dt = new Date(s + 'T00:00:00Z');
+      dt.setUTCDate(dt.getUTCDate() - ((dt.getUTCDay() + 6) % 7));
+      return dt.toISOString().slice(0, 10);
+    }
+    return s;
+  };
   const dayMap = {};
   for (const r of dayRows) {
     if (!on(r.site_key)) continue;
-    const e = dayMap[r.d] || (dayMap[r.d] = { d: r.d, visits: 0, clicks: 0 });
+    const k = bucket(r.d);
+    const e = dayMap[k] || (dayMap[k] = { d: k, visits: 0, clicks: 0 });
     e.visits += r.visits; e.clicks += r.clicks;
   }
   const days = Object.values(dayMap).sort((a, b) => (a.d < b.d ? -1 : 1));
+  const GRAN_RU = { day: 'дни', week: 'недели', month: 'месяцы' };
+  const granHint = `разрез: ${GRAN_RU[gran] || gran}${granAuto ? ' (авто по длине периода)' : ''}`;
 
   // по часам 0..23
   const hourAgg = Array.from({ length: 24 }, (_, h) => ({ h, visits: 0, clicks: 0 }));
@@ -72,7 +87,7 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
         <Kpi label="Среднее время визита" value={dur(avgSec)} sub={`отказы ${pct(ov.bounced, ov.visits)}, было ${pct(prev.bounced, prev.visits)}`} />
       </div>
 
-      <Card title="Динамика по дням" hint="визиты и переходы по выбранным сайтам">
+      <Card title="Динамика" hint={`визиты и переходы по выбранным сайтам · ${granHint}`}>
         <Chart rows={days} tz={tz} />
       </Card>
 

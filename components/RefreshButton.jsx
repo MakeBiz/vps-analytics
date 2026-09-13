@@ -34,7 +34,7 @@ export default function RefreshButton() {
         onClick={refresh}
         disabled={loading}
         style={{
-          background: loading ? '#26313d' : '#c6a15b',
+          background: loading ? '#26313d' : '#3aa0ff',
           color: loading ? '#93a0ae' : '#141a20',
           border: '1px solid var(--line)',
           borderRadius: 8,

@@ -1,23 +1,49 @@
 import { Suspense } from 'react';
 import Nav from '@/components/Nav';
 import TopBar from '@/components/TopBar';
+import Icon from '@/components/icons';
 import { requireAuth } from '@/lib/auth';
 import { hasDb } from '@/lib/db';
-import { sites } from '@/lib/query';
+import { sites, providerList, lastEventAt } from '@/lib/query';
+import { buildAlerts } from '@/lib/alerts';
+import snapshot from '@/data/marketing.json';
 
 export const dynamic = 'force-dynamic';
+
+const TZ = 'Asia/Dubai';
+const ymd = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+
+// «Данные обновлены» в колонтитуле: время последнего события, а не время сборки
+// страницы. Показывать время рендера было бы враньём: оно всегда свежее.
+function fmtWhen(ts) {
+  if (!ts) return 'событий ещё не было';
+  const d = new Date(ts);
+  const time = new Intl.DateTimeFormat('ru-RU', { timeZone: TZ, hour: '2-digit', minute: '2-digit' }).format(d);
+  if (ymd(d) === ymd(new Date())) return `сегодня в ${time}`;
+  const dm = new Intl.DateTimeFormat('ru-RU', { timeZone: TZ, day: 'numeric', month: 'short' }).format(d);
+  return `${dm} в ${time}`;
+}
 
 export default async function PanelLayout({ children }) {
   await requireAuth();
   let list = [];
+  let provs = [];
+  let alerts = [];
+  let last = null;
   let dbError = '';
   if (hasDb) {
     try {
-      list = (await sites()).filter((s) => !s.archived);
+      const [all, pl, lt] = await Promise.all([sites(), providerList(), lastEventAt()]);
+      list = all.filter((s) => !s.archived);
+      provs = pl.map((p) => ({ slug: p.slug, name: p.name }));
+      last = lt;
     } catch (e) {
       dbError = e.message || String(e);
     }
+    alerts = await buildAlerts(snapshot);
   }
+  const ok = hasDb && !dbError;
+
   return (
     <div className="app">
       <Suspense fallback={<aside className="side" />}>
@@ -25,7 +51,7 @@ export default async function PanelLayout({ children }) {
       </Suspense>
       <div className="main">
         <Suspense fallback={<div className="top" />}>
-          <TopBar sites={list} />
+          <TopBar sites={list} providers={provs} alerts={alerts} />
         </Suspense>
         <div className="wrap">
           {!hasDb ? (
@@ -45,6 +71,18 @@ export default async function PanelLayout({ children }) {
           ) : (
             children
           )}
+        </div>
+        <div className="foot">
+          <span><b>Сквозная аналитика</b> v3.0</span>
+          <span className="bullet">|</span>
+          <span>данные обновлены {fmtWhen(last)}</span>
+          <span className="bullet">|</span>
+          <span className={'lamp' + (ok ? '' : ' off')}>
+            <i />{ok ? 'Все системы работают' : 'База не отвечает'}
+          </span>
+          <span className="bullet">|</span>
+          <span>Помогаем зарабатывать на трафике</span>
+          <span className="wave"><Icon name="wave" size={28} /></span>
         </div>
       </div>
     </div>

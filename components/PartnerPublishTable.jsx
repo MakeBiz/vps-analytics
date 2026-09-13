@@ -2,8 +2,8 @@
 import { useMemo, useState, useTransition } from 'react';
 import { savePartners } from '@/app/(panel)/partners/actions';
 
-const BRASS = '#c6a15b';
-const STEEL = '#5b7a99';
+const BRASS = '#3aa0ff';
+const STEEL = '#2fd3c3';
 
 const FLAG_ICON = { sanction: '🚫', broken: '⚠️', unverified: '❓', ppc: '📣', orphan: '🧩' };
 
@@ -152,7 +152,7 @@ export default function PartnerPublishTable({ initial, sites, generated }) {
 
       <div className="card" style={{ padding: 0 }}>
         {help ? (
-          <div style={{ margin: 12, padding: '12px 14px', border: `1px solid ${BRASS}`, borderRadius: 8, background: 'rgba(198,161,91,.08)' }}>
+          <div style={{ margin: 12, padding: '12px 14px', border: `1px solid ${BRASS}`, borderRadius: 8, background: 'rgba(58,160,255,.08)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
               <b style={{ color: BRASS }}>{help.title}</b>
               <button onClick={() => setHelp(null)} style={{ background: 'none', border: 'none', color: '#93a0ae', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>✕</button>

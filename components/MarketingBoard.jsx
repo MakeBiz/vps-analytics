@@ -17,7 +17,7 @@ function verdict(c) {
   }
   return { t: '—', c: 'muted' };
 }
-const VC = { good: '#3fae7a', ok: '#6f97bf', warn: '#d9a441', bad: '#e0736d', muted: 'var(--dim)' };
+const VC = { good: '#3fae7a', ok: '#6f97bf', warn: '#e8a33d', bad: '#e0736d', muted: 'var(--dim)' };
 
 /**
  * Два слоя оценки рекламы в стандартном оформлении панели:
@@ -114,9 +114,9 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
           <div className="grid cols2" style={{ gap: 14 }}>
             {funnel.aggregators.map((a) => {
               const steps = [
-                { l: 'Клики Директа', v: a.clicks, c: '#5b7a99' },
+                { l: 'Клики Директа', v: a.clicks, c: '#2fd3c3' },
                 { l: 'Визиты сайта', v: a.visits, c: '#6f97bf' },
-                { l: 'Переходы к провайдеру', v: a.providerClicks, c: '#c6a15b' },
+                { l: 'Переходы к провайдеру', v: a.providerClicks, c: '#3aa0ff' },
               ];
               const top = steps[0].v || 1;
               const cpa = a.providerClicks ? a.cost / a.providerClicks : null;

@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import Icon from '@/components/icons';
 
 /**
  * Меню сгруппировано по смыслу работы, а не по таблицам данных. Группы:
@@ -10,31 +11,31 @@ import { usePathname, useSearchParams } from 'next/navigation';
  */
 const GROUPS = [
   ['Сводка', [
-    ['/', 'Обзор'],
-    ['/funnels', 'Воронки'],
+    ['/', 'Обзор', 'grid'],
+    ['/funnels', 'Воронки', 'funnel'],
   ]],
   ['Трафик', [
-    ['/sources', 'Источники и метки'],
-    ['/pages', 'Страницы'],
-    ['/geo', 'Гео и устройства'],
+    ['/sources', 'Источники и метки', 'tag'],
+    ['/pages', 'Страницы', 'file'],
+    ['/geo', 'Гео и устройства', 'globe'],
   ]],
   ['Поиск', [
-    ['/seo', 'Поиск: переходы и позиции'],
-    ['/ai', 'AI-видимость'],
+    ['/seo', 'Поиск: переходы и позиции', 'search'],
+    ['/ai', 'AI-видимость', 'spark'],
   ]],
   ['Реклама', [
-    ['/direct', 'Директ'],
-    ['/projects', 'Проекты и бюджет'],
+    ['/direct', 'Директ', 'ads'],
+    ['/projects', 'Проекты и бюджет', 'wallet'],
   ]],
   ['Партнёрки', [
-    ['/providers', 'Провайдеры'],
-    ['/buttons', 'Кнопки и места'],
-    ['/royalties', 'Доход партнёрок'],
-    ['/partners', 'Публикация у партнёров'],
+    ['/providers', 'Провайдеры', 'server'],
+    ['/buttons', 'Кнопки и места', 'cursor'],
+    ['/royalties', 'Доход партнёрок', 'coins'],
+    ['/partners', 'Публикация у партнёров', 'link'],
   ], 'vps'],
   ['Служебное', [
-    ['/log', 'Журнал событий'],
-    ['/sites', 'Сайты и подключение'],
+    ['/log', 'Журнал событий', 'list'],
+    ['/sites', 'Сайты и подключение', 'plug'],
   ]],
 ];
 
@@ -60,11 +61,10 @@ export default function Nav() {
           if (only && line && line !== only) return null;
           return (
             <div key={title}>
-              <div className="dim" style={{ fontSize: 10.5, letterSpacing: '.08em', textTransform: 'uppercase', margin: '12px 10px 4px' }}>
-                {title}
-              </div>
-              {items.map(([href, label]) => (
+              <div className="gtitle">{title}</div>
+              {items.map(([href, label, icon]) => (
                 <Link key={href} href={href + s} className={path === href ? 'on' : ''}>
+                  <Icon name={icon} />
                   {label}
                 </Link>
               ))}
@@ -72,8 +72,15 @@ export default function Nav() {
           );
         })}
         <div className="sep" />
-        <Link href="/logout" prefetch={false}>Выйти</Link>
+        <Link href="/logout" prefetch={false}>
+          <Icon name="logout" />
+          Выйти
+        </Link>
       </nav>
+      <div className="side-foot">
+        Больше<br />данных<br />больше<br />возможностей
+        <Icon name="wave" size={34} />
+      </div>
     </aside>
   );
 }

@@ -93,7 +93,7 @@ export default function ProvidersView({ rows = [], directions = [], visits = {},
               {list.map((t) => {
                 const w = Math.max(2, Math.round((t.clicks / maxClicks) * 100));
                 return (
-                  <tr key={t.provider} style={t.provider === selectedProvider ? { background: 'rgba(198,161,91,.10)' } : undefined}>
+                  <tr key={t.provider} style={t.provider === selectedProvider ? { background: 'rgba(58,160,255,.10)' } : undefined}>
                     <td>
                       <a style={{ cursor: 'pointer' }} onClick={() => goProvider(t.provider)}>{t.name || t.provider}</a>
                       <span className="dim mono" style={{ marginLeft: 6 }}>{t.provider}</span>

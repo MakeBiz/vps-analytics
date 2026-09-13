@@ -12,9 +12,9 @@ export const dynamic = 'force-dynamic';
 
 const rub = (n) => num(Math.round(n)) + ' ₽';
 const cpc = (n) => (n != null ? String(n).replace('.', ',') + ' ₽' : '—');
-const STEEL = '#5b7a99';
-const BRASS = '#c6a15b';
-const SEV = { bad: '#e0736d', warn: '#d9a441', good: '#3fae7a' };
+const STEEL = '#2fd3c3';
+const BRASS = '#3aa0ff';
+const SEV = { bad: '#e0736d', warn: '#e8a33d', good: '#3fae7a' };
 const GENDER_RU = { GENDER_MALE: 'Мужчины', GENDER_FEMALE: 'Женщины', UNKNOWN: 'Не определён' };
 const AGE_RU = { AGE_0_17: '0-17', AGE_18_24: '18-24', AGE_25_34: '25-34', AGE_35_44: '35-44', AGE_45_54: '45-54', AGE_55: '55+', UNKNOWN: 'Не определён' };
 

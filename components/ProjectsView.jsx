@@ -13,7 +13,7 @@ const stStyle = {
   excluded: { background: 'rgba(224,115,109,.12)', color: '#e79a95', borderColor: 'rgba(224,115,109,.3)' },
 };
 const nextStatus = { active: 'archived', archived: 'excluded', excluded: 'active' };
-const COLORS = ['#c6a15b', '#5b7a99', '#6cbf8b', '#d1697a', '#d9a441', '#7f9dbb', '#b98cc4', '#5bb0b0'];
+const COLORS = ['#3aa0ff', '#2fd3c3', '#3aa0ff', '#ff4d5e', '#e8a33d', '#7f9dbb', '#b98cc4', '#5bb0b0'];
 
 function Toggle({ on, onClick, title }) {
   // Включено — зелёная; выключено — белый бегунок на нейтральном фоне.
@@ -119,7 +119,7 @@ export default function ProjectsView({ initial, spend }) {
   const campRow = (c) => (
     <tr key={c.id} style={c.status === 'excluded' ? { opacity: 0.5 } : undefined}>
       <td>
-        {c.is_new ? <span style={{ ...stStyle.active, background: 'rgba(198,161,91,.18)', color: 'var(--brass)', borderColor: 'rgba(198,161,91,.4)', fontSize: 11, padding: '2px 8px', borderRadius: 20, border: '1px solid', marginRight: 6 }}>новая</span> : null}
+        {c.is_new ? <span style={{ ...stStyle.active, background: 'rgba(58,160,255,.18)', color: 'var(--brass)', borderColor: 'rgba(58,160,255,.4)', fontSize: 11, padding: '2px 8px', borderRadius: 20, border: '1px solid', marginRight: 6 }}>новая</span> : null}
         {c.name}
         <div style={{ color: 'var(--muted)', fontSize: 11 }}>№ {c.id}{!c.present ? ' · нет в снимке' : ''}</div>
       </td>
@@ -163,7 +163,7 @@ export default function ProjectsView({ initial, spend }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
       {dirty ? <span style={{ fontSize: 13, color: 'var(--brass)' }}>● есть несохранённые изменения</span> : null}
       {msg ? <span style={{ fontSize: 13, color: msg.startsWith('Ошибка') ? RED : GOOD }}>{msg}</span> : null}
-      <button onClick={save} disabled={saving} style={{ background: dirty ? 'linear-gradient(180deg,#c6a15b,#b18e49)' : 'var(--panel-2)', border: '1px solid ' + (dirty ? '#b18e49' : 'var(--line)'), color: dirty ? '#20170a' : 'var(--text)', fontWeight: 600, borderRadius: 9, padding: '9px 18px', cursor: 'pointer', fontSize: 13.5, opacity: saving ? 0.6 : 1 }}>
+      <button onClick={save} disabled={saving} style={{ background: dirty ? 'linear-gradient(180deg,#3aa0ff,#1c6fd4)' : 'var(--panel-2)', border: '1px solid ' + (dirty ? '#1c6fd4' : 'var(--line)'), color: dirty ? '#20170a' : 'var(--text)', fontWeight: 600, borderRadius: 9, padding: '9px 18px', cursor: 'pointer', fontSize: 13.5, opacity: saving ? 0.6 : 1 }}>
         {saving ? 'Сохраняю…' : 'Сохранить'}
       </button>
     </div>

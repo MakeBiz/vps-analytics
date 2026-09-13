@@ -6,8 +6,8 @@ import { Card, Empty } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
 
-const BRASS = '#c6a15b';
-const STEEL = '#5b7a99';
+const BRASS = '#3aa0ff';
+const STEEL = '#2fd3c3';
 const GREEN = '#3fae7a';
 
 function Steps({ steps, color }) {
@@ -78,7 +78,7 @@ export default async function Funnels({ searchParams }) {
   const chip = (active) => ({
     padding: '5px 11px', borderRadius: 8, fontSize: 12.5, textDecoration: 'none',
     border: '1px solid ' + (active ? BRASS : 'var(--line)'),
-    background: active ? 'rgba(198,161,91,.14)' : '#1b2430',
+    background: active ? 'rgba(58,160,255,.14)' : '#1b2430',
     color: active ? BRASS : '#c3ccd6',
   });
 

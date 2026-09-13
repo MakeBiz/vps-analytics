@@ -48,8 +48,9 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
   for (const r of dayRows) {
     if (!on(r.site_key)) continue;
     const k = bucket(r.d);
-    const e = dayMap[k] || (dayMap[k] = { d: k, visits: 0, clicks: 0 });
+    const e = dayMap[k] || (dayMap[k] = { d: k, visits: 0, clicks: 0, visitors: 0, pv: 0 });
     e.visits += r.visits; e.clicks += r.clicks;
+    e.visitors += Number(r.visitors || 0); e.pv += Number(r.pv || 0);
   }
   const days = Object.values(dayMap).sort((a, b) => (a.d < b.d ? -1 : 1));
   const GRAN_RU = { day: 'дни', week: 'недели', month: 'месяцы' };
@@ -110,15 +111,26 @@ export default function OverviewView({ ovRows, prevRows, dayRows, hourRows, site
   const chRows = Object.values(chMap);
   const totalCh = chRows.reduce((s, r) => s + r.visits, 0);
 
+  // Спарклайны под числами берём из той же дневной разбивки, что и график:
+  // отдельный запрос не нужен, а линия показывает, чем сложился итог периода.
+  const spark = (k) => {
+    const v = days.map((x) => Number(x[k] || 0));
+    return v.length > 1 && v.some((n) => n > 0) ? v : undefined;
+  };
+  const convNow = ov.visits ? (ov.clicks / ov.visits) * 100 : 0;
+  const convPrev = prev.visits ? (prev.clicks / prev.visits) * 100 : 0;
+  const convDays = days.map((x) => (x.visits ? (x.clicks / x.visits) * 100 : 0));
+  const convSpark = convDays.length > 1 && convDays.some((n) => n > 0) ? convDays : undefined;
+
   return (
     <div className="grid" style={{ gap: 14 }}>
       <div className="grid kpis">
-        <Kpi label="Визиты" value={num(ov.visits)} delta={delta(ov.visits, prev.visits)} />
-        <Kpi label="Посетители" value={num(ov.visitors)} delta={delta(ov.visitors, prev.visitors)} />
-        <Kpi label="Просмотры страниц" value={num(ov.pv)} delta={delta(ov.pv, prev.pv)} />
-        <Kpi label="Переходы к провайдерам" value={num(ov.clicks)} delta={delta(ov.clicks, prev.clicks)} />
-        <Kpi label="Конверсия в переход" value={pct(ov.clicks, ov.visits)} sub={`было ${pct(prev.clicks, prev.visits)}`} />
-        <Kpi label="Среднее время визита" value={dur(avgSec)} sub={`отказы ${pct(ov.bounced, ov.visits)}, было ${pct(prev.bounced, prev.visits)}`} />
+        <Kpi label="Визиты" value={num(ov.visits)} delta={delta(ov.visits, prev.visits)} icon="users" spark={spark('visits')} />
+        <Kpi label="Посетители" value={num(ov.visitors)} delta={delta(ov.visitors, prev.visitors)} icon="user" spark={spark('visitors')} />
+        <Kpi label="Просмотры страниц" value={num(ov.pv)} delta={delta(ov.pv, prev.pv)} icon="eye" spark={spark('pv')} />
+        <Kpi label="Переходы к провайдерам" value={num(ov.clicks)} delta={delta(ov.clicks, prev.clicks)} icon="cursor" spark={spark('clicks')} />
+        <Kpi label="Конверсия в переход" value={pct(ov.clicks, ov.visits)} sub={`было ${pct(prev.clicks, prev.visits)}`} delta={delta(convNow, convPrev)} icon="target" spark={convSpark} />
+        <Kpi label="Среднее время визита" value={dur(avgSec)} sub={`отказы ${pct(ov.bounced, ov.visits)}, было ${pct(prev.bounced, prev.visits)}`} delta={delta(avgSec, prevAvgSec)} icon="clock" />
       </div>
 
       {showLines ? (

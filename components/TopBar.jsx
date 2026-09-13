@@ -155,7 +155,6 @@ export default function TopBar({ sites, providers = [], alerts = [] }) {
           ))}
         </div>
 
-        <DateRange disabled={!caps.period} />
       </div>
 
       <div className="top-filters">
@@ -189,6 +188,8 @@ export default function TopBar({ sites, providers = [], alerts = [] }) {
         </div>
 
         {NOTE[path] ? <span className="dim" style={{ fontSize: 12.5 }}>{NOTE[path]}</span> : null}
+
+        <DateRange disabled={!caps.period} />
       </div>
     </div>
   );

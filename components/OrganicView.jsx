@@ -278,10 +278,10 @@ export default function OrganicView({ rep, total = 0, webmaster = [], gsc = [], 
     <div className="grid" style={{ gap: 14 }}>
       {/* KPI */}
       <div className="grid kpis">
-        <Kpi label="Органика всего" value={num(tot.org)} sub={`${share}% от всех заходов`} />
-        <Kpi label="Яндекс" value={num(tot.ya)} sub={`${pctF(tot.ya, tot.org)}% органики`} />
-        <Kpi label="Google" value={num(tot.go)} sub={`${pctF(tot.go, tot.org)}% органики`} />
-        <Kpi label="Конверсия в переход" value={conv + '%'} sub={`${num(tot.clicks)} переходов`} />
+        <Kpi label="Органика всего" value={num(tot.org)} sub={`${share}% от всех заходов`} icon="search" />
+        <Kpi label="Яндекс" value={num(tot.ya)} sub={`${pctF(tot.ya, tot.org)}% органики`} icon="globe" />
+        <Kpi label="Google" value={num(tot.go)} sub={`${pctF(tot.go, tot.org)}% органики`} icon="globe" />
+        <Kpi label="Конверсия в переход" value={conv + '%'} sub={`${num(tot.clicks)} переходов`} icon="target" />
       </div>
 
       {/* Динамика */}

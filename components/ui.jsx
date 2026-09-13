@@ -33,7 +33,7 @@ export function Spark({ values, kind = 'flat' }) {
   );
 }
 
-export function Kpi({ label, value, sub, delta, tone = 'grow-good', icon = 'chart', spark }) {
+export function Kpi({ label, value, sub, delta, tone = 'grow-good', icon, spark }) {
   const has = typeof delta === 'number' && isFinite(delta);
   const moved = has && Math.abs(delta) > 0.5;
   let kind = 'flat';
@@ -44,9 +44,9 @@ export function Kpi({ label, value, sub, delta, tone = 'grow-good', icon = 'char
       : 'без изменений';
 
   return (
-    <div className="card kpi">
+    <div className={'card kpi' + (kind === 'down' ? ' bad' : '')}>
       <div className="khead">
-        <span className="ico"><Icon name={icon} /></span>
+        {icon ? <span className="ico"><Icon name={icon} /></span> : null}
         {pill ? <span className={'pill ' + kind}>{pill}</span> : null}
       </div>
       <div className="v">{value}</div>

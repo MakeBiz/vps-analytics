@@ -107,7 +107,7 @@ export function SearchBox({ sites = [], providers = [] }) {
     <>
       <button type="button" className="search" onClick={() => setOpen(true)}>
         <Icon name="search" size={15} />
-        Поиск: сайты, провайдеры, разделы
+        Поиск по панели
         <kbd>⌘K</kbd>
       </button>
       {open ? (

@@ -280,23 +280,23 @@ export default function DirectView({ campaigns = [], fromHistory = false, daily 
         ? `период ${period?.from || ''} — ${period?.to || ''}, история кабинета по дням, только кампании «в бюджете»${prev ? ` · сравнение с ${period.prevFrom} — ${period.prevTo}` : ''}`
         : `снимок за ~30 дней${win ? ` (${win.from || ''}…${win.to || ''})` : ''}${generated ? ` · ${generated}` : ''}. «Конверсии» — цели Директа (для VPS — переход к провайдеру)`}>
         <div className="grid kpis">
-          <Kpi label="Расход" value={rub(base.cost)} tone="neutral"
+          <Kpi label="Расход" value={rub(base.cost)} tone="grow-bad" icon="money"
             sub={prev ? `было ${rub(prev.cost)}` : `${campaigns.length} кампаний`} delta={prev ? delta(base.cost, prev.cost) : undefined} />
-          <Kpi label="Показы" value={num(base.impressions)}
+          <Kpi label="Показы" value={num(base.impressions)} icon="eye"
             sub={prev ? `было ${num(prev.impressions)}` : `CTR ${ctr}%`} delta={prev ? delta(base.impressions, prev.impressions) : undefined} />
-          <Kpi label="Клики" value={num(base.clicks)}
+          <Kpi label="Клики" value={num(base.clicks)} icon="cursor"
             sub={prev ? `было ${num(prev.clicks)}` : `CPC ${rub(cpc)}`} delta={prev ? delta(base.clicks, prev.clicks) : undefined} />
-          <Kpi label="Конверсии" value={num(Math.round(base.conversions))}
+          <Kpi label="Конверсии" value={num(Math.round(base.conversions))} icon="target"
             sub={prev ? `было ${num(Math.round(prev.conversions))}` : `CR ${cr}%`} delta={prev ? delta(base.conversions, prev.conversions) : undefined} />
         </div>
         <div className="grid kpis" style={{ marginTop: 12 }}>
-          <Kpi label="CPA (цена конверсии)" value={rub(cpa)} tone="grow-bad"
+          <Kpi label="CPA (цена конверсии)" value={rub(cpa)} tone="grow-bad" icon="money"
             sub={pCpa != null ? `было ${rub(pCpa)}` : 'расход / конверсии'} delta={pCpa ? delta(cpa, pCpa) : undefined} />
-          <Kpi label="CTR" value={ctr + '%'}
+          <Kpi label="CTR" value={ctr + '%'} icon="chart"
             sub={pCtr != null ? `было ${pCtr}%` : 'клики / показы'} delta={pCtr ? delta(ctr, pCtr) : undefined} />
-          <Kpi label="CPC" value={rub(cpc)} tone="grow-bad"
+          <Kpi label="CPC" value={rub(cpc)} tone="grow-bad" icon="money"
             sub={pCpc != null ? `было ${rub(pCpc)}` : 'расход / клики'} delta={pCpc ? delta(cpc, pCpc) : undefined} />
-          <Kpi label="CR (конверсия)" value={cr + '%'}
+          <Kpi label="CR (конверсия)" value={cr + '%'} icon="target"
             sub={pCr != null ? `было ${pCr}%` : 'конверсии / клики'} delta={pCr ? delta(cr, pCr) : undefined} />
         </div>
         {hist && hist.convDays < hist.days ? (

@@ -110,7 +110,10 @@ export default function Chart({
   const labelEvery = Math.max(1, Math.ceil(n / 12));
   const gid = (k) => 'gr-' + String(k).replace(/[^a-z0-9]/gi, '');
   const bars = shown.filter((s) => s.type === 'bar');
-  const bw = bars.length ? ((W - PL - PR) / n) * 0.62 / bars.length : 0;
+  const groupW = bars.length ? Math.min(step * 0.62, 70) : 0;
+  const bw = bars.length ? groupW / bars.length : 0;
+  // В комбо-графике заливку под линией не рисуем: она замыливает столбцы
+  const showArea = bars.length === 0;
 
   const lbl = (r) => {
     const raw = r[xKey];
@@ -167,10 +170,10 @@ export default function Chart({
               const v = val(r, s.key);
               if (v === null || v <= 0) return null;   // ноль это ноль, столбца нет
               const y0 = Y(v, s.axis);
-              const x0 = PL + (i - 0.5) * step + ((W - PL - PR) / n) * 0.19 + bi * bw;
+              const x0 = X(i) - groupW / 2 + bi * bw;
               return (
-                <rect key={i} x={n > 1 ? x0 : PL} y={y0} width={Math.max(1, bw)} height={Math.max(0, H - PB - y0)}
-                  rx="2" fill={s.color} opacity={active == null || active === i ? 0.85 : 0.4} />
+                <rect key={i} x={x0} y={y0} width={Math.max(1, bw - 2)} height={Math.max(0, H - PB - y0)}
+                  rx="2" fill={s.color} opacity={active == null || active === i ? 0.9 : 0.45} />
               );
             })}
           </g>
@@ -191,7 +194,7 @@ export default function Chart({
           const flat = segs.flat();
           return (
             <g key={s.key}>
-              {segs.length === 1 && flat.length > 1 ? (
+              {showArea && segs.length === 1 && flat.length > 1 ? (
                 <polygon
                   points={`${first[0]},${Y(0, s.axis)} ${flat.map((p) => `${p[0]},${p[1]}`).join(' ')} ${last[0]},${Y(0, s.axis)}`}
                   fill={`url(#${gid(s.key)})`}
@@ -235,7 +238,7 @@ export default function Chart({
           <button key={s.key} type="button" aria-pressed={!hidden.has(s.key)} onClick={() => toggle(s.key)}
             title={hidden.has(s.key) ? 'Показать ряд' : 'Скрыть ряд'}>
             <i style={{ background: s.color }} />
-            {s.name}{s.unit ? <span className="dim">, {s.unit}</span> : null}
+            <span>{s.name}{s.unit ? <span className="dim">{', ' + s.unit}</span> : null}</span>
           </button>
         ))}
       </div>

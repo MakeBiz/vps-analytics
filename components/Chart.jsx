@@ -47,7 +47,9 @@ export default function Chart({
   const all = useMemo(() => (
     series && series.length
       ? series.map((s) => ({ type: 'line', axis: 'left', unit: '', ...s }))
-      : keys.map(([key, name, color]) => ({ key, name, color, type: 'line', axis: 'left', unit: '' }))
+      // старый вызов через keys используют только счётные ряды (визиты, переходы),
+      // поэтому единица по умолчанию «шт.»: в подсказке она обязана быть
+      : keys.map(([key, name, color]) => ({ key, name, color, type: 'line', axis: 'left', unit: 'шт.' }))
   ), [series, keys]);
 
   const [hidden, setHidden] = useState(() => new Set());

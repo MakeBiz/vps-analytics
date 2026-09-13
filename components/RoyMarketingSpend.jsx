@@ -124,7 +124,7 @@ export default function RoyMarketingSpend({ spend }) {
                 {camps.map((c) => (
                   <tr key={c.id}>
                     <td>{c.name}<div style={{ color: 'var(--muted)', fontSize: 11 }}>№ {c.id}</div></td>
-                    <td className="n barcell"><span className="bg" style={{ width: Math.round((c.cost / maxC) * 100) + '%' }} /><span className="fg">{rub(c.cost)}</span></td>
+                    <td className="n barcell"><span className="track"><span className="fill" style={{ width: Math.round((c.cost / maxC) * 100) + '%' }} /></span><span className="fg">{rub(c.cost)}</span></td>
                     <td />
                   </tr>
                 ))}

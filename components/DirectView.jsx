@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { num, shortDate } from '@/lib/format';
 import { Card, Kpi, Empty } from '@/components/ui';
 
-const BRASS = '#3aa0ff', STEEL = '#2fd3c3', GOOD = '#3aa0ff', WARN = '#e8a33d', BAD = '#ff4d5e';
+const BRASS = '#03c9ff', STEEL = '#21ddb2', GOOD = '#03c9ff', WARN = '#f4bd58', BAD = '#ff526f';
 const rub = (n) => Math.round(Number(n) || 0).toLocaleString('ru-RU') + ' ₽';
 const pct = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 const median = (arr) => { if (!arr.length) return 0; const s = [...arr].sort((a, b) => a - b); const m = Math.floor(s.length / 2); return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
@@ -147,12 +147,12 @@ function CampTable({ camps, medCPA }) {
 
 // Грубая привязка кампании к провайдеру/сайту по названию — для разреза воронки.
 const GROUPS = [
-  ['timeweb', 'Timeweb', /(?:^|[^a-zа-я])(tw|timeweb)(?:[^a-zа-я]|$)/i, '#3aa0ff'],
-  ['adminvps', 'AdminVPS', /adminvps/i, '#2fd3c3'],
+  ['timeweb', 'Timeweb', /(?:^|[^a-zа-я])(tw|timeweb)(?:[^a-zа-я]|$)/i, '#03c9ff'],
+  ['adminvps', 'AdminVPS', /adminvps/i, '#21ddb2'],
   ['aeza', 'Aeza', /aeza/i, '#b98cc4'],
-  ['ishosting', 'is*hosting', /ishosting|is\*hosting|ish\b/i, '#3aa0ff'],
+  ['ishosting', 'is*hosting', /ishosting|is\*hosting|ish\b/i, '#03c9ff'],
   ['podborvps', 'ПодборVPS', /podborvps|подбор/i, '#7f9dbb'],
-  ['servercalc', 'ServerCalc', /servercalc/i, '#e8a33d'],
+  ['servercalc', 'ServerCalc', /servercalc/i, '#f4bd58'],
 ];
 function groupOf(name) {
   for (const [slug, label, re, color] of GROUPS) if (re.test(name || '')) return { slug, label, color };

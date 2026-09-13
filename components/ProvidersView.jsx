@@ -93,7 +93,7 @@ export default function ProvidersView({ rows = [], directions = [], visits = {},
               {list.map((t) => {
                 const w = Math.max(2, Math.round((t.clicks / maxClicks) * 100));
                 return (
-                  <tr key={t.provider} style={t.provider === selectedProvider ? { background: 'rgba(58,160,255,.10)' } : undefined}>
+                  <tr key={t.provider} style={t.provider === selectedProvider ? { background: 'rgba(8,183,242,.10)' } : undefined}>
                     <td>
                       <a style={{ cursor: 'pointer' }} onClick={() => goProvider(t.provider)}>{t.name || t.provider}</a>
                       <span className="dim mono" style={{ marginLeft: 6 }}>{t.provider}</span>
@@ -101,7 +101,7 @@ export default function ProvidersView({ rows = [], directions = [], visits = {},
                     {selDirs.map((d) => (
                       <td key={d.key} className="n muted">{t.by[d.key] ? num(t.by[d.key]) : '·'}</td>
                     ))}
-                    <td className="n barcell"><span className="bg" style={{ width: w + '%' }} /><span className="fg">{num(t.clicks)}</span></td>
+                    <td className="n barcell"><span className="track"><span className="fill" style={{ width: w + '%' }} /></span><span className="fg">{num(t.clicks)}</span></td>
                     <td className="n muted">{pct(t.clicks, grandClicks)}</td>
                     <td className="n dim">{num(t.sessions)}</td>
                     <td className="n muted">{pct(t.sessions, totalVisits)}</td>

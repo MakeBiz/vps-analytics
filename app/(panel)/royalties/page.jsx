@@ -6,14 +6,14 @@ import RoyToggle from '@/components/RoyToggle';
 
 export const dynamic = 'force-dynamic';
 
-const BRASS = '#3aa0ff';       // TW первичные / основной
+const BRASS = '#03c9ff';       // TW первичные / основной
 const BRASS_D = '#977c3f';     // TW повторные
-const STEEL = '#2fd3c3';       // AdminVPS / вторичный
-const GREEN = '#3aa0ff';       // is*hosting / плюс
+const STEEL = '#21ddb2';       // AdminVPS / вторичный
+const GREEN = '#03c9ff';       // is*hosting / плюс
 const AEZA = '#b98cd6';        // Aeza / 4-й партнёр
 const HM = '#6e56cf';          // Hostman / 5-й партнёр
-const RED = '#ff4d5e';         // минус / риск
-const BUILD = 'rgba(58,160,255,.32)'; // достройка месяца
+const RED = '#ff526f';         // минус / риск
+const BUILD = 'rgba(8,183,242,.32)'; // достройка месяца
 const FORE = '#46586b';        // прогноз
 
 const dec = (n) => String(n).replace('.', ',');

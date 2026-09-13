@@ -90,7 +90,7 @@ export default function CampaignFilter({ campaigns = [], provClicks = 0, trends 
                       <td className="n">{num(c.clicks)}</td>
                       <td className="n muted">{String(c.ctr).replace('.', ',')}%</td>
                       <td className="n" style={over ? { color: '#e0736d', fontWeight: 600 } : undefined}>{cpcF(c.cpc)}</td>
-                      <td className="n barcell"><span className="bg" style={{ width: w + '%' }} /><span className="fg">{num(c.cost)}</span></td>
+                      <td className="n barcell"><span className="track"><span className="fill" style={{ width: w + '%' }} /></span><span className="fg">{num(c.cost)}</span></td>
                     </tr>
                   );
                 })}

@@ -48,7 +48,7 @@ export default function ChannelTable({ rows = [], totalVisits = 0 }) {
               const w = Math.max(2, Math.round((metric[key].get(r) / max) * 100));
               const bar = (active, content, primary) => (
                 active
-                  ? <td className="n barcell"><span className="bg" style={{ width: w + '%' }} /><span className="fg">{content}</span></td>
+                  ? <td className="n barcell"><span className="track"><span className="fill" style={{ width: w + '%' }} /></span><span className="fg">{content}</span></td>
                   : <td className={'n' + (primary ? '' : ' muted')}>{content}</td>
               );
               return (

@@ -31,7 +31,7 @@ export default function SourcesView({ channelRows = [], utmRows = [], sites = []
   const maxUtm = Math.max(1, ...utmSorted.map(metric[sortUtm]));
   const hl = { color: 'var(--brass)' };
   const bar = (active, w, content, primary) => (active
-    ? <td className="n barcell"><span className="bg" style={{ width: w + '%' }} /><span className="fg">{content}</span></td>
+    ? <td className="n barcell"><span className="track"><span className="fill" style={{ width: w + '%' }} /></span><span className="fg">{content}</span></td>
     : <td className={'n' + (primary ? '' : ' muted')}>{content}</td>);
 
   return (

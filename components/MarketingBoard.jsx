@@ -17,7 +17,7 @@ function verdict(c) {
   }
   return { t: '—', c: 'muted' };
 }
-const VC = { good: '#3fae7a', ok: '#6f97bf', warn: '#e8a33d', bad: '#e0736d', muted: 'var(--dim)' };
+const VC = { good: '#3fae7a', ok: '#6f97bf', warn: '#f4bd58', bad: '#e0736d', muted: 'var(--dim)' };
 
 /**
  * Два слоя оценки рекламы в стандартном оформлении панели:
@@ -79,7 +79,7 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
                     <tr key={c.id} style={{ cursor: grp.length ? 'pointer' : 'default' }} onClick={() => grp.length && setOpen(isOpen ? null : c.id)}>
                       <td>{grp.length ? <span className="dim" style={{ marginRight: 6 }}>{isOpen ? '▾' : '▸'}</span> : null}{c.base}</td>
                       <td className="muted" style={{ fontSize: 12 }}>{TYPE_RU[c.type] || c.type}</td>
-                      <td className="n barcell"><span className="bg" style={{ width: w + '%' }} /><span className="fg">{rub(c.cost)}</span></td>
+                      <td className="n barcell"><span className="track"><span className="fill" style={{ width: w + '%' }} /></span><span className="fg">{rub(c.cost)}</span></td>
                       <td className="n muted">{pctF(c.cost, totalCost)}%</td>
                       <td className="n">{num(c.clicks)}</td>
                       <td className="n muted">{String(c.ctr).replace('.', ',')}%</td>
@@ -114,9 +114,9 @@ export default function MarketingBoard({ camps = [], groups = {}, funnel = { agg
           <div className="grid cols2" style={{ gap: 14 }}>
             {funnel.aggregators.map((a) => {
               const steps = [
-                { l: 'Клики Директа', v: a.clicks, c: '#2fd3c3' },
+                { l: 'Клики Директа', v: a.clicks, c: '#21ddb2' },
                 { l: 'Визиты сайта', v: a.visits, c: '#6f97bf' },
-                { l: 'Переходы к провайдеру', v: a.providerClicks, c: '#3aa0ff' },
+                { l: 'Переходы к провайдеру', v: a.providerClicks, c: '#03c9ff' },
               ];
               const top = steps[0].v || 1;
               const cpa = a.providerClicks ? a.cost / a.providerClicks : null;

@@ -21,7 +21,7 @@ export function Spark({ values, kind = 'flat' }) {
   const x = (i) => (i / (v.length - 1)) * W;
   const y = (n) => H - 3 - ((n - min) / span) * (H - 9);
   const pts = v.map((n, i) => `${x(i).toFixed(2)},${y(n).toFixed(2)}`).join(' ');
-  const color = kind === 'down' ? 'var(--bad)' : kind === 'up' ? 'var(--brass)' : 'var(--dim)';
+  const color = kind === 'down' ? 'var(--chart-secondary)' : kind === 'up' ? 'var(--chart-primary)' : 'var(--dim)';
   return (
     // preserveAspectRatio=none растягивает по ширине карточки: линия всегда
     // занимает всю подошву, а толщина держится за счёт non-scaling-stroke
@@ -33,7 +33,7 @@ export function Spark({ values, kind = 'flat' }) {
   );
 }
 
-export function Kpi({ label, value, sub, delta, tone = 'grow-good', icon, spark }) {
+export function Kpi({ label, value, sub, delta, tone = 'grow-good', icon = 'chart', spark }) {
   const has = typeof delta === 'number' && isFinite(delta);
   const moved = has && Math.abs(delta) > 0.5;
   let kind = 'flat';
@@ -78,10 +78,11 @@ export function Empty({ text = 'Пока нет данных за этот пе�
 
 // Ячейка с числом и подложкой-полоской: доля от максимума в колонке
 export function BarCell({ value, max, suffix = '' }) {
-  const w = max > 0 ? Math.max(2, Math.round((Number(value || 0) / max) * 100)) : 0;
+  const v = Number(value || 0);
+  const w = max > 0 && v > 0 ? Math.max(1, Math.round((v / max) * 100)) : 0;
   return (
     <td className="n barcell">
-      <span className="bg" style={{ width: w + '%' }} />
+      <span className="track"><span className="fill" style={{ width: w + '%' }} /></span>
       <span className="fg">{num(value)}{suffix}</span>
     </td>
   );

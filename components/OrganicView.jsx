@@ -3,9 +3,9 @@ import { useMemo, useState } from 'react';
 import { num, shortDate } from '@/lib/format';
 import { Card, Kpi, Empty } from '@/components/ui';
 
-const YA = '#3aa0ff';   // Яндекс — латунь
-const GO = '#2fd3c3';   // Google — сталь
-const SEV = { bad: '#ff4d5e', warn: '#e8a33d', good: '#3aa0ff', steel: '#2fd3c3' };
+const YA = '#03c9ff';   // Яндекс — латунь
+const GO = '#21ddb2';   // Google — сталь
+const SEV = { bad: '#ff526f', warn: '#f4bd58', good: '#03c9ff', steel: '#21ddb2' };
 const pctF = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 const convColor = (v) => (v >= 12 ? SEV.good : v >= 6 ? SEV.warn : 'var(--dim)');
 const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
@@ -13,13 +13,13 @@ const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 const SITE_COLORS = {
   'makebiz-life': '#e0736d',            // MakeBiz — всегда красный
   'makebiz-com': '#00c46a',             // MakeBiz Technologies — яркий зелёный (ОАЭ)
-  'podborvps': '#3aa0ff',               // ПодборVPS — латунь
-  'servercalc-com': '#2fd3c3',          // ServerCalc.com — сталь
-  'servercalc-ru': '#3aa0ff',           // ServerCalc.ru — зелёный
+  'podborvps': '#03c9ff',               // ПодборVPS — латунь
+  'servercalc-com': '#21ddb2',          // ServerCalc.com — сталь
+  'servercalc-ru': '#03c9ff',           // ServerCalc.ru — зелёный
   'serverselection-online': '#b98cc4',  // ServerSelection — сиреневый
 };
 const GRAN_LABEL = { day: 'дни', week: 'недели', month: 'месяцы' };
-const SITE_FALLBACK = ['#e8a33d', '#7f9dbb', '#8a97a4', '#c98b6b'];
+const SITE_FALLBACK = ['#f4bd58', '#7f9dbb', '#8a97a4', '#c98b6b'];
 
 // Линия на каждый сайт: rows = [{d, [siteKey]: visits}], series = [{key,name,color}].
 // Оформление один-в-один как график «Динамика по дням» на «Обзоре» (компонент

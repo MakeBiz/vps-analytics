@@ -3,12 +3,12 @@ import { useMemo, useState } from 'react';
 import { num } from '@/lib/format';
 import { Card, Kpi, Empty } from '@/components/ui';
 
-const YA = '#3aa0ff';   // Яндекс — латунь
-const GO = '#2fd3c3';   // Google — сталь
-const GOOD = '#3aa0ff';
-const WARN = '#e8a33d';
-const STEEL = '#2fd3c3';
-const BAD = '#ff4d5e';
+const YA = '#03c9ff';   // Яндекс — латунь
+const GO = '#21ddb2';   // Google — сталь
+const GOOD = '#03c9ff';
+const WARN = '#f4bd58';
+const STEEL = '#21ddb2';
+const BAD = '#ff526f';
 const ENG_RU = { yandex: 'Яндекс', google: 'Google' };
 const pct = (n) => (Math.round((Number(n) || 0) * 10) / 10).toFixed(1) + '%';
 

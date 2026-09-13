@@ -71,6 +71,12 @@ html, body {
 }
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #0a8ccb, #24cfff); }
 ::-webkit-scrollbar-corner { background: #00101f; }
+/* в меню полоса тоньше и тише: там она рядом с границей сайдбара */
+.side::-webkit-scrollbar { width: 8px; }
+.side::-webkit-scrollbar-track { background: transparent; }
+.side::-webkit-scrollbar-thumb { background: rgba(8, 183, 242, .3); border: 2px solid transparent; background-clip: padding-box; }
+.side::-webkit-scrollbar-thumb:hover { background: rgba(8, 183, 242, .55); background-clip: padding-box; }
+.side { scrollbar-color: rgba(8, 183, 242, .3) transparent; }
 
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--primary); }
@@ -251,7 +257,7 @@ button:disabled, .btn:disabled { cursor: not-allowed; box-shadow: none; opacity:
 
 /* ---------- сетка и панели ---------- */
 .grid { display: grid; gap: 16px; }
-.kpis { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.kpis { grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); }
 .cols2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
 .cols3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 

@@ -49,7 +49,9 @@ export function Kpi({ label, value, sub, delta, tone = 'grow-good', icon = 'char
         {icon ? <span className="ico"><Icon name={icon} /></span> : null}
         {pill ? <span className={'pill ' + kind}>{pill}</span> : null}
       </div>
-      <div className="v">{value}</div>
+      {/* длинное значение вроде «12 мин 34 с» ужимаем до 24 px, как в комплекте:
+          мельчить при этом все карточки ради одной строки нельзя */}
+      <div className={'v' + (String(value).length > 9 ? ' small' : '')}>{value}</div>
       <div className="l">{label}</div>
       {sub ? <div className="d dim">{sub}</div> : null}
       {has && moved ? <div className="d dim">к прошлому периоду</div> : null}

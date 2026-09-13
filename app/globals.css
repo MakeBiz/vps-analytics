@@ -430,7 +430,30 @@ pre {
   box-shadow: inset 0 1px 0 rgba(142, 231, 255, .3);
 }
 .hour-row .n { text-align: right; font-variant-numeric: tabular-nums; }
-.chart svg { overflow: visible; }
+
+/* График: подсказка с единицами, легенда с клавиатуры */
+.chart { width: 100%; position: relative; min-height: 240px; }
+.chart:focus-visible { outline: 2px solid var(--corner); outline-offset: 3px; border-radius: 8px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; cursor: crosshair; }
+.chart-tip {
+  position: absolute; top: 6px; z-index: 6; pointer-events: none; min-width: 180px;
+  padding: 12px 14px; border-radius: 9px; border: 1px solid #087fb2;
+  background: rgba(0, 20, 39, .97); box-shadow: 0 8px 30px #0007; color: var(--text); font-size: 12px;
+}
+.chart-tip strong { display: block; margin-bottom: 7px; color: #c4edff; }
+.chart-tip .tip-row { display: flex; justify-content: space-between; gap: 20px; margin-top: 5px; }
+.chart-tip .tip-row.extra { border-top: 1px solid var(--line); margin-top: 7px; padding-top: 6px; }
+.chart-tip b { font-variant-numeric: tabular-nums; }
+.legend { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 12px; font-size: 12px; }
+.legend button {
+  border: 0; background: none; box-shadow: none; color: var(--muted); font: inherit;
+  display: flex; align-items: center; gap: 7px; padding: 3px 4px; min-height: 0;
+  cursor: pointer; border-radius: 4px;
+}
+.legend button:hover { background: none; color: var(--text); box-shadow: none; }
+.legend button i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+.legend button[aria-pressed='false'] { opacity: .42; text-decoration: line-through; }
+.sr { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
 /* Вложенная панель: на «Директе» и «Партнёрках» карточки лежат внутри общей.
    Комплект запрещает накладывать самостоятельные рамки друг на друга, поэтому

@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import { num, shortDate } from '@/lib/format';
 import { Card, Kpi, Empty } from '@/components/ui';
+import Chart from '@/components/Chart';
 
 const YA = '#03c9ff';   // Яндекс — латунь
 const GO = '#21ddb2';   // Google — сталь
@@ -27,94 +28,18 @@ const SITE_FALLBACK = ['#f4bd58', '#7f9dbb', '#8a97a4', '#c98b6b'];
 // та же высота и легенда-теги. Плюс наведение: вертикаль и всплывающие цифры по
 // каждому сайту за день (этого на «Обзоре» нет — оставляем как бонус).
 function Line({ rows, series }) {
-  const [hi, setHi] = useState(null);
-  const n = rows.length;
-  const W = 1000, H = 220, PL = 44, PR = 12, PT = 14, PB = 26;
-  const max = Math.max(1, ...rows.flatMap((r) => series.map((s) => r[s.key] || 0)));
-  const step = n > 1 ? (W - PL - PR) / (n - 1) : 0;
-  const X = (i) => PL + i * step;
-  const Y = (v) => PT + (H - PT - PB) * (1 - (v || 0) / max);
-  const pts = (key) => rows.map((r, i) => `${X(i).toFixed(1)},${Y(r[key]).toFixed(1)}`).join(' ');
-  const empty = series.length === 0 || rows.every((r) => series.every((s) => !r[s.key]));
+  const empty = !rows.length || series.length === 0 || rows.every((r) => series.every((s) => !r[s.key]));
   if (empty) return <div className="empty">Органических визитов за период пока нет</div>;
-
-  const ticks = 4;
-  const gridVals = Array.from({ length: ticks + 1 }, (_, i) => Math.round((max / ticks) * i));
-  const labelEvery = Math.max(1, Math.ceil(n / 12));
-
-  const onMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    if (!rect.width) return;
-    const dataFrac = ((e.clientX - rect.left) / rect.width * W - PL) / (W - PL - PR);
-    const i = Math.round(dataFrac * (n - 1));
-    setHi(Math.max(0, Math.min(n - 1, i)));
-  };
-  const leftPct = hi != null ? (X(hi) / W) * 100 : 0;
-
+  // Общий компонент панели: подсказка с единицами, легенда с клавиатуры,
+  // стрелки влево/вправо читают значения без мыши
   return (
-    <div className="scroll" style={{ position: 'relative' }} onMouseLeave={() => setHi(null)}>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="230" preserveAspectRatio="none"
-           role="img" style={{ display: 'block', cursor: 'crosshair' }} onMouseMove={onMove}>
-        {gridVals.map((v, i) => (
-          <g key={i}>
-            <line x1={PL} x2={W - PR} y1={Y(v)} y2={Y(v)} stroke="#26313d" strokeWidth="1" />
-            <text x={PL - 8} y={Y(v) + 4} textAnchor="end" fill="#6b7987" fontSize="11">{v}</text>
-          </g>
-        ))}
-        {series.map((s) => {
-          const line = pts(s.key);
-          const area = `${PL},${Y(0)} ${line} ${X(n - 1)},${Y(0)}`;
-          return (
-            <g key={s.key}>
-              <polygon points={area} fill={s.color} opacity="0.10" />
-              <polyline points={line} fill="none" stroke={s.color} strokeWidth="2"
-                strokeLinejoin="round" strokeLinecap="round" />
-              {n <= 60 ? rows.map((r, i) => (
-                <circle key={i} cx={X(i)} cy={Y(r[s.key])} r="2.5" fill={s.color} />
-              )) : null}
-            </g>
-          );
-        })}
-        {rows.map((r, i) =>
-          i % labelEvery === 0 || i === n - 1 ? (
-            <text key={i} x={X(i)} y={H - 8} textAnchor="middle" fill="#6b7987" fontSize="11">
-              {shortDate(new Date(r.d), 'UTC')}
-            </text>
-          ) : null
-        )}
-        {hi != null && (
-          <g>
-            <line x1={X(hi)} x2={X(hi)} y1={PT} y2={H - PB} stroke="var(--line)" strokeWidth="1" />
-            {series.map((s) => (
-              <circle key={s.key} cx={X(hi)} cy={Y(rows[hi][s.key])} r="3.5" fill={s.color}
-                stroke="var(--panel)" strokeWidth="1.5" />
-            ))}
-          </g>
-        )}
-      </svg>
-      {hi != null && (
-        <div style={{
-          position: 'absolute', top: -6, left: `${leftPct}%`,
-          transform: `translateX(${leftPct > 70 ? '-100%' : leftPct < 30 ? '0' : '-50%'})`,
-          background: 'var(--panel-2)', border: '1px solid var(--line)', borderRadius: 8,
-          padding: '7px 10px', fontSize: 12, pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 3,
-          boxShadow: '0 6px 20px rgba(0,0,0,.35)',
-        }}>
-          <div className="dim" style={{ fontSize: 11, marginBottom: 4 }}>{rows[hi].d}</div>
-          {series.map((s) => (
-            <div key={s.key} style={{ display: 'flex', gap: 10, justifyContent: 'space-between' }}>
-              <span><b style={{ color: s.color }}>—</b> {s.name}</span>
-              <span className="mono" style={{ fontWeight: 600 }}>{num(rows[hi][s.key] || 0)}</span>
-            </div>
-          ))}
-        </div>
-      )}
-      <div className="chips" style={{ marginTop: 6 }}>
-        {series.map((s) => (
-          <span key={s.key} className="tag" style={{ borderColor: s.color, color: s.color }}>{s.name}</span>
-        ))}
-      </div>
-    </div>
+    <Chart
+      rows={rows}
+      xKey="d"
+      title="Динамика органики по сайтам"
+      yLabel="Визиты, шт."
+      series={series.map((s) => ({ key: s.key, name: s.name, color: s.color, unit: 'шт.', axis: 'left', type: 'line' }))}
+    />
   );
 }
 

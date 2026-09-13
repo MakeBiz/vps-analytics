@@ -1,7 +1,8 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { num, shortDate } from '@/lib/format';
+import { num } from '@/lib/format';
 import { Card, Kpi, Empty } from '@/components/ui';
+import Chart from '@/components/Chart';
 
 const BRASS = '#03c9ff', STEEL = '#21ddb2', GOOD = '#03c9ff', WARN = '#f4bd58', BAD = '#ff526f';
 const rub = (n) => Math.round(Number(n) || 0).toLocaleString('ru-RU') + ' ₽';
@@ -33,62 +34,22 @@ function bucketRows(rows, g) {
 }
 
 function DailyChart({ rows }) {
-  const [hi, setHi] = useState(null);
-  const n = rows.length;
-  if (n < 2) return <div className="empty">мало точек для динамики</div>;
-  const W = 1000, H = 210, PL = 46, PR = 46, PT = 12, PB = 26;
-  const maxCost = Math.max(1, ...rows.map((r) => r.cost));
-  // Конверсии есть только в окне снимка коннектора: линию рисуем по тем точкам,
-  // где значение реально пришло, а не притягиваем недостающие дни к нулю.
-  const convPts = rows.map((r, i) => ({ i, v: r.conversions })).filter((p) => p.v != null);
-  const maxConv = Math.max(1, ...convPts.map((p) => p.v));
-  const bw = (W - PL - PR) / n;
-  const X = (i) => PL + i * bw + bw / 2;
-  const yCost = (v) => H - PB - (H - PT - PB) * (v / maxCost);
-  const yConv = (v) => H - PB - (H - PT - PB) * (v / maxConv);
-  const line = convPts.map((p) => `${X(p.i).toFixed(1)},${yConv(p.v).toFixed(1)}`).join(' ');
-  const onMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    if (!rect.width) return;
-    const i = Math.floor(((e.clientX - rect.left) / rect.width * W - PL) / bw);
-    setHi(Math.max(0, Math.min(n - 1, i)));
-  };
-  const labelEvery = Math.max(1, Math.ceil(n / 12));
+  if (!rows || rows.length < 2) return <div className="empty">мало точек для динамики</div>;
+  // Рубли и штуки живут на разных подписанных осях: складывать их на одну
+  // безымянную шкалу нельзя, иначе высота столбца и высота линии несопоставимы.
   return (
-    <div className="scroll" style={{ position: 'relative' }} onMouseLeave={() => setHi(null)}>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="220" preserveAspectRatio="none" style={{ display: 'block', cursor: 'crosshair' }} onMouseMove={onMove}>
-        {[0, 0.25, 0.5, 0.75, 1].map((f, i) => (
-          <line key={i} x1={PL} x2={W - PR} y1={PT + (H - PT - PB) * f} y2={PT + (H - PT - PB) * f} stroke="#26313d" strokeWidth="1" />
-        ))}
-        {rows.map((r, i) => (
-          <rect key={i} x={PL + i * bw + bw * 0.16} y={yCost(r.cost)} width={bw * 0.68} height={Math.max(0, H - PB - yCost(r.cost))}
-            fill={BRASS} opacity={hi == null || hi === i ? 0.85 : 0.4} rx="1.5" />
-        ))}
-        <polyline points={line} fill="none" stroke={GOOD} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
-        {convPts.map((p) => <circle key={p.i} cx={X(p.i)} cy={yConv(p.v)} r="2.4" fill={GOOD} />)}
-        {rows.map((r, i) => i % labelEvery === 0 || i === n - 1 ? (
-          <text key={i} x={X(i)} y={H - 8} textAnchor="middle" fill="#6b7987" fontSize="11">{shortDate(new Date(r.date), 'UTC')}</text>
-        ) : null)}
-        {hi != null && <line x1={X(hi)} x2={X(hi)} y1={PT} y2={H - PB} stroke="var(--line)" strokeWidth="1" />}
-      </svg>
-      {hi != null && rows[hi] && (() => {
-        const r = rows[hi]; const cpa = r.conversions ? Math.round(r.cost / r.conversions) : null;
-        const convTxt = r.conversions == null ? 'нет данных' : String(r.conversions);
-        const leftPct = (X(hi) / W) * 100;
-        return (
-          <div style={{ position: 'absolute', top: -4, left: `${leftPct}%`, transform: `translateX(${leftPct > 70 ? '-100%' : '-50%'})`, background: 'var(--panel-2)', border: '1px solid var(--line)', borderRadius: 8, padding: '7px 10px', fontSize: 12, pointerEvents: 'none', whiteSpace: 'nowrap', zIndex: 3, boxShadow: '0 6px 20px rgba(0,0,0,.35)' }}>
-            <div className="dim" style={{ fontSize: 11, marginBottom: 4 }}>{r.date}</div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14 }}><span style={{ color: BRASS }}>Расход</span><b className="mono">{rub(r.cost)}</b></div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14 }}><span style={{ color: GOOD }}>Конверсии</span><b className="mono">{convTxt}</b></div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 14, borderTop: '1px solid var(--line)', marginTop: 4, paddingTop: 4 }}><span className="dim">CPA</span><b className="mono">{cpa != null ? rub(cpa) : '—'}</b></div>
-          </div>
-        );
-      })()}
-      <div className="chips" style={{ marginTop: 6 }}>
-        <span className="tag" style={{ borderColor: BRASS, color: BRASS }}>Расход</span>
-        <span className="tag" style={{ borderColor: GOOD, color: GOOD }}>Конверсии</span>
-      </div>
-    </div>
+    <Chart
+      rows={rows}
+      xKey="date"
+      title="Динамика расхода и конверсий"
+      yLabel="Расход, ₽"
+      rightLabel="Конверсии, шт."
+      series={[
+        { key: 'cost', name: 'Расход', color: BRASS, axis: 'left', unit: '₽', type: 'bar' },
+        { key: 'conversions', name: 'Конверсии', color: BAD, axis: 'right', unit: 'шт.', type: 'line' },
+      ]}
+      extraRows={(r) => [['CPA', r.conversions ? rub(r.cost / r.conversions) : '—']]}
+    />
   );
 }
 

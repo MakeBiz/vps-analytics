@@ -80,8 +80,13 @@ export default function Chart({
   const maxL = Math.max(1, maxOf('left'));
   const maxR = hasRight ? Math.max(1, maxOf('right')) : 1;
 
-  const step = n > 1 ? (W - PL - PR) / (n - 1) : 0;
-  const X = (i) => PL + i * step;
+  // Столбцам нужен отступ от осей, иначе крайние наезжают на подписи шкалы
+  const step0 = n > 1 ? (W - PL - PR) / (n - 1) : 0;
+  const hasBars = all.some((s) => s.type === 'bar' && !hidden.has(s.key));
+  const groupW = hasBars ? Math.min(step0 * 0.5, 70) : 0;
+  const pad = groupW / 2;
+  const step = n > 1 ? (W - PL - PR - 2 * pad) / (n - 1) : 0;
+  const X = (i) => PL + pad + i * step;
   const Y = (v, axis) => PT + (H - PT - PB) * (1 - (v || 0) / (axis === 'right' ? maxR : maxL));
 
   const pick = (clientX) => {
@@ -110,7 +115,6 @@ export default function Chart({
   const labelEvery = Math.max(1, Math.ceil(n / 12));
   const gid = (k) => 'gr-' + String(k).replace(/[^a-z0-9]/gi, '');
   const bars = shown.filter((s) => s.type === 'bar');
-  const groupW = bars.length ? Math.min(step * 0.62, 70) : 0;
   const bw = bars.length ? groupW / bars.length : 0;
   // В комбо-графике заливку под линией не рисуем: она замыливает столбцы
   const showArea = bars.length === 0;

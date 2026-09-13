@@ -431,3 +431,10 @@ pre {
 }
 .hour-row .n { text-align: right; font-variant-numeric: tabular-nums; }
 .chart svg { overflow: visible; }
+
+/* Вложенная панель: на «Директе» и «Партнёрках» карточки лежат внутри общей.
+   Комплект запрещает накладывать самостоятельные рамки друг на друга, поэтому
+   у вложенной гасим уголки и внешнее свечение, оставляя тихую обводку и цвет состояния */
+.card .card::before, .card .card::after { display: none; }
+.card .card { box-shadow: inset 0 1px 0 rgba(105, 202, 255, .04); border-color: rgba(0, 183, 249, .24); }
+.card .card.bad { border-color: rgba(255, 82, 111, .34); }

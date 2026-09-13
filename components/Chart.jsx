@@ -55,6 +55,9 @@ export default function Chart({
   const box = useRef(null);
 
   const shown = all.filter((s) => !hidden.has(s.key));
+  // Единицу в легенде пишем только когда они разные: шесть одинаковых «шт.»
+  // это шум, а вот «₽» против «шт.» надо видеть сразу
+  const multiUnit = new Set(all.map((s) => s.unit || '')).size > 1;
   const toggle = useCallback((key) => {
     setHidden((prev) => {
       const next = new Set(prev);
@@ -242,7 +245,7 @@ export default function Chart({
           <button key={s.key} type="button" aria-pressed={!hidden.has(s.key)} onClick={() => toggle(s.key)}
             title={hidden.has(s.key) ? 'Показать ряд' : 'Скрыть ряд'}>
             <i style={{ background: s.color }} />
-            <span>{s.name}{s.unit ? <span className="dim">{', ' + s.unit}</span> : null}</span>
+            <span>{s.name}{multiUnit && s.unit ? <span className="dim">{', ' + s.unit}</span> : null}</span>
           </button>
         ))}
       </div>

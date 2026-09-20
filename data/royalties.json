@@ -313,7 +313,209 @@
    "hold_rub": 16031,
    "earned_rub": 4852,
    "ahead": false
-  }
+  },
+  "weeks": {
+   "2026-08-24": {
+    "invoices": 27,
+    "accrued_eur": 38.72,
+    "income": 3872,
+    "new_clients": 22,
+    "unlocked_eur": 2.0
+   },
+   "2026-08-31": {
+    "invoices": 61,
+    "accrued_eur": 67.21,
+    "income": 6721,
+    "new_clients": 49,
+    "unlocked_eur": 13.92
+   },
+   "2026-09-07": {
+    "invoices": 45,
+    "accrued_eur": 54.33,
+    "income": 5433,
+    "new_clients": 30,
+    "unlocked_eur": 14.13
+   },
+   "2026-09-14": {
+    "invoices": 45,
+    "accrued_eur": 54.69,
+    "income": 5469,
+    "new_clients": 34,
+    "unlocked_eur": 18.45
+   }
+  },
+  "clients": {
+   "total": 135,
+   "repeat": 31,
+   "repeat_pct": 23.0,
+   "per_client": 1.32,
+   "top10_share_pct": 44,
+   "dist": {
+    "1": 104,
+    "2": 24,
+    "3": 3,
+    "4": 3,
+    "5": 1
+   },
+   "avg_ltv_eur": 1.59,
+   "avg_ltv_rub": 159,
+   "top": [
+    {
+     "email": "oo***************",
+     "invoices": 2,
+     "eur": 22.47,
+     "rub": 2247,
+     "first": "2026-08-29",
+     "last": "2026-08-30"
+    },
+    {
+     "email": "lo*****************",
+     "invoices": 2,
+     "eur": 17.26,
+     "rub": 1726,
+     "first": "2026-09-05",
+     "last": "2026-09-07"
+    },
+    {
+     "email": "ai****************************",
+     "invoices": 1,
+     "eur": 9.96,
+     "rub": 996,
+     "first": "2026-09-02",
+     "last": "2026-09-02"
+    },
+    {
+     "email": "se**************",
+     "invoices": 1,
+     "eur": 9.49,
+     "rub": 949,
+     "first": "2026-09-16",
+     "last": "2026-09-16"
+    },
+    {
+     "email": "fi**********************",
+     "invoices": 2,
+     "eur": 7.59,
+     "rub": 759,
+     "first": "2026-09-16",
+     "last": "2026-09-16"
+    },
+    {
+     "email": "ko*************************",
+     "invoices": 5,
+     "eur": 6.6,
+     "rub": 660,
+     "first": "2026-08-26",
+     "last": "2026-09-09"
+    },
+    {
+     "email": "dr*****************",
+     "invoices": 1,
+     "eur": 6.4,
+     "rub": 640,
+     "first": "2026-09-20",
+     "last": "2026-09-20"
+    },
+    {
+     "email": "bb*****************",
+     "invoices": 1,
+     "eur": 6.26,
+     "rub": 626,
+     "first": "2026-09-03",
+     "last": "2026-09-03"
+    },
+    {
+     "email": "ti***********************",
+     "invoices": 2,
+     "eur": 5.54,
+     "rub": 554,
+     "first": "2026-09-12",
+     "last": "2026-09-12"
+    },
+    {
+     "email": "kr********************",
+     "invoices": 1,
+     "eur": 3.75,
+     "rub": 375,
+     "first": "2026-08-31",
+     "last": "2026-08-31"
+    },
+    {
+     "email": "ba******************",
+     "invoices": 2,
+     "eur": 3.18,
+     "rub": 318,
+     "first": "2026-09-03",
+     "last": "2026-09-03"
+    },
+    {
+     "email": "in*******************",
+     "invoices": 2,
+     "eur": 2.87,
+     "rub": 287,
+     "first": "2026-09-13",
+     "last": "2026-09-17"
+    }
+   ]
+  },
+  "checks": {
+   "median_eur": 4.2,
+   "avg_eur": 6.04,
+   "max_eur": 112.0,
+   "buckets": {
+    "до 2 €": 69,
+    "2-5 €": 44,
+    "5-10 €": 47,
+    "10-25 €": 12,
+    "25+ €": 6
+   }
+  },
+  "unlock": {
+   "unlocked_eur": 48.5,
+   "accrued_eur": 214.95,
+   "pct": 23,
+   "per_day_eur": 1.87,
+   "days": 26,
+   "tier_eta_days": 81,
+   "tier_eta_date": "2026-12-08"
+  },
+  "regs_series": [
+   {
+    "date": "2026-08-31",
+    "registrations": 54,
+    "active": 25
+   },
+   {
+    "date": "2026-09-01",
+    "registrations": 59,
+    "active": 28
+   },
+   {
+    "date": "2026-09-04",
+    "registrations": 105,
+    "active": 49
+   },
+   {
+    "date": "2026-09-06",
+    "registrations": 128,
+    "active": 64
+   },
+   {
+    "date": "2026-09-11",
+    "registrations": 177,
+    "active": 86
+   },
+   {
+    "date": "2026-09-18",
+    "registrations": 219,
+    "active": 107
+   },
+   {
+    "date": "2026-09-20",
+    "registrations": 251,
+    "active": 124
+   }
+  ]
  },
  "hostman": {
   "months": {
@@ -2850,13 +3052,13 @@
     "income": 0
    },
    {
-    "k": "Lite",
-    "regs": 38,
+    "k": "Панель",
+    "regs": 2,
     "income": 0
    },
    {
-    "k": "Панель",
-    "regs": 2,
+    "k": "Lite",
+    "regs": 38,
     "income": 0
    }
   ],

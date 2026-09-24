@@ -73,7 +73,7 @@
   "asof": "2026-09-24",
   "first": "2026-08-25",
   "source": "api",
-  "generated": "2026-09-24T10:03:53.390Z",
+  "generated": "2026-09-24T12:28:37.090Z",
   "run_rate_day": 801,
   "run_rate_month": 24022,
   "fc_days": 30,
@@ -90,12 +90,12 @@
    "2027-06": 24022
   },
   "funnel": {
-   "registrations": 276,
+   "registrations": 279,
    "active_referrals": 130,
    "paying_clients": 143,
    "invoices": 200,
    "invoices_per_client": 1.4,
-   "conv_reg_pay": 51.8,
+   "conv_reg_pay": 51.3,
    "avg_commission_eur": 1.2,
    "avg_commission_rub": 120,
    "avg_client_payment_eur": 6.01,
@@ -323,7 +323,7 @@
   },
   "snapshot": {
    "asof": "2026-09-24",
-   "registrations": 276,
+   "registrations": 279,
    "active_referrals": 130,
    "percent": 0.2,
    "hold_eur": 168.73,
@@ -420,8 +420,8 @@
    "proj": 31094
   },
   "ads": {
-   "fact": 43486,
-   "proj": 54358
+   "fact": 49153,
+   "proj": 61441
   },
   "total": {
    "fact": 90123,
@@ -465,9 +465,9 @@
    }
   },
   "ads": {
-   "fact": 43486,
-   "projected": 54358,
-   "per_day": 1812
+   "fact": 49153,
+   "projected": 61441,
+   "per_day": 2048
   },
   "total": {
    "fact": 90123,
@@ -914,10 +914,10 @@
   "ads": {
    "monthly_budget": 100000,
    "cur_month": "2026-09",
-   "cur_fact": 43486,
-   "cur_remaining": 56514,
+   "cur_fact": 49153,
+   "cur_remaining": 50847,
    "cur_addon_income": 35914,
-   "cur_addon_net": -20600,
+   "cur_addon_net": -14933,
    "months": {
     "2026-10": 100000,
     "2026-11": 100000,
@@ -940,7 +940,7 @@
     "2027-05": 378257,
     "2027-06": 406739
    },
-   "net_total": 2661299
+   "net_total": 2666966
   }
  },
  "dow": {
@@ -1303,7 +1303,7 @@
   },
   {
    "k": "CPC рекламы",
-   "v": "28 ₽",
+   "v": "25 ₽",
    "s": "green",
    "note": "в норме"
   },
@@ -1315,7 +1315,7 @@
   },
   {
    "k": "CAC против LTV",
-   "v": "1000 / 1466 ₽",
+   "v": "1008 / 1466 ₽",
    "s": "green",
    "note": "запас есть"
   }
@@ -1353,8 +1353,8 @@
   },
   {
    "m": "2026-09",
-   "net": 73205,
-   "cum": 255269
+   "net": 67538,
+   "cum": 249602
   }
  ],
  "tw": {
@@ -2900,6 +2900,11 @@
     "income": 303
    },
    {
+    "k": "Lite",
+    "regs": 43,
+    "income": 0
+   },
+   {
     "k": "Изменение",
     "regs": 3,
     "income": 0
@@ -2907,11 +2912,6 @@
    {
     "k": "Панель",
     "regs": 2,
-    "income": 0
-   },
-   {
-    "k": "Lite",
-    "regs": 43,
     "income": 0
    }
   ],
@@ -3358,44 +3358,44 @@
     }
    },
    "2026-09": {
-    "spend": 43486,
-    "clicks": 1580,
-    "impr": 4951,
-    "ctr": 31.91,
-    "cpc": 27.5,
-    "tw_spend": 12412,
-    "av_spend": 12038,
-    "aeza_spend": 19036,
-    "ish_spend": 0,
+    "spend": 49153,
+    "clicks": 1981,
+    "impr": 58480,
+    "ctr": 3.39,
+    "cpc": 24.8,
+    "tw_spend": 15505,
+    "av_spend": 12228,
+    "aeza_spend": 19131,
+    "ish_spend": 2289,
     "prov": {
-     "timeweb": 12412,
-     "adminvps": 12038,
-     "aeza": 19036,
-     "ishosting": 0
+     "timeweb": 15505,
+     "adminvps": 12228,
+     "aeza": 19131,
+     "ishosting": 2289
     }
    }
   },
   "total": {
-   "spend": 520759,
-   "clicks": 12694,
-   "impr": 55412,
-   "ctr": 22.91,
-   "cpc": 41.0,
-   "tw_spend": 391172,
-   "av_spend": 103956,
-   "aeza_spend": 25632,
-   "ish_spend": 0,
+   "spend": 526426,
+   "clicks": 13095,
+   "impr": 108941,
+   "ctr": 12.02,
+   "cpc": 40.2,
+   "tw_spend": 394265,
+   "av_spend": 104146,
+   "aeza_spend": 25727,
+   "ish_spend": 2289,
    "prov": {
-    "timeweb": 391172,
-    "adminvps": 103956,
-    "aeza": 25632,
-    "ishosting": 0
+    "timeweb": 394265,
+    "adminvps": 104146,
+    "aeza": 25727,
+    "ishosting": 2289
    },
    "source": "кабинет «Проекты и кампании»",
    "since": "2026-02-01",
    "cabinet_asof": "2026-09-24",
-   "cpl": 458,
-   "cac": 1000
+   "cpl": 461,
+   "cac": 1008
   },
   "eff": {
    "2026-03": {
@@ -3453,13 +3453,13 @@
     "clicks": 1634
    },
    "2026-09": {
-    "tw_spend": 12412,
-    "cpl": 155,
-    "cac": 460,
-    "conv_click_reg": 5.1,
+    "tw_spend": 15505,
+    "cpl": 194,
+    "cac": 574,
+    "conv_click_reg": 4.0,
     "regs": 80,
     "newpay": 27,
-    "clicks": 1580
+    "clicks": 1981
    }
   },
   "weeks": [
@@ -3520,8 +3520,8 @@
    {
     "w": "21.09",
     "iso": "2026-09-21",
-    "spend": 5490,
-    "clicks": 270
+    "spend": 11157,
+    "clicks": 671
    }
   ],
   "weeks_all": [
@@ -3708,8 +3708,8 @@
    {
     "w": "21.09",
     "iso": "2026-09-21",
-    "spend": 5490,
-    "clicks": 270
+    "spend": 11157,
+    "clicks": 671
    }
   ],
   "sources": [
@@ -4659,24 +4659,24 @@
   }
  },
  "derived": {
-  "net": 255269,
-  "roas": 1.49,
-  "net_tw": 247888,
-  "net_avps": 6443,
+  "net": 249602,
+  "roas": 1.47,
+  "net_tw": 244795,
+  "net_avps": 6253,
   "spend_prov": {
-   "timeweb": 391172,
-   "adminvps": 103956,
-   "aeza": 25632,
-   "ishosting": 0
+   "timeweb": 394265,
+   "adminvps": 104146,
+   "aeza": 25727,
+   "ishosting": 2289
   },
   "ltv": 1466,
-  "cac": 1000,
-  "cpl": 458,
+  "cac": 1008,
+  "cpl": 461,
   "payback": 2,
   "avg_first": 444,
   "avg_rep": 455,
-  "conv_click_reg": 6.7,
-  "cost_reg_tw": 458,
+  "conv_click_reg": 6.5,
+  "cost_reg_tw": 461,
   "conv_reg_pay": 51.0
  }
 }

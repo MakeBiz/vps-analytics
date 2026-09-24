@@ -25,36 +25,36 @@
  "ish": {
   "months": {
    "2026-09": {
-    "clicks": 59,
-    "uniq": 59,
-    "conv": 10,
-    "usd": 18.87,
-    "income": 1510
+    "clicks": 809,
+    "uniq": 756,
+    "conv": 16,
+    "usd": 29.32,
+    "income": 2346
    }
   },
-  "total": 1510,
-  "usd": 18.87,
-  "clicks": 59,
-  "uniq": 59,
-  "conv": 10,
+  "total": 2346,
+  "usd": 29.32,
+  "clicks": 809,
+  "uniq": 756,
+  "conv": 16,
   "rate": 80,
-  "asof": "2026-08-23",
+  "asof": "2026-09-24",
   "by_offer": [
    {
     "title": "General Offer",
-    "clicks": 37,
-    "uniq": 37,
-    "conv": 10,
-    "usd": 18.87,
-    "income": 1510
+    "clicks": 106,
+    "uniq": 104,
+    "conv": 12,
+    "usd": 19.83,
+    "income": 1586
    },
    {
     "title": "General Offer IO",
-    "clicks": 22,
-    "uniq": 22,
-    "conv": 0,
-    "usd": 0.0,
-    "income": 0
+    "clicks": 703,
+    "uniq": 652,
+    "conv": 4,
+    "usd": 9.49,
+    "income": 759
    }
   ]
  },
@@ -509,8 +509,8 @@
      "plan": 240
     },
     "ish": {
-     "fact": 1510,
-     "plan": 378
+     "fact": 2346,
+     "plan": 586
     }
    },
    "2026-10": {
@@ -894,8 +894,8 @@
    "cur_month": "2026-09",
    "cur_fact": 82250,
    "cur_remaining": 17750,
-   "cur_addon_income": 36084,
-   "cur_addon_net": 18334,
+   "cur_addon_income": 36292,
+   "cur_addon_net": 18542,
    "months": {
     "2026-10": 100000,
     "2026-11": 100000,
@@ -918,7 +918,7 @@
     "2027-05": 362908,
     "2027-06": 393589
    },
-   "net_total": 2557011
+   "net_total": 2557219
   }
  },
  "dow": {
@@ -1331,8 +1331,8 @@
   },
   {
    "m": "2026-09",
-   "net": 33587,
-   "cum": 211247
+   "net": 34423,
+   "cum": 212083
   }
  ],
  "tw": {
@@ -2878,6 +2878,11 @@
     "income": 303
    },
    {
+    "k": "Панель",
+    "regs": 2,
+    "income": 0
+   },
+   {
     "k": "Lite",
     "regs": 43,
     "income": 0
@@ -2885,11 +2890,6 @@
    {
     "k": "Изменение",
     "regs": 3,
-    "income": 0
-   },
-   {
-    "k": "Панель",
-    "regs": 2,
     "income": 0
    }
   ],
@@ -4637,8 +4637,8 @@
   }
  },
  "derived": {
-  "net": 211247,
-  "roas": 1.37,
+  "net": 212083,
+  "roas": 1.38,
   "net_tw": 239255,
   "net_avps": -2191,
   "spend_prov": {

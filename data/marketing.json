@@ -1284,7 +1284,7 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 164,
+        "visits": 165,
         "providerClicks": 68,
         "promo": 5,
         "goals": [
@@ -1335,7 +1335,7 @@
         "key": "servercalc-com",
         "name": "ServerCalc.com",
         "counter": "111912764",
-        "visits": 155,
+        "visits": 156,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1353,7 +1353,7 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 177,
+        "visits": 178,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1866,193 +1866,193 @@
   "wordstat": [
     {
       "phrase": "аренда vps",
-      "count": 6600,
+      "count": 6862,
       "tails": [
         [
           "vps сервер аренда",
-          3133
-        ],
-        [
-          "аренда vps в россии",
-          253
+          3263
         ],
         [
           "аренда vps для vpn",
-          252
+          279
         ],
         [
-          "аренда vps в европе",
-          218
+          "аренда vps в россии",
+          259
         ],
         [
           "аренда vps сервера для vpn",
-          216
+          227
+        ],
+        [
+          "аренда vps в европе",
+          227
         ]
       ]
     },
     {
       "phrase": "купить vps",
-      "count": 5658,
+      "count": 5766,
       "tails": [
         [
           "vps сервер купить",
-          2107
+          2203
         ],
         [
           "купить vps для vpn",
-          274
+          290
         ],
         [
           "vps сервер купить для vpn",
-          241
+          251
         ],
         [
           "купить дешевый vps",
-          181
+          188
         ],
         [
           "vps европа купить",
-          128
+          140
         ]
       ]
     },
     {
       "phrase": "vps сервер",
-      "count": 21246,
+      "count": 22138,
       "tails": [
         [
           "vps сервер аренда",
-          3133
+          3263
         ],
         [
           "vps сервер купить",
-          2107
+          2203
         ],
         [
           "vps сервер для vpn",
-          1152
+          1205
         ],
         [
           "бесплатный vps сервер",
-          942
+          962
         ],
         [
           "арендовать vps сервер",
-          712
+          741
         ]
       ]
     },
     {
       "phrase": "vps хостинг",
-      "count": 2638,
+      "count": 2792,
       "tails": [
         [
           "хостинг vps серверов",
-          194
+          199
         ],
         [
           "лучшие vps хостинги",
-          174
+          180
         ],
         [
           "рейтинг vps хостингов",
-          161
+          167
         ],
         [
-          "vds vps хостингов",
-          130
+          "vds vps хостинг",
+          132
         ],
         [
           "дешевый vps хостинг",
-          109
+          112
         ]
       ]
     },
     {
       "phrase": "зарубежный vps",
-      "count": 737,
+      "count": 779,
       "tails": [
         [
           "vps сервер зарубежный",
-          260
+          274
         ],
         [
           "купить зарубежный vps",
-          71
+          74
         ],
         [
           "аренда зарубежного vps",
-          50
+          55
         ],
         [
           "зарубежные vps хостинги",
-          47
+          53
         ],
         [
           "зарубежный vps с оплатой из россии",
-          41
+          44
         ]
       ]
     },
     {
       "phrase": "vds",
-      "count": 29994,
+      "count": 30634,
       "tails": [
         [
           "vds сервер",
-          4053
+          4208
         ],
         [
           "vps vds",
-          2547
+          2611
         ],
         [
           "ghost vds",
-          2329
-        ],
-        [
-          "vincea vds",
-          1209
+          2312
         ],
         [
           "vds купить",
-          1196
+          1221
+        ],
+        [
+          "аренда vds",
+          1213
         ]
       ]
     },
     {
       "phrase": "аренда сервера",
-      "count": 23819,
+      "count": 24425,
       "tails": [
         [
           "vps сервер аренда",
-          3133
+          3263
         ],
         [
           "аренда сервера майнкрафт",
-          1204
+          1200
         ],
         [
           "аренда виртуального сервера",
-          1044
+          1101
         ],
         [
           "аренда сервера 1с",
-          657
+          678
         ],
         [
-          "аренда сервера для впн",
-          629
+          "vds сервер аренда",
+          658
         ]
       ]
     },
     {
       "phrase": "nvme vps",
-      "count": 71,
+      "count": 73,
       "tails": [
         [
           "vps kvm nvme",
-          7
+          6
         ]
       ]
     }
@@ -2765,8 +2765,8 @@
           ]
         ],
         "indexing": {
-          "searchable": 253,
-          "excluded": 46,
+          "searchable": 248,
+          "excluded": 49,
           "sqi": 30,
           "problems": {
             "POSSIBLE_PROBLEM": 2
@@ -3070,10 +3070,13 @@
         "host": "makebiztechnologies.com",
         "queries": [],
         "indexing": {
-          "searchable": null,
-          "excluded": null,
-          "sqi": null,
-          "problems": {},
+          "searchable": 21,
+          "excluded": 0,
+          "sqi": 0,
+          "problems": {
+            "POSSIBLE_PROBLEM": 2,
+            "RECOMMENDATION": 1
+          },
           "history": []
         }
       },
@@ -3332,9 +3335,9 @@
           ]
         ],
         "indexing": {
-          "searchable": 24,
+          "searchable": 23,
           "excluded": 1,
-          "sqi": 0,
+          "sqi": 10,
           "problems": {},
           "history": [
             [
@@ -3408,8 +3411,8 @@
         "host": "serverselection.online",
         "queries": [],
         "indexing": {
-          "searchable": 112,
-          "excluded": 5,
+          "searchable": 111,
+          "excluded": 7,
           "sqi": 0,
           "problems": {
             "RECOMMENDATION": 2

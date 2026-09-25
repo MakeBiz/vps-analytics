@@ -1,5 +1,5 @@
 {
-  "generated": "24.09.2026",
+  "generated": "25.09.2026",
   "window": "последние 30 дней",
   "note": "Снимок маркетинга из коннектора Яндекса (Директ, Метрика, Вебмастер, Wordstat). Обновляется по запросу.",
   "direct": {
@@ -7,147 +7,147 @@
       {
         "id": "713886156",
         "name": "Провайдер Регионы (Бренд)",
-        "cost": 43127,
-        "clicks": 2839,
-        "impressions": 11672,
-        "conversions": 1395.0,
-        "ctr": 24.32,
-        "cpc": 15.19,
+        "cost": 44045,
+        "clicks": 2934,
+        "impressions": 11907,
+        "conversions": 1431.0,
+        "ctr": 24.64,
+        "cpc": 15.01,
         "kind": "brand"
       },
       {
         "id": "713771451",
         "name": "Aeza МСК (бренд)",
-        "cost": 24726,
-        "clicks": 1021,
-        "impressions": 3422,
-        "conversions": 663.0,
-        "ctr": 29.84,
-        "cpc": 24.22,
+        "cost": 23471,
+        "clicks": 971,
+        "impressions": 2853,
+        "conversions": 641.0,
+        "ctr": 34.03,
+        "cpc": 24.17,
         "kind": "brand"
       },
       {
         "id": "713897708",
         "name": "AdminVPS (Бренд)",
-        "cost": 12490,
-        "clicks": 620,
-        "impressions": 1866,
-        "conversions": 84.0,
-        "ctr": 33.23,
-        "cpc": 20.15,
+        "cost": 13019,
+        "clicks": 661,
+        "impressions": 1990,
+        "conversions": 88.0,
+        "ctr": 33.22,
+        "cpc": 19.7,
         "kind": "brand"
       },
       {
         "id": "706715098",
         "name": "TW Cloud МСК",
-        "cost": 12243,
-        "clicks": 294,
-        "impressions": 1165,
-        "conversions": 211.0,
-        "ctr": 25.24,
-        "cpc": 41.64,
-        "kind": "brand"
-      },
-      {
-        "id": "713792287",
-        "name": "TW МСК (Бренд)",
-        "cost": 3482,
-        "clicks": 238,
-        "impressions": 1765,
-        "conversions": 153.0,
-        "ctr": 13.48,
-        "cpc": 14.63,
-        "kind": "brand"
-      },
-      {
-        "id": "713793556",
-        "name": "PodborVPS",
-        "cost": 3393,
-        "clicks": 113,
-        "impressions": 930,
-        "conversions": 61.0,
-        "ctr": 12.15,
-        "cpc": 30.02,
-        "kind": "site",
-        "site": "podborvps"
-      },
-      {
-        "id": "708902123",
-        "name": "AdminVPS МСК",
-        "cost": 3039,
-        "clicks": 92,
-        "impressions": 380,
-        "conversions": 12.0,
-        "ctr": 24.21,
-        "cpc": 33.03,
-        "kind": "brand"
-      },
-      {
-        "id": "713793989",
-        "name": "Servercalc",
-        "cost": 2899,
-        "clicks": 109,
-        "impressions": 1344,
-        "conversions": 60.0,
-        "ctr": 8.11,
-        "cpc": 26.6,
-        "kind": "site",
-        "site": "servercalc-ru"
-      },
-      {
-        "id": "713775967",
-        "name": "ishosting",
-        "cost": 2618,
-        "clicks": 68,
-        "impressions": 1606,
-        "conversions": 0.0,
-        "ctr": 4.23,
-        "cpc": 38.51,
+        "cost": 11898,
+        "clicks": 285,
+        "impressions": 1120,
+        "conversions": 205.0,
+        "ctr": 25.45,
+        "cpc": 41.75,
         "kind": "brand"
       },
       {
         "id": "714635044",
         "name": "IsHost New",
-        "cost": 1731,
-        "clicks": 42,
-        "impressions": 726,
+        "cost": 2851,
+        "clicks": 70,
+        "impressions": 991,
         "conversions": 0.0,
-        "ctr": 5.79,
-        "cpc": 41.21,
+        "ctr": 7.06,
+        "cpc": 40.73,
         "kind": "brand"
+      },
+      {
+        "id": "708902123",
+        "name": "AdminVPS МСК",
+        "cost": 2651,
+        "clicks": 70,
+        "impressions": 313,
+        "conversions": 9.0,
+        "ctr": 22.36,
+        "cpc": 37.88,
+        "kind": "brand"
+      },
+      {
+        "id": "713792287",
+        "name": "TW МСК (Бренд)",
+        "cost": 2579,
+        "clicks": 180,
+        "impressions": 1358,
+        "conversions": 121.0,
+        "ctr": 13.25,
+        "cpc": 14.33,
+        "kind": "brand"
+      },
+      {
+        "id": "713793989",
+        "name": "Servercalc",
+        "cost": 2159,
+        "clicks": 76,
+        "impressions": 927,
+        "conversions": 42.0,
+        "ctr": 8.2,
+        "cpc": 28.4,
+        "kind": "site",
+        "site": "servercalc-ru"
+      },
+      {
+        "id": "713793556",
+        "name": "PodborVPS",
+        "cost": 2132,
+        "clicks": 80,
+        "impressions": 668,
+        "conversions": 41.0,
+        "ctr": 11.98,
+        "cpc": 26.65,
+        "kind": "site",
+        "site": "podborvps"
       },
       {
         "id": "714612190",
         "name": "TW Регионы NEW",
-        "cost": 1277,
-        "clicks": 36,
-        "impressions": 683,
-        "conversions": 17.0,
-        "ctr": 5.27,
-        "cpc": 35.47,
+        "cost": 2118,
+        "clicks": 59,
+        "impressions": 1369,
+        "conversions": 26.0,
+        "ctr": 4.31,
+        "cpc": 35.91,
         "kind": "brand"
       },
       {
         "id": "714612545",
         "name": "TW МСК NEW",
-        "cost": 1038,
-        "clicks": 26,
-        "impressions": 568,
-        "conversions": 7.0,
-        "ctr": 4.58,
-        "cpc": 39.92,
+        "cost": 1638,
+        "clicks": 39,
+        "impressions": 810,
+        "conversions": 12.0,
+        "ctr": 4.81,
+        "cpc": 42.0,
         "kind": "brand"
       },
       {
         "id": "714640377",
         "name": "TW Регионы РСЯ",
-        "cost": 1006,
-        "clicks": 232,
-        "impressions": 37914,
-        "conversions": 0.0,
-        "ctr": 0.61,
-        "cpc": 4.34,
+        "cost": 1494,
+        "clicks": 324,
+        "impressions": 68536,
+        "conversions": 1.0,
+        "ctr": 0.47,
+        "cpc": 4.61,
         "kind": "rsya"
+      },
+      {
+        "id": "713775967",
+        "name": "ishosting",
+        "cost": 1232,
+        "clicks": 30,
+        "impressions": 797,
+        "conversions": 0.0,
+        "ctr": 3.76,
+        "cpc": 41.07,
+        "kind": "brand"
       }
     ],
     "cpcCeiling": {
@@ -158,9 +158,9 @@
       {
         "campaign_name": "Aeza МСК (бренд)",
         "group_name": "Нейтральная",
-        "clicks": 968,
-        "cost": 23212,
-        "avg_cpc": 23.98
+        "clicks": 943,
+        "cost": 22741,
+        "avg_cpc": 24.12
       },
       {
         "campaign_name": "Провайдер Регионы (Бренд)",
@@ -172,177 +172,177 @@
       {
         "campaign_name": "Провайдер Регионы (Бренд)",
         "group_name": "Aeza",
-        "clicks": 1035,
-        "cost": 14321,
-        "avg_cpc": 13.84
+        "clicks": 1059,
+        "cost": 14667,
+        "avg_cpc": 13.85
       },
       {
         "campaign_name": "AdminVPS (Бренд)",
         "group_name": "Бренд МСК",
-        "clicks": 620,
-        "cost": 12490,
-        "avg_cpc": 20.15
+        "clicks": 661,
+        "cost": 13019,
+        "avg_cpc": 19.7
       },
       {
         "campaign_name": "TW Cloud МСК",
         "group_name": "TW Cloud VPS МСК",
-        "clicks": 294,
-        "cost": 12243,
-        "avg_cpc": 41.64
+        "clicks": 285,
+        "cost": 11898,
+        "avg_cpc": 41.75
       },
       {
         "campaign_name": "Провайдер Регионы (Бренд)",
         "group_name": "Adminvps рег",
-        "clicks": 841,
-        "cost": 10415,
-        "avg_cpc": 12.38
-      },
-      {
-        "campaign_name": "TW МСК (Бренд)",
-        "group_name": "Бренд",
-        "clicks": 235,
-        "cost": 3404,
-        "avg_cpc": 14.48
+        "clicks": 912,
+        "cost": 10987,
+        "avg_cpc": 12.05
       },
       {
         "campaign_name": "AdminVPS МСК",
         "group_name": "AdminVPS",
-        "clicks": 92,
-        "cost": 3039,
-        "avg_cpc": 33.03
+        "clicks": 70,
+        "cost": 2651,
+        "avg_cpc": 37.88
       },
       {
-        "campaign_name": "PodborVPS",
-        "group_name": "Дешёвый и спецификации",
-        "clicks": 36,
-        "cost": 1060,
-        "avg_cpc": 29.44
-      },
-      {
-        "campaign_name": "ishosting",
-        "group_name": "Аренда и покупка VPS",
-        "clicks": 22,
-        "cost": 988,
-        "avg_cpc": 44.9
+        "campaign_name": "TW МСК (Бренд)",
+        "group_name": "Бренд",
+        "clicks": 180,
+        "cost": 2579,
+        "avg_cpc": 14.33
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Брендовая",
-        "clicks": 36,
-        "cost": 889,
-        "avg_cpc": 24.68
+        "clicks": 26,
+        "cost": 685,
+        "avg_cpc": 26.33
+      },
+      {
+        "campaign_name": "PodborVPS",
+        "group_name": "Дешёвый и спецификации",
+        "clicks": 27,
+        "cost": 683,
+        "avg_cpc": 25.3
       },
       {
         "campaign_name": "PodborVPS",
         "group_name": "Сравнение и каталог",
-        "clicks": 28,
-        "cost": 865,
-        "avg_cpc": 30.89
-      },
-      {
-        "campaign_name": "Aeza МСК (бренд)",
-        "group_name": "Аренда и покупка VPS",
-        "clicks": 24,
-        "cost": 802,
-        "avg_cpc": 33.43
-      },
-      {
-        "campaign_name": "PodborVPS",
-        "group_name": "Зарубежные VPS",
-        "clicks": 25,
-        "cost": 757,
-        "avg_cpc": 30.26
+        "clicks": 19,
+        "cost": 574,
+        "avg_cpc": 30.23
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Дешёвый и спецификации",
-        "clicks": 26,
-        "cost": 745,
-        "avg_cpc": 28.65
+        "clicks": 20,
+        "cost": 560,
+        "avg_cpc": 27.98
       },
       {
         "campaign_name": "ishosting",
-        "group_name": "Бренд",
-        "clicks": 16,
-        "cost": 709,
-        "avg_cpc": 44.33
+        "group_name": "Аренда и покупка VPS",
+        "clicks": 9,
+        "cost": 513,
+        "avg_cpc": 56.97
+      },
+      {
+        "campaign_name": "PodborVPS",
+        "group_name": "Зарубежные VPS",
+        "clicks": 20,
+        "cost": 500,
+        "avg_cpc": 25.01
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Зарубежные VPS",
-        "clicks": 31,
-        "cost": 685,
-        "avg_cpc": 22.1
+        "clicks": 20,
+        "cost": 497,
+        "avg_cpc": 24.84
+      },
+      {
+        "campaign_name": "Aeza МСК (бренд)",
+        "group_name": "Аренда и покупка VPS",
+        "clicks": 11,
+        "cost": 357,
+        "avg_cpc": 32.43
       },
       {
         "campaign_name": "ishosting",
         "group_name": "Зарубеж / Европа / Азия",
-        "clicks": 19,
-        "cost": 588,
-        "avg_cpc": 30.95
-      },
-      {
-        "campaign_name": "PodborVPS",
-        "group_name": "Брендовая",
-        "clicks": 17,
-        "cost": 485,
-        "avg_cpc": 28.53
-      },
-      {
-        "campaign_name": "Aeza МСК (бренд)",
-        "group_name": "VPS за рубежом / Европа",
-        "clicks": 18,
-        "cost": 462,
-        "avg_cpc": 25.66
+        "clicks": 10,
+        "cost": 293,
+        "avg_cpc": 29.35
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Сравнение и каталог",
-        "clicks": 11,
-        "cost": 360,
-        "avg_cpc": 32.74
+        "clicks": 7,
+        "cost": 263,
+        "avg_cpc": 37.59
+      },
+      {
+        "campaign_name": "Aeza МСК (бренд)",
+        "group_name": "VPS за рубежом / Европа",
+        "clicks": 10,
+        "cost": 254,
+        "avg_cpc": 25.4
+      },
+      {
+        "campaign_name": "ishosting",
+        "group_name": "Бренд",
+        "clicks": 6,
+        "cost": 243,
+        "avg_cpc": 40.42
+      },
+      {
+        "campaign_name": "PodborVPS",
+        "group_name": "Брендовая",
+        "clicks": 9,
+        "cost": 230,
+        "avg_cpc": 25.52
       },
       {
         "campaign_name": "ishosting",
         "group_name": "VDS и выделенные серверы",
-        "clicks": 11,
-        "cost": 333,
-        "avg_cpc": 30.3
-      },
-      {
-        "campaign_name": "Aeza МСК (бренд)",
-        "group_name": "VDS и конфигурация",
-        "clicks": 11,
-        "cost": 250,
-        "avg_cpc": 22.73
-      },
-      {
-        "campaign_name": "PodborVPS",
-        "group_name": "Подбор под задачу",
-        "clicks": 7,
-        "cost": 226,
-        "avg_cpc": 32.33
+        "clicks": 5,
+        "cost": 183,
+        "avg_cpc": 36.69
       },
       {
         "campaign_name": "Servercalc",
         "group_name": "Подбор под задачу",
+        "clicks": 3,
+        "cost": 155,
+        "avg_cpc": 51.58
+      },
+      {
+        "campaign_name": "PodborVPS",
+        "group_name": "Подбор под задачу",
         "clicks": 5,
-        "cost": 220,
-        "avg_cpc": 44.07
+        "cost": 145,
+        "avg_cpc": 28.99
+      },
+      {
+        "campaign_name": "Aeza МСК (бренд)",
+        "group_name": "VDS и конфигурация",
+        "clicks": 7,
+        "cost": 119,
+        "avg_cpc": 16.97
       },
       {
         "campaign_name": "TW МСК (Бренд)",
         "group_name": "Зарубеж / Европа",
-        "clicks": 2,
-        "cost": 70,
-        "avg_cpc": 35.24
+        "clicks": 0,
+        "cost": 0,
+        "avg_cpc": 0
       },
       {
         "campaign_name": "TW МСК (Бренд)",
         "group_name": "Аренда и покупка VPS",
-        "clicks": 1,
-        "cost": 8,
-        "avg_cpc": 7.97
+        "clicks": 0,
+        "cost": 0,
+        "avg_cpc": 0
       },
       {
         "campaign_name": "TW МСК (Бренд)",
@@ -986,13 +986,6 @@
     ],
     "dailyVps": [
       {
-        "date": "2026-08-25",
-        "impressions": 2617,
-        "clicks": 258,
-        "cost": 6513,
-        "conversions": 113.0
-      },
-      {
         "date": "2026-08-26",
         "impressions": 2790,
         "clicks": 248,
@@ -1194,6 +1187,13 @@
         "clicks": 211,
         "cost": 2590,
         "conversions": 90.0
+      },
+      {
+        "date": "2026-09-24",
+        "impressions": 400,
+        "clicks": 151,
+        "cost": 1681,
+        "conversions": 52.0
       }
     ],
     "trends": {
@@ -1210,8 +1210,8 @@
         "key": "podborvps",
         "name": "ПодборVPS",
         "counter": "111248718",
-        "visits": 150,
-        "providerClicks": 87,
+        "visits": 117,
+        "providerClicks": 64,
         "promo": 0,
         "goals": [
           [
@@ -1284,8 +1284,8 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 165,
-        "providerClicks": 68,
+        "visits": 134,
+        "providerClicks": 56,
         "promo": 5,
         "goals": [
           [
@@ -1335,7 +1335,7 @@
         "key": "servercalc-com",
         "name": "ServerCalc.com",
         "counter": "111912764",
-        "visits": 156,
+        "visits": 133,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1344,7 +1344,7 @@
         "key": "serverselection-online",
         "name": "ServerSelection",
         "counter": "112072146",
-        "visits": 17,
+        "visits": 19,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1353,7 +1353,7 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 178,
+        "visits": 189,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1374,20 +1374,20 @@
       {
         "q": "aeza",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 436,
-        "cost": 13341
+        "clicks": 429,
+        "cost": 13211
       },
       {
         "q": "aeza",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 570,
-        "cost": 9057
+        "clicks": 585,
+        "cost": 9288
       },
       {
         "q": "adminvps",
         "camp": "AdminVPS (Бренд)",
-        "clicks": 430,
-        "cost": 8028
+        "clicks": 464,
+        "cost": 8411
       },
       {
         "q": "timeweb",
@@ -1396,16 +1396,16 @@
         "cost": 7242
       },
       {
-        "q": "timeweb",
-        "camp": "TW Cloud МСК",
-        "clicks": 182,
-        "cost": 6879
-      },
-      {
         "q": "adminvps",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 543,
-        "cost": 6626
+        "clicks": 598,
+        "cost": 7050
+      },
+      {
+        "q": "timeweb",
+        "camp": "TW Cloud МСК",
+        "clicks": 178,
+        "cost": 6743
       },
       {
         "q": "таймвеб",
@@ -1416,8 +1416,8 @@
       {
         "q": "аеза",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 133,
-        "cost": 3015
+        "clicks": 134,
+        "cost": 3046
       },
       {
         "q": "timeweb cloud",
@@ -1428,44 +1428,44 @@
       {
         "q": "аеза",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 182,
-        "cost": 2066
+        "clicks": 188,
+        "cost": 2155
       },
       {
         "q": "aeza net",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 148,
-        "cost": 1758
-      },
-      {
-        "q": "timeweb",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 114,
-        "cost": 1569
+        "clicks": 142,
+        "cost": 1729
       },
       {
         "q": "aeza vps",
         "camp": "Aeza МСК (бренд)",
-        "clicks": 45,
-        "cost": 1555
+        "clicks": 41,
+        "cost": 1495
       },
       {
         "q": "админ впс",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 137,
-        "cost": 1368
+        "clicks": 144,
+        "cost": 1423
       },
       {
-        "q": "timeweb cloud",
-        "camp": "TW Cloud МСК",
-        "clicks": 24,
-        "cost": 1276
+        "q": "timeweb",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 92,
+        "cost": 1226
       },
       {
         "q": "таймвеб",
         "camp": "TW Cloud МСК",
-        "clicks": 26,
-        "cost": 1266
+        "clicks": 24,
+        "cost": 1187
+      },
+      {
+        "q": "timeweb cloud",
+        "camp": "TW Cloud МСК",
+        "clicks": 22,
+        "cost": 1184
       },
       {
         "q": "тайм веб",
@@ -1476,32 +1476,32 @@
       {
         "q": "aeza vps",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 53,
-        "cost": 1061
+        "clicks": 54,
+        "cost": 1079
       },
       {
         "q": "тайм веб",
         "camp": "TW Cloud МСК",
-        "clicks": 23,
-        "cost": 1025
-      },
-      {
-        "q": "adminvps",
-        "camp": "AdminVPS МСК",
-        "clicks": 52,
-        "cost": 972
+        "clicks": 22,
+        "cost": 988
       },
       {
         "q": "админ впс",
         "camp": "AdminVPS (Бренд)",
-        "clicks": 59,
-        "cost": 868
+        "clicks": 61,
+        "cost": 941
+      },
+      {
+        "q": "adminvps",
+        "camp": "AdminVPS МСК",
+        "clicks": 36,
+        "cost": 682
       },
       {
         "q": "админвпс",
         "camp": "AdminVPS (Бренд)",
-        "clicks": 35,
-        "cost": 537
+        "clicks": 36,
+        "cost": 554
       },
       {
         "q": "adminvps промокод",
@@ -1512,14 +1512,8 @@
       {
         "q": "админвпс",
         "camp": "Провайдер Регионы (Бренд)",
-        "clicks": 38,
-        "cost": 443
-      },
-      {
-        "q": "таймвеб",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 27,
-        "cost": 413
+        "clicks": 41,
+        "cost": 469
       },
       {
         "q": "aeza vpn",
@@ -1538,6 +1532,12 @@
         "camp": "Провайдер Регионы (Бренд)",
         "clicks": 15,
         "cost": 313
+      },
+      {
+        "q": "таймвеб",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 21,
+        "cost": 311
       },
       {
         "q": "adminvps ru",
@@ -1582,12 +1582,6 @@
         "cost": 256
       },
       {
-        "q": "timeweb cloud",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 18,
-        "cost": 255
-      },
-      {
         "q": "проверка скорости интернета",
         "camp": "Провайдер Регионы (Бренд)",
         "clicks": 29,
@@ -1618,6 +1612,12 @@
         "cost": 166
       },
       {
+        "q": "timeweb cloud",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 12,
+        "cost": 155
+      },
+      {
         "q": "vps",
         "camp": "AdminVPS МСК",
         "clicks": 1,
@@ -1634,12 +1634,6 @@
         "camp": "Провайдер Регионы (Бренд)",
         "clicks": 17,
         "cost": 151
-      },
-      {
-        "q": "аренда vps",
-        "camp": "PodborVPS",
-        "clicks": 3,
-        "cost": 147
       },
       {
         "q": "adminvps ru где посмотреть регион",
@@ -1669,12 +1663,6 @@
         "q": "vps admin",
         "camp": "Провайдер Регионы (Бренд)",
         "clicks": 7,
-        "cost": 135
-      },
-      {
-        "q": "аренда сервера",
-        "camp": "PodborVPS",
-        "clicks": 4,
         "cost": 135
       },
       {
@@ -1738,40 +1726,10 @@
         "cost": 114
       },
       {
-        "q": "аренда своего vps в россии",
-        "camp": "ishosting",
-        "clicks": 1,
-        "cost": 114
-      },
-      {
-        "q": "арендовать vps",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 2,
-        "cost": 112
-      },
-      {
-        "q": "vps в россии",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 3,
-        "cost": 109
-      },
-      {
         "q": "my aeza",
         "camp": "Провайдер Регионы (Бренд)",
         "clicks": 9,
         "cost": 107
-      },
-      {
-        "q": "тайм веб",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 8,
-        "cost": 106
-      },
-      {
-        "q": "таймвеб клауд",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 8,
-        "cost": 105
       },
       {
         "q": "скорость интернета",
@@ -1786,18 +1744,6 @@
         "cost": 104
       },
       {
-        "q": "сервер в нидерландах",
-        "camp": "PodborVPS",
-        "clicks": 1,
-        "cost": 104
-      },
-      {
-        "q": "аренда сервера москва",
-        "camp": "Aeza МСК (бренд)",
-        "clicks": 1,
-        "cost": 103
-      },
-      {
         "q": "vps купить",
         "camp": "ishosting",
         "clicks": 1,
@@ -1808,12 +1754,6 @@
         "camp": "PodborVPS",
         "clicks": 1,
         "cost": 103
-      },
-      {
-        "q": "time web",
-        "camp": "TW МСК (Бренд)",
-        "clicks": 9,
-        "cost": 102
       },
       {
         "q": "платформа таймвеб",
@@ -1840,6 +1780,12 @@
         "cost": 96
       },
       {
+        "q": "таймвеб клауд",
+        "camp": "TW МСК (Бренд)",
+        "clicks": 7,
+        "cost": 94
+      },
+      {
         "q": "аренда vps aeza",
         "camp": "Aeza МСК (бренд)",
         "clicks": 2,
@@ -1850,6 +1796,60 @@
         "camp": "Провайдер Регионы (Бренд)",
         "clicks": 4,
         "cost": 92
+      },
+      {
+        "q": "adminvps промокод",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 3,
+        "cost": 92
+      },
+      {
+        "q": "https timeweb cloud",
+        "camp": "TW Cloud МСК",
+        "clicks": 2,
+        "cost": 92
+      },
+      {
+        "q": "аренда vps",
+        "camp": "PodborVPS",
+        "clicks": 2,
+        "cost": 92
+      },
+      {
+        "q": "vps польша",
+        "camp": "AdminVPS МСК",
+        "clicks": 1,
+        "cost": 92
+      },
+      {
+        "q": "aeza аренда сервера",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 2,
+        "cost": 90
+      },
+      {
+        "q": "my aeza",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 10,
+        "cost": 88
+      },
+      {
+        "q": "выделенный vps сервер",
+        "camp": "AdminVPS МСК",
+        "clicks": 1,
+        "cost": 87
+      },
+      {
+        "q": "aeza личный кабинет",
+        "camp": "Aeza МСК (бренд)",
+        "clicks": 12,
+        "cost": 86
+      },
+      {
+        "q": "timecloud",
+        "camp": "Провайдер Регионы (Бренд)",
+        "clicks": 2,
+        "cost": 84
       }
     ],
     "minusCandidates": [
@@ -2058,7 +2058,7 @@
     }
   ],
   "webmaster": {
-    "generated": "24.09.2026",
+    "generated": "25.09.2026",
     "sites": [
       {
         "host": "makebiz.life",
@@ -2773,10 +2773,6 @@
           },
           "history": [
             [
-              "2026-03-28",
-              174
-            ],
-            [
               "2026-03-31",
               174
             ],
@@ -3035,6 +3031,10 @@
             [
               "2026-09-23",
               253
+            ],
+            [
+              "2026-09-24",
+              248
             ]
           ]
         }
@@ -3048,7 +3048,7 @@
           "sqi": 0,
           "problems": {
             "POSSIBLE_PROBLEM": 1,
-            "RECOMMENDATION": 3
+            "RECOMMENDATION": 1
           },
           "history": [
             [
@@ -3062,20 +3062,32 @@
             [
               "2026-09-23",
               0
+            ],
+            [
+              "2026-09-24",
+              0
             ]
           ]
         }
       },
       {
         "host": "makebiztechnologies.com",
-        "queries": [],
+        "queries": [
+          [
+            "ai crm dubai",
+            1,
+            0,
+            5.0,
+            0.0
+          ]
+        ],
         "indexing": {
           "searchable": 21,
           "excluded": 0,
           "sqi": 0,
           "problems": {
             "POSSIBLE_PROBLEM": 2,
-            "RECOMMENDATION": 1
+            "RECOMMENDATION": 3
           },
           "history": []
         }
@@ -3167,6 +3179,10 @@
             [
               "2026-09-23",
               8
+            ],
+            [
+              "2026-09-24",
+              8
             ]
           ]
         }
@@ -3196,40 +3212,7 @@
           "problems": {
             "RECOMMENDATION": 2
           },
-          "history": [
-            [
-              "2026-09-06",
-              56
-            ],
-            [
-              "2026-09-07",
-              56
-            ],
-            [
-              "2026-09-09",
-              55
-            ],
-            [
-              "2026-09-10",
-              55
-            ],
-            [
-              "2026-09-15",
-              54
-            ],
-            [
-              "2026-09-19",
-              55
-            ],
-            [
-              "2026-09-20",
-              57
-            ],
-            [
-              "2026-09-23",
-              59
-            ]
-          ]
+          "history": []
         }
       },
       {
@@ -3403,6 +3386,10 @@
             [
               "2026-09-23",
               24
+            ],
+            [
+              "2026-09-24",
+              23
             ]
           ]
         }
@@ -3417,57 +3404,16 @@
           "problems": {
             "RECOMMENDATION": 2
           },
-          "history": [
-            [
-              "2026-08-31",
-              55
-            ],
-            [
-              "2026-09-02",
-              58
-            ],
-            [
-              "2026-09-06",
-              67
-            ],
-            [
-              "2026-09-07",
-              64
-            ],
-            [
-              "2026-09-09",
-              62
-            ],
-            [
-              "2026-09-10",
-              58
-            ],
-            [
-              "2026-09-15",
-              58
-            ],
-            [
-              "2026-09-19",
-              59
-            ],
-            [
-              "2026-09-20",
-              60
-            ],
-            [
-              "2026-09-23",
-              112
-            ]
-          ]
+          "history": []
         }
       }
     ]
   },
   "gsc": {
-    "generated": "24.09.2026",
+    "generated": "25.09.2026",
     "window": {
-      "from": "2026-03-28",
-      "to": "2026-09-23"
+      "from": "2026-03-29",
+      "to": "2026-09-24"
     },
     "sites": [
       {
@@ -3539,17 +3485,17 @@
           },
           {
             "q": "vds в европе",
-            "impressions": 2,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 90.0
+            "position": 88.2
           },
           {
             "q": "vds в нидерландах",
-            "impressions": 12,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 91.9
+            "position": 91.7
           },
           {
             "q": "vds в сша",
@@ -3735,10 +3681,10 @@
           },
           {
             "q": "vps бот",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 54.2
+            "position": 55.7
           },
           {
             "q": "vps в америке",
@@ -3777,10 +3723,10 @@
           },
           {
             "q": "vps в европе",
-            "impressions": 14,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 73.7
+            "position": 74.7
           },
           {
             "q": "vps в нидерландах",
@@ -3826,10 +3772,10 @@
           },
           {
             "q": "vps германия",
-            "impressions": 20,
+            "impressions": 21,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 97.3
+            "position": 97.4
           },
           {
             "q": "vps дата центр германия",
@@ -4015,7 +3961,7 @@
           },
           {
             "q": "vps сингапур",
-            "impressions": 10,
+            "impressions": 11,
             "clicks": 0,
             "ctr": 0.0,
             "position": 75.7
@@ -4029,10 +3975,10 @@
           },
           {
             "q": "vps турция",
-            "impressions": 14,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 80.1
+            "position": 80.5
           },
           {
             "q": "vps хостинг германия",
@@ -4047,6 +3993,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 95.0
+          },
+          {
+            "q": "vps+подбор",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 51.0
           },
           {
             "q": "американский vps",
@@ -4176,10 +4129,10 @@
           },
           {
             "q": "аренда сервера в англии",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 89.5
+            "position": 89.7
           },
           {
             "q": "аренда сервера в германии",
@@ -4329,6 +4282,13 @@
             "position": 86.0
           },
           {
+            "q": "выбор+vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 50.0
+          },
+          {
             "q": "выделенный сервер в европе",
             "impressions": 1,
             "clicks": 0,
@@ -4449,10 +4409,10 @@
           },
           {
             "q": "подбор vps",
-            "impressions": 36,
+            "impressions": 38,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 19.8
+            "position": 19.4
           },
           {
             "q": "подбор vps по параметрам",
@@ -4476,11 +4436,39 @@
             "position": 50.0
           },
           {
+            "q": "подбор+vds",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 56.5
+          },
+          {
+            "q": "подбор+vps",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 48.5
+          },
+          {
+            "q": "подбор+vps+по+параметрам",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 38.0
+          },
+          {
             "q": "подобрать vps",
             "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
             "position": 60.7
+          },
+          {
+            "q": "подобрать+vps",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 48.7
           },
           {
             "q": "поиск vps по параметрам",
@@ -4612,10 +4600,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 1601,
+            "impressions": 1625,
             "clicks": 5,
             "ctr": 0.0031,
-            "position": 83.0
+            "position": 82.6
           },
           {
             "country": "nld",
@@ -4724,14 +4712,14 @@
           },
           {
             "country": "usa",
-            "impressions": 19,
+            "impressions": 20,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 45.5
+            "position": 43.8
           },
           {
             "country": "vnm",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
             "position": 6.0
@@ -4762,10 +4750,10 @@
           },
           {
             "q": "ai vps",
-            "impressions": 12,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 66.5
+            "position": 66.2
           },
           {
             "q": "ai vps hosting",
@@ -5182,10 +5170,17 @@
           },
           {
             "q": "cherry hosting",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 63.5
+          },
+          {
+            "q": "cherry server",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.0
+            "position": 42.0
           },
           {
             "q": "cherry servers",
@@ -5847,7 +5842,7 @@
           },
           {
             "q": "virtual server hosting comparison",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
             "position": 89.8
@@ -6288,14 +6283,14 @@
           },
           {
             "q": "vps prices",
-            "impressions": 89,
+            "impressions": 90,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 86.8
+            "position": 86.7
           },
           {
             "q": "vps pricing",
-            "impressions": 64,
+            "impressions": 68,
             "clicks": 0,
             "ctr": 0.0,
             "position": 88.6
@@ -6495,29 +6490,22 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 81.7
-          },
-          {
-            "q": "windows vps server asia",
-            "impressions": 11,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 74.0
           }
         ],
         "countries": [
           {
             "country": "usa",
-            "impressions": 1663,
+            "impressions": 1670,
             "clicks": 4,
             "ctr": 0.0024,
-            "position": 74.3
+            "position": 74.2
           },
           {
             "country": "bra",
-            "impressions": 30,
+            "impressions": 31,
             "clicks": 2,
-            "ctr": 0.0667,
-            "position": 20.7
+            "ctr": 0.0645,
+            "position": 20.1
           },
           {
             "country": "can",
@@ -6668,17 +6656,17 @@
           },
           {
             "country": "egy",
-            "impressions": 4,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 66.8
+            "position": 47.8
           },
           {
             "country": "esp",
-            "impressions": 15,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 59.3
+            "position": 55.8
           },
           {
             "country": "est",
@@ -6710,10 +6698,10 @@
           },
           {
             "country": "gbr",
-            "impressions": 118,
+            "impressions": 119,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 63.3
+            "position": 63.6
           },
           {
             "country": "geo",
@@ -6780,10 +6768,10 @@
           },
           {
             "country": "isr",
-            "impressions": 16,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.6
+            "position": 70.0
           },
           {
             "country": "ita",
@@ -6976,10 +6964,10 @@
           },
           {
             "country": "sgp",
-            "impressions": 17,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 63.4
+            "position": 63.3
           },
           {
             "country": "svk",
@@ -7050,7 +7038,7 @@
           {
             "path": "https://servercalc.com/sitemap.xml",
             "lastSubmitted": "2026-08-25T07:09:41.001Z",
-            "submitted": 58,
+            "submitted": 59,
             "isPending": false,
             "errors": 0,
             "warnings": 0
@@ -7062,6 +7050,13 @@
         "property": "sc-domain:servercalc.ru",
         "queries": [
           {
+            "q": "vps racknerd",
+            "impressions": 1,
+            "clicks": 1,
+            "ctr": 1.0,
+            "position": 4.0
+          },
+          {
             "q": "\"!selectel\" услуги",
             "impressions": 1,
             "clicks": 0,
@@ -7070,10 +7065,10 @@
           },
           {
             "q": "aeza аналоги",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 63.3
+            "position": 64.0
           },
           {
             "q": "aeza купить сервер",
@@ -7084,17 +7079,17 @@
           },
           {
             "q": "alfavps",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 8.0
+            "position": 6.0
           },
           {
             "q": "alphavps",
-            "impressions": 34,
+            "impressions": 51,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.3
+            "position": 7.4
           },
           {
             "q": "alphavps vps",
@@ -7146,6 +7141,13 @@
             "position": 5.9
           },
           {
+            "q": "hostman vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 8.0
+          },
+          {
             "q": "hostmania",
             "impressions": 1,
             "clicks": 0,
@@ -7189,10 +7191,10 @@
           },
           {
             "q": "racknerd vps",
-            "impressions": 17,
+            "impressions": 21,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 4.5
+            "position": 4.7
           },
           {
             "q": "recknerd vps",
@@ -7525,10 +7527,17 @@
           },
           {
             "q": "виртуальный хостинг тарифы",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 83.5
+          },
+          {
+            "q": "виртуальный хостинг цены",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 85.0
+            "position": 74.0
           },
           {
             "q": "впс в россии",
@@ -7552,11 +7561,25 @@
             "position": 85.5
           },
           {
+            "q": "поиск хостинга",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 101.0
+          },
+          {
             "q": "приватная сеть timeweb",
             "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
             "position": 26.5
+          },
+          {
+            "q": "промокод timeweb",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 90.0
           },
           {
             "q": "промокоды adminvps",
@@ -7567,24 +7590,24 @@
           },
           {
             "q": "промокоды timeweb",
-            "impressions": 1,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 101.0
+            "position": 92.3
           },
           {
             "q": "промокоды vps",
-            "impressions": 16,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 66.6
+            "position": 66.2
           },
           {
             "q": "промокоды таймвеб",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 92.0
+            "position": 85.7
           },
           {
             "q": "селектел калькулятор",
@@ -7784,10 +7807,10 @@
           },
           {
             "q": "хостман",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 5.5
+            "position": 6.0
           },
           {
             "q": "цена хостинга на год",
@@ -7807,10 +7830,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 462,
-            "clicks": 3,
-            "ctr": 0.0065,
-            "position": 41.3
+            "impressions": 502,
+            "clicks": 4,
+            "ctr": 0.008,
+            "position": 40.0
           },
           {
             "country": "are",
@@ -7832,6 +7855,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 10.0
+          },
+          {
+            "country": "aut",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 9.0
           },
           {
             "country": "aze",
@@ -7891,10 +7921,10 @@
           },
           {
             "country": "deu",
-            "impressions": 13,
+            "impressions": 14,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 39.0
+            "position": 36.4
           },
           {
             "country": "est",
@@ -7996,10 +8026,10 @@
           },
           {
             "country": "nld",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 16.4
+            "position": 13.7
           },
           {
             "country": "pol",
@@ -8573,17 +8603,17 @@
           },
           {
             "q": "managed vs unmanaged vps",
-            "impressions": 9,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.9
+            "position": 77.2
           },
           {
             "q": "netherlands location vps",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 85.0
+            "position": 84.5
           },
           {
             "q": "netherlands server",
@@ -8790,7 +8820,7 @@
           },
           {
             "q": "shared hosting vs vps vs dedicated server",
-            "impressions": 66,
+            "impressions": 69,
             "clicks": 0,
             "ctr": 0.0,
             "position": 76.9
@@ -9315,10 +9345,10 @@
           },
           {
             "q": "vps ram",
-            "impressions": 28,
+            "impressions": 29,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 77.3
+            "position": 77.5
           },
           {
             "q": "vps ram limit",
@@ -9399,10 +9429,10 @@
           },
           {
             "q": "vps servers in kazakhstan",
-            "impressions": 30,
+            "impressions": 31,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 64.5
+            "position": 64.6
           },
           {
             "q": "vps servers usa",
@@ -9413,10 +9443,10 @@
           },
           {
             "q": "vps ssd",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 98.5
+            "position": 96.7
           },
           {
             "q": "vps ssd nvme",
@@ -9842,10 +9872,10 @@
         "countries": [
           {
             "country": "mar",
-            "impressions": 10,
+            "impressions": 11,
             "clicks": 1,
-            "ctr": 0.1,
-            "position": 53.2
+            "ctr": 0.0909,
+            "position": 49.0
           },
           {
             "country": "ukr",
@@ -9967,6 +9997,13 @@
             "position": 82.0
           },
           {
+            "country": "dom",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 83.0
+          },
+          {
             "country": "dza",
             "impressions": 12,
             "clicks": 0,
@@ -10038,10 +10075,17 @@
           },
           {
             "country": "ind",
-            "impressions": 159,
+            "impressions": 160,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 72.6
+            "position": 72.5
+          },
+          {
+            "country": "irl",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 9.0
           },
           {
             "country": "irn",
@@ -10185,10 +10229,10 @@
           },
           {
             "country": "rus",
-            "impressions": 372,
+            "impressions": 373,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 80.0
+            "position": 79.8
           },
           {
             "country": "sau",
@@ -10262,10 +10306,10 @@
           },
           {
             "country": "usa",
-            "impressions": 1105,
+            "impressions": 1112,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.2
+            "position": 76.1
           },
           {
             "country": "ven",
@@ -10294,7 +10338,7 @@
           {
             "path": "https://serverselection.online/sitemap.xml",
             "lastSubmitted": "2026-08-29T19:30:56.207Z",
-            "submitted": 43,
+            "submitted": 45,
             "isPending": false,
             "errors": 0,
             "warnings": 0
@@ -10307,10 +10351,10 @@
         "queries": [
           {
             "q": "makebiz",
-            "impressions": 13,
-            "clicks": 5,
-            "ctr": 0.3846,
-            "position": 2.7
+            "impressions": 15,
+            "clicks": 6,
+            "ctr": 0.4,
+            "position": 2.5
           },
           {
             "q": "bi аналитика заказать",
@@ -10433,7 +10477,7 @@
           },
           {
             "q": "ai ассистент для бизнеса",
-            "impressions": 111,
+            "impressions": 112,
             "clicks": 0,
             "ctr": 0.0,
             "position": 46.1
@@ -10474,6 +10518,13 @@
             "position": 53.2
           },
           {
+            "q": "ai сотрудник",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 49.0
+          },
+          {
             "q": "apartico",
             "impressions": 1,
             "clicks": 0,
@@ -10510,17 +10561,17 @@
           },
           {
             "q": "geo продвижение в ии",
-            "impressions": 17,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 77.9
+            "position": 78.4
           },
           {
             "q": "geo продвижение в нейросетях",
-            "impressions": 16,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.5
+            "position": 73.2
           },
           {
             "q": "geo продвижение в нейростетях",
@@ -10552,10 +10603,10 @@
           },
           {
             "q": "mk24biz",
-            "impressions": 20,
+            "impressions": 23,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 45.6
+            "position": 43.2
           },
           {
             "q": "my gribs",
@@ -10608,10 +10659,10 @@
           },
           {
             "q": "автоматизация отдела продаж",
-            "impressions": 60,
+            "impressions": 62,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 43.3
+            "position": 42.8
           },
           {
             "q": "автоматизация отдела продаж crm",
@@ -10629,7 +10680,7 @@
           },
           {
             "q": "автоматизация продаж",
-            "impressions": 41,
+            "impressions": 44,
             "clicks": 0,
             "ctr": 0.0,
             "position": 70.6
@@ -10790,10 +10841,10 @@
           },
           {
             "q": "битрикс 24 ai агенты",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 47.2
+            "position": 47.0
           },
           {
             "q": "битрикс ии агенты",
@@ -10943,6 +10994,13 @@
             "position": 61.5
           },
           {
+            "q": "ии агент онлайн",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 44.0
+          },
+          {
             "q": "ии агент по продажам",
             "impressions": 2,
             "clicks": 0,
@@ -11007,7 +11065,7 @@
           },
           {
             "q": "ии ассистент для бизнеса",
-            "impressions": 94,
+            "impressions": 96,
             "clicks": 0,
             "ctr": 0.0,
             "position": 48.1
@@ -11091,10 +11149,10 @@
           },
           {
             "q": "ии помощник для бизнеса",
-            "impressions": 89,
+            "impressions": 92,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 50.3
+            "position": 50.6
           },
           {
             "q": "ии помощники для бизнеса",
@@ -11280,10 +11338,10 @@
           },
           {
             "q": "речевая аналитика звонков битрикс24",
-            "impressions": 24,
+            "impressions": 27,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 24.2
+            "position": 23.5
           },
           {
             "q": "речевая аналитика отдела продаж",
@@ -11429,10 +11487,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 563,
-            "clicks": 11,
-            "ctr": 0.0195,
-            "position": 46.7
+            "impressions": 580,
+            "clicks": 13,
+            "ctr": 0.0224,
+            "position": 46.6
           },
           {
             "country": "are",
@@ -11443,10 +11501,10 @@
           },
           {
             "country": "kaz",
-            "impressions": 14,
+            "impressions": 15,
             "clicks": 1,
-            "ctr": 0.0714,
-            "position": 13.3
+            "ctr": 0.0667,
+            "position": 13.6
           },
           {
             "country": "vnm",
@@ -11484,6 +11542,13 @@
             "position": 31.0
           },
           {
+            "country": "bgd",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 17.0
+          },
+          {
             "country": "bgr",
             "impressions": 1,
             "clicks": 0,
@@ -11499,10 +11564,10 @@
           },
           {
             "country": "bra",
-            "impressions": 10,
+            "impressions": 11,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 16.2
+            "position": 15.0
           },
           {
             "country": "can",
@@ -11681,17 +11746,17 @@
           },
           {
             "country": "ukr",
-            "impressions": 511,
+            "impressions": 521,
             "clicks": 0,
             "ctr": 0.0,
             "position": 51.0
           },
           {
             "country": "usa",
-            "impressions": 83,
+            "impressions": 88,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 10.8
+            "position": 10.5
           },
           {
             "country": "uzb",
@@ -11701,7 +11766,7 @@
             "position": 8.0
           }
         ],
-        "pagesInSearch": 81,
+        "pagesInSearch": 82,
         "sitemaps": [
           {
             "path": "https://makebiz.life/sitemap.xml",
@@ -11719,10 +11784,10 @@
         "queries": [
           {
             "q": "ai agency",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 94.0
+            "position": 94.5
           },
           {
             "q": "ai agency gcc",
@@ -11775,7 +11840,7 @@
           },
           {
             "q": "ai ageny dubai",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
             "position": 93.0
@@ -11859,10 +11924,10 @@
           },
           {
             "q": "bitrix24 partner in dubai",
-            "impressions": 13,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 55.2
+            "position": 56.3
           },
           {
             "q": "bitrix24 partner uae",
@@ -11872,11 +11937,18 @@
             "position": 66.0
           },
           {
-            "q": "chatbot agency dubai",
+            "q": "calling bot development company in dubai",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 94.0
+            "position": 64.0
+          },
+          {
+            "q": "chatbot agency dubai",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 96.0
           },
           {
             "q": "intdoc",
@@ -11894,10 +11966,10 @@
           },
           {
             "q": "mk24biz",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 82.2
+            "position": 81.6
           },
           {
             "q": "unilin",
@@ -11938,10 +12010,10 @@
         "countries": [
           {
             "country": "are",
-            "impressions": 105,
+            "impressions": 109,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 65.8
+            "position": 66.7
           },
           {
             "country": "arg",
@@ -11991,6 +12063,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 10.0
+          },
+          {
+            "country": "ind",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 63.5
           },
           {
             "country": "ita",
@@ -12043,10 +12122,10 @@
           },
           {
             "country": "rus",
-            "impressions": 12,
+            "impressions": 15,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 54.1
+            "position": 54.3
           },
           {
             "country": "srb",
@@ -12054,6 +12133,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 85.0
+          },
+          {
+            "country": "swe",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 9.0
           },
           {
             "country": "tur",
@@ -12084,7 +12170,7 @@
             "position": 65.0
           }
         ],
-        "pagesInSearch": 20,
+        "pagesInSearch": 21,
         "sitemaps": [
           {
             "path": "https://makebiztechnologies.com/sitemap.xml",
@@ -16511,7 +16597,8 @@
         "2026-09-20": 978,
         "2026-09-21": 683,
         "2026-09-22": 875,
-        "2026-09-23": 598
+        "2026-09-23": 598,
+        "2026-09-24": 234
       },
       "clicks": {
         "2026-08-24": 26,
@@ -16544,7 +16631,8 @@
         "2026-09-20": 36,
         "2026-09-21": 29,
         "2026-09-22": 40,
-        "2026-09-23": 31
+        "2026-09-23": 31,
+        "2026-09-24": 15
       },
       "impr": {
         "2026-08-24": 340,
@@ -16577,7 +16665,8 @@
         "2026-09-20": 70,
         "2026-09-21": 99,
         "2026-09-22": 88,
-        "2026-09-23": 56
+        "2026-09-23": 56,
+        "2026-09-24": 41
       },
       "conv": {
         "2026-08-24": 18.0,
@@ -16610,7 +16699,8 @@
         "2026-09-20": 20.0,
         "2026-09-21": 18.0,
         "2026-09-22": 23.0,
-        "2026-09-23": 24.0
+        "2026-09-23": 24.0,
+        "2026-09-24": 12.0
       }
     },
     "713775967": {
@@ -16771,7 +16861,8 @@
         "2026-09-20": 1453,
         "2026-09-21": 1484,
         "2026-09-22": 1390,
-        "2026-09-23": 1280
+        "2026-09-23": 1280,
+        "2026-09-24": 918
       },
       "clicks": {
         "2026-08-27": 14,
@@ -16801,7 +16892,8 @@
         "2026-09-20": 71,
         "2026-09-21": 121,
         "2026-09-22": 129,
-        "2026-09-23": 127
+        "2026-09-23": 127,
+        "2026-09-24": 95
       },
       "impr": {
         "2026-08-27": 76,
@@ -16831,7 +16923,8 @@
         "2026-09-20": 143,
         "2026-09-21": 288,
         "2026-09-22": 291,
-        "2026-09-23": 297
+        "2026-09-23": 297,
+        "2026-09-24": 235
       },
       "conv": {
         "2026-08-27": 7.0,
@@ -16861,7 +16954,8 @@
         "2026-09-20": 28.0,
         "2026-09-21": 46.0,
         "2026-09-22": 46.0,
-        "2026-09-23": 54.0
+        "2026-09-23": 54.0,
+        "2026-09-24": 36.0
       }
     },
     "713897708": {
@@ -16894,7 +16988,8 @@
         "2026-09-20": 357,
         "2026-09-21": 763,
         "2026-09-22": 821,
-        "2026-09-23": 712
+        "2026-09-23": 712,
+        "2026-09-24": 529
       },
       "clicks": {
         "2026-08-27": 4,
@@ -16924,7 +17019,8 @@
         "2026-09-20": 14,
         "2026-09-21": 48,
         "2026-09-22": 43,
-        "2026-09-23": 53
+        "2026-09-23": 53,
+        "2026-09-24": 41
       },
       "impr": {
         "2026-08-27": 16,
@@ -16954,7 +17050,8 @@
         "2026-09-20": 42,
         "2026-09-21": 122,
         "2026-09-22": 148,
-        "2026-09-23": 132
+        "2026-09-23": 132,
+        "2026-09-24": 124
       },
       "conv": {
         "2026-08-27": 0.0,
@@ -16984,7 +17081,8 @@
         "2026-09-20": 6.0,
         "2026-09-21": 5.0,
         "2026-09-22": 10.0,
-        "2026-09-23": 12.0
+        "2026-09-23": 12.0,
+        "2026-09-24": 4.0
       }
     },
     "714612190": {
@@ -16992,22 +17090,26 @@
       "days": {
         "2026-09-21": 0,
         "2026-09-22": 418,
-        "2026-09-23": 859
+        "2026-09-23": 859,
+        "2026-09-24": 842
       },
       "clicks": {
         "2026-09-21": 0,
         "2026-09-22": 12,
-        "2026-09-23": 24
+        "2026-09-23": 24,
+        "2026-09-24": 23
       },
       "impr": {
         "2026-09-21": 7,
         "2026-09-22": 208,
-        "2026-09-23": 468
+        "2026-09-23": 468,
+        "2026-09-24": 686
       },
       "conv": {
         "2026-09-21": 0.0,
         "2026-09-22": 9.0,
-        "2026-09-23": 8.0
+        "2026-09-23": 8.0,
+        "2026-09-24": 9.0
       }
     },
     "714612545": {
@@ -17015,22 +17117,26 @@
       "days": {
         "2026-09-21": 7,
         "2026-09-22": 467,
-        "2026-09-23": 564
+        "2026-09-23": 564,
+        "2026-09-24": 600
       },
       "clicks": {
         "2026-09-21": 1,
         "2026-09-22": 12,
-        "2026-09-23": 13
+        "2026-09-23": 13,
+        "2026-09-24": 13
       },
       "impr": {
         "2026-09-21": 30,
         "2026-09-22": 261,
-        "2026-09-23": 277
+        "2026-09-23": 277,
+        "2026-09-24": 242
       },
       "conv": {
         "2026-09-21": 0.0,
         "2026-09-22": 3.0,
-        "2026-09-23": 4.0
+        "2026-09-23": 4.0,
+        "2026-09-24": 5.0
       }
     },
     "714635044": {
@@ -17038,22 +17144,26 @@
       "days": {
         "2026-09-21": 28,
         "2026-09-22": 618,
-        "2026-09-23": 1085
+        "2026-09-23": 1085,
+        "2026-09-24": 1120
       },
       "clicks": {
         "2026-09-21": 1,
         "2026-09-22": 19,
-        "2026-09-23": 22
+        "2026-09-23": 22,
+        "2026-09-24": 28
       },
       "impr": {
         "2026-09-21": 41,
         "2026-09-22": 345,
-        "2026-09-23": 340
+        "2026-09-23": 340,
+        "2026-09-24": 265
       },
       "conv": {
         "2026-09-21": 0.0,
         "2026-09-22": 0.0,
-        "2026-09-23": 0.0
+        "2026-09-23": 0.0,
+        "2026-09-24": 0.0
       }
     },
     "714640377": {
@@ -17061,22 +17171,26 @@
       "days": {
         "2026-09-21": 0,
         "2026-09-22": 271,
-        "2026-09-23": 735
+        "2026-09-23": 735,
+        "2026-09-24": 488
       },
       "clicks": {
         "2026-09-21": 0,
         "2026-09-22": 65,
-        "2026-09-23": 167
+        "2026-09-23": 167,
+        "2026-09-24": 92
       },
       "impr": {
         "2026-09-21": 3,
         "2026-09-22": 6694,
-        "2026-09-23": 31217
+        "2026-09-23": 31217,
+        "2026-09-24": 30622
       },
       "conv": {
         "2026-09-21": 0.0,
         "2026-09-22": 0.0,
-        "2026-09-23": 0.0
+        "2026-09-23": 0.0,
+        "2026-09-24": 1.0
       }
     }
   },

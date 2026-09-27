@@ -1,6 +1,6 @@
 {
  "meta": {
-  "asof": "25.09.2026",
+  "asof": "28.09.2026",
   "period_start": "01.03.2026",
   "vat": 22,
   "growth_tw": 1.045,
@@ -484,7 +484,7 @@
     "tw": {
      "fact_first": 11372,
      "fact_rep": 53875,
-     "renew": 8455,
+     "renew": 5025,
      "newfirst": 3275
     },
     "avps": {
@@ -884,8 +884,8 @@
    "cur_month": "2026-09",
    "cur_fact": 49153,
    "cur_remaining": 50847,
-   "cur_addon_income": 40559,
-   "cur_addon_net": -10288,
+   "cur_addon_income": 37129,
+   "cur_addon_net": -13718,
    "months": {
     "2026-10": 100000,
     "2026-11": 100000,
@@ -902,7 +902,407 @@
     "2027-02": 326286,
     "2027-03": 399310
    },
-   "net_total": 1514507
+   "net_total": 1511077
+  },
+  "unit": {
+   "since": "2026-03",
+   "asof": "2026-09-24",
+   "providers": {
+    "tw": {
+     "regs": 855,
+     "payers": 436,
+     "new_payers": 391,
+     "payers_note": "платившие за период",
+     "ltv_build": 1466,
+     "spend": 394265,
+     "clicks": 9404,
+     "income": 639060
+    },
+    "avps": {
+     "regs": 557,
+     "payers": 320,
+     "payers_note": "клиенты с активной услугой",
+     "visits": 4935,
+     "visits_note": "переходы по реф-ссылке, кабинет",
+     "spend": 104146,
+     "clicks": 2618,
+     "income": 179320
+    },
+    "aeza": {
+     "regs": 279,
+     "payers": 143,
+     "payers_note": "платившие рефералы",
+     "spend": 25727,
+     "clicks": 981,
+     "income": 24022
+    },
+    "ish": {
+     "regs": null,
+     "payers": 16,
+     "payers_note": "подтверждённые оплаты, Affise",
+     "visits": 809,
+     "visits_note": "клики по реф-ссылке, Affise",
+     "spend": 2289,
+     "clicks": 92,
+     "income": 2346
+    },
+    "hostman": {
+     "regs": 2,
+     "payers": null,
+     "payers_note": "нет данных",
+     "spend": 0,
+     "clicks": 0,
+     "income": 200
+    }
+   },
+   "months": {
+    "2026-03": {
+     "tw": {
+      "spend": 78932,
+      "clicks": 1927,
+      "income": 69679,
+      "regs": 266,
+      "payers": 128
+     },
+     "avps": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0,
+      "regs": 0
+     },
+     "aeza": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "ish": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     }
+    },
+    "2026-04": {
+     "tw": {
+      "spend": 74565,
+      "clicks": 1845,
+      "income": 77122,
+      "regs": 150,
+      "payers": 61
+     },
+     "avps": {
+      "spend": 13372,
+      "clicks": 331,
+      "income": 22247,
+      "regs": 58
+     },
+     "aeza": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "ish": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     }
+    },
+    "2026-05": {
+     "tw": {
+      "spend": 77685,
+      "clicks": 1678,
+      "income": 103456,
+      "regs": 111,
+      "payers": 63
+     },
+     "avps": {
+      "spend": 15777,
+      "clicks": 341,
+      "income": 18288,
+      "regs": 51
+     },
+     "aeza": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "ish": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     }
+    },
+    "2026-06": {
+     "tw": {
+      "spend": 66982,
+      "clicks": 1448,
+      "income": 116537,
+      "regs": 113,
+      "payers": 44
+     },
+     "avps": {
+      "spend": 26115,
+      "clicks": 564,
+      "income": 27665,
+      "regs": 96
+     },
+     "aeza": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "ish": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     }
+    },
+    "2026-07": {
+     "tw": {
+      "spend": 51583,
+      "clicks": 957,
+      "income": 91963,
+      "regs": 59,
+      "payers": 29
+     },
+     "avps": {
+      "spend": 20944,
+      "clicks": 389,
+      "income": 23091,
+      "regs": 64
+     },
+     "aeza": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "ish": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     }
+    },
+    "2026-08": {
+     "tw": {
+      "spend": 29013,
+      "clicks": 924,
+      "income": 115056,
+      "regs": 76,
+      "payers": 39
+     },
+     "avps": {
+      "spend": 15710,
+      "clicks": 500,
+      "income": 52321,
+      "regs": 110
+     },
+     "aeza": {
+      "spend": 6596,
+      "clicks": 210,
+      "income": 0
+     },
+     "ish": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 0
+     }
+    },
+    "2026-09": {
+     "tw": {
+      "spend": 15505,
+      "clicks": 625,
+      "income": 65247,
+      "regs": 80,
+      "payers": 27
+     },
+     "avps": {
+      "spend": 12228,
+      "clicks": 493,
+      "income": 35707,
+      "regs": 178
+     },
+     "aeza": {
+      "spend": 19131,
+      "clicks": 771,
+      "income": 24022
+     },
+     "ish": {
+      "spend": 2289,
+      "clicks": 92,
+      "income": 2346
+     },
+     "hostman": {
+      "spend": 0,
+      "clicks": 0,
+      "income": 200
+     }
+    }
+   },
+   "campaigns": [
+    {
+     "name": "TW Cloud МСК",
+     "alloc": "timeweb",
+     "cost": 234999,
+     "clicks": 5419,
+     "status": "archived"
+    },
+    {
+     "name": "TW Cloud МСК VIP",
+     "alloc": "timeweb",
+     "cost": 94761,
+     "clicks": 1793,
+     "status": "archived"
+    },
+    {
+     "name": "AdminVPS МСК",
+     "alloc": "adminvps",
+     "cost": 91466,
+     "clicks": 2403,
+     "status": "archived"
+    },
+    {
+     "name": "TW Cloud Регион 1 (+3)",
+     "alloc": "timeweb",
+     "cost": 59109,
+     "clicks": 1694,
+     "status": "archived"
+    },
+    {
+     "name": "Aeza МСК (бренд)",
+     "alloc": "aeza",
+     "cost": 25726,
+     "clicks": 1051,
+     "status": "active"
+    },
+    {
+     "name": "TW Cloud Регионы",
+     "alloc": "timeweb",
+     "cost": 16648,
+     "clicks": 439,
+     "status": "archived"
+    },
+    {
+     "name": "AdminVPS (Бренд)",
+     "alloc": "adminvps",
+     "cost": 12680,
+     "clicks": 637,
+     "status": "active"
+    },
+    {
+     "name": "TW МСК (Бренд)",
+     "alloc": "timeweb",
+     "cost": 4256,
+     "clicks": 256,
+     "status": "archived"
+    },
+    {
+     "name": "IsHost New",
+     "alloc": "ishosting",
+     "cost": 2289,
+     "clicks": 57,
+     "status": "active"
+    },
+    {
+     "name": "TW Регионы NEW",
+     "alloc": "timeweb",
+     "cost": 1594,
+     "clicks": 45,
+     "status": "active"
+    },
+    {
+     "name": "TW МСК NEW",
+     "alloc": "timeweb",
+     "cost": 1310,
+     "clicks": 33,
+     "status": "active"
+    },
+    {
+     "name": "TW Регионы РСЯ",
+     "alloc": "timeweb",
+     "cost": 1227,
+     "clicks": 271,
+     "status": "active"
+    },
+    {
+     "name": "TW Cloud МСК (копия)",
+     "alloc": "timeweb",
+     "cost": 0,
+     "clicks": 0,
+     "status": "active"
+    },
+    {
+     "name": "AdminVPS",
+     "alloc": "adminvps",
+     "cost": 0,
+     "clicks": 0,
+     "status": "active"
+    },
+    {
+     "name": "ishosting UAE",
+     "alloc": "ishosting",
+     "cost": 0,
+     "clicks": 0,
+     "status": "archived"
+    },
+    {
+     "name": "TW МСК new (Коммерция)",
+     "alloc": "timeweb",
+     "cost": 0,
+     "clicks": 0,
+     "status": "active"
+    },
+    {
+     "name": "Aeza МСК (коммерция)",
+     "alloc": "aeza",
+     "cost": 0,
+     "clicks": 0,
+     "status": "active"
+    },
+    {
+     "name": "AdminVPS МСК Поиск",
+     "alloc": "adminvps",
+     "cost": 0,
+     "clicks": 0,
+     "status": "active"
+    },
+    {
+     "name": "Aeza Регионы Поиск",
+     "alloc": "aeza",
+     "cost": 0,
+     "clicks": 0,
+     "status": "active"
+    }
+   ],
+   "campaigns_since": "2026-02-01"
   }
  },
  "dow": {
@@ -2232,8 +2632,8 @@
    }
   ],
   "churn_risk": {
-   "cnt": 49,
-   "sum": 9030
+   "cnt": 60,
+   "sum": 12008
   },
   "top_clients": [
    {
@@ -2415,24 +2815,6 @@
   "potential": {
    "days": [
     {
-     "d": "25.09",
-     "dow": "Пт",
-     "sum": 514,
-     "cnt": 1
-    },
-    {
-     "d": "26.09",
-     "dow": "Сб",
-     "sum": 2485,
-     "cnt": 8
-    },
-    {
-     "d": "27.09",
-     "dow": "Вс",
-     "sum": 431,
-     "cnt": 2
-    },
-    {
      "d": "28.09",
      "dow": "Пн",
      "sum": 2245,
@@ -2593,14 +2975,27 @@
      "dow": "Сб",
      "sum": 5204,
      "cnt": 3
+    },
+    {
+     "d": "25.10",
+     "dow": "Вс",
+     "sum": 1996,
+     "cnt": 6
+    },
+    {
+     "d": "26.10",
+     "dow": "Пн",
+     "sum": 1438,
+     "cnt": 5
+    },
+    {
+     "d": "27.10",
+     "dow": "Вт",
+     "sum": 2862,
+     "cnt": 6
     }
    ],
    "weeks": [
-    {
-     "w": "28.09",
-     "sum": 33611,
-     "cnt": 40
-    },
     {
      "w": "05.10",
      "sum": 15183,
@@ -2655,13 +3050,18 @@
      "w": "14.12",
      "sum": 7877,
      "cnt": 5
+    },
+    {
+     "w": "21.12",
+     "sum": 3477,
+     "cnt": 5
     }
    ],
    "months": [
     {
      "m": "2026-09",
-     "sum": 8455,
-     "cnt": 26
+     "sum": 5025,
+     "cnt": 15
     },
     {
      "m": "2026-10",
@@ -2725,10 +3125,10 @@
     }
    ],
    "total": {
-    "sum": 255174,
-    "cnt": 291,
-    "sum13": 243312,
-    "cnt13": 271
+    "sum": 251744,
+    "cnt": 280,
+    "sum13": 239882,
+    "cnt13": 260
    }
   },
   "statuses": {},
@@ -2862,13 +3262,13 @@
     "income": 0
    },
    {
-    "k": "Изменение",
-    "regs": 3,
+    "k": "Lite",
+    "regs": 43,
     "income": 0
    },
    {
-    "k": "Lite",
-    "regs": 43,
+    "k": "Изменение",
+    "regs": 3,
     "income": 0
    }
   ],

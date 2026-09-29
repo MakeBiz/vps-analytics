@@ -1,6 +1,6 @@
 {
  "meta": {
-  "asof": "28.09.2026",
+  "asof": "29.09.2026",
   "period_start": "01.03.2026",
   "vat": 22,
   "growth_tw": 1.045,
@@ -61,51 +61,51 @@
  "aeza": {
   "months": {
    "2026-09": {
-    "eur": 240.22,
-    "income": 24022,
-    "invoices": 200,
-    "unlocked_eur": 64.81
+    "eur": 274.90999999999997,
+    "income": 27491,
+    "invoices": 233,
+    "unlocked_eur": 87.00999999999999
    }
   },
-  "total": 24022,
-  "eur": 240.22,
+  "total": 27491,
+  "eur": 274.91,
   "rate": 100.0,
-  "asof": "2026-09-24",
+  "asof": "2026-09-29",
   "first": "2026-08-25",
   "source": "api",
-  "generated": "2026-09-24T12:28:37.090Z",
-  "run_rate_day": 801,
-  "run_rate_month": 24022,
+  "generated": "2026-09-29T14:57:33.442Z",
+  "run_rate_day": 916,
+  "run_rate_month": 27491,
   "fc_days": 30,
-  "run_rate_month_14d": 21043,
+  "run_rate_month_14d": 24043,
   "forecast": {
-   "2026-10": 24022,
-   "2026-11": 24022,
-   "2026-12": 24022,
-   "2027-01": 24022,
-   "2027-02": 24022,
-   "2027-03": 24022
+   "2026-10": 27491,
+   "2026-11": 27491,
+   "2026-12": 27491,
+   "2027-01": 27491,
+   "2027-02": 27491,
+   "2027-03": 27491
   },
   "funnel": {
-   "registrations": 279,
-   "active_referrals": 130,
-   "paying_clients": 143,
-   "invoices": 200,
-   "invoices_per_client": 1.4,
-   "conv_reg_pay": 51.3,
-   "avg_commission_eur": 1.2,
-   "avg_commission_rub": 120,
-   "avg_client_payment_eur": 6.01,
-   "avg_client_payment_rub": 601
+   "registrations": 336,
+   "active_referrals": 144,
+   "paying_clients": 163,
+   "invoices": 233,
+   "invoices_per_client": 1.43,
+   "conv_reg_pay": 48.5,
+   "avg_commission_eur": 1.18,
+   "avg_commission_rub": 118,
+   "avg_client_payment_eur": 5.9,
+   "avg_client_payment_rub": 590
   },
   "money": {
-   "accrued_eur": 240.22,
-   "earned_eur": 64.91,
-   "pending_eur": 168.73,
-   "earned_rub": 6491,
-   "pending_rub": 16873,
-   "cabinet_eur": 233.64,
-   "delta_eur": 6.58
+   "accrued_eur": 274.91,
+   "earned_eur": 87.91,
+   "pending_eur": 179.85,
+   "earned_rub": 8791,
+   "pending_rub": 17985,
+   "cabinet_eur": 267.76,
+   "delta_eur": 7.15
   },
   "percent": 0.2,
   "tiers": [
@@ -136,7 +136,7 @@
   ],
   "next_tier": {
    "percent": 0.25,
-   "left_eur": 135.09,
+   "left_eur": 112.09,
    "volume_eur": 200
   },
   "days": {
@@ -253,12 +253,12 @@
    "2026-09-16": {
     "invoices": 6,
     "accrued_eur": 20.64,
-    "unlocked_eur": 3.2
+    "unlocked_eur": 2.98
    },
    "2026-09-17": {
     "invoices": 10,
     "accrued_eur": 7.77,
-    "unlocked_eur": 2.8
+    "unlocked_eur": 2.88
    },
    "2026-09-18": {
     "invoices": 4,
@@ -268,37 +268,62 @@
    "2026-09-19": {
     "invoices": 5,
     "accrued_eur": 1.67,
-    "unlocked_eur": 2.71
+    "unlocked_eur": 2.96
    },
    "2026-09-20": {
     "invoices": 15,
     "accrued_eur": 19.67,
-    "unlocked_eur": 2.81
+    "unlocked_eur": 2.49
    },
    "2026-09-21": {
     "invoices": 4,
     "accrued_eur": 8.7,
-    "unlocked_eur": 3.49
+    "unlocked_eur": 4.29
    },
    "2026-09-22": {
     "invoices": 12,
     "accrued_eur": 12.01,
-    "unlocked_eur": 3.95
+    "unlocked_eur": 4.03
    },
    "2026-09-23": {
     "invoices": 5,
     "accrued_eur": 4.38,
-    "unlocked_eur": 3.7
+    "unlocked_eur": 3.45
    },
    "2026-09-24": {
-    "invoices": 1,
-    "accrued_eur": 0.18,
-    "unlocked_eur": 4.85
+    "invoices": 2,
+    "accrued_eur": 1.87,
+    "unlocked_eur": 4.1
+   },
+   "2026-09-25": {
+    "invoices": 5,
+    "accrued_eur": 9.32,
+    "unlocked_eur": 4.06
+   },
+   "2026-09-26": {
+    "invoices": 11,
+    "accrued_eur": 9.62,
+    "unlocked_eur": 4.77
+   },
+   "2026-09-27": {
+    "invoices": 7,
+    "accrued_eur": 4.88,
+    "unlocked_eur": 4.54
+   },
+   "2026-09-28": {
+    "invoices": 4,
+    "accrued_eur": 3.94,
+    "unlocked_eur": 5.23
+   },
+   "2026-09-29": {
+    "invoices": 5,
+    "accrued_eur": 5.24,
+    "unlocked_eur": 3.93
    }
   },
   "period": [
    "2026-08-25",
-   "2026-09-24"
+   "2026-09-29"
   ],
   "registry_check": {
    "total": 18541,
@@ -319,16 +344,16 @@
    }
   },
   "snapshot": {
-   "asof": "2026-09-24",
-   "registrations": 279,
-   "active_referrals": 130,
+   "asof": "2026-09-29",
+   "registrations": 336,
+   "active_referrals": 144,
    "percent": 0.2,
-   "hold_eur": 168.73,
-   "earned_eur": 64.91,
-   "balance_eur": 64.91,
+   "hold_eur": 179.85,
+   "earned_eur": 87.91,
+   "balance_eur": 87.91,
    "rate": 100.0,
-   "hold_rub": 16873,
-   "earned_rub": 6491,
+   "hold_rub": 17985,
+   "earned_rub": 8791,
    "ahead": false
   }
  },
@@ -414,8 +439,8 @@
    "proj": 52321
   },
   "ads": {
-   "fact": 49153,
-   "proj": 61441
+   "fact": 63847,
+   "proj": 79809
   },
   "total": {
    "fact": 100954,
@@ -456,9 +481,9 @@
    }
   },
   "ads": {
-   "fact": 49153,
-   "projected": 61441,
-   "per_day": 2048
+   "fact": 63847,
+   "projected": 79809,
+   "per_day": 2660
   },
   "total": {
    "fact": 100954,
@@ -468,7 +493,7 @@
  "plan": {
   "avg3_first": 16374,
   "hold_monthly": 58120,
-  "aeza_monthly": 24022,
+  "aeza_monthly": 27491,
   "hostman_monthly": 1200,
   "days_done": 24,
   "days_total": 30,
@@ -484,7 +509,7 @@
     "tw": {
      "fact_first": 11372,
      "fact_rep": 53875,
-     "renew": 5025,
+     "renew": 2780,
      "newfirst": 3275
     },
     "avps": {
@@ -493,8 +518,8 @@
      "new": 23581
     },
     "aeza": {
-     "fact": 24022,
-     "plan": 4806
+     "fact": 27491,
+     "plan": 5496
     },
     "hm": {
      "fact": 200,
@@ -519,7 +544,7 @@
     },
     "aeza": {
      "fact": 0,
-     "plan": 33625
+     "plan": 40289
     },
     "hm": {
      "fact": 0,
@@ -544,7 +569,7 @@
     },
     "aeza": {
      "fact": 0,
-     "plan": 47041
+     "plan": 57573
     },
     "hm": {
      "fact": 0,
@@ -569,7 +594,7 @@
     },
     "aeza": {
      "fact": 0,
-     "plan": 65811
+     "plan": 82272
     },
     "hm": {
      "fact": 0,
@@ -594,7 +619,7 @@
     },
     "aeza": {
      "fact": 0,
-     "plan": 92069
+     "plan": 117567
     },
     "hm": {
      "fact": 0,
@@ -619,7 +644,7 @@
     },
     "aeza": {
      "fact": 0,
-     "plan": 128805
+     "plan": 168003
     },
     "hm": {
      "fact": 0,
@@ -644,7 +669,7 @@
     },
     "aeza": {
      "fact": 0,
-     "plan": 180198
+     "plan": 240077
     },
     "hm": {
      "fact": 0,
@@ -810,13 +835,13 @@
    "model": "новые + пролонгации",
    "repeat_rate": 0.621,
    "repeat": {
-    "aeza": 0.399,
+    "aeza": 0.429,
     "ish": 0.621,
     "hm": 0.621
    },
    "aeza_repeat_src": {
-    "invoices": 200,
-    "paying_clients": 143
+    "invoices": 233,
+    "paying_clients": 163
    },
    "repeat_pairs": [
     "2026-03→2026-04",
@@ -826,7 +851,7 @@
     "2026-07→2026-08"
    ],
    "new_per_month": {
-    "aeza": 24035,
+    "aeza": 28194,
     "ish": 1009,
     "hm": 440
    },
@@ -882,10 +907,10 @@
   "ads": {
    "monthly_budget": 100000,
    "cur_month": "2026-09",
-   "cur_fact": 49153,
-   "cur_remaining": 50847,
-   "cur_addon_income": 37129,
-   "cur_addon_net": -13718,
+   "cur_fact": 63847,
+   "cur_remaining": 36153,
+   "cur_addon_income": 35574,
+   "cur_addon_net": -579,
    "months": {
     "2026-10": 100000,
     "2026-11": 100000,
@@ -895,14 +920,14 @@
     "2027-03": 100000
    },
    "net": {
-    "2026-10": 134919,
-    "2026-11": 174773,
-    "2026-12": 221186,
-    "2027-01": 268321,
-    "2027-02": 326286,
-    "2027-03": 399310
+    "2026-10": 141583,
+    "2026-11": 185305,
+    "2026-12": 237647,
+    "2027-01": 293819,
+    "2027-02": 365484,
+    "2027-03": 459189
    },
-   "net_total": 1511077
+   "net_total": 1682448
   },
   "unit": {
    "since": "2026-03",
@@ -914,8 +939,8 @@
      "new_payers": 391,
      "payers_note": "платившие за период",
      "ltv_build": 1466,
-     "spend": 394265,
-     "clicks": 9404,
+     "spend": 396622,
+     "clicks": 9471,
      "income": 639060
     },
     "avps": {
@@ -924,17 +949,17 @@
      "payers_note": "клиенты с активной услугой",
      "visits": 4935,
      "visits_note": "переходы по реф-ссылке, кабинет",
-     "spend": 104146,
-     "clicks": 2618,
+     "spend": 106942,
+     "clicks": 2690,
      "income": 179320
     },
     "aeza": {
-     "regs": 279,
-     "payers": 143,
+     "regs": 336,
+     "payers": 163,
      "payers_note": "платившие рефералы",
-     "spend": 25727,
-     "clicks": 981,
-     "income": 24022
+     "spend": 29502,
+     "clicks": 1116,
+     "income": 27491
     },
     "ish": {
      "regs": null,
@@ -942,8 +967,8 @@
      "payers_note": "подтверждённые оплаты, Affise",
      "visits": 809,
      "visits_note": "клики по реф-ссылке, Affise",
-     "spend": 2289,
-     "clicks": 92,
+     "spend": 2144,
+     "clicks": 86,
      "income": 2346
     },
     "hostman": {
@@ -1108,21 +1133,21 @@
     },
     "2026-08": {
      "tw": {
-      "spend": 29013,
-      "clicks": 924,
+      "spend": 24757,
+      "clicks": 725,
       "income": 115056,
       "regs": 76,
       "payers": 39
      },
      "avps": {
       "spend": 15710,
-      "clicks": 500,
+      "clicks": 460,
       "income": 52321,
       "regs": 110
      },
      "aeza": {
       "spend": 6596,
-      "clicks": 210,
+      "clicks": 193,
       "income": 0
      },
      "ish": {
@@ -1138,26 +1163,26 @@
     },
     "2026-09": {
      "tw": {
-      "spend": 15505,
-      "clicks": 625,
+      "spend": 22118,
+      "clicks": 891,
       "income": 65247,
       "regs": 80,
       "payers": 27
      },
      "avps": {
-      "spend": 12228,
-      "clicks": 493,
+      "spend": 15024,
+      "clicks": 605,
       "income": 35707,
       "regs": 178
      },
      "aeza": {
-      "spend": 19131,
-      "clicks": 771,
-      "income": 24022
+      "spend": 22906,
+      "clicks": 923,
+      "income": 27491
      },
      "ish": {
-      "spend": 2289,
-      "clicks": 92,
+      "spend": 2144,
+      "clicks": 86,
       "income": 2346
      },
      "hostman": {
@@ -1874,35 +1899,35 @@
     ],
     "2026-08-24": [
      5237,
-     3031
+     2257
     ],
     "2026-08-25": [
      6661,
-     3125
+     2222
     ],
     "2026-08-26": [
      6007,
-     3229
+     2590
     ],
     "2026-08-27": [
      7111,
-     1808
+     1360
     ],
     "2026-08-28": [
      13628,
-     2101
+     1445
     ],
     "2026-08-29": [
      4585,
-     1056
+     980
     ],
     "2026-08-30": [
      6186,
-     630
+     502
     ],
     "2026-08-31": [
      7382,
-     1582
+     951
     ],
     "2026-09-01": [
      3748,
@@ -1986,19 +2011,19 @@
     ],
     "2026-09-21": [
      3037,
-     1481
+     1453
     ],
     "2026-09-22": [
      5186,
-     3469
+     2581
     ],
     "2026-09-23": [
      5024,
-     4554
+     2720
     ],
     "2026-09-24": [
-     4436,
-     1652
+     4605,
+     2205
     ]
    },
    "campaigns": [
@@ -2033,9 +2058,9 @@
     {
      "name": "Aeza МСК (бренд)",
      "alloc": "aeza",
-     "cost": 25726,
-     "clicks": 1051,
-     "status": "active"
+     "cost": 27656,
+     "clicks": 1134,
+     "status": "archived"
     },
     {
      "name": "TW Cloud Регионы",
@@ -2047,92 +2072,71 @@
     {
      "name": "AdminVPS (Бренд)",
      "alloc": "adminvps",
-     "cost": 12680,
-     "clicks": 637,
-     "status": "active"
-    },
-    {
-     "name": "TW МСК (Бренд)",
-     "alloc": "timeweb",
-     "cost": 4256,
-     "clicks": 256,
+     "cost": 14050,
+     "clicks": 731,
      "status": "archived"
-    },
-    {
-     "name": "IsHost New",
-     "alloc": "ishosting",
-     "cost": 2289,
-     "clicks": 57,
-     "status": "active"
     },
     {
      "name": "TW Регионы NEW",
      "alloc": "timeweb",
-     "cost": 1594,
-     "clicks": 45,
+     "cost": 6371,
+     "clicks": 202,
      "status": "active"
     },
     {
      "name": "TW МСК NEW",
      "alloc": "timeweb",
-     "cost": 1310,
-     "clicks": 33,
+     "cost": 4372,
+     "clicks": 120,
      "status": "active"
     },
     {
-     "name": "TW Регионы РСЯ",
-     "alloc": "timeweb",
-     "cost": 1227,
-     "clicks": 271,
+     "name": "Hostman МСК",
+     "alloc": "hostman",
+     "cost": 1654,
+     "clicks": 59,
      "status": "active"
     },
     {
-     "name": "TW Cloud МСК (копия)",
-     "alloc": "timeweb",
-     "cost": 0,
-     "clicks": 0,
-     "status": "active"
-    },
-    {
-     "name": "AdminVPS",
-     "alloc": "adminvps",
-     "cost": 0,
-     "clicks": 0,
-     "status": "active"
-    },
-    {
-     "name": "ishosting UAE",
+     "name": "IsHost Регионы",
      "alloc": "ishosting",
-     "cost": 0,
-     "clicks": 0,
-     "status": "archived"
-    },
-    {
-     "name": "TW МСК new (Коммерция)",
-     "alloc": "timeweb",
-     "cost": 0,
-     "clicks": 0,
+     "cost": 1229,
+     "clicks": 52,
      "status": "active"
     },
     {
-     "name": "Aeza МСК (коммерция)",
+     "name": "Aeza МСК New",
      "alloc": "aeza",
-     "cost": 0,
-     "clicks": 0,
+     "cost": 965,
+     "clicks": 80,
      "status": "active"
     },
     {
-     "name": "AdminVPS МСК Поиск",
+     "name": "IsHost МСК Поиск",
+     "alloc": "ishosting",
+     "cost": 916,
+     "clicks": 29,
+     "status": "active"
+    },
+    {
+     "name": "AdminVPS МСК",
      "alloc": "adminvps",
-     "cost": 0,
-     "clicks": 0,
+     "cost": 895,
+     "clicks": 87,
      "status": "active"
     },
     {
-     "name": "Aeza Регионы Поиск",
+     "name": "Aeza Регионы NEW",
      "alloc": "aeza",
-     "cost": 0,
-     "clicks": 0,
+     "cost": 881,
+     "clicks": 94,
+     "status": "active"
+    },
+    {
+     "name": "AdminVPS Регионы",
+     "alloc": "adminvps",
+     "cost": 531,
+     "clicks": 98,
      "status": "active"
     }
    ],
@@ -2511,7 +2515,7 @@
   },
   {
    "k": "CAC против LTV",
-   "v": "1008 / 1466 ₽",
+   "v": "1014 / 1466 ₽",
    "s": "green",
    "note": "запас есть"
   }
@@ -2544,13 +2548,13 @@
   },
   {
    "m": "2026-08",
-   "net": 116059,
-   "cum": 240152
+   "net": 120315,
+   "cum": 244408
   },
   {
    "m": "2026-09",
-   "net": 78369,
-   "cum": 318521
+   "net": 67144,
+   "cum": 311552
   }
  ],
  "tw": {
@@ -3466,8 +3470,8 @@
    }
   ],
   "churn_risk": {
-   "cnt": 60,
-   "sum": 12008
+   "cnt": 67,
+   "sum": 14253
   },
   "top_clients": [
    {
@@ -3649,12 +3653,6 @@
   "potential": {
    "days": [
     {
-     "d": "28.09",
-     "dow": "Пн",
-     "sum": 2245,
-     "cnt": 7
-    },
-    {
      "d": "29.09",
      "dow": "Вт",
      "sum": 240,
@@ -3827,6 +3825,12 @@
      "dow": "Вт",
      "sum": 2862,
      "cnt": 6
+    },
+    {
+     "d": "28.10",
+     "dow": "Ср",
+     "sum": 573,
+     "cnt": 4
     }
    ],
    "weeks": [
@@ -3894,8 +3898,8 @@
    "months": [
     {
      "m": "2026-09",
-     "sum": 5025,
-     "cnt": 15
+     "sum": 2780,
+     "cnt": 8
     },
     {
      "m": "2026-10",
@@ -3959,10 +3963,10 @@
     }
    ],
    "total": {
-    "sum": 251744,
-    "cnt": 280,
-    "sum13": 239882,
-    "cnt13": 260
+    "sum": 249499,
+    "cnt": 273,
+    "sum13": 237637,
+    "cnt13": 253
    }
   },
   "statuses": {},
@@ -4091,6 +4095,11 @@
     "income": 303
    },
    {
+    "k": "Панель",
+    "regs": 2,
+    "income": 0
+   },
+   {
     "k": "Изменение",
     "regs": 3,
     "income": 0
@@ -4098,11 +4107,6 @@
    {
     "k": "Lite",
     "regs": 43,
-    "income": 0
-   },
-   {
-    "k": "Панель",
-    "regs": 2,
     "income": 0
    }
   ],
@@ -4529,61 +4533,61 @@
     }
    },
    "2026-08": {
-    "spend": 51318,
-    "clicks": 1634,
-    "impr": 8584,
-    "ctr": 19.04,
-    "cpc": 31.4,
-    "tw_spend": 29013,
+    "spend": 47062,
+    "clicks": 1378,
+    "impr": 6741,
+    "ctr": 20.44,
+    "cpc": 34.2,
+    "tw_spend": 24757,
     "av_spend": 15710,
     "aeza_spend": 6596,
     "ish_spend": 0,
     "prov": {
-     "timeweb": 29013,
+     "timeweb": 24757,
      "adminvps": 15710,
      "aeza": 6596,
      "ishosting": 0
     }
    },
    "2026-09": {
-    "spend": 49153,
-    "clicks": 1981,
-    "impr": 58480,
-    "ctr": 3.39,
+    "spend": 63847,
+    "clicks": 2573,
+    "impr": 13921,
+    "ctr": 18.48,
     "cpc": 24.8,
-    "tw_spend": 15505,
-    "av_spend": 12228,
-    "aeza_spend": 19131,
-    "ish_spend": 2289,
+    "tw_spend": 22118,
+    "av_spend": 15024,
+    "aeza_spend": 22906,
+    "ish_spend": 2144,
     "prov": {
-     "timeweb": 15505,
-     "adminvps": 12228,
-     "aeza": 19131,
-     "ishosting": 2289
+     "timeweb": 22118,
+     "adminvps": 15024,
+     "aeza": 22906,
+     "ishosting": 2144
     }
    }
   },
   "total": {
-   "spend": 526426,
-   "clicks": 13095,
-   "impr": 108941,
-   "ctr": 12.02,
-   "cpc": 40.2,
-   "tw_spend": 394265,
-   "av_spend": 104146,
-   "aeza_spend": 25727,
-   "ish_spend": 2289,
+   "spend": 536864,
+   "clicks": 13431,
+   "impr": 62539,
+   "ctr": 21.48,
+   "cpc": 40.0,
+   "tw_spend": 396622,
+   "av_spend": 106942,
+   "aeza_spend": 29502,
+   "ish_spend": 2144,
    "prov": {
-    "timeweb": 394265,
-    "adminvps": 104146,
-    "aeza": 25727,
-    "ishosting": 2289
+    "timeweb": 396622,
+    "adminvps": 106942,
+    "aeza": 29502,
+    "ishosting": 2144
    },
    "source": "кабинет «Проекты и кампании»",
    "since": "2026-02-01",
-   "cabinet_asof": "2026-09-24",
-   "cpl": 461,
-   "cac": 1008
+   "cabinet_asof": "2026-09-29",
+   "cpl": 464,
+   "cac": 1014
   },
   "eff": {
    "2026-03": {
@@ -4632,31 +4636,25 @@
     "clicks": 1346
    },
    "2026-08": {
-    "tw_spend": 29013,
-    "cpl": 382,
-    "cac": 744,
-    "conv_click_reg": 4.7,
+    "tw_spend": 24757,
+    "cpl": 326,
+    "cac": 635,
+    "conv_click_reg": 5.5,
     "regs": 76,
     "newpay": 39,
-    "clicks": 1634
+    "clicks": 1378
    },
    "2026-09": {
-    "tw_spend": 15505,
-    "cpl": 194,
-    "cac": 574,
-    "conv_click_reg": 4.0,
+    "tw_spend": 22118,
+    "cpl": 276,
+    "cac": 819,
+    "conv_click_reg": 3.1,
     "regs": 80,
     "newpay": 27,
-    "clicks": 1981
+    "clicks": 2573
    }
   },
   "weeks": [
-   {
-    "w": "20.07",
-    "iso": "2026-07-20",
-    "spend": 14408,
-    "clicks": 343
-   },
    {
     "w": "27.07",
     "iso": "2026-07-27",
@@ -4684,14 +4682,14 @@
    {
     "w": "24.08",
     "iso": "2026-08-24",
-    "spend": 14980,
-    "clicks": 676
+    "spend": 11355,
+    "clicks": 464
    },
    {
     "w": "31.08",
     "iso": "2026-08-31",
-    "spend": 13724,
-    "clicks": 633
+    "spend": 13094,
+    "clicks": 589
    },
    {
     "w": "07.09",
@@ -4708,7 +4706,13 @@
    {
     "w": "21.09",
     "iso": "2026-09-21",
-    "spend": 11157,
+    "spend": 14135,
+    "clicks": 592
+   },
+   {
+    "w": "28.09",
+    "iso": "2026-09-28",
+    "spend": 11716,
     "clicks": 671
    }
   ],
@@ -4872,14 +4876,14 @@
    {
     "w": "24.08",
     "iso": "2026-08-24",
-    "spend": 14980,
-    "clicks": 676
+    "spend": 11355,
+    "clicks": 464
    },
    {
     "w": "31.08",
     "iso": "2026-08-31",
-    "spend": 13724,
-    "clicks": 633
+    "spend": 13094,
+    "clicks": 589
    },
    {
     "w": "07.09",
@@ -4896,7 +4900,13 @@
    {
     "w": "21.09",
     "iso": "2026-09-21",
-    "spend": 11157,
+    "spend": 14135,
+    "clicks": 592
+   },
+   {
+    "w": "28.09",
+    "iso": "2026-09-28",
+    "spend": 11716,
     "clicks": 671
    }
   ],
@@ -5847,24 +5857,24 @@
   }
  },
  "derived": {
-  "net": 318521,
-  "roas": 1.61,
-  "net_tw": 244795,
-  "net_avps": 75174,
+  "net": 311552,
+  "roas": 1.58,
+  "net_tw": 242438,
+  "net_avps": 72378,
   "spend_prov": {
-   "timeweb": 394265,
-   "adminvps": 104146,
-   "aeza": 25727,
-   "ishosting": 2289
+   "timeweb": 396622,
+   "adminvps": 106942,
+   "aeza": 29502,
+   "ishosting": 2144
   },
   "ltv": 1466,
-  "cac": 1008,
-  "cpl": 461,
+  "cac": 1014,
+  "cpl": 464,
   "payback": 2,
   "avg_first": 444,
   "avg_rep": 455,
-  "conv_click_reg": 6.5,
-  "cost_reg_tw": 461,
+  "conv_click_reg": 6.4,
+  "cost_reg_tw": 464,
   "conv_reg_pay": 51.0
  }
 }

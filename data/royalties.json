@@ -913,9 +913,9 @@
    "monthly_budget": 100000,
    "cur_month": "2026-09",
    "cur_fact": 65460,
-   "cur_remaining": 34540,
+   "cur_remaining": 3333,
    "cur_addon_income": 2340,
-   "cur_addon_net": -32200,
+   "cur_addon_net": -993,
    "months": {
     "2026-10": 100000,
     "2026-11": 100000,
@@ -932,7 +932,7 @@
     "2027-02": 388748,
     "2027-03": 484363
    },
-   "net_total": 1756054
+   "net_total": 1787261
   },
   "unit": {
    "since": "2026-03",
@@ -10120,16 +10120,6 @@
     "income": 303
    },
    {
-    "k": "Lite",
-    "regs": 55,
-    "income": 0
-   },
-   {
-    "k": "Изменение",
-    "regs": 4,
-    "income": 0
-   },
-   {
     "k": "Подбор",
     "regs": 6,
     "income": 0
@@ -10137,6 +10127,16 @@
    {
     "k": "Панель",
     "regs": 3,
+    "income": 0
+   },
+   {
+    "k": "Lite",
+    "regs": 55,
+    "income": 0
+   },
+   {
+    "k": "Изменение",
+    "regs": 4,
     "income": 0
    }
   ],

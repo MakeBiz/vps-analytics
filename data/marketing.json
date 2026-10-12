@@ -1,5 +1,5 @@
 {
-  "generated": "11.10.2026",
+  "generated": "12.10.2026",
   "window": "последние 30 дней",
   "note": "Снимок маркетинга из коннектора Яндекса (Директ, Метрика, Вебмастер, Wordstat). Обновляется по запросу.",
   "direct": {
@@ -1028,8 +1028,8 @@
         "key": "podborvps",
         "name": "ПодборVPS",
         "counter": "111248718",
-        "visits": 0,
-        "providerClicks": 0,
+        "visits": 27,
+        "providerClicks": 6,
         "promo": 0,
         "goals": [
           [
@@ -1102,7 +1102,7 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 50,
+        "visits": 47,
         "providerClicks": 3,
         "promo": 5,
         "goals": [
@@ -1153,7 +1153,7 @@
         "key": "servercalc-com",
         "name": "ServerCalc.com",
         "counter": "111912764",
-        "visits": 73,
+        "visits": 71,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1171,7 +1171,7 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 243,
+        "visits": 233,
         "providerClicks": 0,
         "promo": 0,
         "goals": []

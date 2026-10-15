@@ -1,5 +1,5 @@
 {
-  "generated": "14.10.2026",
+  "generated": "15.10.2026",
   "window": "последние 30 дней",
   "note": "Снимок маркетинга из коннектора Яндекса (Директ, Метрика, Вебмастер, Wordstat). Обновляется по запросу.",
   "direct": {
@@ -1028,8 +1028,8 @@
         "key": "podborvps",
         "name": "ПодборVPS",
         "counter": "111248718",
-        "visits": 29,
-        "providerClicks": 6,
+        "visits": 0,
+        "providerClicks": 0,
         "promo": 0,
         "goals": [
           [
@@ -1102,8 +1102,8 @@
         "key": "servercalc-ru",
         "name": "ServerCalc.ru",
         "counter": "111249191",
-        "visits": 53,
-        "providerClicks": 1,
+        "visits": 0,
+        "providerClicks": 0,
         "promo": 5,
         "goals": [
           [
@@ -1153,7 +1153,7 @@
         "key": "servercalc-com",
         "name": "ServerCalc.com",
         "counter": "111912764",
-        "visits": 70,
+        "visits": 0,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1162,7 +1162,7 @@
         "key": "serverselection-online",
         "name": "ServerSelection",
         "counter": "112072146",
-        "visits": 16,
+        "visits": 0,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1171,7 +1171,7 @@
         "key": "makebiz-life",
         "name": "MakeBiz",
         "counter": "112151442",
-        "visits": 218,
+        "visits": 0,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -1180,7 +1180,7 @@
         "key": "makebiz-com",
         "name": "MakeBiz Technologies",
         "counter": "112503709",
-        "visits": 7,
+        "visits": 0,
         "providerClicks": 0,
         "promo": 0,
         "goals": []
@@ -3600,10 +3600,10 @@
     ]
   },
   "gsc": {
-    "generated": "14.10.2026",
+    "generated": "15.10.2026",
     "window": {
-      "from": "2026-04-17",
-      "to": "2026-10-13"
+      "from": "2026-04-18",
+      "to": "2026-10-14"
     },
     "sites": [
       {
@@ -3997,10 +3997,10 @@
           },
           {
             "q": "vps в россии",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 88.0
+            "position": 81.5
           },
           {
             "q": "vps в сша",
@@ -4837,10 +4837,10 @@
           },
           {
             "q": "промокоды vps",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 56.2
+            "position": 53.1
           },
           {
             "q": "промокоды на vps",
@@ -4986,10 +4986,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 1944,
+            "impressions": 1949,
             "clicks": 9,
             "ctr": 0.0046,
-            "position": 77.1
+            "position": 77.0
           },
           {
             "country": "nld",
@@ -5004,6 +5004,13 @@
             "clicks": 1,
             "ctr": 0.5,
             "position": 8.0
+          },
+          {
+            "country": "bgd",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 5.0
           },
           {
             "country": "blr",
@@ -5032,6 +5039,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 7.7
+          },
+          {
+            "country": "esp",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 10.0
           },
           {
             "country": "fin",
@@ -5063,10 +5077,10 @@
           },
           {
             "country": "ind",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 8.0
+            "position": 7.0
           },
           {
             "country": "irn",
@@ -5104,6 +5118,13 @@
             "position": 8.7
           },
           {
+            "country": "mda",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 3.0
+          },
+          {
             "country": "mmr",
             "impressions": 1,
             "clicks": 0,
@@ -5133,10 +5154,10 @@
           },
           {
             "country": "swe",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 9.0
+            "position": 8.5
           },
           {
             "country": "tur",
@@ -5154,10 +5175,10 @@
           },
           {
             "country": "usa",
-            "impressions": 24,
+            "impressions": 28,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 39.3
+            "position": 34.5
           },
           {
             "country": "uzb",
@@ -5168,13 +5189,13 @@
           },
           {
             "country": "vnm",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.0
+            "position": 7.5
           }
         ],
-        "pagesInSearch": 40,
+        "pagesInSearch": 44,
         "sitemaps": [
           {
             "path": "https://podborvps.ru/sitemap.xml",
@@ -5248,14 +5269,14 @@
           },
           {
             "q": "asia vps hosting",
-            "impressions": 23,
+            "impressions": 27,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 81.2
+            "position": 81.1
           },
           {
             "q": "asia vps server",
-            "impressions": 15,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
             "position": 79.9
@@ -5661,10 +5682,10 @@
           },
           {
             "q": "cheapest vps servers",
-            "impressions": 1,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 83.0
+            "position": 85.7
           },
           {
             "q": "cherry hosting",
@@ -5766,17 +5787,17 @@
           },
           {
             "q": "compare vps prices",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 89.0
+            "position": 86.5
           },
           {
             "q": "compare vps providers",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 77.0
+            "position": 78.5
           },
           {
             "q": "confronto server vps",
@@ -6043,6 +6064,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 38.0
+          },
+          {
+            "q": "ishosting",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 45.0
           },
           {
             "q": "kazakhstan hosting",
@@ -6598,6 +6626,13 @@
             "position": 93.3
           },
           {
+            "q": "virtual server price comparison",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 84.0
+          },
+          {
             "q": "virtual server pricing",
             "impressions": 2,
             "clicks": 0,
@@ -6722,6 +6757,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 76.0
+          },
+          {
+            "q": "vps cost comparison",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 79.0
           },
           {
             "q": "vps cost per month",
@@ -6918,43 +6960,22 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 65.0
-          },
-          {
-            "q": "vps hosting price",
-            "impressions": 30,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 95.9
-          },
-          {
-            "q": "vps hosting price comparison",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 69.0
-          },
-          {
-            "q": "vps hosting prices",
-            "impressions": 28,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 92.3
           }
         ],
         "countries": [
           {
             "country": "usa",
-            "impressions": 2052,
+            "impressions": 2074,
             "clicks": 5,
             "ctr": 0.0024,
             "position": 68.1
           },
           {
             "country": "bra",
-            "impressions": 55,
+            "impressions": 56,
             "clicks": 2,
-            "ctr": 0.0364,
-            "position": 17.2
+            "ctr": 0.0357,
+            "position": 17.0
           },
           {
             "country": "can",
@@ -6979,10 +7000,10 @@
           },
           {
             "country": "gbr",
-            "impressions": 148,
+            "impressions": 150,
             "clicks": 1,
-            "ctr": 0.0068,
-            "position": 57.0
+            "ctr": 0.0067,
+            "position": 56.3
           },
           {
             "country": "mmr",
@@ -7077,10 +7098,10 @@
           },
           {
             "country": "chn",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 44.0
+            "position": 30.0
           },
           {
             "country": "cmr",
@@ -7119,10 +7140,10 @@
           },
           {
             "country": "deu",
-            "impressions": 70,
+            "impressions": 72,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 49.3
+            "position": 48.0
           },
           {
             "country": "dnk",
@@ -7175,10 +7196,10 @@
           },
           {
             "country": "fin",
-            "impressions": 9,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 50.0
+            "position": 46.0
           },
           {
             "country": "fra",
@@ -7203,10 +7224,10 @@
           },
           {
             "country": "grc",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 22.8
+            "position": 21.3
           },
           {
             "country": "gtm",
@@ -7238,10 +7259,10 @@
           },
           {
             "country": "idn",
-            "impressions": 45,
+            "impressions": 46,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 52.6
+            "position": 51.7
           },
           {
             "country": "ind",
@@ -7273,10 +7294,10 @@
           },
           {
             "country": "isr",
-            "impressions": 23,
+            "impressions": 25,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 66.7
+            "position": 61.9
           },
           {
             "country": "ita",
@@ -7294,10 +7315,10 @@
           },
           {
             "country": "jpn",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 64.6
+            "position": 58.6
           },
           {
             "country": "kaz",
@@ -7405,6 +7426,13 @@
             "position": 7.0
           },
           {
+            "country": "mlt",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 10.0
+          },
+          {
             "country": "mne",
             "impressions": 2,
             "clicks": 0,
@@ -7413,10 +7441,10 @@
           },
           {
             "country": "mys",
-            "impressions": 33,
+            "impressions": 34,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 59.9
+            "position": 58.3
           },
           {
             "country": "nga",
@@ -7469,10 +7497,10 @@
           },
           {
             "country": "phl",
-            "impressions": 87,
+            "impressions": 88,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 71.7
+            "position": 71.0
           },
           {
             "country": "pol",
@@ -7539,10 +7567,10 @@
           },
           {
             "country": "svk",
-            "impressions": 19,
+            "impressions": 20,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 5.3
+            "position": 5.2
           },
           {
             "country": "svn",
@@ -7581,10 +7609,10 @@
           },
           {
             "country": "tur",
-            "impressions": 41,
+            "impressions": 42,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 52.4
+            "position": 51.4
           },
           {
             "country": "twn",
@@ -7636,7 +7664,7 @@
             "position": 51.2
           }
         ],
-        "pagesInSearch": 92,
+        "pagesInSearch": 94,
         "sitemaps": [
           {
             "path": "https://servercalc.com/sitemap.xml",
@@ -7731,10 +7759,10 @@
           },
           {
             "q": "alfavps",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 6.6
+            "position": 7.0
           },
           {
             "q": "alpha vps",
@@ -7745,7 +7773,7 @@
           },
           {
             "q": "alphavps",
-            "impressions": 246,
+            "impressions": 249,
             "clicks": 0,
             "ctr": 0.0,
             "position": 7.0
@@ -7766,10 +7794,10 @@
           },
           {
             "q": "alphavps отзывы",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 14.0
+            "position": 12.7
           },
           {
             "q": "aphavps",
@@ -7868,6 +7896,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 94.0
+          },
+          {
+            "q": "n8n vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 16.0
           },
           {
             "q": "nvme vs ssd",
@@ -8200,10 +8235,10 @@
           },
           {
             "q": "аез",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 70.6
+            "position": 73.7
           },
           {
             "q": "аеза",
@@ -8501,24 +8536,24 @@
           },
           {
             "q": "промокоды timeweb",
-            "impressions": 18,
+            "impressions": 19,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.7
+            "position": 76.5
           },
           {
             "q": "промокоды vps",
-            "impressions": 29,
+            "impressions": 30,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 65.2
+            "position": 64.8
           },
           {
             "q": "промокоды таймвеб",
-            "impressions": 15,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 74.2
+            "position": 75.2
           },
           {
             "q": "селектел vps",
@@ -8732,7 +8767,7 @@
           },
           {
             "q": "хостман",
-            "impressions": 9,
+            "impressions": 10,
             "clicks": 0,
             "ctr": 0.0,
             "position": 6.3
@@ -8755,10 +8790,10 @@
         "countries": [
           {
             "country": "rus",
-            "impressions": 1091,
-            "clicks": 13,
-            "ctr": 0.0119,
-            "position": 32.6
+            "impressions": 1120,
+            "clicks": 15,
+            "ctr": 0.0134,
+            "position": 32.1
           },
           {
             "country": "blr",
@@ -8775,11 +8810,18 @@
             "position": 10.8
           },
           {
+            "country": "vnm",
+            "impressions": 3,
+            "clicks": 1,
+            "ctr": 0.3333,
+            "position": 20.7
+          },
+          {
             "country": "are",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 6.0
+            "position": 5.0
           },
           {
             "country": "arg",
@@ -8846,10 +8888,10 @@
           },
           {
             "country": "chn",
-            "impressions": 5,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.8
+            "position": 6.5
           },
           {
             "country": "col",
@@ -8867,10 +8909,10 @@
           },
           {
             "country": "deu",
-            "impressions": 17,
+            "impressions": 18,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 31.3
+            "position": 34.5
           },
           {
             "country": "est",
@@ -8902,10 +8944,10 @@
           },
           {
             "country": "geo",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.0
+            "position": 6.3
           },
           {
             "country": "ind",
@@ -8958,10 +9000,10 @@
           },
           {
             "country": "mne",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 8.0
+            "position": 7.7
           },
           {
             "country": "moz",
@@ -9028,10 +9070,10 @@
           },
           {
             "country": "tha",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 47.5
+            "position": 33.0
           },
           {
             "country": "tjk",
@@ -9056,27 +9098,20 @@
           },
           {
             "country": "usa",
-            "impressions": 106,
+            "impressions": 107,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 42.3
+            "position": 42.0
           },
           {
             "country": "uzb",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 6.5
-          },
-          {
-            "country": "vnm",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 30.5
+            "position": 7.2
           }
         ],
-        "pagesInSearch": 70,
+        "pagesInSearch": 71,
         "sitemaps": [
           {
             "path": "https://servercalc.ru/sitemap.xml",
@@ -9175,6 +9210,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 65.0
+          },
+          {
+            "q": "best panel for vps",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 78.0
           },
           {
             "q": "best vps for ai",
@@ -9612,10 +9654,10 @@
           },
           {
             "q": "managed vs unmanaged dedicated server",
-            "impressions": 42,
+            "impressions": 43,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 89.1
+            "position": 89.0
           },
           {
             "q": "managed vs unmanaged server",
@@ -9710,10 +9752,10 @@
           },
           {
             "q": "nvme vs ssd hosting benefits",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 80.2
+            "position": 80.6
           },
           {
             "q": "rack nerd",
@@ -10507,6 +10549,13 @@
             "position": 72.0
           },
           {
+            "q": "vps server comparison",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 73.0
+          },
+          {
             "q": "vps server for vpn",
             "impressions": 12,
             "clicks": 0,
@@ -10827,20 +10876,6 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 26.0
-          },
-          {
-            "q": "what is vds",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 88.0
-          },
-          {
-            "q": "when to choose unmanaged server",
-            "impressions": 32,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 82.9
           }
         ],
         "countries": [
@@ -10881,10 +10916,10 @@
           },
           {
             "country": "usa",
-            "impressions": 1227,
+            "impressions": 1232,
             "clicks": 1,
             "ctr": 0.0008,
-            "position": 74.9
+            "position": 74.8
           },
           {
             "country": "alb",
@@ -11063,7 +11098,7 @@
           },
           {
             "country": "gbr",
-            "impressions": 242,
+            "impressions": 243,
             "clicks": 0,
             "ctr": 0.0,
             "position": 70.3
@@ -11098,10 +11133,10 @@
           },
           {
             "country": "ind",
-            "impressions": 170,
+            "impressions": 172,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 71.8
+            "position": 71.2
           },
           {
             "country": "irl",
@@ -11140,10 +11175,10 @@
           },
           {
             "country": "jpn",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 81.0
+            "position": 45.5
           },
           {
             "country": "kgz",
@@ -11165,6 +11200,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 4.5
+          },
+          {
+            "country": "ltu",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 6.0
           },
           {
             "country": "mex",
@@ -11259,10 +11301,10 @@
           },
           {
             "country": "rus",
-            "impressions": 400,
+            "impressions": 401,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 76.9
+            "position": 76.7
           },
           {
             "country": "sau",
@@ -11371,18 +11413,18 @@
           },
           {
             "country": "zaf",
-            "impressions": 12,
+            "impressions": 14,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 81.4
+            "position": 76.5
           }
         ],
-        "pagesInSearch": 100,
+        "pagesInSearch": 102,
         "sitemaps": [
           {
             "path": "https://serverselection.online/sitemap.xml",
             "lastSubmitted": "2026-08-29T19:30:56.207Z",
-            "submitted": 49,
+            "submitted": 50,
             "isPending": false,
             "errors": 0,
             "warnings": 0
@@ -11395,10 +11437,10 @@
         "queries": [
           {
             "q": "makebiz",
-            "impressions": 23,
+            "impressions": 24,
             "clicks": 9,
-            "ctr": 0.3913,
-            "position": 2.5
+            "ctr": 0.375,
+            "position": 2.7
           },
           {
             "q": "bi аналитика заказать",
@@ -11420,6 +11462,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 2.5
+          },
+          {
+            "q": "1с автоматизация склада",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 27.0
           },
           {
             "q": "agent biz",
@@ -11458,10 +11507,10 @@
           },
           {
             "q": "ai агент для бизнеса",
-            "impressions": 18,
+            "impressions": 20,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 53.4
+            "position": 52.2
           },
           {
             "q": "ai агент для продаж",
@@ -11514,10 +11563,10 @@
           },
           {
             "q": "ai агенты для бизнеса",
-            "impressions": 55,
+            "impressions": 58,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 55.7
+            "position": 55.2
           },
           {
             "q": "ai агенты купить",
@@ -11528,7 +11577,7 @@
           },
           {
             "q": "ai ассистент для бизнеса",
-            "impressions": 201,
+            "impressions": 207,
             "clicks": 0,
             "ctr": 0.0,
             "position": 44.0
@@ -11542,17 +11591,17 @@
           },
           {
             "q": "ai бизнес помощник",
-            "impressions": 24,
+            "impressions": 26,
             "clicks": 0,
             "ctr": 0.0,
             "position": 61.0
           },
           {
             "q": "ai менеджер для бизнеса",
-            "impressions": 2,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 47.5
+            "position": 43.2
           },
           {
             "q": "ai оператор",
@@ -11632,25 +11681,32 @@
             "position": 10.0
           },
           {
-            "q": "bitrix телефония",
+            "q": "bitirix24 корпоративный портал",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 44.0
+            "position": 49.0
+          },
+          {
+            "q": "bitrix телефония",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 42.8
           },
           {
             "q": "bitrix24 rpa",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 19.0
+            "position": 30.5
           },
           {
             "q": "bitrix24 телефония",
-            "impressions": 3,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 21.0
+            "position": 23.2
           },
           {
             "q": "bizlife",
@@ -11689,7 +11745,7 @@
           },
           {
             "q": "crm bitrix24 интеграция",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
             "position": 20.0
@@ -11700,6 +11756,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 9.0
+          },
+          {
+            "q": "crm автосервис",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 10.0
           },
           {
             "q": "crm битрикс24 цена",
@@ -11717,17 +11780,24 @@
           },
           {
             "q": "crm для b2b",
-            "impressions": 1,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 43.0
+            "position": 41.7
           },
           {
             "q": "crm для b2b продаж",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 41.5
+            "position": 39.3
+          },
+          {
+            "q": "crm для b2b-продаж",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 34.0
           },
           {
             "q": "crm и битрикс разница",
@@ -11742,6 +11812,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 23.0
+          },
+          {
+            "q": "crm24 перевозки",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 14.0
           },
           {
             "q": "dekonte",
@@ -11773,24 +11850,24 @@
           },
           {
             "q": "geo продвижение в ии",
-            "impressions": 32,
+            "impressions": 33,
             "clicks": 0,
             "ctr": 0.0,
             "position": 80.6
           },
           {
             "q": "geo продвижение в нейросетях",
-            "impressions": 44,
+            "impressions": 45,
             "clicks": 0,
             "ctr": 0.0,
             "position": 74.2
           },
           {
             "q": "geo продвижение в нейростетях",
-            "impressions": 6,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 77.0
+            "position": 75.8
           },
           {
             "q": "geo продвижение как попасть в ответы нейросетей",
@@ -11864,10 +11941,10 @@
           },
           {
             "q": "ocr для документов",
-            "impressions": 11,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 45.1
+            "position": 45.6
           },
           {
             "q": "ocr документа",
@@ -11905,11 +11982,25 @@
             "position": 51.0
           },
           {
-            "q": "rpa битрикс24",
-            "impressions": 4,
+            "q": "rpa автоматизация процессов",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 16.8
+            "position": 49.0
+          },
+          {
+            "q": "rpa битрикс24",
+            "impressions": 5,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 21.8
+          },
+          {
+            "q": "site:http://rus-cars.org/category/japan-car/japan-sedans \"внедрение битрикс 24 под ключ ссылка.\"",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 10.0
           },
           {
             "q": "unilin",
@@ -11941,10 +12032,10 @@
           },
           {
             "q": "vps хостинга",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 50.0
+            "position": 40.0
           },
           {
             "q": "а это?",
@@ -11983,10 +12074,17 @@
           },
           {
             "q": "автоматизация бизнес процессов услуги",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 20.5
+          },
+          {
+            "q": "автоматизация бизнеса искусственный интеллект",
             "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 20.0
+            "position": 63.0
           },
           {
             "q": "автоматизация бизнеса нейросети",
@@ -11996,11 +12094,18 @@
             "position": 38.5
           },
           {
-            "q": "автоматизация бизнеса нейросетями",
+            "q": "автоматизация бизнеса нейросетью",
             "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 20.5
+            "position": 29.5
+          },
+          {
+            "q": "автоматизация бизнеса нейросетями",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 21.7
           },
           {
             "q": "автоматизация документов",
@@ -12032,10 +12137,10 @@
           },
           {
             "q": "автоматизация закупок",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 78.0
+            "position": 65.0
           },
           {
             "q": "автоматизация закупок в компании",
@@ -12060,24 +12165,24 @@
           },
           {
             "q": "автоматизация заявок на закупку",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 41.0
+            "position": 39.0
           },
           {
             "q": "автоматизация заявок на оплату",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 41.0
-          },
-          {
-            "q": "автоматизация и цифровизация бизнес процессов",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
             "position": 42.0
+          },
+          {
+            "q": "автоматизация и цифровизация бизнес процессов",
+            "impressions": 3,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 40.0
           },
           {
             "q": "автоматизация обмена документами",
@@ -12088,17 +12193,17 @@
           },
           {
             "q": "автоматизация отдела закупок",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 86.6
+            "position": 88.9
           },
           {
             "q": "автоматизация отдела продаж",
-            "impressions": 112,
+            "impressions": 115,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 40.8
+            "position": 40.7
           },
           {
             "q": "автоматизация отдела продаж crm",
@@ -12123,10 +12228,10 @@
           },
           {
             "q": "автоматизация отделов продаж",
-            "impressions": 6,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 57.8
+            "position": 49.7
           },
           {
             "q": "автоматизация планирования закупок",
@@ -12206,6 +12311,34 @@
             "position": 87.0
           },
           {
+            "q": "автоматизация склада 1с",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 11.0
+          },
+          {
+            "q": "автоматизация складского учета",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 28.5
+          },
+          {
+            "q": "автоматизация складского учета 1с",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 9.0
+          },
+          {
+            "q": "автоматизация тендеров",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 48.0
+          },
+          {
             "q": "автоматизация управления закупками",
             "impressions": 1,
             "clicks": 0,
@@ -12235,10 +12368,10 @@
           },
           {
             "q": "автоматизированная система управления закупками",
-            "impressions": 4,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 84.0
+            "position": 85.8
           },
           {
             "q": "автоматизированного отдела продаж",
@@ -12246,6 +12379,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 18.0
+          },
+          {
+            "q": "автоматизированный складской учет",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 45.0
           },
           {
             "q": "автоматизированный учет склада",
@@ -12256,10 +12396,10 @@
           },
           {
             "q": "автоматизировать закупки",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 77.1
+            "position": 77.4
           },
           {
             "q": "агент для бизнеса",
@@ -12270,7 +12410,7 @@
           },
           {
             "q": "агентский ии под ключ",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
             "position": 9.0
@@ -12330,6 +12470,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 21.0
+          },
+          {
+            "q": "анализ разговоров менеджеров",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 41.0
           },
           {
             "q": "анализ разговоров отдела продаж",
@@ -12396,10 +12543,10 @@
           },
           {
             "q": "ассистент ии для бизнеса",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 54.0
+            "position": 58.3
           },
           {
             "q": "аудит битрикс24",
@@ -12459,10 +12606,10 @@
           },
           {
             "q": "битрикс 24 ai агенты",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 42.8
+            "position": 42.5
           },
           {
             "q": "битрикс 24 rpa",
@@ -12486,6 +12633,20 @@
             "position": 43.0
           },
           {
+            "q": "битрикс 24 мессенджер",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 30.0
+          },
+          {
+            "q": "битрикс 24 под ключ",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 6.0
+          },
+          {
             "q": "битрикс 24 подключение телефонии",
             "impressions": 2,
             "clicks": 0,
@@ -12494,17 +12655,17 @@
           },
           {
             "q": "битрикс 24 телефония",
-            "impressions": 4,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 30.0
+            "position": 26.8
           },
           {
             "q": "битрикс rpa",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 47.0
+            "position": 48.0
           },
           {
             "q": "битрикс запись звонков",
@@ -12522,10 +12683,10 @@
           },
           {
             "q": "битрикс ии агенты",
-            "impressions": 10,
+            "impressions": 11,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 42.7
+            "position": 42.8
           },
           {
             "q": "битрикс интеграция с телефонией",
@@ -12550,17 +12711,24 @@
           },
           {
             "q": "битрикс телефония",
-            "impressions": 9,
+            "impressions": 13,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 25.1
+            "position": 25.5
+          },
+          {
+            "q": "битрикс телефония для компании",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 40.0
           },
           {
             "q": "битрикс телефония настройка",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 30.3
+            "position": 28.0
           },
           {
             "q": "битрикс техподдержка",
@@ -12585,7 +12753,7 @@
           },
           {
             "q": "битрикс24 корпоративный портал",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
             "position": 46.0
@@ -12633,6 +12801,13 @@
             "position": 7.2
           },
           {
+            "q": "внедрение ai",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 39.0
+          },
+          {
             "q": "внедрение ai в бизнес",
             "impressions": 1,
             "clicks": 0,
@@ -12655,10 +12830,10 @@
           },
           {
             "q": "внедрение bitrix24 под ключ",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 16.6
+            "position": 16.2
           },
           {
             "q": "внедрение битрикс 24 \";-:'-\";!",
@@ -12669,10 +12844,17 @@
           },
           {
             "q": "внедрение битрикс 24 под ключ",
-            "impressions": 10,
+            "impressions": 11,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 15.6
+            "position": 15.2
+          },
+          {
+            "q": "внедрение битрикс стоимость",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 58.0
           },
           {
             "q": "внедрение битрикс цена",
@@ -12687,6 +12869,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 19.8
+          },
+          {
+            "q": "внедрение ии",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 17.0
           },
           {
             "q": "внедрение ии в бизнес",
@@ -12718,10 +12907,10 @@
           },
           {
             "q": "голосовой ии агент для бизнеса",
-            "impressions": 3,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 87.3
+            "position": 84.8
           },
           {
             "q": "готовые ai агенты",
@@ -12760,10 +12949,10 @@
           },
           {
             "q": "договор на внедрение битрикс 24",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 11.2
+            "position": 11.7
           },
           {
             "q": "доработка bitrix24",
@@ -12774,17 +12963,17 @@
           },
           {
             "q": "доработка битрикс",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 17.8
+            "position": 15.5
           },
           {
             "q": "заказать ии агента",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 42.5
+            "position": 44.3
           },
           {
             "q": "ии агент в компанию",
@@ -12830,10 +13019,10 @@
           },
           {
             "q": "ии агент онлайн",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 37.2
+            "position": 36.5
           },
           {
             "q": "ии агент по продажам",
@@ -12844,10 +13033,10 @@
           },
           {
             "q": "ии агент под ключ",
-            "impressions": 8,
+            "impressions": 9,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 33.2
+            "position": 30.9
           },
           {
             "q": "ии агент цена",
@@ -12865,10 +13054,10 @@
           },
           {
             "q": "ии агенты для бизнеса",
-            "impressions": 7,
+            "impressions": 8,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 49.1
+            "position": 49.5
           },
           {
             "q": "ии агенты для бизнеса купить",
@@ -12876,6 +13065,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 54.0
+          },
+          {
+            "q": "ии агенты для бизнеса обучение",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 48.0
           },
           {
             "q": "ии агенты для магазинов",
@@ -12900,14 +13096,14 @@
           },
           {
             "q": "ии агенты под ключ",
-            "impressions": 3,
+            "impressions": 5,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 45.0
+            "position": 38.6
           },
           {
             "q": "ии ассистент для бизнеса",
-            "impressions": 189,
+            "impressions": 192,
             "clicks": 0,
             "ctr": 0.0,
             "position": 51.9
@@ -12956,17 +13152,17 @@
           },
           {
             "q": "ии бизнес асистент",
-            "impressions": 2,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 70.5
+            "position": 70.0
           },
           {
             "q": "ии бизнес партнер",
-            "impressions": 11,
+            "impressions": 12,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 56.7
+            "position": 55.2
           },
           {
             "q": "ии бизнес помощник",
@@ -12988,169 +13184,15 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 22.0
-          },
-          {
-            "q": "ии консультант для бизнеса",
-            "impressions": 21,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 82.6
-          },
-          {
-            "q": "ии консультант для бизнеса услуги",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 23.0
-          },
-          {
-            "q": "ии менеджер для бизнеса",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 97.5
-          },
-          {
-            "q": "ии оператор для бизнеса",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 60.0
-          },
-          {
-            "q": "ии под ключ",
-            "impressions": 5,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 31.6
-          },
-          {
-            "q": "ии поиск для бизнеса",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 72.0
-          },
-          {
-            "q": "ии помощник в бизнесе",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 46.7
-          },
-          {
-            "q": "ии помощник для бизнеса",
-            "impressions": 157,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 52.9
-          },
-          {
-            "q": "ии помощники для бизнеса",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 45.0
-          },
-          {
-            "q": "ии продавец для бизнеса",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 89.3
-          },
-          {
-            "q": "ии продавец услуги",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 67.0
-          },
-          {
-            "q": "ии сотрудники для бизнеса",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 72.0
-          },
-          {
-            "q": "ии-ассистент для бизнеса",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 72.0
-          },
-          {
-            "q": "ии-помощники для бизнеса",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 72.5
-          },
-          {
-            "q": "интеграция crm битрикс24",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 22.0
-          },
-          {
-            "q": "интеграция битрикс24 и 1с",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 74.0
-          },
-          {
-            "q": "интеграция и настройка битрикс24",
-            "impressions": 7,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 21.7
-          },
-          {
-            "q": "интеграция мессенджеров",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 23.0
-          },
-          {
-            "q": "интеграция мессенджеров в битрикс24",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 27.5
-          },
-          {
-            "q": "интеграция с crm битрикс24",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 24.0
-          },
-          {
-            "q": "интеграция сайта с битрикс24",
-            "impressions": 1,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 20.0
-          },
-          {
-            "q": "интеграция телефонии с битрикс24",
-            "impressions": 3,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 26.7
           }
         ],
         "countries": [
           {
             "country": "rus",
-            "impressions": 1390,
+            "impressions": 1584,
             "clicks": 24,
-            "ctr": 0.0173,
-            "position": 41.7
+            "ctr": 0.0152,
+            "position": 41.4
           },
           {
             "country": "are",
@@ -13161,24 +13203,31 @@
           },
           {
             "country": "kaz",
-            "impressions": 30,
+            "impressions": 31,
             "clicks": 1,
-            "ctr": 0.0333,
-            "position": 22.7
+            "ctr": 0.0323,
+            "position": 22.3
+          },
+          {
+            "country": "nld",
+            "impressions": 19,
+            "clicks": 1,
+            "ctr": 0.0526,
+            "position": 6.8
           },
           {
             "country": "ukr",
-            "impressions": 843,
+            "impressions": 870,
             "clicks": 1,
-            "ctr": 0.0012,
-            "position": 47.5
+            "ctr": 0.0011,
+            "position": 46.9
           },
           {
             "country": "vnm",
-            "impressions": 2,
+            "impressions": 4,
             "clicks": 1,
-            "ctr": 0.5,
-            "position": 2.0
+            "ctr": 0.25,
+            "position": 3.8
           },
           {
             "country": "arg",
@@ -13230,11 +13279,18 @@
             "position": 42.0
           },
           {
-            "country": "blr",
-            "impressions": 32,
+            "country": "bhr",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 15.0
+            "position": 10.0
+          },
+          {
+            "country": "blr",
+            "impressions": 38,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 18.6
           },
           {
             "country": "bol",
@@ -13245,17 +13301,17 @@
           },
           {
             "country": "bra",
-            "impressions": 20,
+            "impressions": 23,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 17.1
+            "position": 16.9
           },
           {
             "country": "can",
-            "impressions": 5,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 6.2
+            "position": 7.6
           },
           {
             "country": "che",
@@ -13266,10 +13322,10 @@
           },
           {
             "country": "chl",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 14.0
+            "position": 10.7
           },
           {
             "country": "cmr",
@@ -13286,18 +13342,25 @@
             "position": 6.5
           },
           {
-            "country": "cze",
-            "impressions": 4,
+            "country": "cyp",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 6.8
+            "position": 9.0
+          },
+          {
+            "country": "cze",
+            "impressions": 6,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 5.0
           },
           {
             "country": "deu",
-            "impressions": 15,
+            "impressions": 16,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 19.4
+            "position": 18.6
           },
           {
             "country": "esp",
@@ -13307,32 +13370,39 @@
             "position": 8.3
           },
           {
-            "country": "fin",
-            "impressions": 4,
+            "country": "est",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 5.2
+            "position": 6.0
+          },
+          {
+            "country": "fin",
+            "impressions": 7,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 5.7
           },
           {
             "country": "fra",
-            "impressions": 2,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 17.0
-          },
-          {
-            "country": "gbr",
-            "impressions": 25,
-            "clicks": 0,
-            "ctr": 0.0,
-            "position": 6.1
-          },
-          {
-            "country": "geo",
             "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 28.0
+            "position": 13.3
+          },
+          {
+            "country": "gbr",
+            "impressions": 27,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 7.2
+          },
+          {
+            "country": "geo",
+            "impressions": 4,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 23.8
           },
           {
             "country": "hrv",
@@ -13340,6 +13410,13 @@
             "clicks": 0,
             "ctr": 0.0,
             "position": 10.0
+          },
+          {
+            "country": "hun",
+            "impressions": 2,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 8.0
           },
           {
             "country": "idn",
@@ -13350,10 +13427,10 @@
           },
           {
             "country": "ind",
-            "impressions": 18,
+            "impressions": 21,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 15.5
+            "position": 14.1
           },
           {
             "country": "irn",
@@ -13371,10 +13448,10 @@
           },
           {
             "country": "ita",
-            "impressions": 2,
+            "impressions": 3,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 21.5
+            "position": 30.3
           },
           {
             "country": "jpn",
@@ -13385,10 +13462,10 @@
           },
           {
             "country": "kgz",
-            "impressions": 5,
+            "impressions": 6,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.8
+            "position": 8.3
           },
           {
             "country": "ltu",
@@ -13406,10 +13483,10 @@
           },
           {
             "country": "lva",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.0
+            "position": 25.0
           },
           {
             "country": "mar",
@@ -13420,17 +13497,17 @@
           },
           {
             "country": "mda",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 28.0
+            "position": 14.5
           },
           {
             "country": "mex",
-            "impressions": 1,
+            "impressions": 2,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 8.0
+            "position": 9.0
           },
           {
             "country": "mkd",
@@ -13454,11 +13531,11 @@
             "position": 7.0
           },
           {
-            "country": "nld",
-            "impressions": 17,
+            "country": "npl",
+            "impressions": 1,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 7.0
+            "position": 8.0
           },
           {
             "country": "pak",
@@ -13476,10 +13553,10 @@
           },
           {
             "country": "pol",
-            "impressions": 2,
+            "impressions": 4,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 16.5
+            "position": 12.5
           },
           {
             "country": "prt",
@@ -13490,10 +13567,10 @@
           },
           {
             "country": "rou",
-            "impressions": 6,
+            "impressions": 7,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 3.7
+            "position": 11.4
           },
           {
             "country": "sau",
@@ -13538,6 +13615,20 @@
             "position": 9.0
           },
           {
+            "country": "tjk",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 9.0
+          },
+          {
+            "country": "tkm",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 9.0
+          },
+          {
             "country": "tur",
             "impressions": 10,
             "clicks": 0,
@@ -13546,10 +13637,10 @@
           },
           {
             "country": "usa",
-            "impressions": 118,
+            "impressions": 121,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 10.0
+            "position": 10.2
           },
           {
             "country": "uzb",
@@ -13580,7 +13671,7 @@
             "position": 9.0
           }
         ],
-        "pagesInSearch": 168,
+        "pagesInSearch": 174,
         "sitemaps": [
           {
             "path": "https://makebiz.life/sitemap.xml",
@@ -14034,10 +14125,17 @@
           },
           {
             "country": "usa",
-            "impressions": 13,
+            "impressions": 14,
             "clicks": 0,
             "ctr": 0.0,
-            "position": 13.3
+            "position": 12.6
+          },
+          {
+            "country": "vnm",
+            "impressions": 1,
+            "clicks": 0,
+            "ctr": 0.0,
+            "position": 10.0
           },
           {
             "country": "zaf",
@@ -14052,7 +14150,7 @@
           {
             "path": "https://makebiztechnologies.com/sitemap.xml",
             "lastSubmitted": "2026-09-12T14:26:25.477Z",
-            "submitted": 84,
+            "submitted": 88,
             "isPending": false,
             "errors": 0,
             "warnings": 0
@@ -19576,7 +19674,7 @@
   },
   "spendSince": "2026-02-01",
   "aiviz": {
-    "generated": "08.10.2026",
+    "generated": "15.10.2026",
     "engines": [
       "perplexity",
       "openai",
@@ -19613,12 +19711,8 @@
           "perplexity": {
             "cited": [],
             "mentioned": [],
-            "sources": [
-              "vc.ru",
-              "hostinghub.ru",
-              "dtf.ru",
-              "rbc.ru"
-            ]
+            "sources": [],
+            "error": true
           },
           "openai": {
             "cited": [],
@@ -19640,8 +19734,15 @@
           "perplexity": {
             "cited": [],
             "mentioned": [],
-            "sources": [],
-            "error": true
+            "sources": [
+              "hostkey.ru",
+              "timeweb.cloud",
+              "klerk.ru",
+              "firstvds.ru",
+              "sweb.ru",
+              "selectel.ru",
+              "adminvps.ru"
+            ]
           },
           "openai": {
             "cited": [],
@@ -19662,19 +19763,31 @@
           "perplexity": {
             "cited": [],
             "mentioned": [],
-            "sources": [],
-            "error": true
+            "sources": [
+              "serverflow.ru",
+              "open-vision.ru",
+              "calcimator.com",
+              "hostkey.ru",
+              "toolstack.ru",
+              "calcal.ru",
+              "bitronica.com",
+              "shop.nag.ru"
+            ]
           },
           "openai": {
             "cited": [],
-            "mentioned": [],
+            "mentioned": [
+              "servercalc.com",
+              "servercalc.ru"
+            ],
             "sources": []
           },
           "gigachat": {
             "cited": [],
-            "mentioned": [],
-            "sources": [],
-            "error": true
+            "mentioned": [
+              "podborvps.ru"
+            ],
+            "sources": []
           }
         }
       },
@@ -19687,12 +19800,13 @@
             "mentioned": [],
             "sources": [
               "habr.com",
+              "all-vps.com",
               "dtf.ru",
-              "ru.tophosts.net",
               "cloudvps.by",
-              "vc.ru",
               "free-hosting.ru",
-              "vpsindex.ru"
+              "hostinghub.ru",
+              "help.ishosting.com",
+              "maxiplace.ru"
             ]
           },
           "openai": {
@@ -19702,7 +19816,9 @@
           },
           "gigachat": {
             "cited": [],
-            "mentioned": [],
+            "mentioned": [
+              "podborvps.ru"
+            ],
             "sources": []
           }
         }
@@ -19715,11 +19831,13 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "dtf.ru",
               "hostkey.ru",
+              "craftum.com",
+              "ru.fornex.com",
+              "sweb.ru",
               "reg.ru",
-              "vdska.ru",
-              "vc.ru"
+              "timeweb.com",
+              "firstvds.ru"
             ]
           },
           "openai": {
@@ -19742,14 +19860,14 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "verpex.com",
-              "contabo.com",
+              "hostinger.com",
               "forbes.com",
+              "contabo.com",
               "zdnet.com",
-              "liquidweb.com",
-              "learn.g2.com",
-              "docs.google.com",
-              "hostinger.com"
+              "pcmag.com",
+              "elementor.com",
+              "xcloud.host",
+              "tomshardware.com"
             ]
           },
           "openai": {
@@ -19773,26 +19891,27 @@
             "mentioned": [],
             "sources": [
               "gizmodo.com",
-              "learn.g2.com",
-              "experte.com",
+              "forbes.com",
               "zdnet.com",
+              "independent.co.uk",
               "hostinger.com",
-              "g2.com",
-              "contabo.com"
+              "crazyegg.com",
+              "contabo.com",
+              "finance.yahoo.com"
             ]
           },
           "openai": {
             "cited": [],
             "mentioned": [],
             "sources": [
-              "hosting-atlas.com",
+              "bestvps.org",
+              "tunnelquant.com",
+              "tomsguide.com",
               "itechguides.com",
-              "techwench.com",
-              "learn.g2.com",
-              "reddit.com",
-              "unmasked.goodfriends.workers.dev",
-              "vpshostreview.com",
-              "cloudspress.com"
+              "whysogeek.com",
+              "contabo.com",
+              "vpshostingpicks.com",
+              "hostwinds.com"
             ]
           },
           "gigachat": {
@@ -19807,40 +19926,31 @@
         "line": "vps",
         "per": {
           "perplexity": {
-            "cited": [
-              "servercalc.com"
-            ],
+            "cited": [],
             "mentioned": [],
             "sources": [
-              "vpscalculator.com",
-              "vps-radar.com",
-              "costaroo.com",
-              "hostgraber.com",
-              "cloudhosting.lv",
-              "helpwithweb.com",
               "infrapilot.cc",
-              "datahouse.net"
+              "datahouse.net",
+              "helpwithweb.com",
+              "vps-radar.com",
+              "vpsserver.com",
+              "remarkablecloud.com",
+              "vpscalculator.com",
+              "cloudhosting.lv"
             ]
           },
           "openai": {
-            "cited": [
-              "servercalc.com",
-              "serverselection.online"
-            ],
-            "mentioned": [
-              "servercalc.com",
-              "servercalc.ru",
-              "serverselection.online"
-            ],
+            "cited": [],
+            "mentioned": [],
             "sources": [
+              "calwarden.com",
+              "hostnextjs.com",
+              "skyhive.com",
               "vpsmetrics.com",
-              "bestusavps.com",
-              "officecalculator.net",
-              "internet.network",
-              "infrapilot.cc",
-              "dropvps.com",
-              "serverselection.online",
-              "servercalc.com"
+              "cyberston.com",
+              "server-configurator.com",
+              "flaviocopes.com",
+              "findmetool.com"
             ]
           },
           "gigachat": {
@@ -19859,13 +19969,13 @@
             "mentioned": [],
             "sources": [
               "gizmodo.com",
-              "tomshardware.com",
-              "experte.com",
-              "learn.g2.com",
-              "zdnet.com",
+              "comparevps.com",
               "forbes.com",
-              "01net.com",
-              "hostinger.com"
+              "zdnet.com",
+              "hostinger.com",
+              "experte.com",
+              "liquidweb.com",
+              "crazyegg.com"
             ]
           },
           "openai": {
@@ -19888,14 +19998,14 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "gizmodo.com",
               "zdnet.com",
-              "websiteplanet.com",
-              "experte.com",
-              "bluehost.com",
+              "liquidweb.com",
+              "vps-mart.com",
+              "vpsdime.com",
               "forbes.com",
-              "learn.g2.com",
-              "ovhcloud.com"
+              "experte.com",
+              "us.ovhcloud.com",
+              "servercheap.com"
             ]
           },
           "openai": {
@@ -19918,14 +20028,14 @@
             "cited": [],
             "mentioned": [],
             "sources": [
+              "kernelhost.com",
               "kimsufi.com",
-              "atlantic.net",
-              "worldstream.com",
-              "hostadvice.com",
-              "colocrossing.com",
-              "experte.com",
+              "ionos.com",
               "aws.amazon.com",
-              "cloudzy.com"
+              "contabo.com",
+              "ovhcloud.com",
+              "hivelocity.net",
+              "atlantic.net"
             ]
           },
           "openai": {
@@ -19952,12 +20062,12 @@
             "sources": [
               "makebiztehnologies.com",
               "bitrix24.com",
-              "webformat.ru",
-              "bitrix242b.ru",
               "makebizgroup.com",
+              "webformat.ru",
               "bitrix24.ru",
-              "tenchat.ru",
-              "spb.bit-24.ru"
+              "spb.bit-24.ru",
+              "bitrix24.uz",
+              "helpdesk.bitrix24.ru"
             ]
           },
           "openai": {
@@ -19980,11 +20090,10 @@
             "cited": [],
             "mentioned": [],
             "sources": [
+              "bitrix24.com",
+              "integrator.nota.media",
               "bitrix24.ru",
-              "helpdesk.bitrix24.ru",
-              "bitrix24integrator.ru",
-              "crmindex.ru",
-              "picktech.ru"
+              "helpdesk.bitrix24.ru"
             ]
           },
           "openai": {
@@ -20007,14 +20116,14 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "scand.com",
               "developers.sber.ru",
-              "skillbox.ru",
-              "bothelp.io",
-              "habr.com",
-              "vc.ru",
+              "triadacompany.ru",
+              "scand.com",
               "microsoft.com",
-              "sostav.ru"
+              "skillbox.ru",
+              "develonica.ru",
+              "cloud.ru",
+              "bothelp.io"
             ]
           },
           "openai": {
@@ -20037,14 +20146,14 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "vc.ru",
               "helpdesk.bitrix24.ru",
-              "spark.ru",
-              "sostav.ru",
-              "obit.ru",
               "calltouch.ru",
-              "bitrix24.ru",
-              "telphin.ru"
+              "telphin.ru",
+              "unitalk.cloud",
+              "calltracking.ru",
+              "gendalf.ru",
+              "exolve.ru",
+              "business.mts.ru"
             ]
           },
           "openai": {
@@ -20069,12 +20178,11 @@
             "sources": [
               "developers.sber.ru",
               "elma365.com",
+              "ade-solutions.com",
               "pix.ru",
-              "secrets.tbank.ru",
-              "sap.com",
+              "bft.ru",
               "kontur.ru",
-              "sostav.ru",
-              "moluch.ru"
+              "sap.com"
             ]
           },
           "openai": {
@@ -20097,14 +20205,14 @@
             "cited": [],
             "mentioned": [],
             "sources": [
+              "online.hse.ru",
+              "developers.sber.ru",
               "kurs.alfabank.ru",
               "kaiten.ru",
-              "directum.ru",
-              "online.hse.ru",
-              "habr.com",
-              "developers.sber.ru",
               "bitrix24.ru",
-              "vc.ru"
+              "moysklad.ru",
+              "okocrm.com",
+              "1economic.ru"
             ]
           },
           "openai": {
@@ -20129,9 +20237,11 @@
             "sources": [
               "bitrix24.com",
               "saabsoft.com",
+              "cis.cx",
+              "acp-24.com",
               "linkedin.com",
-              "kb.acp-24.com",
-              "notamedia.com"
+              "digitalz.ae",
+              "keenenter.com"
             ]
           },
           "openai": {
@@ -20139,9 +20249,7 @@
             "mentioned": [],
             "sources": [
               "bitrix24.ae",
-              "nadbook.com",
-              "vortexweb.cloud",
-              "helpdesk.bitrix24.com"
+              "vortexweb.ai"
             ]
           },
           "gigachat": {
@@ -20159,14 +20267,13 @@
             "cited": [],
             "mentioned": [],
             "sources": [
-              "rsiconcepts.com",
-              "lumay.ai",
-              "vegavid.com",
               "aarmeh.ae",
-              "aideveloper.ae",
-              "jadasquad.com",
-              "linkedin.com",
-              "sparkouttech.com"
+              "intwo.cloud",
+              "nomadx.ae",
+              "controlshift.ae",
+              "nagorik.tech",
+              "korvax.ai",
+              "micropyramid.com"
             ]
           },
           "openai": {
@@ -20175,12 +20282,12 @@
             "sources": [
               "walqalum.com",
               "hereandnowai.com",
-              "logiclayertech.com",
+              "hyve.ae",
+              "sdlccorp.com",
               "burjcode.ae",
+              "ite.ae",
               "pixelorcode.com",
-              "innopalm.com",
-              "ontiktechnology.com",
-              "nomadx.ae"
+              "ontiktechnology.com"
             ]
           },
           "gigachat": {
@@ -20199,13 +20306,13 @@
             "mentioned": [],
             "sources": [
               "callhippo.com",
-              "quo.com",
               "claap.io",
-              "cirrusinsight.com",
+              "quo.com",
               "justcall.io",
-              "pipeline.zoominfo.com",
-              "klenty.com",
-              "cloudtalk.io"
+              "folk.app",
+              "getmaxiq.com",
+              "runo.ai",
+              "salesforce.com"
             ]
           },
           "openai": {
@@ -20229,13 +20336,13 @@
             "mentioned": [],
             "sources": [
               "cloud.google.com",
-              "precoro.com",
-              "ironcladapp.com",
-              "coursiv.io",
+              "ezintegrations.ai",
               "open-contracting.org",
-              "leewayhertz.com",
-              "zoho.com",
-              "gep.com"
+              "monday.com",
+              "kanerika.com",
+              "sciopen.com",
+              "ironcladapp.com",
+              "brex.com"
             ]
           },
           "openai": {
@@ -20254,7 +20361,7 @@
     "bySite": {
       "podborvps.ru": {
         "perplexity": {
-          "asked": 9,
+          "asked": 10,
           "cited": 0,
           "mentioned": 0
         },
@@ -20264,31 +20371,31 @@
           "mentioned": 0
         },
         "gigachat": {
-          "asked": 10,
+          "asked": 11,
           "cited": 0,
-          "mentioned": 0
+          "mentioned": 2
         }
       },
       "servercalc.com": {
         "perplexity": {
-          "asked": 9,
-          "cited": 1,
+          "asked": 10,
+          "cited": 0,
           "mentioned": 0
         },
         "openai": {
           "asked": 11,
-          "cited": 1,
+          "cited": 0,
           "mentioned": 1
         },
         "gigachat": {
-          "asked": 10,
+          "asked": 11,
           "cited": 0,
           "mentioned": 0
         }
       },
       "servercalc.ru": {
         "perplexity": {
-          "asked": 9,
+          "asked": 10,
           "cited": 0,
           "mentioned": 0
         },
@@ -20298,24 +20405,24 @@
           "mentioned": 1
         },
         "gigachat": {
-          "asked": 10,
+          "asked": 11,
           "cited": 0,
           "mentioned": 0
         }
       },
       "serverselection.online": {
         "perplexity": {
-          "asked": 9,
+          "asked": 10,
           "cited": 0,
           "mentioned": 0
         },
         "openai": {
           "asked": 11,
-          "cited": 1,
-          "mentioned": 1
+          "cited": 0,
+          "mentioned": 0
         },
         "gigachat": {
-          "asked": 10,
+          "asked": 11,
           "cited": 0,
           "mentioned": 0
         }
@@ -20340,37 +20447,37 @@
     },
     "totals": {
       "perplexity": {
-        "asked": 19,
-        "cited": 1,
+        "asked": 20,
+        "cited": 0,
         "mentioned": 1
       },
       "openai": {
         "asked": 21,
-        "cited": 1,
+        "cited": 0,
         "mentioned": 1
       },
       "gigachat": {
-        "asked": 20,
+        "asked": 21,
         "cited": 0,
-        "mentioned": 0
+        "mentioned": 2
       }
     },
     "totalsByLine": {
       "vps": {
         "perplexity": {
-          "asked": 9,
-          "cited": 1,
+          "asked": 10,
+          "cited": 0,
           "mentioned": 0
         },
         "openai": {
           "asked": 11,
-          "cited": 1,
+          "cited": 0,
           "mentioned": 1
         },
         "gigachat": {
-          "asked": 10,
+          "asked": 11,
           "cited": 0,
-          "mentioned": 0
+          "mentioned": 2
         }
       },
       "company": {
